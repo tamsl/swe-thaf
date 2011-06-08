@@ -5,6 +5,9 @@ TCP_IP = '127.0.0.1'
 TCP_PORT = 2002
 BUFFER_SIZE = 1024
 COLOR = ['Red', 'Yellow', 'Green', 'Cyan', 'White', 'Blue', 'Purple']
+TYPES = ['SonarSensor', 'SICKLMS', 'OdometrySensor']
+NAMES = ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'Scanner1', 'Odometry']
+OPCODE = ['RESET', 'NOP']
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
 s.send("INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n")
@@ -56,48 +59,9 @@ def go_trace(b1, in1, COLOR):
     print string
     return string
 
-def go_sensor(sens, opcode, params):
-    if opcode == 1:
-        opcode = "RESET"
-    elif opcode == 2:
-        opcode = "NOP"
-
-    tpe = ""
-    name = ""
-    
-    if sens == 1:
-        tpe = "SonarSensor"
-        name = "F1"
-    elif sens == 2:
-        tpe = "SonarSensor"
-        name = "F2"
-    elif sens == 3:
-        tpe = "SonarSensor"
-        name = "F3"
-    elif sens == 4:
-        tpe = "SonarSensor"
-        name = "F4"
-    elif sens == 5:
-        tpe = "SonarSensor"
-        name = "F5"
-    elif sens == 6:
-        tpe = "SonarSensor"
-        name = "F6"
-    elif sens == 7:
-        tpe = "SonarSensor"
-        name = "F7"
-    elif sens == 8:
-        tpe = "SonarSensor"
-        name = "F8"
-    elif sens == 9:
-        tpe = "SICKLMS"
-        name = "Scanner1"
-    elif sens == 10:
-        tpe = "OdometrySensor"
-        name = "Odometry"
-
+def go_sensor(TYPES, NAMES, OPCODE, params):
     params = str(params)
-    string = "SET {Type " + tpe + "} {Name " + name + "} {Opcode " + opcode + "} {Params " + params + "}\r\n"
+    string = "SET {Type " + TYPES + "} {Name " + NAMES + "} {Opcode " + OPCODE + "} {Params " + params + "}\r\n"
     print string
     return string
    
@@ -109,9 +73,7 @@ while 1:
    s.send(handle_movement("rotate_right", 1.0, -1.0))
    s.send(handle_movement("brake", 0.0, 0.0))
    s.send(handle_movement("light", 1))
-   s.send(handle_movement("sonar", 4, 1, 1))
-   s.send(handle_movement("laser", 9, 2, 6))
-   s.send(handle_movement("odometry", 10, 1, 1))
+   s.send(handle_movement("sonar", 'SonarSensor', 'F3', 'RESET', 5))
 
 s.close()
     
