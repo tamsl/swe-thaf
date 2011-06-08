@@ -76,10 +76,40 @@ while 1:
       if datasplit[0] == "MISSTA":
         print "doe MISSTA shit\r\n"
       if datasplit[0] == "GEO":
+        typeGEO = datasplit[1].replace('{Type ', '')
+        typeGEO = typeSTA.replace('}', '')
+        if typeGEO == "GroundVehicle":
+          print "doe GroundVehicle shit\r\n"
+        if typeGEO == "LeggedRobot":
+          print "doe LeggedRobot shit\r\n"
+        if typeGEO == "NauticVehicle":
+          print "doe NauticVehicle shit\r\n"
+        if typeGEO == "AerialVehicle":
+          print "doe AerialVehicle shit\r\n"
+        if typeGEO == "MisPkg":
+          print "doe Mission Package shit\r\n"
         print "doe GEO shit\r\n"
       if datasplit[0] == "CONF":
+        typeCONF = datasplit[1].replace('{Type ', '')
+        typeCONF = typeSTA.replace('}', '')
+        if typeCONF == "GroundVehicle":
+          print "doe GroundVehicle shit\r\n"
+        if typeCONF == "LeggedRobot":
+          print "doe LeggedRobot shit\r\n"
+        if typeCONF == "NauticVehicle":
+          print "doe NauticVehicle shit\r\n"
+        if typeCONF == "AerialVehicle":
+          print "doe AerialVehicle shit\r\n"
+        if typeCONF == "MisPkg":
+          print "doe Mission Package shit\r\n"
         print "doe CONF shit\r\n"
       if datasplit[0] == "RES":
+        typeRES = datasplit[2].replace('{Type ', '')
+        typeRES = typeSTA.replace('}', '')
+        if typeRES == "Viewports":
+          print "doe Viewports shit\r\n"
+        if typeRES == "Camera":
+          print "doe Camera shit\r\n"
         print "doe RES shit\r\n"
   
 s.close()
