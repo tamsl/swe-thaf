@@ -35,9 +35,8 @@ s.send('INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n')
 ##odometry = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 ##odometry.connect((TCP_IP, ODOMETRY_PORT))
 
-
 while 1:
-  s.send('DRIVE {Left 1.0}\r\n')
+  s.send('DRIVE {Left 1.0} {Right 1.0}\r\n')
   data = s.recv(BUFFER_SIZE)
   string = data.split('\r\n')
   for i in range(len(string)):
@@ -48,12 +47,11 @@ while 1:
       if datasplit[0] == "SEN":
         typeSEN = datasplit[1].replace('{Type ', '')
         typeSEN = typeSEN.replace('}', '')
-        typeSEN2 = datasplit[2].replace('{Type ', '')
-        typeSEN2 = typeSEN2.replace('}', '')
+        if len(datasplit) > 2:
+          typeSEN2 = datasplit[2].replace('{Type ', '')
+          typeSEN2 = typeSEN2.replace('}', '')
         # Range sensor
         if typeSEN2 == "Sonar":
-          #results = 
-          # Sonar.send('INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n')
           print "doe Sonar shit\r\n"
         if typeSEN2 == "IR":
           print "doe IR shit\r\n"
