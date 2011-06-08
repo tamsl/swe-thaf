@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+
+import socket
+import re
+
+TCP_IP = '127.0.0.1'
+TCP_PORT = 2001
+BUFFER_SIZE = 1024
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((TCP_IP, TCP_PORT))
+s.send("INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n")
+
+while 1:
+  s.send("DRIVE {Left 1.0}\r\n")
+  data = s.recv(BUFFER_SIZE)
+  #replaced = data.replace('\r\n', '')
+  #string = re.findall('\{[^\}]*\}|\S+', replaced)
+  datasplit =  data.split('{')
+  print data
+
+s.close()
