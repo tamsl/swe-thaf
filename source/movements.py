@@ -19,8 +19,10 @@ def handle_movement(type, *args):
                "rotate_right":    go_drive,
                "light":           go_light,
                "camera":          go_camera,
-              # "mission":          go_mission,
                "trace":           go_trace,
+               "sonar":           go_sensor,
+               "laser":           go_sensor,
+               "odometry":        go_sensor
               }
    return handlers[type](*args)
     
@@ -47,29 +49,69 @@ def go_camera(OmniCamPillar_Link2):
     print string
     return string
 
-#def go_mission(f1, i1):
- #   i = str(i1)
-  #  f = str(f1)
-   # string = "MISPGK {Name OmniCamPillar} {Link" + i + "} {Value" + f + "}\r\n"
-    #print string
-     #return string
-
 def go_trace(b1, in1, COLOR):
     b1 = str(b1)
     in1 = str(in1)
     string = "Trace {On " + b1 + "} {Interval " + in1 + "} {Color " + COLOR +"}\r\n"
     print string
     return string
+
+def go_sensor(sens, opcode, params):
+    if opcode == 1:
+        opcode = "RESET"
+    elif opcode == 2:
+        opcode = "NOP"
+
+    tpe = ""
+    name = ""
+    
+    if sens == 1:
+        tpe = "SonarSensor"
+        name = "F1"
+    elif sens == 2:
+        tpe = "SonarSensor"
+        name = "F2"
+    elif sens == 3:
+        tpe = "SonarSensor"
+        name = "F3"
+    elif sens == 4:
+        tpe = "SonarSensor"
+        name = "F4"
+    elif sens == 5:
+        tpe = "SonarSensor"
+        name = "F5"
+    elif sens == 6:
+        tpe = "SonarSensor"
+        name = "F6"
+    elif sens == 7:
+        tpe = "SonarSensor"
+        name = "F7"
+    elif sens == 8:
+        tpe = "SonarSensor"
+        name = "F8"
+    elif sens == 9:
+        tpe = "SICKLMS"
+        name = "Scanner1"
+    elif sens == 10:
+        tpe = "OdometrySensor"
+        name = "Odometry"
+
+    params = str(params)
+    string = "SET {Type " + tpe + "} {Name " + name + "} {Opcode " + opcode + "} {Params " + params + "}\r\n"
+    print string
+    return string
    
 while 1:
    s.send(handle_movement("camera", 1))
    s.send(handle_movement("trace", 1, 1, 'Green'))
-   #s.send(handle_movement("mission", 1, 1))
    s.send(handle_movement("forward", 90.0, 90.0))
    s.send(handle_movement("rotate_left", -1.0, 1.0))
    s.send(handle_movement("rotate_right", 1.0, -1.0))
    s.send(handle_movement("brake", 0.0, 0.0))
    s.send(handle_movement("light", 1))
+   s.send(handle_movement("sonar", 4, 1, 1))
+   s.send(handle_movement("laser", 9, 2, 6))
+   s.send(handle_movement("odometry", 10, 1, 1))
 
 s.close()
     
