@@ -15,7 +15,10 @@ def handle_movement(type, *args):
                "reverse":         go_drive,
                "brake":           go_drive,
                "rotate_left":     go_drive,
-               "rotate_right":    go_drive
+               "rotate_right":    go_drive,
+               "light":           go_light,
+               "camera":          go_camera,
+               "mission":          go_mission,
               }
    return handlers[type](*args)
     
@@ -26,11 +29,39 @@ def go_drive(s1, s2):
     print string
     return string
 
+def go_light(lights):
+    if lights == 1:
+       string = "DRIVE {Light true}\r\n"
+    else:
+       string = "DRIVE {Light false}\r\n"
+    print string
+    return string
+
+def go_camera(OmniCamPillar_Link2):
+    if OmniCamPillar_Link2 == 1:
+       string = "SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}\r\n"
+    else:
+       string = "SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}\r\n"
+    print string
+    return string
+
+def go_mission(f1, i1, f2, i2):
+    i1 = str(i1)
+    f1 = str(f1)
+    f2 = str(f2)
+    i2 = str(i2)
+    string = "MISPGK {Name OmniCamPillar} {Link" + i1 + "} {Value" + f1 + "} {Link" + i2 + "} {Value" + f2 + "}\r\n"
+    print string
+    return string
+
 while 1:
-   s.send(handle_movement("forward", 90.0, 90.0))
-   s.send(handle_movement("rotate_left", -1.0, 1.0))
+   s.send(handle_movement("camera", 1))
+   s.send(handle_movement("mission", 3, 3, 5, 5))
+   #s.send(handle_movement("forward", 90.0, 90.0))
+   #s.send(handle_movement("rotate_left", -1.0, 1.0))
    s.send(handle_movement("rotate_right", 1.0, -1.0))
-   s.send(handle_movement("brake", 0.0, 0.0))
+   #s.send(handle_movement("brake", 0.0, 0.0))
+   #s.send(handle_movement("light", 1))
 
 s.close()
     
