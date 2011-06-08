@@ -90,7 +90,7 @@ while 1:
         if typeSEN == "Sound":
           print "doe Sound shit\r\n"
         print "doe SEN shit\r\n"
-      # State and mission package message
+      # State message
       if datasplit[0] == "STA":
         typeSTA = datasplit[1].replace('{Type ', '')
         typeSTA = typeSTA.replace('}', '')
@@ -103,6 +103,7 @@ while 1:
         if typeSTA == "AerialVehicle":
           print "doe AerialVehicle shit\r\n"
         print "doe STA shit\r\n"
+      # Mission package message
       if datasplit[0] == "MISSTA":
         print "doe MISSTA shit\r\n"
       # Geometry information
