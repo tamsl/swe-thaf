@@ -23,26 +23,14 @@ for i in range(100):
         if len(datasplit) > 2:
           typeSEN2 = datasplit[2].replace('{Type ', '')
           typeSEN2 = typeSEN2.replace('}', '')
-        if len(datasplit) > 9:
-          typeSEN3 = datasplit[3].replace('{Name F1 Range ', '')
-          typeSEN3 = typeSEN3.replace('}', '')
-          typeSEN4 = datasplit[4].replace('{Name F2 Range ', '')
-          typeSEN4 = typeSEN4.replace('}', '')
-          typeSEN5 = datasplit[5].replace('{Name F3 Range ', '')
-          typeSEN5 = typeSEN5.replace('}', '')          
-          typeSEN6 = datasplit[6].replace('{Name F4 Range ', '')
-          typeSEN6 = typeSEN6.replace('}', '')
-          typeSEN7 = datasplit[7].replace('{Name F5 Range ', '')
-          typeSEN7 = typeSEN7.replace('}', '')
-          typeSEN8 = datasplit[8].replace('{Name F6 Range ', '')
-          typeSEN8 = typeSEN8.replace('}', '')          
-          typeSEN9 = datasplit[9].replace('{Name F7 Range ', '')
-          typeSEN9 = typeSEN9.replace('}', '')
-          typeSEN10 = datasplit[10].replace('{Name F8 Range ', '')
-          typeSEN10 = typeSEN10.replace('}', '')
-        # Range sensor
-        if typeSEN2 == "Sonar":
-          print datasplit, "\r\n"
-          print typeSEN2, typeSEN3, typeSEN4, typeSEN5, typeSEN6, typeSEN7, typeSEN8, typeSEN9, typeSEN10, "\r\n"
+          # Range sensor
+          if typeSEN2 == "Sonar":
+            print datasplit, "\r\n"
+            if len(datasplit) > 9:
+              sonar_values = []
+              for i in range(0, 8):
+                sonar_values.append(datasplit[i + 3].replace('{Name F' + str(i+1) + ' Range ', ''))
+                sonar_values[i] = sonar_values[i].replace('}', '')
+              print sonar_values, "\r\n"
 
 s.close()
