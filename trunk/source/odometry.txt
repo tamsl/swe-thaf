@@ -1,0 +1,22 @@
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0000,0.0000,0.0000}'] 
+
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0143,0.0000,0.0271}'] 
+
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0283,0.0003,0.0568}'] 
+
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0422,0.0011,0.0914}'] 
+
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0557,0.0024,0.1285}'] 
+
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0675,0.0039,0.1706}'] 
+
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0797,0.0060,0.2201}'] 
+
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0909,0.0085,0.2695}'] 
+
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.1008,0.0112,0.3263}'] 
+
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.1105,0.0145,0.3833}'] 
+
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.1193,0.0181,0.4401}'] 
+
