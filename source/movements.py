@@ -8,6 +8,7 @@ COLOR = ['Red', 'Yellow', 'Green', 'Cyan', 'White', 'Blue', 'Purple']
 TYPES = ['SonarSensor', 'SICKLMS', 'OdometrySensor']
 NAMES = ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'Scanner1', 'Odometry']
 OPCODE = ['RESET', 'NOP']
+OPCODE_RFID = ['Release', 'Read', 'Write']
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
 s.send("INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n")
@@ -25,7 +26,9 @@ def handle_movement(type, *args):
                "trace":           go_trace,
                "sonar":           go_sensor,
                "laser":           go_sensor,
-               "odometry":        go_sensor
+               "odometry":        go_sensor,
+               "rfid-tag":        go_tag,
+               "rfid":            go_rfid,
               }
    return handlers[type](*args)
     
@@ -44,11 +47,11 @@ def go_light(lights):
     print string
     return string
 
-def go_camera(OmniCamPillar_Link2):
-    if OmniCamPillar_Link2 == 1:
-       string = "SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}\r\n"
+def go_camera(CameraPanTilt_Link2):
+    if CameraPanTilt_Link2 == 1:
+       string = "SET {Type Camera} {Name CameraPanTilt_Link2} {FOV 1}\r\n"
     else:
-       string = "SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}\r\n"
+       string = "SET {Type Camera} {Name CameraPanTilt_Link2} {FOV 1}\r\n"
     print string
     return string
 
@@ -64,16 +67,31 @@ def go_sensor(TYPES, NAMES, OPCODE, params):
     string = "SET {Type " + TYPES + "} {Name " + NAMES + "} {Opcode " + OPCODE + "} {Params " + params + "}\r\n"
     print string
     return string
-   
+
+def go_tag(OPCODE_RFID):
+    string = "SET {Type RFIDReleaser} {Name Gun} {Opcode " + OPCODE_RFID + "}\r\n"
+    print string
+    return string
+
+def go_rfid(OPCODE_RFID):
+    if OPCODE_RFID == 'Write':
+        string = "SET {Type RFID} {Name RFID} {Opcode " + OPCODE_RFID + "} {Params RFIDTagID MemoryContent}\r\n"  
+    if OPCODE_RFID == 'Read':
+        string = "SET {Type RFID} {Name RFID} {Opcode " + OPCODE_RFID + "} {Params RFIDTagID}\r\n"  
+    print string
+    return string  
+
 while 1:
    s.send(handle_movement("camera", 1))
-   s.send(handle_movement("trace", 1, 1, 'Green'))
-   s.send(handle_movement("forward", 90.0, 90.0))
-   s.send(handle_movement("rotate_left", -1.0, 1.0))
-   s.send(handle_movement("rotate_right", 1.0, -1.0))
+   s.send(handle_movement("rfid-tag", 'Release'))
+   s.send(handle_movement("trace", 1, 1, 'White'))
+   s.send(handle_movement("forward", 5.0, 5.0))
+   s.send(handle_movement("rotate_left", 1.0, -1.0))
+   s.send(handle_movement("rotate_right", -1.0, 1.0))
    s.send(handle_movement("brake", 0.0, 0.0))
    s.send(handle_movement("light", 1))
    s.send(handle_movement("sonar", 'SonarSensor', 'F3', 'RESET', 5))
+   s.send(handle_movement("rfid", 'Write'))
 
 s.close()
     
