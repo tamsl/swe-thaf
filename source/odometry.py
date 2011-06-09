@@ -11,11 +11,11 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
 s.send('INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n')
 
-def odometry_module(datasplit):
-  print datasplit, "\r\n"
-  senvalue = datasplit[3].replace('{Pose ', '')
-  senvalue = senvalue.replace('}','')
-  odo_values = senvalue.split(',')
+def odometry_module(datastring):
+  print datastring, "\r\n"
+  senvalues = datastring[3].replace('{Pose ', '')
+  senvalues = senvalues.replace('}','')
+  odo_values = senvalues.split(',')
   print odo_values, "\r\n"
   return odo_values
 
@@ -32,7 +32,7 @@ for i in range(100):
         typeSEN = typeSEN.replace('}', '')
         # Odometry sensor
         if typeSEN == "Odometry":
-          odometry_module(datasplit)
+          odo_values = odometry_module(datasplit)
           
 s.close()
 
