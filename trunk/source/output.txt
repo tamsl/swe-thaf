@@ -1,0 +1,2388 @@
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['NFO', '{Gametype BotDeathMatch}', '{Level DM-USAR_yellow_250}', '{TimeLimit 0}'] 
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.19}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.19}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.22}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.22}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.25}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.25}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.28}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.28}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.31}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.31}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.34}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.34}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.37}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.37}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.39}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.39}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['SEN', '{Time 438.3928}', '{Type Sonar}', '{Name F1 Range 4.5571}', '{Name F2 Range 1.9761}', '{Name F3 Range 1.9551}', '{Name F4 Range 1.6990}', '{Name F5 Range 0.8015}', '{Name F6 Range 0.8081}', '{Name F7 Range 1.1487}', '{Name F8 Range 2.0644}'] 
+
+doe Sonar shit
+
+doe SEN shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['SEN', '{Type Encoder}', '{Name ECLeft Tick 0}', '{Name ECRight Tick 0}', '{Name ECTilt Tick 0}', '{Name ECPan Tick 0}'] 
+
+doe Encoder shit
+
+doe SEN shit
+
+['SEN', '{Time 438.3928}', '{Type RFID}', '{Name RFID}', '{ID 1001}', '{ID 1010}'] 
+
+doe SEN shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['SEN', '{Time 438.3928}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.50,1.90,1.85}', '{Orientation 0.00,0.03,0.00}'] 
+
+doe SEN shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['SEN', '{Type GPS}', '{Name GPS}', '{Fix 0}', '{Satellites 0}'] 
+
+doe GPS shit
+
+doe SEN shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['MISSTA', '{Time 438.39}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
+
+doe MISSTA shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['STA', '{Type GroundVehicle}', '{Time 438.39}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle True}', '{LightIntensity 0}', '{Battery 1200}', '{View -1}'] 
+
+doe GroundVehicle shit
+
+doe STA shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.44}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.44}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.47}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.47}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.50}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.50}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.53}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+['RES', '{Time 438.53}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.56}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.56}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.59}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.59}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['SEN', '{Time 438.5868}', '{Type Sonar}', '{Name F1 Range 4.5673}', '{Name F2 Range 2.4885}', '{Name F3 Range 1.9144}', '{Name F4 Range 1.6866}', '{Name F5 Range 0.6812}', '{Name F6 Range 0.8239}', '{Name F7 Range 1.1963}', '{Name F8 Range 2.0586}'] 
+
+doe Sonar shit
+
+doe SEN shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['SEN', '{Time 438.39}', '{Type RangeScanner}', '{Name Scanner1}', '{Resolution 0.0174}', '{FOV 3.1415}', '{Range', '2.1951,2.1947,2.1943,2.1966,2.1997,2.2029,2.2078,2.2108,2.2159,2.2204,2.2287,2.2367,2.2455,2.2513,2.2622,2.2698,2.2838,2.2953,2.3087,2.3186,2.3345,2.3485,2.3670,2.3860,2.4008,2.4234,2.4438,2.4648,2.4877,2.5104,2.5368,2.5614,2.5883,2.6178,2.6493,2.6810,1.4126,1.3948,1.3635,1.3324,1.3041,1.2785,1.2527,1.2298,1.2058,1.1842,1.1639,1.1457,1.1265,1.1099,1.0932,1.0769,1.0615,1.0470,1.0341,1.0213,1.0081,0.9959,0.9844,0.9742,0.9642,0.9557,0.9453,0.9365,0.9286,0.9211,0.9129,0.9070,0.8995,0.8942,0.8869,0.8822,0.8768,0.8719,0.8673,0.8632,0.8585,0.8561,0.8429,0.8420,0.9485,1.0534,1.1889,1.3577,1.6692,1.8284,1.8301,1.8300,1.8274,1.8273,1.8256,1.8262,1.8269,1.8316,1.8330,1.8335,1.8380,1.8427,1.8464,1.8497,1.8554,1.8627,1.8688,1.8750,1.8824,1.8917,1.9019,1.9119,1.9208,1.9339,1.9458,1.9576,1.9718,1.9860,2.0011,2.0181,2.0354,2.0528,2.0729,2.0897,2.1102,2.1358,2.1589,2.1834,2.2076,2.2329,2.2614,2.2919,2.3224,2.2206,2.2757,2.3370,2.4048'] 
+
+doe RangeScanner shit
+
+doe SEN shit
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+[',2.4743,2.5290,2.5866,2.5975,2.6277,2.6651,2.6953,2.7326,1.6267,1.6480,1.6841,1.7253,1.7671,1.8149,1.8617,1.9162,1.9701,2.0333,2.0935,2.1646,2.2654,2.3454,2.4010,4.5090,4.6953,4.9228,4.9479,4.7817,4.6316,4.4850,4.3521,4.2188,4.1083,3.9994,4.8075,4.7845,4.7711,4.7566,4.7439,4.7265,4.7143,4.7091,4.7038,4.6927,4.6940,4.6877,4.6860,4.6906}'] 
+
+['SEN', '{Type INS}', '{Name INS}', '{Location 4.50,1.90,1.80}', '{Orientation 0.00,0.00,0.00}'] 
+
+doe INS shit
+
+doe SEN shit
+
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0000,0.0000,0.0000}'] 
+
+doe Odometry shit
+
+doe SEN shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['SEN', '{Type Encoder}', '{Name ECLeft Tick -5}', '{Name ECRight Tick 4}', '{Name ECTilt Tick 0}', '{Name ECPan Tick 0}'] 
+
+doe Encoder shit
+
+doe SEN shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['SEN', '{Time 438.5868}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.50,1.90,1.85}', '{Orientation 6.28,0.01,0.01}'] 
+
+doe SEN shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['SEN', '{Type GPS}', '{Name GPS}', '{Fix 0}', '{Satellites 0}'] 
+
+doe GPS shit
+
+doe SEN shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['MISSTA', '{Time 438.59}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
+
+doe MISSTA shit
+
+['STA', '{Type GroundVehicle}', '{Time 438.59}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle True}', '{LightIntensity 0}', '{Battery 1200}', '{View -1}'] 
+
+doe GroundVehicle shit
+
+doe STA shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.63}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.63}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.66}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.66}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.69}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.69}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.72}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.72}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.75}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.75}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.78}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+['RES', '{Time 438.78}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+['SEN', '{Time 438.7848}', '{Type Sonar}', '{Name F1 Range 4.5824}', '{Name F2 Range 2.3212}', '{Name F3 Range 1.8368}', '{Name F4 Range 1.6689}', '{Name F5 Range 0.7042}', '{Name F6 Range 0.8719}', '{Name F7 Range 2.4827}', '{Name F8 Range 2.0591}'] 
+
+doe Sonar shit
+
+doe SEN shit
+
+['SEN', '{Time 438.59}', '{Type RangeScanner}', '{Name Scanner1}', '{Resolution 0.0174}', '{FOV 3.1415}', '{Range', '2.1904,2.1899,2.1891,2.1911,2.1910,2.1937,2.1965,2.2012,2.2058,2.2085,2.2140,2.2217,2.2248,2.2345,2.2407,2.2493,2.2600,2.2720,2.2806,2.2953,2.3059,2.3199,2.3338,2.3509,2.3676,2.3831,2.4049,2.4216,2.4443,2.4624,2.4893,2.5081,2.5363,2.5630,2.5900,2.6193,2.6489,2.6831,1.4034,1.3830,1.3509,1.3214,1.2954,1.2691,1.2418,1.2189,1.1971,1.1770,1.1557,1.1374,1.1187,1.1006,1.0838,1.0689,1.0542,1.0411,1.0271,1.0139,1.0015,0.9910,0.9793,0.9697,0.9587,0.9498,0.9393,0.9321,0.9240,0.9160,0.9077,0.9016,0.8946,0.8883,0.8822,0.8772,0.8721,0.8670,0.8630,0.8590,0.8543,0.8519,0.8388,0.8422,0.'] 
+
+doe RangeScanner shit
+
+doe SEN shit
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['9513,1.0574,1.1980,1.3738,1.6957,1.8318,1.8286,1.8244,1.8264,1.8246,1.8219,1.8224,1.8264,1.8262,1.8269,1.8297,1.8357,1.8377,1.8414,1.8462,1.8521,1.8604,1.8665,1.8723,1.8802,1.8910,1.9014,1.9089,1.9222,1.9317,1.9449,1.9578,1.9722,1.9861,2.0002,2.0189,2.0347,2.0519,2.0719,2.0898,2.1122,2.1350,2.1578,2.1828,2.2068,2.2348,2.2649,2.2947,2.3247,2.2169,2.2757,2.3373,2.4041,2.4701,2.5294,2.5870,2.5994,2.6304,2.6618,2.6962,2.7326,1.6256,1.6067,1.6669,1.7072,1.7496,1.7970,1.8427,1.8941,1.9527,2.0086,2.0761,2.1420,2.2467,2.3263,2.4109,2.4443,4.7282,4.9582,4.9269,4.7636,4.6058,4.4640,4.3299,4.2086,4.0947,3.9836,4.8042,4.7847,4.7704,4.7552,4.7397,4.7327,4.7206,4.7066,4.7037,4.6984,4.6981,4.6927}'] 
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['SEN', '{Type INS}', '{Name INS}', '{Location 4.50,1.90,1.80}', '{Orientation 0.00,0.00,0.00}'] 
+
+doe INS shit
+
+doe SEN shit
+
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0016,0.0000,0.0346}'] 
+
+doe Odometry shit
+
+doe SEN shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['SEN', '{Type Encoder}', '{Name ECLeft Tick -17}', '{Name ECRight Tick 15}', '{Name ECTilt Tick 0}', '{Name ECPan Tick 0}'] 
+
+doe Encoder shit
+
+doe SEN shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['SEN', '{Time 438.7848}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.50,1.90,1.85}', '{Orientation 0.00,0.01,0.08}'] 
+
+doe SEN shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['SEN', '{Type GPS}', '{Name GPS}', '{Fix 0}', '{Satellites 0}'] 
+
+doe GPS shit
+
+doe SEN shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['MISSTA', '{Time 438.78}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
+
+doe MISSTA shit
+
+['STA', '{Type GroundVehicle}', '{Time 438.78}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle True}', '{LightIntensity 0}', '{Battery 1200}', '{View -1}'] 
+
+doe GroundVehicle shit
+
+doe STA shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.83}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.83}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.86}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.86}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.89}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.89}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.92}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.92}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.95}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+['RES', '{Time 438.95}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.98}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 438.98}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['SEN', '{Time 438.9819}', '{Type Sonar}', '{Name F1 Range 3.9098}', '{Name F2 Range 2.1785}', '{Name F3 Range 1.7643}', '{Name F4 Range 1.6616}', '{Name F5 Range 0.7296}', '{Name F6 Range 0.9503}', '{Name F7 Range 2.3321}', '{Name F8 Range 1.0132}'] 
+
+doe Sonar shit
+
+doe SEN shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['SEN', '{Time 438.78}', '{Type RangeScanner}', '{Name Scanner1}', '{Resolution 0.0174}', '{FOV 3.1415}', '{Range', '1.1336,2.1928,2.1911,2.1866,2.1849,2.1870,2.1853,2.1850,2.1842,2.1884,2.1890,2.1944,2.1948,2.1999,2.2067,2.2120,2.2175,2.2258,2.2348,2.2422,2.2519,2.2609,2.2707,2.2848,2.2951,2.3085,2.3229,2.3384,2.3562,2.3701,2.3884,2.4061,2.4288,2.4501,2.4724,2.4963,2.5221,2.5479,2.5739,2.6013,2.6298,2.6656,1.4074,1.3880,1.3547,1.3263,1.2992,1.2713,1.2465,1.2215,1.2001,1.1778,1.1586,1.1377,1.1196,1.1024,1.0850,1.0701,1.0540,1.0406,1.0260,1.0140,1.0009,0.9896,0.9785,0.9679,0.9586,0.9485,0.9393,0.9300,0.9225,0.9155,0.9066,0.9001,0.8942,0.8870,0.8820,0.8759,0.8710,0.8658,0.8602,0.8565,0.8529,0.8487,0.8364,0.8343,0.8419,0.9796,1.1034,1.2586,1.5448,1.7631,1.8253,1.8241,1.8222,1.8212,1.8211,1.8207,1.8206,1.8232,1.8259,1.8273,1.8282,1.8325,1.8379,1.8423,1.8470,1.8532,1.8614,1.8669,1.8756,1.8840,1.8938,1.9038,1.9123,1.9231,1.9365,1.9493,1.9628,1.9769,1.9916,2.0095,2.0237,2.0413,2.0603,2.0790,2.1030,2.1243,2.1441,2.1684,2.1969,2.2213,2.2503'] 
+
+doe RangeScanner shit
+
+doe SEN shit
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+[',2.2788,2.3092,2.3431,2.2443,2.3046,2.3664,2.4327,2.5282,2.5693,2.5834,2.6111,2.6450,2.6801,2.7136,2.7538,1.6171,1.6121,1.6738,1.7123,1.7590,1.8034,1.8569,1.9108,1.9678,2.0271,2.0954,2.1670,2.2710,2.3552,2.4177,4.6487,4.8744,4.9985,4.8264,4.6741,4.5199,4.3878,4.2591,4.1470,4.0283,3.9304,4.8003,4.7830,4.7533,4.7470,4.7402,4.7304,4.7194}'] 
+
+['SEN', '{Type INS}', '{Name INS}', '{Location 4.50,1.90,1.80}', '{Orientation 0.00,0.00,0.00}'] 
+
+doe INS shit
+
+doe SEN shit
+
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0032,0.0000,0.1185}'] 
+
+doe Odometry shit
+
+doe SEN shit
+
+['SEN', '{Type Encoder}', '{Name ECLeft Tick -28}', '{Name ECRight Tick 26}', '{Name ECTilt Tick 0}', '{Name ECPan Tick 0}'] 
+
+doe Encoder shit
+
+doe SEN shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['SEN', '{Time 438.9819}', '{Type VictSensor}', '{Name VictSensor}', '{Status NoVictims}'] 
+
+doe VictSensor shit
+
+doe SEN shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['SEN', '{Time 438.9819}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.51,1.90,1.85}', '{Orientation 0.00,0.00,0.17}'] 
+
+doe SEN shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['SEN', '{Type GPS}', '{Name GPS}', '{Fix 0}', '{Satellites 0}'] 
+
+doe GPS shit
+
+doe SEN shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['MISSTA', '{Time 438.98}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
+
+doe MISSTA shit
+
+['STA', '{Type GroundVehicle}', '{Time 438.98}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle True}', '{LightIntensity 0}', '{Battery 1200}', '{View -1}'] 
+
+doe GroundVehicle shit
+
+doe STA shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 439.03}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 439.03}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 439.06}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 439.06}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 439.09}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 439.09}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 439.12}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 439.12}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 439.15}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 439.15}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 439.18}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 439.18}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['SEN', '{Time 439.1788}', '{Type Sonar}', '{Name F1 Range 4.4116}', '{Name F2 Range 2.0084}', '{Name F3 Range 1.7069}', '{Name F4 Range 0.9783}', '{Name F5 Range 0.7731}', '{Name F6 Range 1.0715}', '{Name F7 Range 2.2088}', '{Name F8 Range 1.0356}'] 
+
+doe Sonar shit
+
+doe SEN shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['SEN', '{Time 438.98}', '{Type RangeScanner}', '{Name Scanner1}', '{Resolution 0.0174}', '{FOV 3.1415}', '{Range', '1.1562,1.1509,1.1466,1.1440,1.1420,1.1300,1.1465,2.1880,2.1844,2.1805,2.1823,2.1795,2.1822,2.1807,2.1833,2.1838,2.1890,2.1921,2.1948,2.2017,2.2045,2.2124,2.2188,2.2259,2.2333,2.2440,2.2529,2.2636,2.2776,2.2863,2.2986,2.3142,2.3306,2.3441,2.3611,2.3805,2.3965,2.4164,2.4412,2.4598,2.4826,2.5071,2.5331,2.5608,2.5865,2.6167,2.6495,2.6839,1.3938,1.3636,1.3312,1.3038,1.2772,1.2508,1.2265,1.2043,1.1824,1.1608,1.1413,1.1221,1.1056,1.0887,1.0716,1.0568,1.0430,1.0295,1.0155,1.0029,0.9911,0.9801,0.9689,0.9585,0.9500,0.9401,0.9307,0.9238,0.9144,0.9074,0.9004,0.8935,0.8871,0.8812,0.8764,0.8701,0.8660,0.8614,0.8571,0.8522,0.8488,0.8443,0.8333,0.8300,0.9267,1.0369,1.1810,1.4406,1.7144,1.8251,1.8227,1.8197,1.8202,1.8196,1.8176,1.8193,1.8199,1.8216,1.8263,1.8275,1.8319,1.8368,1.8411,1.8454,1.8496,1.8564,1.8652,1.8724,1.8785,1.8901,1.8990,1.9105,1.9196,1.9299,1.9450,1.9582,1.9728,1.9842,2.0008,2.0195,2.0376,2.0531,2.0728,2.0931,2.1153'] 
+
+doe RangeScanner shit
+
+doe SEN shit
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+[',2.1392,2.1614,2.1843,2.2144,2.2407,2.2672,2.3007,2.3300,2.2226,2.2804,2.3416,2.4106,2.4816,2.5446,2.5991,2.6040,2.6359,2.6717,2.7053,2.7408,2.7771,1.6061,1.6598,1.6979,1.7403,1.7876,1.8372,1.8913,1.9443,2.0055,2.0697,2.1397,2.2160,2.3266,2.4150,2.4505,4.8144,5.0046,4.8884,4.7204,4.5773,4.4318,4.3005,4.1831,4.0701,3.9624,4.3819,4.4304}'] 
+
+['SEN', '{Type INS}', '{Name INS}', '{Location 4.50,1.90,1.80}', '{Orientation 0.00,0.00,0.00}'] 
+
+doe INS shit
+
+doe SEN shit
+
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0057,0.0003,0.2122}'] 
+
+doe Odometry shit
+
+doe SEN shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['SEN', '{Type Encoder}', '{Name ECLeft Tick -39}', '{Name ECRight Tick 37}', '{Name ECTilt Tick 0}', '{Name ECPan Tick 0}'] 
+
+doe Encoder shit
+
+doe SEN shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['SEN', '{Time 439.1788}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.51,1.90,1.85}', '{Orientation 0.00,0.00,0.27}'] 
+
+doe SEN shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['SEN', '{Type GPS}', '{Name GPS}', '{Fix 0}', '{Satellites 0}'] 
+
+doe GPS shit
+
+doe SEN shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['MISSTA', '{Time 439.18}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
+
+doe MISSTA shit
+
+['STA', '{Type GroundVehicle}', '{Time 439.18}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle True}', '{LightIntensity 0}', '{Battery 1199}', '{View -1}'] 
+
+doe GroundVehicle shit
+
+doe STA shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 439.22}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 439.22}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 439.26}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 439.26}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+
+doe Camera shit
+
+doe RES shit
+
+[] 
+
+SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+
+Trace {On 1} {Interval 1} {Color Green}
+
+DRIVE {Left 90.0} {Right 90.0}
+
+DRIVE {Left -1.0} {Right 1.0}
+
+DRIVE {Left 1.0} {Right -1.0}
+
+DRIVE {Left 0.0} {Right 0.0}
+
+DRIVE {Light true}
+
+SET {Type SonarSensor} {Name F3} {Opcode RESET} {Params 5}
+
+['RES', '{Time 439.28}', '{Type SonarSensor}', '{Name F3}', '{Status Failed}'] 
+
+doe RES shit
+
+[] 
+
