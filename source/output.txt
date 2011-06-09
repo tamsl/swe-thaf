@@ -1,212 +1,8 @@
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
 ['NFO', '{Gametype BotDeathMatch}', '{Level DM-USAR_yellow_250}', '{TimeLimit 0}'] 
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 940.29}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 940.32}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 940.35}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 940.38}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 940.41}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 940.43}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 940.46}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 940.49}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Time 940.4891}', '{Type Sonar}', '{Name F1 Range 4.5553}', '{Name F2 Range 1.9747}', '{Name F3 Range 1.9544}', '{Name F4 Range 1.6959}', '{Name F5 Range 0.8078}', '{Name F6 Range 0.8158}', '{Name F7 Range 1.1463}', '{Name F8 Range 2.0632}'] 
+['SEN', '{Time 4154.5488}', '{Type Sonar}', '{Name F1 Range 4.5599}', '{Name F2 Range 2.5664}', '{Name F3 Range 1.9594}', '{Name F4 Range 1.6993}', '{Name F5 Range 0.8025}', '{Name F6 Range 0.8100}', '{Name F7 Range 1.1510}', '{Name F8 Range 2.0635}'] 
 
 doe Sonar shit
 
@@ -214,65 +10,23 @@ doe SEN shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Type Encoder}', '{Name ECLeft Tick 0}', '{Name ECRight Tick 0}', '{Name ECTilt Tick 0}', '{Name ECPan Tick 0}'] 
+['SEN', '{Type Encoder}', '{Name ECLeft Tick -1}', '{Name ECRight Tick -1}', '{Name ECTilt Tick 0}', '{Name ECPan Tick 0}'] 
 
 doe Encoder shit
 
 doe SEN shit
 
-['SEN', '{Time 940.4891}', '{Type RFID}', '{Name RFID}', '{ID 1001}', '{ID 1010}'] 
+['SEN', '{Time 4154.5488}', '{Type RFID}', '{Name RFID}', '{ID 1001}', '{ID 1010}'] 
 
 doe SEN shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Time 940.4891}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.50,1.90,1.86}', '{Orientation 0.00,6.28,6.28}'] 
+['SEN', '{Time 4154.5488}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.50,1.90,1.85}', '{Orientation 0.00,0.03,6.28}'] 
 
 doe SEN shit
 
 [] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
 
 ['SEN', '{Type GPS}', '{Name GPS}', '{Fix 0}', '{Satellites 0}'] 
 
@@ -282,25 +36,13 @@ doe SEN shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['MISSTA', '{Time 940.49}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
+['MISSTA', '{Time 4154.55}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
 
 doe MISSTA shit
 
-['STA', '{Type GroundVehicle}', '{Time 940.49}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle True}', '{LightIntensity 0}', '{Battery 1200}', '{View -1}'] 
+[] 
+
+['STA', '{Type GroundVehicle}', '{Time 4154.55}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle False}', '{LightIntensity 0}', '{Battery 1200}', '{View -1}'] 
 
 doe GroundVehicle shit
 
@@ -308,153 +50,7 @@ doe STA shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 940.53}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 940.56}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 940.59}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 940.62}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 940.65}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 940.68}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Time 940.6762}', '{Type Sonar}', '{Name F1 Range 4.5496}', '{Name F2 Range 1.9753}', '{Name F3 Range 1.9566}', '{Name F4 Range 1.6972}', '{Name F5 Range 0.8078}', '{Name F6 Range 0.8078}', '{Name F7 Range 1.1467}', '{Name F8 Range 2.0659}'] 
+['SEN', '{Time 4154.7480}', '{Type Sonar}', '{Name F1 Range 4.5619}', '{Name F2 Range 1.9813}', '{Name F3 Range 1.9510}', '{Name F4 Range 1.6957}', '{Name F5 Range 0.8019}', '{Name F6 Range 0.8045}', '{Name F7 Range 1.1452}', '{Name F8 Range 2.0659}'] 
 
 doe Sonar shit
 
@@ -462,667 +58,13 @@ doe SEN shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Time 940.49}', '{Type RangeScanner}', '{Name Scanner1}', '{Resolution 0.0174}', '{FOV 3.1415}', '{Range', '2.1961,2.1966,2.1971,2.1992,2.1984,2.2005,2.2084,2.2118,2.2171,2.2232,2.2300,2.2339,2.2416,2.2515,2.2612,2.2726,2.2832,2.2965,2.3072,2.3218,2.3365,2.3531,2.3664,2.3841,2.4032,2.4235,2.4424,2.4623,2.4887,2.5117,2.5332,2.5617,2.5916,2.6176,2.6478,2.6830,1.4076,1.3891,1.3564,1.3283,1.2988,1.2718,1.2485,1.2239,1.2003,1.1906,1.1702,1.1516,1.1331,1.1160,1.0974,1.0828,1.0679,1.0542,1.0398,1.0263,1.0137,1.0028,0.9915,0.9810,0.9699,0.9513,0.9421,0.9339,0.9252,0.9173,0.9103,0.9040,0.8958,0.8909,0.8841,0.8792,0.8741,0.8689,0.8647,0.8592,0.8558,0.8526,0.8392,0.8446,0.9520,1.0594,1.1957,1.4324,1.6803,1.8249,1.8288,1.8273,1.8236,1.8246,1.8245,1.8244,1.8265,1.8283,1.8272,1.8328,1.8332,1.8393,1.8428,1.8474,1.8525,1.8581,1.8651,1.8729,1.8827,1.8894,1.8976,1.9095,1.9206,1.9292,1.9432,1.9537,1.9677,1.9831,1.9995,2.0131,2.0318,2.0504,2.0689,2.0882,2.1076,2.1297,2.1531,2.1789,2.2067,2.2330,2.2599,2.2890,2.3205,2.2049,2.2599,2.3204,2.3851'] 
+['SEN', '{Time 4154.55}', '{Type RangeScanner}', '{Name Scanner1}', '{Resolution 0.0174}', '{FOV 3.1415}', '{Range', '2.1957,2.1943,2.1971,2.1982,2.1999,2.2023,2.2078,2.2101,2.2140,2.2204,2.2293,2.2355,2.2424,2.2534,2.2602,2.2696,2.2822,2.2934,2.3081,2.3208,2.3377,2.3495,2.3678,2.3841,2.4020,2.4209,2.4397,2.4653,2.4856,2.5101,2.5343,2.5582,2.5859,2.6187,2.6485,2.6773,1.4208,1.4020,1.3692,1.3406,1.3115,1.2840,1.2588,1.2356,1.2126,1.1900,1.1690,1.1502,1.1308,1.1152,1.0967,1.0814,1.0659,1.0524,1.0387,1.0262,1.0132,1.0009,0.9899,0.9799,0.9688,0.9587,0.9490,0.9415,0.9324,0.9258,0.9172,0.9110,0.9036,0.8970,0.8912,0.8856,0.8808,0.8758,0.8716,0.8679,0.8626,0.8601,0.8462,0.8434,0.9485,1.0536,1.1893,1.3601,1.6693,1.8322,1.8350,1.8359,1.8333,1.8310,1.8320,1.8322,1.8334,1.8345,1.8381,1.8396,1.8428,1.8442,1.8494,1.8567,1.8589,1.8671,1.8728,1.8794,1.8899,1.8952,1.9052,1.9171,1.9279,1.9369,1.9520,1.9630,1.9772,1.9915,2.0055,2.0221,2.0389,2.0588,2.0753,2.0972,2.1168,2.1411,2.1627,2.1854,2.2112,2.2396,2.2688,2.2990,2.3298,2.2381,2.2975,2.3553,2.422'] 
 
 doe RangeScanner shit
 
 doe SEN shit
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-[',2.4563,2.5255,2.5833,2.5896,2.6196,2.6487,2.6857,2.7190,2.7613,1.6016,1.6289,1.6697,1.7118,1.7560,1.8044,1.8529,1.9091,1.9671,2.0272,2.0950,2.1647,2.2742,2.3574,2.4229,4.7177,4.9203,4.9443,4.7821,4.6236,4.4773,4.3503,4.2202,4.1059,3.9982,4.3713,4.3803,4.7715,4.7489,4.7398,4.7296,4.7123,4.7031,4.6993,4.6899,4.6923,4.6959,4.6930,4.6801}'] 
-
-['SEN', '{Type INS}', '{Name INS}', '{Location 4.50,1.90,1.80}', '{Orientation 0.00,0.00,0.00}'] 
-
-doe INS shit
-
-doe SEN shit
-
-['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0000,0.0000,0.0000}'] 
-
-doe Odometry shit
-
-doe SEN shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Type Encoder}', '{Name ECLeft Tick 0}', '{Name ECRight Tick 0}', '{Name ECTilt Tick 0}', '{Name ECPan Tick 0}'] 
-
-doe Encoder shit
-
-doe SEN shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Time 940.6762}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.50,1.90,1.85}', '{Orientation 0.00,0.00,6.28}'] 
-
-doe SEN shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Type GPS}', '{Name GPS}', '{Fix 0}', '{Satellites 0}'] 
-
-doe GPS shit
-
-doe SEN shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['MISSTA', '{Time 940.68}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
-
-doe MISSTA shit
-
-['STA', '{Type GroundVehicle}', '{Time 940.68}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle True}', '{LightIntensity 0}', '{Battery 1200}', '{View -1}'] 
-
-doe GroundVehicle shit
-
-doe STA shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 940.72}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 940.75}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 940.78}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 940.81}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 940.84}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 940.87}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Time 940.8703}', '{Type Sonar}', '{Name F1 Range 4.5544}', '{Name F2 Range 1.9769}', '{Name F3 Range 1.9565}', '{Name F4 Range 1.6989}', '{Name F5 Range 0.8067}', '{Name F6 Range 0.8079}', '{Name F7 Range 1.1475}', '{Name F8 Range 2.0648}'] 
-
-doe Sonar shit
-
-doe SEN shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Time 940.68}', '{Type RangeScanner}', '{Name Scanner1}', '{Resolution 0.0174}', '{FOV 3.1415}', '{Range', '2.1954,2.1946,2.1969,2.1983,2.1977,2.2013,2.2084,2.2120,2.2163,2.2212,2.2293,2.2360,2.2429,2.2524,2.2621,2.2722,2.2825,2.2954,2.3077,2.3208,2.3340,2.3525,2.3699,2.3840,2.4053,2.4211,2.4422,2.4618,2.4874,2.5098,2.5377,2.5603,2.5899,2.6154,2.6480,2.6799,1.4103,1.3902,1.3599,1.3293,1.3015,1.2753,1.2493,1.2268,1.2030,1.1808,1.1624,1.1421,1.1242,1.1058,1.0892,1.0734,1.0593,1.0450,1.0313,1.0182,1.0054,0.9934,0.9821,0.9722,0.9614,0.9519,0.9433,0.9342,0.9266,0.9197,0.9116,0.9040,0.8981,0.8912,0.8848,0.8803,0.8758,0.8694,0.8648,0.8621,0.8575,0.8542,0.8412,0.8451,0.9525,1.0596,1.1944,1.4341,1.6813,1.8269,1.8289,1.8290,1.8276,1.8265,1.8256,1.8271,1.8283,1.8278,1.8318,1.8315,1.8370,1.8402,1.8427,1.8478,1.8558,1.8609,1.8662,1.8757,1.8824,1.8905,1.9008,1.9116,1.9206,1.9319,1.9428,1.9570,1.9707,1.9840,2.0000,2.0173,2.0349,2.0514,2.0693,2.0885,2.1104,2.1338,2.1544,2.1789,2.2057,2.2329,2.2632,2.2896,2.3238,2.2085,2.2679,2.3260,2.3941'] 
-
-doe RangeScanner shit
-
-doe SEN shit
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-[',2.4624,2.5297,2.5833,2.5889,2.6209,2.6549,2.6864,2.7246,2.7619,1.6014,1.6443,1.6845,1.7278,1.7740,1.8212,1.8703,1.9251,1.9845,2.0470,2.1145,2.1867,2.2940,2.3804,2.4433,4.6988,4.9293,4.9438,4.7748,4.6204,4.4782,4.3497,4.2205,4.1027,3.9908,4.8005,4.3863,4.7676,4.7513,4.7352,4.7266,4.7139,4.7052,4.6986,4.6878,4.6908,4.6927,4.6906,4.6818}'] 
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Type INS}', '{Name INS}', '{Location 4.50,1.90,1.80}', '{Orientation 0.00,0.00,0.00}'] 
-
-doe INS shit
-
-doe SEN shit
-
-['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0000,0.0000,0.0000}'] 
-
-doe Odometry shit
-
-doe SEN shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Type Encoder}', '{Name ECLeft Tick 0}', '{Name ECRight Tick 0}', '{Name ECTilt Tick 0}', '{Name ECPan Tick 0}'] 
-
-doe Encoder shit
-
-doe SEN shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Time 940.8703}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.50,1.90,1.85}', '{Orientation 0.00,0.00,6.28}'] 
-
-doe SEN shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Type GPS}', '{Name GPS}', '{Fix 0}', '{Satellites 0}'] 
-
-doe GPS shit
-
-doe SEN shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['MISSTA', '{Time 940.87}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
-
-doe MISSTA shit
-
-['STA', '{Type GroundVehicle}', '{Time 940.87}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle True}', '{LightIntensity 0}', '{Battery 1200}', '{View -1}'] 
-
-doe GroundVehicle shit
-
-doe STA shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 940.92}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 940.95}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 940.98}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.01}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.04}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.06}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.09}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Time 941.0921}', '{Type Sonar}', '{Name F1 Range 4.5541}', '{Name F2 Range 1.9759}', '{Name F3 Range 1.9573}', '{Name F4 Range 1.6981}', '{Name F5 Range 0.8069}', '{Name F6 Range 0.8082}', '{Name F7 Range 1.1473}', '{Name F8 Range 2.0654}'] 
-
-doe Sonar shit
-
-doe SEN shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Time 940.87}', '{Type RangeScanner}', '{Name Scanner1}', '{Resolution 0.0174}', '{FOV 3.1415}', '{Range', '2.1960,2.1965,2.1966,2.1955,2.2015,2.2045,2.2074,2.2094,2.2171,2.2235,2.2276,2.2348,2.2452,2.2535,2.2627,2.2719,2.2823,2.2955,2.3092,2.3225,2.3362,2.3506,2.3659,2.3842,2.4020,2.4205,2.4445,2.4618,2.4847,2.5098,2.5349,2.5601,2.5909,2.6198,2.6490,2.6815,1.4095,1.3923,1.3595,1.3308,1.3023,1.2748,1.2503,1.2268,1.2043,1.1822,1.1616,1.1426,1.1235,1.1066,1.0915,1.0747,1.0595,1.0451,1.0311,1.0193,1.0064,0.9954,0.9841,0.9733,0.9633,0.9540,0.9437,0.9353,0.9277,0.9192,0.9114,0.9055,0.8977,0.8917,0.8870,0.8812,0.8762,0.8702,0.8653,0.8622,0.8583,0.8535,0.8412,0.8429,0.9500,1.0557,1.1907,1.3624,1.6740,1.8246,1.8314,1.8272,1.8286,1.8270,1.8243,1.8277,1.8266,1.8289,1.8290,1.8313,1.8360,1.8380,1.8450,1.8487,1.8528,1.8600,1.8683,1.8732,1.8815,1.8892,1.9019,1.9091,1.9199,1.9317,1.9441,1.9552,1.9688,1.9847,2.0006,2.0167,2.0353,2.0495,2.0719,2.0909,2.1095,2.1335,2.1571,2.1817,2.2064,2.2318,2.2599,2.2887,2.3207,2.2107,2.2658,2.3284,2.3932'] 
-
-doe RangeScanner shit
-
-doe SEN shit
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-[',2.4623,2.5281,2.5848,2.5930,2.6239,2.6527,2.6874,2.7268,2.7643,1.6027,1.6480,1.6886,1.7315,1.7768,1.8232,1.8731,1.9292,1.9862,2.0505,2.1178,2.1905,2.2987,2.3811,2.4427,4.6985,4.9250,4.9441,4.7781,4.6254,4.4837,4.3521,4.2226,4.1027,3.9916,4.8031,4.7892,4.7737,4.7556,4.7351,4.7256,4.7145,4.7082,4.6984,4.6930,4.6951,4.6886,4.6938,4.6810}'] 
+['8,2.4949,2.5361,2.5884,2.6123,2.6429,2.6773,2.7101,1.6491,1.6373,1.6960,1.7379,1.7786,1.8219,1.8691,1.9193,1.9746,2.0314,2.0930,2.1568,2.2583,2.3335,2.4208,2.4629,4.5235,4.7322,4.9405,4.9416,4.7705,4.6249,4.4716,4.3404,4.2177,4.1036,3.9916,4.8049,4.7855,4.7700,4.7534,4.7413,4.7283,4.7172,4.7106,4.6948,4.6891,4.6966,4.6945,4.6877,4.6925}'] 
 
 ['SEN', '{Type INS}', '{Name INS}', '{Location 4.50,1.90,1.80}', '{Orientation 0.00,0.00,0.00}'] 
 
@@ -1144,21 +86,139 @@ doe SEN shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+['SEN', '{Time 4154.7480}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.50,1.90,1.85}', '{Orientation 0.00,0.02,0.00}'] 
 
-Trace {On 1} {Interval 1} {Color Green}
+doe SEN shit
 
-DRIVE {Left 90.0} {Right 90.0}
+[] 
 
-DRIVE {Left -1.0} {Right 1.0}
+['SEN', '{Type GPS}', '{Name GPS}', '{Fix 0}', '{Satellites 0}'] 
 
-DRIVE {Left 1.0} {Right -1.0}
+doe GPS shit
 
-DRIVE {Left 0.0} {Right 0.0}
+doe SEN shit
 
-DRIVE {Light true}
+[] 
 
-['SEN', '{Time 941.0921}', '{Type VictSensor}', '{Name VictSensor}', '{Status NoVictims}'] 
+['MISSTA', '{Time 4154.75}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
+
+doe MISSTA shit
+
+[] 
+
+['STA', '{Type GroundVehicle}', '{Time 4154.75}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle False}', '{LightIntensity 0}', '{Battery 1200}', '{View -1}'] 
+
+doe GroundVehicle shit
+
+doe STA shit
+
+[] 
+
+['SEN', '{Time 4154.9458}', '{Type Sonar}', '{Name F1 Range 4.5557}', '{Name F2 Range 1.9801}', '{Name F3 Range 1.9492}', '{Name F4 Range 1.6932}', '{Name F5 Range 0.8018}', '{Name F6 Range 0.8036}', '{Name F7 Range 1.1432}', '{Name F8 Range 2.0656}'] 
+
+doe Sonar shit
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Time 4154.75}', '{Type RangeScanner}', '{Name Scanner1}', '{Resolution 0.0174}', '{FOV 3.1415}', '{Range', '2.1939,2.1961,2.1949,2.1968,2.1998,2.2046,2.2069,2.2118,2.2143,2.2202,2.2275,2.2334,2.2447,2.2531,2.2634,2.2735,2.2817,2.2949,2.3051,2.3191,2.3344,2.3500,2.3652,2.3845,2.4033,2.4208,2.4408,2.4628,2.4873,2.5079,2.5338,2.5597,2.5867,2.6171,2.6487,2.6769,1.4064,1.3893,1.3577,1.3291,1.3005,1.2733,1.2473,1.2233,1.2008,1.1802,1.1597,1.1403,1.1214,1.1045,1.0890,1.0722,1.0582,1.0440,1.0285,1.0174,1.0045,0.9921,0.9822,0.9708,0.9598,0.9504,0.9420,0.9339,0.9249,0.9176,0.9100,0.9032,0.8955,0.8901,0.8844,0.8785,0.8726,0.8692,0.8639,0.8593,0.8549,0.8517,0.8397,0.8423,0.9475,1.0540,1.1871,1.3586,1.6663,1.8251,1.8270,1.8273,1.8265,1.8249,1.8246,1.8232,1.8265,1.8244,1.8294,1.8298,1.8348,1.8390,1.8422,1.8455,1.8515,1.8587,1.8644,1.8707,1.8793,1.8902,1.8969,1.9092,1.9194,1.9280,1.9409,1.9533,1.9688,1.9834,1.9969,2.0125,2.0312,2.0499,2.0669,2.0867,2.1073,2.1317,2.1536,2.1787,2.2037,2.2296,2.2574,2.2869,2.3182,2.2064,2.2642,2.3275,2.391'] 
+
+doe RangeScanner shit
+
+doe SEN shit
+
+['7,2.4602,2.5225,2.5794,2.5909,2.6199,2.6540,2.6892,2.7228,1.6256,1.6044,1.6589,1.6988,1.7403,1.7857,1.8315,1.8843,1.9371,2.0006,2.0623,2.1312,2.2037,2.3099,2.3965,2.4443,4.6896,4.9149,4.9582,4.7836,4.6318,4.4852,4.3497,4.2299,4.1082,3.9985,4.8062,4.7910,4.7717,4.7544,4.7356,4.7300,4.7168,4.7088,4.7016,4.6883,4.6976,4.6936,4.6910,4.6887}'] 
+
+['SEN', '{Type INS}', '{Name INS}', '{Location 4.50,1.90,1.80}', '{Orientation 0.00,0.00,0.00}'] 
+
+doe INS shit
+
+doe SEN shit
+
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0016,0.0000,0.0000}'] 
+
+doe Odometry shit
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Type Encoder}', '{Name ECLeft Tick 0}', '{Name ECRight Tick 0}', '{Name ECTilt Tick 0}', '{Name ECPan Tick 0}'] 
+
+doe Encoder shit
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Time 4154.9458}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.50,1.90,1.85}', '{Orientation 0.00,0.01,0.00}'] 
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Type GPS}', '{Name GPS}', '{Fix 0}', '{Satellites 0}'] 
+
+doe GPS shit
+
+doe SEN shit
+
+[] 
+
+['MISSTA', '{Time 4154.95}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
+
+doe MISSTA shit
+
+[] 
+
+['STA', '{Type GroundVehicle}', '{Time 4154.95}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle False}', '{LightIntensity 0}', '{Battery 1200}', '{View -1}'] 
+
+doe GroundVehicle shit
+
+doe STA shit
+
+[] 
+
+['SEN', '{Time 4155.1440}', '{Type Sonar}', '{Name F1 Range 4.5605}', '{Name F2 Range 1.9815}', '{Name F3 Range 1.9486}', '{Name F4 Range 1.6912}', '{Name F5 Range 0.8023}', '{Name F6 Range 0.8035}', '{Name F7 Range 1.1425}', '{Name F8 Range 2.0631}'] 
+
+doe Sonar shit
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Time 4154.95}', '{Type RangeScanner}', '{Name Scanner1}', '{Resolution 0.0174}', '{FOV 3.1415}', '{Range', '2.1933,2.1923,2.1935,2.1984,2.1996,2.2034,2.2081,2.2114,2.2135,2.2220,2.2276,2.2350,2.2455,2.2502,2.2600,2.2735,2.2805,2.2946,2.3073,2.3211,2.3338,2.3527,2.3680,2.3823,2.4013,2.4209,2.4416,2.4630,2.4834,2.5084,2.5349,2.5580,2.5891,2.6154,2.6492,2.6772,1.4036,1.3873,1.3540,1.3241,1.2959,1.2710,1.2454,1.2226,1.1986,1.1781,1.1570,1.1374,1.1190,1.1016,1.0859,1.0702,1.0543,1.0401,1.0262,1.0150,1.0016,0.9898,0.9790,0.9681,0.9584,0.9494,0.9391,0.9314,0.9227,0.9159,0.9083,0.9004,0.8947,0.8885,0.8819,0.8761,0.8718,0.8664,0.8619,0.8584,0.8531,0.8496,0.8369,0.8408,0.9484,1.0543,1.1881,1.3574,1.6663,1.8205,1.8275,1.8258,1.8240,1.8217,1.8202,1.8206,1.8226,1.8254,1.8278,1.8290,1.8328,1.8340,1.8395,1.8435,1.8484,1.8572,1.8619,1.8701,1.8787,1.8859,1.8972,1.9050,1.9172,1.9290,1.9408,1.9520,1.9659,1.9792,1.9972,2.0129,2.0266,2.0461,2.0671,2.0850,2.1048,2.1266,2.1505,2.1769,2.2007,2.2287,2.2540,2.2834,2.3179,2.2023,2.2577,2.3197,2.383'] 
+
+doe RangeScanner shit
+
+doe SEN shit
+
+['3,2.4498,2.5218,2.5778,2.5850,2.6173,2.6526,2.6862,2.7215,2.7551,1.6026,1.6453,1.6852,1.7268,1.7685,1.8170,1.8693,1.9249,1.9816,2.0415,2.1106,2.1842,2.2940,2.3744,2.4412,4.6784,4.9124,4.9547,4.7857,4.6399,4.4905,4.3577,4.2304,4.1139,4.0016,4.8074,4.7829,4.7671,4.7512,4.7430,4.7311,4.7185,4.7109,4.7022,4.6951,4.6946,4.6881,4.6853,4.6882}'] 
+
+[] 
+
+['SEN', '{Type INS}', '{Name INS}', '{Location 4.50,1.90,1.80}', '{Orientation 0.00,0.00,0.00}'] 
+
+doe INS shit
+
+doe SEN shit
+
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0024,0.0000,0.0000}'] 
+
+doe Odometry shit
+
+doe SEN shit
+
+['SEN', '{Type Encoder}', '{Name ECLeft Tick 0}', '{Name ECRight Tick 0}', '{Name ECTilt Tick 0}', '{Name ECPan Tick 0}'] 
+
+doe Encoder shit
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Time 4155.1440}', '{Type VictSensor}', '{Name VictSensor}', '{Status NoVictims}'] 
 
 doe VictSensor shit
 
@@ -1166,39 +226,11 @@ doe SEN shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Time 941.0921}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.50,1.90,1.85}', '{Orientation 0.00,0.00,6.28}'] 
+['SEN', '{Time 4155.1440}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.50,1.90,1.85}', '{Orientation 0.00,0.00,0.00}'] 
 
 doe SEN shit
 
 [] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
 
 ['SEN', '{Type GPS}', '{Name GPS}', '{Fix 0}', '{Satellites 0}'] 
 
@@ -1206,27 +238,15 @@ doe GPS shit
 
 doe SEN shit
 
-['MISSTA', '{Time 941.09}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
+[] 
+
+['MISSTA', '{Time 4155.14}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
 
 doe MISSTA shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['STA', '{Type GroundVehicle}', '{Time 941.09}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle True}', '{LightIntensity 0}', '{Battery 1199}', '{View -1}'] 
+['STA', '{Type GroundVehicle}', '{Time 4155.14}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle False}', '{LightIntensity 0}', '{Battery 1199}', '{View -1}'] 
 
 doe GroundVehicle shit
 
@@ -1234,153 +254,7 @@ doe STA shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.14}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.17}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.20}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.23}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.26}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.28}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Time 941.2831}', '{Type Sonar}', '{Name F1 Range 4.5539}', '{Name F2 Range 1.9745}', '{Name F3 Range 1.9583}', '{Name F4 Range 1.6965}', '{Name F5 Range 0.8062}', '{Name F6 Range 0.8083}', '{Name F7 Range 1.1477}', '{Name F8 Range 2.0659}'] 
+['SEN', '{Time 4155.3408}', '{Type Sonar}', '{Name F1 Range 4.5573}', '{Name F2 Range 1.9823}', '{Name F3 Range 1.9485}', '{Name F4 Range 1.6932}', '{Name F5 Range 0.8019}', '{Name F6 Range 0.8022}', '{Name F7 Range 1.1420}', '{Name F8 Range 2.0661}'] 
 
 doe Sonar shit
 
@@ -1388,41 +262,13 @@ doe SEN shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Time 941.09}', '{Type RangeScanner}', '{Name Scanner1}', '{Resolution 0.0174}', '{FOV 3.1415}', '{Range', '2.1937,2.1941,2.1940,2.1993,2.2006,2.2033,2.2063,2.2094,2.2162,2.2202,2.2263,2.2375,2.2454,2.2526,2.2597,2.2713,2.2825,2.2930,2.3069,2.3225,2.3371,2.3493,2.3674,2.3860,2.4006,2.4208,2.4444,2.4640,2.4882,2.5090,2.5356,2.5614,2.5891,2.6150,2.6465,2.6811,1.4114,1.3911,1.3597,1.3308,1.3029,1.2755,1.2512,1.2271,1.2038,1.1822,1.1628,1.1431,1.1236,1.1084,1.0908,1.0741,1.0607,1.0458,1.0325,1.0195,1.0073,0.9944,0.9841,0.9731,0.9621,0.9540,0.9444,0.9366,0.9266,0.9195,0.9113,0.9047,0.8986,0.8916,0.8856,0.8811,0.8752,0.8711,0.8657,0.8615,0.8582,0.8538,0.8419,0.8437,0.9496,1.0565,1.1912,1.3627,1.6741,1.8271,1.8322,1.8292,1.8273,1.8274,1.8254,1.8244,1.8266,1.8300,1.8311,1.8327,1.8356,1.8393,1.8434,1.8498,1.8537,1.8617,1.8669,1.8756,1.8831,1.8897,1.8991,1.9120,1.9212,1.9312,1.9452,1.9578,1.9689,1.9866,1.9991,2.0175,2.0317,2.0522,2.0709,2.0900,2.1122,2.1308,2.1576,2.1822,2.2054,2.2308,2.2610,2.2912,2.3214,2.2085,2.2670,2.3255,2.3926'] 
+['SEN', '{Time 4155.14}', '{Type RangeScanner}', '{Name Scanner1}', '{Resolution 0.0174}', '{FOV 3.1415}', '{Range', '2.1930,2.1930,2.1955,2.1954,2.1976,2.2034,2.2055,2.2108,2.2158,2.2219,2.2275,2.2354,2.2436,2.2540,2.2606,2.2715,2.2830,2.2948,2.3065,2.3190,2.3360,2.3493,2.3658,2.3819,2.4000,2.4219,2.4416,2.4646,2.4865,2.5107,2.5356,2.5599,2.5867,2.6190,2.6452,2.6815,1.4030,1.3863,1.3540,1.3233,1.2965,1.2700,1.2442,1.2213,1.1969,1.1771,1.1573,1.1378,1.1187,1.1011,1.0840,1.0688,1.0541,1.0401,1.0266,1.0127,1.0014,0.9894,0.9785,0.9678,0.9577,0.9493,0.9389,0.9310,0.9230,0.9154,0.9073,0.9012,0.8938,0.8882,0.8820,0.8767,0.8715,0.8661,0.8622,0.8577,0.8529,0.8488,0.8371,0.8423,0.9483,1.0525,1.1884,1.3571,1.6691,1.8233,1.8252,1.8230,1.8240,1.8232,1.8197,1.8205,1.8217,1.8245,1.8274,1.8286,1.8299,1.8364,1.8394,1.8441,1.8514,1.8549,1.8609,1.8707,1.8786,1.8867,1.8953,1.9064,1.9146,1.9276,1.9394,1.9514,1.9641,1.9794,1.9965,2.0127,2.0271,2.0473,2.0654,2.0856,2.1052,2.1291,2.1520,2.1743,2.2016,2.2276,2.2545,2.2860,2.3168,2.2020,2.2577,2.3163,2.383'] 
 
 doe RangeScanner shit
 
 doe SEN shit
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-[',2.4584,2.5297,2.5810,2.5921,2.6227,2.6568,2.6873,2.7231,2.7613,1.6015,1.6499,1.6902,1.7313,1.7766,1.8264,1.8783,1.9297,1.9906,2.0521,2.1191,2.1939,2.3015,2.3868,2.4433,4.6961,4.9261,4.9509,4.7821,4.6267,4.4822,4.3444,4.2249,4.1071,3.9968,4.8071,4.7834,4.7673,4.7487,4.7435,4.7312,4.7172,4.7041,4.7007,4.6916,4.6987,4.6881,4.6863,4.6831}'] 
+['1,2.4515,2.5197,2.5775,2.5831,2.6170,2.6499,2.6813,2.7204,2.7571,1.6022,1.6394,1.6795,1.7220,1.7680,1.8141,1.8645,1.9188,1.9750,2.0388,2.1092,2.1748,2.2847,2.3715,2.4344,4.6819,4.9113,4.9586,4.7899,4.6377,4.4940,4.3556,4.2341,4.1161,4.0073,4.8069,4.7905,4.7659,4.7500,4.7423,4.7252,4.7185,4.7094,4.6950,4.6962,4.6936,4.6919,4.6923,4.6876}'] 
 
 ['SEN', '{Type INS}', '{Name INS}', '{Location 4.50,1.90,1.80}', '{Orientation 0.00,0.00,0.00}'] 
 
@@ -1430,43 +276,13 @@ doe INS shit
 
 doe SEN shit
 
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0000,0.0000,0.0000}'] 
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0024,0.0000,0.0000}'] 
 
 doe Odometry shit
 
 doe SEN shit
 
 [] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
 
 ['SEN', '{Type Encoder}', '{Name ECLeft Tick 0}', '{Name ECRight Tick 0}', '{Name ECTilt Tick 0}', '{Name ECPan Tick 0}'] 
 
@@ -1476,39 +292,11 @@ doe SEN shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Time 941.2831}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.50,1.90,1.85}', '{Orientation 0.00,0.00,6.28}'] 
+['SEN', '{Time 4155.3408}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.50,1.90,1.85}', '{Orientation 0.00,0.00,0.00}'] 
 
 doe SEN shit
 
 [] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
 
 ['SEN', '{Type GPS}', '{Name GPS}', '{Fix 0}', '{Satellites 0}'] 
 
@@ -1518,25 +306,13 @@ doe SEN shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['MISSTA', '{Time 941.28}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
+['MISSTA', '{Time 4155.34}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
 
 doe MISSTA shit
 
-['STA', '{Type GroundVehicle}', '{Time 941.28}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle True}', '{LightIntensity 0}', '{Battery 1199}', '{View -1}'] 
+[] 
+
+['STA', '{Type GroundVehicle}', '{Time 4155.34}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle False}', '{LightIntensity 0}', '{Battery 1199}', '{View -1}'] 
 
 doe GroundVehicle shit
 
@@ -1544,153 +320,7 @@ doe STA shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.33}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.36}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.39}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.42}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.45}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.47}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Time 941.4742}', '{Type Sonar}', '{Name F1 Range 4.5515}', '{Name F2 Range 1.9744}', '{Name F3 Range 1.9562}', '{Name F4 Range 1.6974}', '{Name F5 Range 0.8067}', '{Name F6 Range 0.8085}', '{Name F7 Range 1.1475}', '{Name F8 Range 2.0657}'] 
+['SEN', '{Time 4155.5380}', '{Type Sonar}', '{Name F1 Range 4.5565}', '{Name F2 Range 1.9805}', '{Name F3 Range 1.9511}', '{Name F4 Range 1.6925}', '{Name F5 Range 0.8014}', '{Name F6 Range 0.8035}', '{Name F7 Range 1.1418}', '{Name F8 Range 2.0626}'] 
 
 doe Sonar shit
 
@@ -1698,41 +328,13 @@ doe SEN shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Time 941.28}', '{Type RangeScanner}', '{Name Scanner1}', '{Resolution 0.0174}', '{FOV 3.1415}', '{Range', '2.1956,2.1938,2.1956,2.1961,2.2007,2.2048,2.2046,2.2127,2.2169,2.2228,2.2262,2.2366,2.2421,2.2533,2.2638,2.2717,2.2849,2.2950,2.3085,2.3224,2.3346,2.3498,2.3672,2.3849,2.4013,2.4210,2.4400,2.4640,2.4849,2.5076,2.5358,2.5587,2.5911,2.6172,2.6494,2.6803,1.4109,1.3935,1.3605,1.3314,1.3029,1.2772,1.2509,1.2269,1.2039,1.1820,1.1617,1.1431,1.1246,1.1070,1.0897,1.0743,1.0592,1.0452,1.0324,1.0189,1.0064,0.9953,0.9842,0.9737,0.9639,0.9538,0.9440,0.9349,0.9281,0.9205,0.9127,0.9060,0.8976,0.8926,0.8858,0.8802,0.8752,0.8709,0.8653,0.8619,0.8573,0.8536,0.8411,0.8430,0.9502,1.0554,1.1912,1.3618,1.6724,1.8269,1.8312,1.8268,1.8288,1.8274,1.8246,1.8250,1.8268,1.8288,1.8298,1.8328,1.8370,1.8407,1.8426,1.8484,1.8527,1.8588,1.8655,1.8746,1.8808,1.8907,1.9008,1.9117,1.9212,1.9309,1.9435,1.9557,1.9695,1.9854,1.9989,2.0145,2.0325,2.0498,2.0723,2.0889,2.1097,2.1336,2.1559,2.1807,2.2077,2.2341,2.2601,2.2902,2.3235,2.2117,2.2676,2.3259,2.3931'] 
+['SEN', '{Time 4155.34}', '{Type RangeScanner}', '{Name Scanner1}', '{Resolution 0.0174}', '{FOV 3.1415}', '{Range', '2.1931,2.1948,2.1937,2.1960,2.1975,2.2038,2.2045,2.2126,2.2151,2.2227,2.2282,2.2345,2.2411,2.2511,2.2630,2.2698,2.2850,2.2948,2.3053,2.3202,2.3358,2.3499,2.3653,2.3852,2.4023,2.4234,2.4410,2.4626,2.4838,2.5066,2.5338,2.5591,2.5885,2.6178,2.6451,2.6764,1.4041,1.3858,1.3533,1.3247,1.2955,1.2698,1.2444,1.2214,1.1973,1.1776,1.1558,1.1372,1.1187,1.1010,1.0850,1.0681,1.0545,1.0405,1.0259,1.0143,1.0002,0.9895,0.9788,0.9687,0.9577,0.9487,0.9395,0.9302,0.9216,0.9140,0.9066,0.9003,0.8939,0.8875,0.8814,0.8764,0.8705,0.8659,0.8612,0.8575,0.8524,0.8488,0.8376,0.8409,0.9475,1.0535,1.1879,1.3585,1.6665,1.8214,1.8253,1.8229,1.8234,1.8231,1.8204,1.8210,1.8209,1.8242,1.8241,1.8288,1.8321,1.8356,1.8402,1.8447,1.8482,1.8542,1.8610,1.8679,1.8758,1.8872,1.8949,1.9060,1.9149,1.9254,1.9409,1.9510,1.9644,1.9782,1.9945,2.0098,2.0278,2.0464,2.0657,2.0841,2.1052,2.1270,2.1523,2.1728,2.1983,2.2273,2.2553,2.2856,2.3168,2.2021,2.2580,2.3168,2.383'] 
 
 doe RangeScanner shit
 
 doe SEN shit
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-[',2.4603,2.5259,2.5810,2.5938,2.6207,2.6550,2.6868,2.7275,2.7636,1.6023,1.6504,1.6894,1.7307,1.7774,1.8242,1.8756,1.9322,1.9926,2.0513,2.1194,2.1943,2.2998,2.3851,2.4427,4.7006,4.9275,4.9471,4.7833,4.6281,4.4819,4.3471,4.2230,4.1019,3.9967,4.8067,4.7897,4.7711,4.7568,4.7429,4.7291,4.7138,4.7031,4.6976,4.6965,4.7002,4.6916,4.6864,4.6765}'] 
+['5,2.4507,2.5175,2.5766,2.5826,2.6148,2.6459,2.6849,2.7167,2.7576,1.6036,1.6404,1.6782,1.7207,1.7657,1.8107,1.8626,1.9191,1.9749,2.0381,2.1048,2.1758,2.2854,2.3675,2.4348,4.6812,4.9023,4.9586,4.7924,4.6385,4.4944,4.3560,4.2270,4.1112,4.0066,4.8024,4.7861,4.7708,4.7538,4.7420,4.7318,4.7162,4.7031,4.7012,4.6913,4.6922,4.6883,4.6903,4.6929}'] 
 
 ['SEN', '{Type INS}', '{Name INS}', '{Location 4.50,1.90,1.80}', '{Orientation 0.00,0.00,0.00}'] 
 
@@ -1740,7 +342,7 @@ doe INS shit
 
 doe SEN shit
 
-['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0000,0.0000,0.0000}'] 
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0024,0.0000,0.0000}'] 
 
 doe Odometry shit
 
@@ -1754,39 +356,11 @@ doe SEN shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Time 941.4742}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.50,1.90,1.85}', '{Orientation 0.00,0.00,6.28}'] 
+['SEN', '{Time 4155.5380}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.50,1.90,1.85}', '{Orientation 0.00,0.00,0.00}'] 
 
 doe SEN shit
 
 [] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
 
 ['SEN', '{Type GPS}', '{Name GPS}', '{Fix 0}', '{Satellites 0}'] 
 
@@ -1796,25 +370,13 @@ doe SEN shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['MISSTA', '{Time 941.47}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
+['MISSTA', '{Time 4155.54}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
 
 doe MISSTA shit
 
-['STA', '{Type GroundVehicle}', '{Time 941.47}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle True}', '{LightIntensity 0}', '{Battery 1199}', '{View -1}'] 
+[] 
+
+['STA', '{Type GroundVehicle}', '{Time 4155.54}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle False}', '{LightIntensity 0}', '{Battery 1199}', '{View -1}'] 
 
 doe GroundVehicle shit
 
@@ -1822,175 +384,7 @@ doe STA shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.52}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.55}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.58}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.61}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.63}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.66}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.69}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Time 941.6880}', '{Type Sonar}', '{Name F1 Range 4.5507}', '{Name F2 Range 1.9753}', '{Name F3 Range 1.9577}', '{Name F4 Range 1.6963}', '{Name F5 Range 0.8065}', '{Name F6 Range 0.8072}', '{Name F7 Range 1.1474}', '{Name F8 Range 2.0628}'] 
+['SEN', '{Time 4155.7309}', '{Type Sonar}', '{Name F1 Range 4.5563}', '{Name F2 Range 1.9812}', '{Name F3 Range 1.9519}', '{Name F4 Range 1.6919}', '{Name F5 Range 0.8019}', '{Name F6 Range 0.8032}', '{Name F7 Range 1.1424}', '{Name F8 Range 2.0631}'] 
 
 doe Sonar shit
 
@@ -1998,41 +392,13 @@ doe SEN shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Time 941.47}', '{Type RangeScanner}', '{Name Scanner1}', '{Resolution 0.0174}', '{FOV 3.1415}', '{Range', '2.1925,2.1945,2.1948,2.1976,2.1993,2.2023,2.2050,2.2128,2.2155,2.2226,2.2284,2.2341,2.2449,2.2539,2.2632,2.2700,2.2850,2.2954,2.3099,2.3223,2.3352,2.3500,2.3656,2.3833,2.4010,2.4225,2.4431,2.4656,2.4883,2.5113,2.5327,2.5597,2.5866,2.6174,2.6500,2.6774,1.4096,1.3916,1.3614,1.3304,1.3023,1.2756,1.2511,1.2269,1.2050,1.1825,1.1633,1.1426,1.1247,1.1079,1.0902,1.0757,1.0603,1.0454,1.0320,1.0192,1.0074,0.9955,0.9843,0.9741,0.9632,0.9535,0.9452,0.9356,0.9271,0.9201,0.9124,0.9048,0.8986,0.8916,0.8873,0.8815,0.8764,0.8708,0.8661,0.8621,0.8576,0.8550,0.8417,0.8430,0.9497,1.0565,1.1912,1.3617,1.6743,1.8248,1.8298,1.8286,1.8260,1.8245,1.8255,1.8268,1.8289,1.8288,1.8290,1.8327,1.8355,1.8381,1.8432,1.8485,1.8540,1.8602,1.8663,1.8737,1.8819,1.8903,1.9002,1.9102,1.9227,1.9318,1.9428,1.9587,1.9713,1.9867,2.0009,2.0166,2.0323,2.0516,2.0691,2.0908,2.1105,2.1328,2.1550,2.1822,2.2075,2.2310,2.2612,2.2898,2.3237,2.2079,2.2657,2.3279,2.3905'] 
+['SEN', '{Time 4155.54}', '{Type RangeScanner}', '{Name Scanner1}', '{Resolution 0.0174}', '{FOV 3.1415}', '{Range', '2.1923,2.1948,2.1976,2.1954,2.1985,2.2020,2.2045,2.2106,2.2143,2.2232,2.2264,2.2336,2.2413,2.2502,2.2618,2.2718,2.2836,2.2954,2.3088,2.3223,2.3335,2.3489,2.3651,2.3818,2.4040,2.4195,2.4400,2.4621,2.4857,2.5071,2.5317,2.5578,2.5871,2.6143,2.6449,2.6797,1.4049,1.3847,1.3546,1.3233,1.2954,1.2692,1.2449,1.2214,1.1974,1.1767,1.1567,1.1361,1.1185,1.1007,1.0852,1.0682,1.0547,1.0403,1.0254,1.0143,1.0010,0.9899,0.9774,0.9679,0.9568,0.9480,0.9385,0.9296,0.9221,0.9152,0.9062,0.9007,0.8936,0.8867,0.8806,0.8752,0.8707,0.8651,0.8619,0.8571,0.8536,0.8492,0.8366,0.8418,0.9481,1.0524,1.1875,1.3577,1.6688,1.8204,1.8258,1.8230,1.8212,1.8212,1.8207,1.8203,1.8224,1.8238,1.8263,1.8275,1.8301,1.8331,1.8395,1.8439,1.8481,1.8561,1.8619,1.8693,1.8768,1.8845,1.8939,1.9048,1.9152,1.9261,1.9400,1.9519,1.9639,1.9795,1.9966,2.0126,2.0296,2.0440,2.0663,2.0835,2.1036,2.1272,2.1516,2.1747,2.1993,2.2264,2.2565,2.2848,2.3151,2.2016,2.2568,2.3149,2.378'] 
 
 doe RangeScanner shit
 
 doe SEN shit
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-[',2.4611,2.5264,2.5847,2.5920,2.6222,2.6565,2.6866,2.7256,2.7614,1.6021,1.6512,1.6922,1.7308,1.7765,1.8256,1.8767,1.9321,1.9921,2.0527,2.1213,2.1928,2.3020,2.3873,2.4454,4.6971,4.9230,4.9530,4.7783,4.6231,4.4784,4.3462,4.2205,4.1065,3.9915,4.8088,4.7881,4.7677,4.7581,4.7352,4.7273,4.7186,4.7110,4.6992,4.6917,4.6969,4.6890,4.6884,4.6802}'] 
+['9,2.4501,2.5215,2.5737,2.5827,2.6167,2.6459,2.6840,2.7207,2.7554,1.6035,1.6367,1.6794,1.7189,1.7634,1.8119,1.8616,1.9166,1.9749,2.0362,2.1043,2.1780,2.2818,2.3687,2.4313,4.6787,4.9047,4.9578,4.7901,4.6366,4.4862,4.3557,4.2292,4.1107,4.0000,4.8013,4.7901,4.7666,4.7514,4.7416,4.7312,4.7190,4.7034,4.6963,4.6913,4.6959,4.6959,4.6917,4.6845}'] 
 
 ['SEN', '{Type INS}', '{Name INS}', '{Location 4.50,1.90,1.80}', '{Orientation 0.00,0.00,0.00}'] 
 
@@ -2040,27 +406,11 @@ doe INS shit
 
 doe SEN shit
 
-['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0000,0.0000,0.0000}'] 
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0024,0.0000,0.0000}'] 
 
 doe Odometry shit
 
 doe SEN shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
 
 ['SEN', '{Type Encoder}', '{Name ECLeft Tick 0}', '{Name ECRight Tick 0}', '{Name ECTilt Tick 0}', '{Name ECPan Tick 0}'] 
 
@@ -2070,39 +420,11 @@ doe SEN shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['SEN', '{Time 941.6880}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.50,1.90,1.85}', '{Orientation 0.00,0.01,6.28}'] 
+['SEN', '{Time 4155.7309}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.50,1.90,1.85}', '{Orientation 0.00,0.00,0.00}'] 
 
 doe SEN shit
 
 [] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
 
 ['SEN', '{Type GPS}', '{Name GPS}', '{Fix 0}', '{Satellites 0}'] 
 
@@ -2112,25 +434,13 @@ doe SEN shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['MISSTA', '{Time 941.69}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
+['MISSTA', '{Time 4155.73}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
 
 doe MISSTA shit
 
-['STA', '{Type GroundVehicle}', '{Time 941.69}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle True}', '{LightIntensity 0}', '{Battery 1199}', '{View -1}'] 
+[] 
+
+['STA', '{Type GroundVehicle}', '{Time 4155.73}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle False}', '{LightIntensity 0}', '{Battery 1199}', '{View -1}'] 
 
 doe GroundVehicle shit
 
@@ -2138,113 +448,403 @@ doe STA shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+['SEN', '{Time 4155.9243}', '{Type Sonar}', '{Name F1 Range 4.5618}', '{Name F2 Range 1.9796}', '{Name F3 Range 1.9496}', '{Name F4 Range 1.6919}', '{Name F5 Range 0.8021}', '{Name F6 Range 0.8031}', '{Name F7 Range 1.1406}', '{Name F8 Range 2.0647}'] 
 
-Trace {On 1} {Interval 1} {Color Green}
+doe Sonar shit
 
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.73}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
+doe SEN shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+['SEN', '{Time 4155.73}', '{Type RangeScanner}', '{Name Scanner1}', '{Resolution 0.0174}', '{FOV 3.1415}', '{Range', '2.1920,2.1964,2.1956,2.1982,2.1999,2.2013,2.2069,2.2084,2.2160,2.2208,2.2265,2.2356,2.2430,2.2515,2.2599,2.2719,2.2812,2.2950,2.3055,2.3228,2.3336,2.3499,2.3660,2.3842,2.3999,2.4210,2.4394,2.4642,2.4851,2.5092,2.5344,2.5593,2.5867,2.6155,2.6454,2.6788,1.4028,1.3856,1.3536,1.3250,1.2945,1.2706,1.2445,1.2197,1.1979,1.1755,1.1559,1.1365,1.1186,1.1011,1.0853,1.0701,1.0531,1.0395,1.0265,1.0129,1.0018,0.9892,0.9775,0.9671,0.9577,0.9484,0.9391,0.9309,0.9225,0.9144,0.9075,0.9004,0.8938,0.8880,0.8808,0.8766,0.8706,0.8654,0.8612,0.8579,0.8533,0.8493,0.8364,0.8420,0.9487,1.0529,1.1887,1.3578,1.6666,1.8223,1.8249,1.8231,1.8224,1.8221,1.8193,1.8207,1.8233,1.8226,1.8259,1.8298,1.8325,1.8338,1.8384,1.8449,1.8488,1.8566,1.8639,1.8688,1.8787,1.8846,1.8952,1.9066,1.9173,1.9276,1.9402,1.9499,1.9637,1.9813,1.9943,2.0093,2.0271,2.0468,2.0653,2.0824,2.1032,2.1283,2.1520,2.1729,2.2007,2.2253,2.2534,2.2836,2.3128,2.2019,2.2583,2.3141,2.380'] 
 
-Trace {On 1} {Interval 1} {Color Green}
+doe RangeScanner shit
 
-DRIVE {Left 90.0} {Right 90.0}
+doe SEN shit
 
-DRIVE {Left -1.0} {Right 1.0}
+['9,2.4489,2.5179,2.5737,2.5827,2.6155,2.6458,2.6845,2.7161,2.7554,1.6023,1.6392,1.6795,1.7200,1.7641,1.8122,1.8622,1.9162,1.9759,2.0386,2.1029,2.1780,2.2841,2.3680,2.4280,4.6838,4.9081,4.9641,4.7877,4.6395,4.4885,4.3581,4.2320,4.1105,4.0024,4.8049,4.7881,4.7699,4.7498,4.7433,4.7320,4.7145,4.7102,4.7031,4.6942,4.6913,4.6947,4.6878,4.6846}'] 
 
-DRIVE {Left 1.0} {Right -1.0}
+['SEN', '{Type INS}', '{Name INS}', '{Location 4.50,1.90,1.80}', '{Orientation 0.00,0.00,0.00}'] 
 
-DRIVE {Left 0.0} {Right 0.0}
+doe INS shit
 
-DRIVE {Light true}
+doe SEN shit
 
-['RES', '{Time 941.76}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0024,0.0000,0.0000}'] 
 
-doe Camera shit
+doe Odometry shit
 
-doe RES shit
-
-[] 
-
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
-
-Trace {On 1} {Interval 1} {Color Green}
-
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.79}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
+doe SEN shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+['SEN', '{Type Encoder}', '{Name ECLeft Tick 0}', '{Name ECRight Tick 0}', '{Name ECTilt Tick 0}', '{Name ECPan Tick 0}'] 
 
-Trace {On 1} {Interval 1} {Color Green}
+doe Encoder shit
 
-DRIVE {Left 90.0} {Right 90.0}
-
-DRIVE {Left -1.0} {Right 1.0}
-
-DRIVE {Left 1.0} {Right -1.0}
-
-DRIVE {Left 0.0} {Right 0.0}
-
-DRIVE {Light true}
-
-['RES', '{Time 941.82}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
-
-doe Camera shit
-
-doe RES shit
+doe SEN shit
 
 [] 
 
-SET {Type Camera} {Name OmniCamPillar_Link4} {FOV 1}
+['SEN', '{Time 4155.9243}', '{Type VictSensor}', '{Name VictSensor}', '{Status NoVictims}'] 
 
-Trace {On 1} {Interval 1} {Color Green}
+doe VictSensor shit
 
-DRIVE {Left 90.0} {Right 90.0}
+doe SEN shit
 
-DRIVE {Left -1.0} {Right 1.0}
+[] 
 
-DRIVE {Left 1.0} {Right -1.0}
+['SEN', '{Time 4155.9243}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.50,1.90,1.85}', '{Orientation 0.00,0.00,0.00}'] 
 
-DRIVE {Left 0.0} {Right 0.0}
+doe SEN shit
 
-DRIVE {Light true}
+[] 
 
-['RES', '{Time 941.85}', '{Type Camera}', '{Name Camera}', '{FOV 0.7853}', '{Status OK}'] 
+['SEN', '{Type GPS}', '{Name GPS}', '{Fix 0}', '{Satellites 0}'] 
 
-doe Camera shit
+doe GPS shit
 
-doe RES shit
+doe SEN shit
+
+[] 
+
+['MISSTA', '{Time 4155.92}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
+
+doe MISSTA shit
+
+[] 
+
+['STA', '{Type GroundVehicle}', '{Time 4155.92}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle False}', '{LightIntensity 0}', '{Battery 1199}', '{View -1}'] 
+
+doe GroundVehicle shit
+
+doe STA shit
+
+[] 
+
+['SEN', '{Time 4156.1181}', '{Type Sonar}', '{Name F1 Range 4.5561}', '{Name F2 Range 1.9816}', '{Name F3 Range 1.9494}', '{Name F4 Range 1.6922}', '{Name F5 Range 0.8026}', '{Name F6 Range 0.8035}', '{Name F7 Range 1.1408}', '{Name F8 Range 2.0650}'] 
+
+doe Sonar shit
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Time 4155.92}', '{Type RangeScanner}', '{Name Scanner1}', '{Resolution 0.0174}', '{FOV 3.1415}', '{Range', '2.1954,2.1959,2.1973,2.1957,2.1989,2.2043,2.2052,2.2117,2.2174,2.2221,2.2290,2.2360,2.2453,2.2528,2.2632,2.2717,2.2814,2.2925,2.3050,2.3206,2.3368,2.3486,2.3663,2.3819,2.4008,2.4205,2.4422,2.4651,2.4851,2.5087,2.5320,2.5619,2.5872,2.6157,2.6474,2.6800,1.4041,1.3858,1.3542,1.3249,1.2948,1.2684,1.2450,1.2216,1.1977,1.1766,1.1552,1.1380,1.1178,1.1022,1.0841,1.0687,1.0533,1.0403,1.0267,1.0140,1.0018,0.9896,0.9780,0.9678,0.9578,0.9478,0.9397,0.9306,0.9219,0.9138,0.9073,0.8996,0.8938,0.8878,0.8805,0.8750,0.8703,0.8655,0.8616,0.8566,0.8533,0.8501,0.8367,0.8413,0.9485,1.0528,1.1886,1.3579,1.6662,1.8202,1.8241,1.8241,1.8229,1.8217,1.8195,1.8200,1.8228,1.8237,1.8269,1.8298,1.8313,1.8366,1.8381,1.8441,1.8493,1.8547,1.8613,1.8684,1.8771,1.8869,1.8958,1.9035,1.9166,1.9265,1.9405,1.9504,1.9671,1.9810,1.9964,2.0107,2.0295,2.0436,2.0657,2.0851,2.1048,2.1257,2.1499,2.1755,2.1979,2.2252,2.2554,2.2824,2.3170,2.1987,2.2565,2.3147,2.382'] 
+
+doe RangeScanner shit
+
+doe SEN shit
+
+['2,2.4499,2.5219,2.5771,2.5874,2.6164,2.6497,2.6793,2.7163,2.7577,1.6045,1.6376,1.6791,1.7207,1.7659,1.8122,1.8624,1.9158,1.9735,2.0373,2.1030,2.1782,2.2829,2.3660,2.4320,4.6836,4.9015,4.9615,4.7916,4.6397,4.4940,4.3560,4.2316,4.1118,4.0011,4.8036,4.7858,4.7695,4.7518,4.7445,4.7286,4.7212,4.7063,4.7009,4.6918,4.6964,4.6925,4.6934,4.6909}'] 
+
+['SEN', '{Type INS}', '{Name INS}', '{Location 4.50,1.90,1.80}', '{Orientation 0.00,0.00,0.00}'] 
+
+doe INS shit
+
+doe SEN shit
+
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0024,0.0000,0.0000}'] 
+
+doe Odometry shit
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Type Encoder}', '{Name ECLeft Tick 0}', '{Name ECRight Tick 0}', '{Name ECTilt Tick 0}', '{Name ECPan Tick 0}'] 
+
+doe Encoder shit
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Time 4156.1181}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.50,1.90,1.85}', '{Orientation 0.00,0.00,0.00}'] 
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Type GPS}', '{Name GPS}', '{Fix 0}', '{Satellites 0}'] 
+
+doe GPS shit
+
+doe SEN shit
+
+[] 
+
+['MISSTA', '{Time 4156.12}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
+
+doe MISSTA shit
+
+[] 
+
+['STA', '{Type GroundVehicle}', '{Time 4156.12}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle False}', '{LightIntensity 0}', '{Battery 1198}', '{View -1}'] 
+
+doe GroundVehicle shit
+
+doe STA shit
+
+[] 
+
+['SEN', '{Time 4156.3149}', '{Type Sonar}', '{Name F1 Range 4.5578}', '{Name F2 Range 1.9813}', '{Name F3 Range 1.9508}', '{Name F4 Range 1.6928}', '{Name F5 Range 0.8023}', '{Name F6 Range 0.8021}', '{Name F7 Range 1.1426}', '{Name F8 Range 2.0652}'] 
+
+doe Sonar shit
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Time 4156.12}', '{Type RangeScanner}', '{Name Scanner1}', '{Resolution 0.0174}', '{FOV 3.1415}', '{Range', '2.1942,2.1926,2.1974,2.1979,2.1992,2.2022,2.2065,2.2094,2.2157,2.2200,2.2277,2.2357,2.2436,2.2512,2.2622,2.2726,2.2818,2.2947,2.3080,2.3215,2.3335,2.3492,2.3644,2.3831,2.4000,2.4205,2.4431,2.4610,2.4840,2.5114,2.5358,2.5585,2.5874,2.6158,2.6481,2.6788,1.4025,1.3862,1.3535,1.3246,1.2948,1.2699,1.2434,1.2199,1.1967,1.1761,1.1551,1.1369,1.1183,1.1013,1.0854,1.0682,1.0539,1.0407,1.0253,1.0132,1.0002,0.9898,0.9784,0.9680,0.9577,0.9482,0.9387,0.9301,0.9219,0.9147,0.9071,0.9007,0.8938,0.8873,0.8814,0.8762,0.8714,0.8662,0.8604,0.8566,0.8536,0.8487,0.8374,0.8416,0.9476,1.0524,1.1886,1.3578,1.6683,1.8218,1.8261,1.8247,1.8208,1.8227,1.8194,1.8216,1.8230,1.8240,1.8269,1.8267,1.8297,1.8364,1.8405,1.8426,1.8480,1.8537,1.8625,1.8704,1.8771,1.8848,1.8968,1.9059,1.9146,1.9263,1.9393,1.9517,1.9670,1.9791,1.9958,2.0126,2.0269,2.0458,2.0646,2.0842,2.1065,2.1275,2.1497,2.1745,2.1985,2.2241,2.2540,2.2856,2.3171,2.2005,2.2578,2.3170,2.380'] 
+
+doe RangeScanner shit
+
+doe SEN shit
+
+['1,2.4471,2.5182,2.5733,2.5824,2.6160,2.6468,2.6835,2.7203,2.7529,1.6036,1.6385,1.6795,1.7186,1.7651,1.8117,1.8620,1.9172,1.9758,2.0374,2.1034,2.1751,2.2828,2.3689,2.4307,4.6805,4.9028,4.9569,4.7923,4.6377,4.4936,4.3532,4.2264,4.1119,3.9999,4.8073,4.7859,4.7699,4.7553,4.7435,4.7255,4.7174,4.7044,4.7008,4.6902,4.6942,4.6887,4.6882,4.6910}'] 
+
+['SEN', '{Type INS}', '{Name INS}', '{Location 4.50,1.90,1.80}', '{Orientation 0.00,0.00,0.00}'] 
+
+doe INS shit
+
+doe SEN shit
+
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0024,0.0000,0.0000}'] 
+
+doe Odometry shit
+
+doe SEN shit
+
+['SEN', '{Type Encoder}', '{Name ECLeft Tick 0}', '{Name ECRight Tick 0}', '{Name ECTilt Tick 0}', '{Name ECPan Tick 0}'] 
+
+doe Encoder shit
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Time 4156.3149}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.50,1.90,1.85}', '{Orientation 0.00,0.00,0.00}'] 
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Type GPS}', '{Name GPS}', '{Fix 0}', '{Satellites 0}'] 
+
+doe GPS shit
+
+doe SEN shit
+
+[] 
+
+['MISSTA', '{Time 4156.31}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
+
+doe MISSTA shit
+
+[] 
+
+['STA', '{Type GroundVehicle}', '{Time 4156.31}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle False}', '{LightIntensity 0}', '{Battery 1198}', '{View -1}'] 
+
+doe GroundVehicle shit
+
+doe STA shit
+
+[] 
+
+['SEN', '{Time 4156.5073}', '{Type Sonar}', '{Name F1 Range 4.5631}', '{Name F2 Range 1.9818}', '{Name F3 Range 1.9507}', '{Name F4 Range 1.6932}', '{Name F5 Range 0.8027}', '{Name F6 Range 0.8026}', '{Name F7 Range 1.1406}', '{Name F8 Range 2.0651}'] 
+
+doe Sonar shit
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Time 4156.31}', '{Type RangeScanner}', '{Name Scanner1}', '{Resolution 0.0174}', '{FOV 3.1415}', '{Range', '2.1919,2.1932,2.1934,2.1976,2.1977,2.2046,2.2067,2.2100,2.2166,2.2235,2.2282,2.2369,2.2447,2.2541,2.2625,2.2721,2.2848,2.2960,2.3057,2.3210,2.3370,2.3520,2.3687,2.3842,2.4014,2.4235,2.4402,2.4605,2.4861,2.5083,2.5367,2.5605,2.5890,2.6180,2.6485,2.6790,1.4030,1.3863,1.3523,1.3228,1.2966,1.2696,1.2436,1.2202,1.1971,1.1758,1.1565,1.1376,1.1193,1.1006,1.0848,1.0682,1.0545,1.0409,1.0265,1.0129,1.0005,0.9892,0.9785,0.9675,0.9570,0.9481,0.9387,0.9299,0.9230,0.9154,0.9079,0.9003,0.8941,0.8881,0.8813,0.8761,0.8704,0.8663,0.8617,0.8571,0.8524,0.8495,0.8375,0.8424,0.9479,1.0529,1.1876,1.3575,1.6683,1.8196,1.8267,1.8231,1.8222,1.8208,1.8215,1.8226,1.8225,1.8254,1.8246,1.8288,1.8324,1.8334,1.8391,1.8428,1.8495,1.8565,1.8632,1.8703,1.8769,1.8868,1.8943,1.9061,1.9167,1.9284,1.9408,1.9509,1.9661,1.9807,1.9967,2.0105,2.0276,2.0448,2.0664,2.0857,2.1071,2.1289,2.1489,2.1742,2.2018,2.2281,2.2525,2.2852,2.3132,2.2019,2.2589,2.3158,2.383'] 
+
+doe RangeScanner shit
+
+doe SEN shit
+
+['6,2.4482,2.5219,2.5752,2.5828,2.6151,2.6484,2.6837,2.7162,2.7547,1.6023,1.6379,1.6775,1.7210,1.7645,1.8112,1.8635,1.9151,1.9732,2.0349,2.1030,2.1744,2.2824,2.3662,2.4312,4.6791,4.9095,4.9633,4.7888,4.6327,4.4868,4.3548,4.2292,4.1143,4.0002,4.8019,4.7852,4.7677,4.7493,4.7439,4.7237,4.7213,4.7061,4.6962,4.6947,4.6934,4.6885,4.6927,4.6861}'] 
+
+['SEN', '{Type INS}', '{Name INS}', '{Location 4.50,1.90,1.80}', '{Orientation 0.00,0.00,0.00}'] 
+
+doe INS shit
+
+doe SEN shit
+
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0024,0.0000,0.0000}'] 
+
+doe Odometry shit
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Type Encoder}', '{Name ECLeft Tick 0}', '{Name ECRight Tick 0}', '{Name ECTilt Tick 0}', '{Name ECPan Tick 0}'] 
+
+doe Encoder shit
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Time 4156.5073}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.50,1.90,1.85}', '{Orientation 0.00,0.00,0.00}'] 
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Type GPS}', '{Name GPS}', '{Fix 0}', '{Satellites 0}'] 
+
+doe GPS shit
+
+doe SEN shit
+
+[] 
+
+['MISSTA', '{Time 4156.51}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
+
+doe MISSTA shit
+
+[] 
+
+['STA', '{Type GroundVehicle}', '{Time 4156.51}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle False}', '{LightIntensity 0}', '{Battery 1198}', '{View -1}'] 
+
+doe GroundVehicle shit
+
+doe STA shit
+
+[] 
+
+['SEN', '{Time 4156.7436}', '{Type Sonar}', '{Name F1 Range 4.5596}', '{Name F2 Range 1.9801}', '{Name F3 Range 1.9518}', '{Name F4 Range 1.6923}', '{Name F5 Range 0.8023}', '{Name F6 Range 0.8030}', '{Name F7 Range 1.1414}', '{Name F8 Range 2.0629}'] 
+
+doe Sonar shit
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Time 4156.51}', '{Type RangeScanner}', '{Name Scanner1}', '{Resolution 0.0174}', '{FOV 3.1415}', '{Range', '2.1925,2.1963,2.1974,2.1967,2.2007,2.2013,2.2053,2.2098,2.2142,2.2232,2.2266,2.2361,2.2413,2.2514,2.2593,2.2711,2.2828,2.2951,2.3074,2.3206,2.3338,2.3504,2.3657,2.3827,2.4026,2.4215,2.4419,2.4617,2.4845,2.5081,2.5356,2.5618,2.5863,2.6184,2.6497,2.6778,1.4025,1.3860,1.3527,1.3235,1.2960,1.2706,1.2430,1.2207,1.1968,1.1764,1.1561,1.1379,1.1183,1.1021,1.0855,1.0683,1.0536,1.0390,1.0263,1.0139,1.0001,0.9894,0.9783,0.9669,0.9571,0.9484,0.9386,0.9313,0.9214,0.9140,0.9065,0.9010,0.8937,0.8865,0.8819,0.8752,0.8709,0.8652,0.8617,0.8576,0.8532,0.8491,0.8362,0.8411,0.9475,1.0523,1.1878,1.3592,1.6689,1.8213,1.8269,1.8221,1.8224,1.8200,1.8193,1.8202,1.8221,1.8228,1.8249,1.8275,1.8320,1.8358,1.8378,1.8449,1.8480,1.8544,1.8613,1.8702,1.8767,1.8868,1.8968,1.9041,1.9173,1.9256,1.9382,1.9500,1.9666,1.9803,1.9942,2.0114,2.0290,2.0447,2.0665,2.0831,2.1068,2.1269,2.1504,2.1746,2.1997,2.2254,2.2533,2.2819,2.3172,2.2016,2.2560,2.3184,2.382'] 
+
+doe RangeScanner shit
+
+doe SEN shit
+
+['2,2.4469,2.5217,2.5771,2.5824,2.6146,2.6496,2.6846,2.7185,2.7577,1.6029,1.6368,1.6771,1.7196,1.7656,1.8102,1.8621,1.9155,1.9750,2.0378,2.1065,2.1765,2.2836,2.3671,2.4291,4.6769,4.9030,4.9554,4.7934,4.6338,4.4920,4.3532,4.2274,4.1154,4.0045,4.8066,4.7910,4.7654,4.7535,4.7363,4.7231,4.7155,4.7062,4.6969,4.6899,4.6962,4.6902,4.6941,4.6929}'] 
+
+['SEN', '{Type INS}', '{Name INS}', '{Location 4.50,1.90,1.80}', '{Orientation 0.00,0.00,0.00}'] 
+
+doe INS shit
+
+doe SEN shit
+
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0024,0.0000,0.0000}'] 
+
+doe Odometry shit
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Type Encoder}', '{Name ECLeft Tick 0}', '{Name ECRight Tick 0}', '{Name ECTilt Tick 0}', '{Name ECPan Tick 0}'] 
+
+doe Encoder shit
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Time 4156.7436}', '{Type VictSensor}', '{Name VictSensor}', '{Status NoVictims}'] 
+
+doe VictSensor shit
+
+doe SEN shit
+
+['SEN', '{Time 4156.7436}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.50,1.90,1.85}', '{Orientation 0.00,0.00,0.00}'] 
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Type GPS}', '{Name GPS}', '{Fix 0}', '{Satellites 0}'] 
+
+doe GPS shit
+
+doe SEN shit
+
+[] 
+
+['MISSTA', '{Time 4156.74}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
+
+doe MISSTA shit
+
+[] 
+
+['STA', '{Type GroundVehicle}', '{Time 4156.74}', '{FrontSteer 0.0000}', '{RearSteer 0.0000}', '{LightToggle False}', '{LightIntensity 0}', '{Battery 1198}', '{View -1}'] 
+
+doe GroundVehicle shit
+
+doe STA shit
+
+[] 
+
+['SEN', '{Time 4156.9370}', '{Type Sonar}', '{Name F1 Range 4.5583}', '{Name F2 Range 1.9816}', '{Name F3 Range 1.9492}', '{Name F4 Range 1.6935}', '{Name F5 Range 0.8013}', '{Name F6 Range 0.8020}', '{Name F7 Range 1.1407}', '{Name F8 Range 2.0620}'] 
+
+doe Sonar shit
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Time 4156.74}', '{Type RangeScanner}', '{Name Scanner1}', '{Resolution 0.0174}', '{FOV 3.1415}', '{Range', '2.1934,2.1961,2.1950,2.1979,2.2009,2.2031,2.2076,2.2086,2.2168,2.2203,2.2261,2.2372,2.2447,2.2518,2.2606,2.2729,2.2839,2.2928,2.3070,2.3185,2.3366,2.3483,2.3657,2.3826,2.4006,2.4204,2.4438,2.4636,2.4833,2.5082,2.5321,2.5591,2.5893,2.6153,2.6458,2.6784,1.4032,1.3858,1.3520,1.3230,1.2956,1.2689,1.2449,1.2207,1.1969,1.1766,1.1561,1.1374,1.1182,1.1016,1.0853,1.0686,1.0535,1.0402,1.0264,1.0125,1.0016,0.9895,0.9776,0.9673,0.9567,0.9477,0.9390,0.9299,0.9224,0.9142,0.9062,0.8998,0.8943,0.8877,0.8806,0.8764,0.8699,0.8660,0.8615,0.8573,0.8537,0.8494,0.8376,0.8409,0.9485,1.0538,1.1871,1.3570,1.6667,1.8204,1.8240,1.8242,1.8237,1.8215,1.8223,1.8196,1.8227,1.8229,1.8238,1.8263,1.8314,1.8337,1.8410,1.8445,1.8496,1.8562,1.8637,1.8695,1.8760,1.8875,1.8964,1.9040,1.9169,1.9284,1.9371,1.9497,1.9636,1.9798,1.9941,2.0126,2.0260,2.0446,2.0658,2.0821,2.1039,2.1286,2.1514,2.1751,2.2015,2.2279,2.2557,2.2848,2.3129,2.2018,2.2588,2.3179,2.383'] 
+
+doe RangeScanner shit
+
+doe SEN shit
+
+['0,2.4487,2.5216,2.5762,2.5833,2.6153,2.6495,2.6838,2.7161,2.7529,1.6033,1.6377,1.6796,1.7189,1.7646,1.8103,1.8608,1.9165,1.9743,2.0380,2.1067,2.1753,2.2832,2.3669,2.4322,4.6844,4.9039,4.9560,4.7859,4.6388,4.4923,4.3583,4.2346,4.1181,4.0048,4.8016,4.7841,4.7656,4.7530,4.7358,4.7307,4.7165,4.7088,4.7018,4.6946,4.6994,4.6966,4.6872,4.6845}'] 
+
+['SEN', '{Type INS}', '{Name INS}', '{Location 4.50,1.90,1.80}', '{Orientation 0.00,0.00,0.00}'] 
+
+doe INS shit
+
+doe SEN shit
+
+['SEN', '{Type Odometry}', '{Name Odometry}', '{Pose 0.0024,0.0000,0.0000}'] 
+
+doe Odometry shit
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Type Encoder}', '{Name ECLeft Tick 0}', '{Name ECRight Tick 0}', '{Name ECTilt Tick 0}', '{Name ECPan Tick 0}'] 
+
+doe Encoder shit
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Time 4156.9370}', '{Type GroundTruth}', '{Name GroundTruth}', '{Location 4.50,1.90,1.85}', '{Orientation 0.00,0.00,0.00}'] 
+
+doe SEN shit
+
+[] 
+
+['SEN', '{Type GPS}', '{Name GPS}', '{Fix 0}', '{Satellites 0}'] 
+
+doe GPS shit
+
+doe SEN shit
+
+[] 
+
+['MISSTA', '{Time 4156.94}', '{Name CameraPanTilt}', '{Link 1}', '{Value 0.0000}', '{Torque -20.00}', '{Link 2}', '{Value 0.0000}', '{Torque -20.00}'] 
+
+doe MISSTA shit
 
 [] 
 
