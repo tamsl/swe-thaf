@@ -1,52 +1,52 @@
-['SEN', '{Time 950.5490}', '{Type Sonar}', '{Name F1 Range 4.5614}', '{Name F2 Range 1.9771}', '{Name F3 Range 1.9553}', '{Name F4 Range 1.6953}', '{Name F5 Range 0.8020}', '{Name F6 Range 0.8081}', '{Name F7 Range 1.1486}', '{Name F8 Range 2.0629}'] 
+['SEN', '{Time 3821.3303}', '{Type Sonar}', '{Name F1 Range 4.5480}', '{Name F2 Range 1.9776}', '{Name F3 Range 1.9531}', '{Name F4 Range 1.6955}', '{Name F5 Range 0.8068}', '{Name F6 Range 0.8146}', '{Name F7 Range 1.1457}', '{Name F8 Range 2.0626}'] 
 
-Sonar 4.5614 1.9771 1.9553 1.6953 0.8020 0.8081 1.1486 2.0629 
+['4.5480', '1.9776', '1.9531', '1.6955', '0.8068', '0.8146', '1.1457', '2.0626'] 
 
-['SEN', '{Time 950.7549}', '{Type Sonar}', '{Name F1 Range 4.5601}', '{Name F2 Range 1.9775}', '{Name F3 Range 1.9540}', '{Name F4 Range 1.6942}', '{Name F5 Range 0.8013}', '{Name F6 Range 0.8054}', '{Name F7 Range 1.1456}', '{Name F8 Range 2.0642}'] 
+['SEN', '{Time 3821.5283}', '{Type Sonar}', '{Name F1 Range 4.5474}', '{Name F2 Range 1.9756}', '{Name F3 Range 1.9530}', '{Name F4 Range 1.6943}', '{Name F5 Range 0.8060}', '{Name F6 Range 0.8146}', '{Name F7 Range 1.1452}', '{Name F8 Range 2.0649}'] 
 
-Sonar 4.5601 1.9775 1.9540 1.6942 0.8013 0.8054 1.1456 2.0642 
+['4.5474', '1.9756', '1.9530', '1.6943', '0.8060', '0.8146', '1.1452', '2.0649'] 
 
-['SEN', '{Time 950.9588}', '{Type Sonar}', '{Name F1 Range 4.5579}', '{Name F2 Range 1.9796}', '{Name F3 Range 1.9512}', '{Name F4 Range 1.6937}', '{Name F5 Range 0.7995}', '{Name F6 Range 0.8055}', '{Name F7 Range 1.1443}', '{Name F8 Range 2.0651}'] 
+['SEN', '{Time 3821.7263}', '{Type Sonar}', '{Name F1 Range 4.5497}', '{Name F2 Range 1.9743}', '{Name F3 Range 1.9551}', '{Name F4 Range 1.6946}', '{Name F5 Range 0.8065}', '{Name F6 Range 0.8157}', '{Name F7 Range 1.1461}', '{Name F8 Range 2.0648}'] 
 
-Sonar 4.5579 1.9796 1.9512 1.6937 0.7995 0.8055 1.1443 2.0651 
+['4.5497', '1.9743', '1.9551', '1.6946', '0.8065', '0.8157', '1.1461', '2.0648'] 
 
-['SEN', '{Time 951.1529}', '{Type Sonar}', '{Name F1 Range 4.5602}', '{Name F2 Range 1.9806}', '{Name F3 Range 1.9504}', '{Name F4 Range 1.6961}', '{Name F5 Range 0.7998}', '{Name F6 Range 0.8060}', '{Name F7 Range 1.1448}', '{Name F8 Range 2.0628}'] 
+['SEN', '{Time 3821.9272}', '{Type Sonar}', '{Name F1 Range 4.5505}', '{Name F2 Range 1.9775}', '{Name F3 Range 1.9553}', '{Name F4 Range 1.6957}', '{Name F5 Range 0.8055}', '{Name F6 Range 0.8150}', '{Name F7 Range 1.1462}', '{Name F8 Range 2.0649}'] 
 
-Sonar 4.5602 1.9806 1.9504 1.6961 0.7998 0.8060 1.1448 2.0628 
+['4.5505', '1.9775', '1.9553', '1.6957', '0.8055', '0.8150', '1.1462', '2.0649'] 
 
-['SEN', '{Time 951.3519}', '{Type Sonar}', '{Name F1 Range 4.5560}', '{Name F2 Range 1.9820}', '{Name F3 Range 1.9527}', '{Name F4 Range 1.6951}', '{Name F5 Range 0.8007}', '{Name F6 Range 0.8048}', '{Name F7 Range 1.1460}', '{Name F8 Range 2.0630}'] 
+['SEN', '{Time 3822.1281}', '{Type Sonar}', '{Name F1 Range 4.5517}', '{Name F2 Range 1.9747}', '{Name F3 Range 1.9574}', '{Name F4 Range 1.6975}', '{Name F5 Range 0.8055}', '{Name F6 Range 0.8066}', '{Name F7 Range 1.1465}', '{Name F8 Range 2.0639}'] 
 
-Sonar 4.5560 1.9820 1.9527 1.6951 0.8007 0.8048 1.1460 2.0630 
+['4.5517', '1.9747', '1.9574', '1.6975', '0.8055', '0.8066', '1.1465', '2.0639'] 
 
-['SEN', '{Time 951.5548}', '{Type Sonar}', '{Name F1 Range 4.5551}', '{Name F2 Range 1.9798}', '{Name F3 Range 1.9523}', '{Name F4 Range 1.6949}', '{Name F5 Range 0.8005}', '{Name F6 Range 0.8056}', '{Name F7 Range 1.1459}', '{Name F8 Range 2.0631}'] 
+['SEN', '{Time 3822.3332}', '{Type Sonar}', '{Name F1 Range 4.5525}', '{Name F2 Range 1.9743}', '{Name F3 Range 1.9574}', '{Name F4 Range 1.6965}', '{Name F5 Range 0.8068}', '{Name F6 Range 0.8071}', '{Name F7 Range 1.1489}', '{Name F8 Range 2.0646}'] 
 
-Sonar 4.5551 1.9798 1.9523 1.6949 0.8005 0.8056 1.1459 2.0631 
+['4.5525', '1.9743', '1.9574', '1.6965', '0.8068', '0.8071', '1.1489', '2.0646'] 
 
-['SEN', '{Time 951.7598}', '{Type Sonar}', '{Name F1 Range 4.5608}', '{Name F2 Range 1.9815}', '{Name F3 Range 1.9533}', '{Name F4 Range 1.6941}', '{Name F5 Range 0.8000}', '{Name F6 Range 0.8059}', '{Name F7 Range 1.1463}', '{Name F8 Range 2.0631}'] 
+['SEN', '{Time 3822.5312}', '{Type Sonar}', '{Name F1 Range 4.5510}', '{Name F2 Range 1.9735}', '{Name F3 Range 1.9550}', '{Name F4 Range 1.6992}', '{Name F5 Range 0.8069}', '{Name F6 Range 0.8080}', '{Name F7 Range 1.1488}', '{Name F8 Range 2.0641}'] 
 
-Sonar 4.5608 1.9815 1.9533 1.6941 0.8000 0.8059 1.1463 2.0631 
+['4.5510', '1.9735', '1.9550', '1.6992', '0.8069', '0.8080', '1.1488', '2.0641'] 
 
-['SEN', '{Time 951.9567}', '{Type Sonar}', '{Name F1 Range 4.5549}', '{Name F2 Range 1.9818}', '{Name F3 Range 1.9502}', '{Name F4 Range 1.6956}', '{Name F5 Range 0.7993}', '{Name F6 Range 0.8060}', '{Name F7 Range 1.1466}', '{Name F8 Range 2.0642}'] 
+['SEN', '{Time 3822.7321}', '{Type Sonar}', '{Name F1 Range 4.5507}', '{Name F2 Range 1.9741}', '{Name F3 Range 1.9574}', '{Name F4 Range 1.6994}', '{Name F5 Range 0.8061}', '{Name F6 Range 0.8085}', '{Name F7 Range 1.1479}', '{Name F8 Range 2.0630}'] 
 
-Sonar 4.5549 1.9818 1.9502 1.6956 0.7993 0.8060 1.1466 2.0642 
+['4.5507', '1.9741', '1.9574', '1.6994', '0.8061', '0.8085', '1.1479', '2.0630'] 
 
-['SEN', '{Time 952.1587}', '{Type Sonar}', '{Name F1 Range 4.5598}', '{Name F2 Range 1.9828}', '{Name F3 Range 1.9505}', '{Name F4 Range 1.6939}', '{Name F5 Range 0.8002}', '{Name F6 Range 0.8053}', '{Name F7 Range 1.1451}', '{Name F8 Range 2.0646}'] 
+['SEN', '{Time 3822.9301}', '{Type Sonar}', '{Name F1 Range 4.5518}', '{Name F2 Range 1.9754}', '{Name F3 Range 1.9578}', '{Name F4 Range 1.6967}', '{Name F5 Range 0.8067}', '{Name F6 Range 0.8082}', '{Name F7 Range 1.1481}', '{Name F8 Range 2.0642}'] 
 
-Sonar 4.5598 1.9828 1.9505 1.6939 0.8002 0.8053 1.1451 2.0646 
+['4.5518', '1.9754', '1.9578', '1.6967', '0.8067', '0.8082', '1.1481', '2.0642'] 
 
-['SEN', '{Time 952.3557}', '{Type Sonar}', '{Name F1 Range 4.5569}', '{Name F2 Range 1.9808}', '{Name F3 Range 1.9518}', '{Name F4 Range 1.6961}', '{Name F5 Range 0.7997}', '{Name F6 Range 0.8056}', '{Name F7 Range 1.1461}', '{Name F8 Range 2.0624}'] 
+['SEN', '{Time 3823.1262}', '{Type Sonar}', '{Name F1 Range 4.5553}', '{Name F2 Range 1.9751}', '{Name F3 Range 1.9549}', '{Name F4 Range 1.6968}', '{Name F5 Range 0.8063}', '{Name F6 Range 0.8084}', '{Name F7 Range 1.1471}', '{Name F8 Range 2.0632}'] 
 
-Sonar 4.5569 1.9808 1.9518 1.6961 0.7997 0.8056 1.1461 2.0624 
+['4.5553', '1.9751', '1.9549', '1.6968', '0.8063', '0.8084', '1.1471', '2.0632'] 
 
-['SEN', '{Time 952.5507}', '{Type Sonar}', '{Name F1 Range 4.5608}', '{Name F2 Range 1.9816}', '{Name F3 Range 1.9506}', '{Name F4 Range 1.6945}', '{Name F5 Range 0.7998}', '{Name F6 Range 0.8056}', '{Name F7 Range 1.1460}', '{Name F8 Range 2.0627}'] 
+['SEN', '{Time 3823.3300}', '{Type Sonar}', '{Name F1 Range 4.5486}', '{Name F2 Range 1.9749}', '{Name F3 Range 1.9561}', '{Name F4 Range 1.6976}', '{Name F5 Range 0.8058}', '{Name F6 Range 0.8089}', '{Name F7 Range 1.1474}', '{Name F8 Range 2.0639}'] 
 
-Sonar 4.5608 1.9816 1.9506 1.6945 0.7998 0.8056 1.1460 2.0627 
+['4.5486', '1.9749', '1.9561', '1.6976', '0.8058', '0.8089', '1.1474', '2.0639'] 
 
-['SEN', '{Time 952.7478}', '{Type Sonar}', '{Name F1 Range 4.5624}', '{Name F2 Range 1.9815}', '{Name F3 Range 1.9528}', '{Name F4 Range 1.6941}', '{Name F5 Range 0.8007}', '{Name F6 Range 0.8054}', '{Name F7 Range 1.1450}', '{Name F8 Range 2.0642}'] 
+['SEN', '{Time 3823.5290}', '{Type Sonar}', '{Name F1 Range 4.5491}', '{Name F2 Range 1.9762}', '{Name F3 Range 1.9565}', '{Name F4 Range 1.6995}', '{Name F5 Range 0.8058}', '{Name F6 Range 0.8076}', '{Name F7 Range 1.1475}', '{Name F8 Range 2.0653}'] 
 
-Sonar 4.5624 1.9815 1.9528 1.6941 0.8007 0.8054 1.1450 2.0642 
+['4.5491', '1.9762', '1.9565', '1.6995', '0.8058', '0.8076', '1.1475', '2.0653'] 
 
-['SEN', '{Time 952.9547}', '{Type Sonar}', '{Name F1 Range 4.5601}', '{Name F2 Range 1.9794}', '{Name F3 Range 1.9508}', '{Name F4 Range 1.6939}', '{Name F5 Range 0.8004}', '{Name F6 Range 0.8056}', '{Name F7 Range 1.1446}', '{Name F8 Range 2.0656}'] 
+['SEN', '{Time 3823.7309}', '{Type Sonar}', '{Name F1 Range 4.5507}', '{Name F2 Range 1.9761}', '{Name F3 Range 1.9575}', '{Name F4 Range 1.6978}', '{Name F5 Range 0.8059}', '{Name F6 Range 0.8084}', '{Name F7 Range 1.1490}', '{Name F8 Range 2.0646}'] 
 
-Sonar 4.5601 1.9794 1.9508 1.6939 0.8004 0.8056 1.1446 2.0656 
+['4.5507', '1.9761', '1.9575', '1.6978', '0.8059', '0.8084', '1.1490', '2.0646'] 
 
