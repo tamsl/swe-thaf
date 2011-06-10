@@ -9,7 +9,7 @@ COLOR = ['Red', 'Yellow', 'Green', 'Cyan', 'White', 'Blue', 'Purple']
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
 #s.send("INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n")
-s.send("INIT {ClassName USARBot.P2DX} {Location 4.5,-1.0,1.8} {Name R1}\r\n")
+s.send("INIT {ClassName USARBot.P2DX} {Location 2.0,2.5,1.8} {Name R1}\r\n")
 
 def handle_movement(type, *args):
    handlers = {"forward":         go_drive,
@@ -52,15 +52,18 @@ def min_sonar_val(sonar_vals):
     return sorted_sonar_vals[0], index_val
 
 def wallsearch(min_val, index_val):
-    if index_val == 1:
-        print "Richting een muur links"
-        s.send(handle_movement("left", -1.0, 1.0))
-    elif index_val == 8:
-        print "Richting een muur rechts"
-        s.send(handle_movement("right", 1.0, -1.0))
+    if min_val <= 0.20:
+        s.send(handle_movement("brake", 0, 0)) 
     else:
-        print "Richting een muur rechtdoor"
-        s.send(handle_movement("forward", 1.0, 1.0))
+        if index_val < 4:
+            print "Richting een muur links"
+            s.send(handle_movement("rotate_left", -1.0, 1.0))
+        elif index_val > 5:
+            print "Richting een muur rechts"
+            s.send(handle_movement("rotate_right", 1.0, -1.0))
+        elif index_val == 5 or index_val == 4:
+            print "Richting een muur rechtdoor"
+            s.send(handle_movement("forward", 1.0, 1.0))
 
 while(1):
     data = s.recv(BUFFER_SIZE)
