@@ -5,7 +5,7 @@ TCP_IP = '127.0.0.1'
 TCP_PORT = 2002
 BUFFER_SIZE = 1024
 COLOR = ['Red', 'Yellow', 'Green', 'Cyan', 'White', 'Blue', 'Purple']
-TYPES = ['SonarSensor', 'SICKLMS', 'OdometrySensor']
+TYPES = ['SonarSensor', 'SICKL-MS', 'OdometrySensor']
 NAMES = ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'Scanner1', 'Odometry']
 OPCODE = ['RESET', 'NOP']
 OPCODE_RFID = ['Release', 'Read', 'Write']
@@ -89,12 +89,12 @@ while 1:
    s.send(handle_movement("rfid-tag", 'Release'))
    s.send(handle_movement("trace", 1, 1, 'White'))
    s.send(handle_movement("forward", 5.0, 5.0))
-   s.send(handle_movement("rotate_left", 1.0, -1.0))
-   s.send(handle_movement("rotate_right", -1.0, 1.0))
-   s.send(handle_movement("brake", 0.0, 0.0))
+   #s.send(handle_movement("rotate_left", 1.0, -1.0))
+   #s.send(handle_movement("rotate_right", -1.0, 1.0))
+   #s.send(handle_movement("brake", 0.0, 0.0))
    s.send(handle_movement("light", 1))
    s.send(handle_movement("sonar", 'SonarSensor', 'F3', 'RESET', 5))
-   s.send(handle_movement("rfid", 'Write'))
+   #s.send(handle_movement("rfid", 'Write', id_value, 0))
 
 s.close()
     
