@@ -12,39 +12,25 @@ list = []
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
+print s
 s.send('INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n')
-accept_thread = acceptor(list, flag)
-accept_thread.start()
 configreader = config_reader()
+print("config reader gestart")
+#sonar module
+sonar = configreader.connection(list, "sonar")
+print(sonar)
+print("miauw miauw miauw")
+accept_thread = acceptor(list, flag, "listener", configreader.addresses)
+accept_thread.start()
 print ("acceptor thread gestart")
-##SONAR_PORT = 2101
-##
-##sonar = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-##sonar.connect((TCP_IP, SONAR_PORT))
-##
-##
-##IR_PORT = 2102
-##
-##ir = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-##ir.connect((TCP_IP, IR_PORT))
-##
-##
-##IMU_PORT = 2103
-##
-##imu = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-##imu.connect((TCP_IP, IMU_PORT))
-##
-##
-##ODOMETRY_PORT = 2104
-##
-##odometry = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-##odometry.connect((TCP_IP, ODOMETRY_PORT))
 
 while 1:
   try:
 ##    s.send("DRIVE {Left 1.0} {Right 1.0}")
     data = s.recv(BUFFER_SIZE)
     print data
+    if len(list) == 0:
+      continue
     string = data.split('\r\n')
 ##    print("in de while loop")
     for i in range(len(string)):
@@ -61,11 +47,7 @@ while 1:
           # Range sensor
           if typeSEN2 == "Sonar":
             print("bla123")
-            adresses, sender = configreader.connection("sonar")
-            print("miauw miauw miauw")
-            sender.connect((adresses[1], int(adresses[2])))
-            print("connectie geslaagd")
-            sender.send("REQ ")
+            sonar.send("REQ ")
             print "doe Sonar shit\r\n"
           if typeSEN2 == "IR":
             print "doe IR shit\r\n"
@@ -159,9 +141,7 @@ while 1:
           print "doe RES shit\r\n"
           
   except:
-    print("in listener")
-    print (configreader.config)
-    print("er is iets fout gegaan")
+    print("er is iets fout gegaan in listener")
     accept_thread.setflag(1)
     print(flag)
     print("flag zou 1 moeten zijn")
