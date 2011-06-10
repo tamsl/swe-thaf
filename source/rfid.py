@@ -14,11 +14,7 @@ OPCODE = ['RESET', 'NOP']
 OPCODE_RFID = ['Release', 'Read', 'Write']
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
-s.send("INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n")
-
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect((TCP_IP, TCP_PORT))
-s.send('INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n')
+s.send("INIT {ClassName USARBot.P2DX} {Location 4.5,4.0,1.8} {Name R1}\r\n")
 
 def rfid_module(datastring):
   id_values = []
@@ -102,12 +98,13 @@ def go_rfid(OPCODE_RFID, RFIDTagID, MemoryContent):
     return string  
 
 while 1:
-  s.send("DRIVE {Left 1.0}\r\n")
+  #s.send("DRIVE {Left 1.0}\r\n")
   data = s.recv(BUFFER_SIZE)
   string = data.split('\r\n')
   id_value = []
   for i in range(len(string)):
     datasplit = re.findall('\{[^\}]*\}|\S+', string[i])
+    print datasplit
     if len(datasplit) > 0:
       # Sensor message
       if datasplit[0] == "SEN":
@@ -121,9 +118,9 @@ while 1:
   s.send(handle_movement("rfid-tag", 'Release'))
   s.send(handle_movement("trace", 1, 1, 'White'))
   s.send(handle_movement("forward", 5.0, 5.0))
-  s.send(handle_movement("rotate_left", 1.0, -1.0))
-  s.send(handle_movement("rotate_right", -1.0, 1.0))
-  s.send(handle_movement("brake", 0.0, 0.0))
+  #s.send(handle_movement("rotate_left", 1.0, -1.0))
+  #s.send(handle_movement("rotate_right", -1.0, 1.0))
+  #s.send(handle_movement("brake", 0.0, 0.0))
   s.send(handle_movement("light", 1))
   s.send(handle_movement("sonar", 'SonarSensor', 'F3', 'RESET', 5))
   if len(id_value) > 0:
