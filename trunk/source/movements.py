@@ -75,11 +75,12 @@ def go_tag(OPCODE_RFID):
 
 def go_rfid(OPCODE_RFID, RFIDTagID, MemoryContent):
     MemoryContent = str(MemoryContent)
+    string = " "
     for i in range(len(RFIDTagID)):  
         if OPCODE_RFID == 'Write': 
             string = "SET {Type RFID} {Name RFID} {Opcode " + OPCODE_RFID + "} {Params " + RFIDTagID[i] + MemoryContent + "}\r\n"  
-        if OPCODE_RFID == 'Read':
-            string = "SET {Type RFID} {Name RFID} {Opcode " + OPCODE_RFID + "} {Params " + RFIDTagID[i] + "}\r\n"  
+        elif OPCODE_RFID == 'Read':
+            string = "SET {Type RFID} {Name RFID} {Opcode " + OPCODE_RFID + "} {Params " + RFIDTagID[i] + "}\r\n"
     print string
     return string  
 
