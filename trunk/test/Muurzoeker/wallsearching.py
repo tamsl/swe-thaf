@@ -20,7 +20,7 @@ def handle_movement(type, *args):
                "rotate_left":     go_drive,
                "rotate_right":    go_drive,
                "trace":           go_trace,
-               "rotate_robot":    rotate,
+               "rotate_robot":    go_rotate,
               }
    return handlers[type](*args)
 
@@ -38,6 +38,12 @@ def go_trace(b1, in1, COLOR):
     print string
     return string
 
+def go_rotate(s1):
+    s1 = str(s1)
+    string = "DRIVE {RotationalVelocity " + s1 + "}"
+    print string
+    return string
+
 def string_to_float(sonar_vals):
     float_sonar_vals = []
     for i in range(len(sonar_vals)):
@@ -51,12 +57,6 @@ def min_sonar_val(sonar_vals):
     print sorted_sonar_vals[0]
     print index_val
     return sorted_sonar_vals[0], index_val
-
-def rotate(s1):
-    s1 = str(s1)
-    string = "DRIVE {RotationalVelocity "+ s1 +"}"
-    print string
-    return string
    
 def wallsearch(min_val, index_val):
     print "Roteer 360 graden"
