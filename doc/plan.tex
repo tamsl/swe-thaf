@@ -14,7 +14,7 @@ Applicaties. In dit document is de planning de delivaerables de modules en model
 \item Tamara
 \item Chris
 \end{enumerate}
-
+Het uiteindelijke doel is een robot maken die opzichzelf rond kan lopen en een map kan makne en nadat er een map is gemaakt van a naar b kan lopen.
 \section{Model}
 De module listener is een TCP-server waarbij alle data van de robot binnenkomt en die willen we uitlezen. Deze wordt tevens gebruikt om commando’s naar de robot te sturen. Die commando’s worden allemaal doorgegeven naar de sensormodulen die kijken of de data daadwerkelijk geldig is en binnen de parameters valt, zodat we de data van de robot kunnen gebruiken. We hebben vier sensormodules: sonar, laster, IMU en odometry. Vanuit deze laag gaat de data naar de laag waar de modules zich bevinden die dienen voor de muurzoeker, muurvolger en botsingsvermijding. De resultaten uit die modules worden doorgestuurd naar de modules routeplanner en bewegingen. De data voor de module kaartenmaker komt rechtstreeks uit de sensormodules. Berekende kaarten uit de kaartenmaker kunnen gebruikt worden voor de routeplanner. De routeplanner geeft zijn berekende pad tenslotte door aan module bewegingen.
 \section{Deliverables}
@@ -22,18 +22,23 @@ Het plan is om aan het eind van het project een robot te leveren die zich kan vo
 in een vrij volle ruimte gevuld met diverse obstakels een pad langs een wand te kunnen afleggen.
 Dus wij leveren de volgende modules:
 \begin{enumerate}
-\item botsingen te voorkomen.
-\item zich uit gebieden die doodlopen te kunnen manoeuvreren.
-\item indien nodig een wand op te zoeken.
-\item zijn eigen locatie te bepalen.
-\item zijn afgelegde route te onthouden.
-\item de omgeving in kaart te brengen.
+\item Een listener.
+\item Reflex modules in per soort data.
+\item Een muurzoeker.
+\item Een muurvolger.
+\item Een routplanner.
+\item Een mapmaker.
 \end{enumerate}
+Uitleg over de modules te vinden in section \ref{sec:modules}.
 \section{Testen}
-Alle modules hebben we apart getest. We hebben elke module direct aan de aan de simulator vast gezet en met de echte data de modules getest. Al dezze modules worden
-later gemodificeerd met de communicator methode zodat ze metelkaar kunnen praten.  
+Alle modules hebben we apart getest. Elke module moet standalone kunenn werken en de verschillende We hebben elke module direct aan de aan de simulator vast gezet en met de echte data de modules getest. Al dezze modules worden
+later gemodificeerd met de communicator methode zodat ze met elkaar kunnen praten.
 \section{Modules}
+\label{sec:modules}
+Alle geteste modules worden voorzien van een communicator. Deze communicator leest uit waar alle modules zich bevinden. Wanneer de communicator wordt opgestart wordt een
+thread gestart die connecties kan aannemen. Deze thread start op zijn beurt nog een andere thread op die luistert naar alle inkomende request en handelt deze af. Het preciese protocol voor de communicatie moet nog nader bepaald worden.
 \subsection{Listener}
+De listener is de module die direct aan de server vast zit. Deze haalt de informatie binnen van die de robot opstuurt, maar stuurt ook commandos naar de robot op. 
 \section{Planning}
 Er zijn vier weken beschikbaar voor dit project. In de eerste week van het project wordt de listener als eerst gerealiseerd. Daarnaast wordt de module die de methoden bevat voor de bewegingen geschreven. Wanneer dat gelukt is, maken we in dezelfde week nog een begin aan de sensormodules. De drie modules muurzoeker, muurvolger en botsingsvermijding zijn de volgende componenten die geïmplementeerd moeten worden. Dat willen we graag in de tweede week doen. Wanneer dat voltooid is, maken we de ‘high level’ componenten aan: de routeplanner en de kaartenmaker. We denken dat deze twee onderdelen vrij gecompliceerd zijn, hier willen we dan ruim de tijd voor nemen.
 
