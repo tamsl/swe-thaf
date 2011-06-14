@@ -1,0 +1,27 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{graphicx}
+
+\title{Werkplan\\\small Software Engineering en Gedistribueerde Applicaties\\\small Team 8}
+\author{Chris Bovenschen,Harm Dermois, Alexandra Pizarro, Tamara Ockhuis \and Fredo Tan\\\small 6104096,0527963,6129544,6060374\and6132421 }
+\begin{document}
+
+\section{Inleiding}
+\section{Model}
+De module listener is een TCP-server waarbij alle data van de robot binnenkomt en die willen we uitlezen. Deze wordt tevens gebruikt om commando’s naar de robot te sturen. Die commando’s worden allemaal doorgegeven naar de sensormodulen die kijken of de data daadwerkelijk geldig is en binnen de parameters valt, zodat we de data van de robot kunnen gebruiken. We hebben vier sensormodules: sonar, laster, IMU en odometry. Vanuit deze laag gaat de data naar de laag waar de modules zich bevinden die dienen voor de muurzoeker, muurvolger en botsingsvermijding. De resultaten uit die modules worden doorgestuurd naar de modules routeplanner en bewegingen. De data voor de module kaartenmaker komt rechtstreeks uit de sensormodules. Berekende kaarten uit de kaartenmaker kunnen gebruikt worden voor de routeplanner. De routeplanner geeft zijn berekende pad tenslotte door aan module bewegingen.
+\section{Deliverables}
+Het plan is om aan het eind van het project een robot te leveren die zich kan voortbewegen door middel van berekeningen die gebaseerd zijn op data afkomstig van de sensoren. Vervolgens is het de bedoeling dat de robot diens omgeving in kaart kan brengen met behulp van de informatie van de sensoren. De robot moet in staat zijn om:
+in een vrij volle ruimte gevuld met diverse obstakels een pad langs een wand te kunnen afleggen.
+botsingen te voorkomen.
+zich uit gebieden die doodlopen te kunnen manoeuvreren.
+indien nodig een wand op te zoeken.
+zijn eigen locatie te bepalen.
+zijn afgelegde route te onthouden.
+de omgeving in kaart te brengen.
+\section{Modules}
+\section{Testen}
+\section{Planning}
+Er zijn vier weken beschikbaar voor dit project. In de eerste week van het project wordt de listener als eerst gerealiseerd. Daarnaast wordt de module die de methoden bevat voor de bewegingen geschreven. Wanneer dat gelukt is, maken we in dezelfde week nog een begin aan de sensormodules. De drie modules muurzoeker, muurvolger en botsingsvermijding zijn de volgende componenten die geïmplementeerd moeten worden. Dat willen we graag in de tweede week doen. Wanneer dat voltooid is, maken we de ‘high level’ componenten aan: de routeplanner en de kaartenmaker. We denken dat deze twee onderdelen vrij gecompliceerd zijn, hier willen we dan ruim de tijd voor nemen.
+
+17 juni is de dag wanneer de eerste deliverable gereed moet zijn. Naar verwachting zal de eerste deliverable de listener, bewegingen en (een deel van) de ‘mid level’ componenten omvatten. In de derde week vindt het inleveren van de tweede deliverable plaats. Op 23 juni willen we ‘mid level’ componenten en de ‘high level’ componenten gereed hebben.
+
+\end{document}
