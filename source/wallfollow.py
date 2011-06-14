@@ -75,6 +75,8 @@ def wallfollow(min_val, index_val):
            s.send(handle_movement("rotate_left", -1.5, 1.0))
        print "Volg rechtermuur"
        s.send(handle_movement("forward", 1.0, 1.0))
+   else:
+       wallsearch(min_val, index_val)
 
 def odometry_module(datastring):
   print datastring, "\r\n"

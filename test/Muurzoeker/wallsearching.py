@@ -20,6 +20,7 @@ def handle_movement(type, *args):
                "rotate_left":     go_drive,
                "rotate_right":    go_drive,
                "trace":           go_trace,
+               "rotate_robot":    rotate,
               }
    return handlers[type](*args)
 
@@ -51,31 +52,49 @@ def min_sonar_val(sonar_vals):
     print index_val
     return sorted_sonar_vals[0], index_val
 
+def rotate(s1):
+    s1 = str(s1)
+    string = "DRIVE {RotationalVelocity "+ s1 +"}"
+    print string
+    return string
+   
 def wallsearch(min_val, index_val):
-    if min_val <= 0.20 and (index_val == 4 or index_val == 5):
-        s.send(handle_movement("brake", 0, 0)) 
-    else:
-        if index_val == 1:
-            print "Richting een muur links"
-            s.send(handle_movement("rotate_left", -2.0, 2.0))
-        elif index_val == 2:
-            print "Richting een muur links"
-            s.send(handle_movement("rotate_left", -1.5, 1.5))
-        elif index_val == 3:
-            print "Richting een muur links"
-            s.send(handle_movement("rotate_left", -1.0, 1.0))
-        elif index_val == 6:
-            print "Richting een muur rechts"
-            s.send(handle_movement("rotate_right", 1.0, -1.0))
-        elif index_val == 7:
-            print "Richting een muur rechts"
-            s.send(handle_movement("rotate_right", 1.5, -1.5))
-        elif index_val == 8:
-            print "Richting een muur rechts"
-            s.send(handle_movement("rotate_right", 2.0, -2.0))
-        elif index_val == 4 or index_val == 5:
-            print "Richting een muur rechtdoor"
-            s.send(handle_movement("forward", 1.0, 1.0))
+    print "Roteer 360 graden"
+    x = s.send(handle_movement("rotate_robot", 0.05))
+    while(x):
+    #if min_val <= 0.20 and (index_val == 4 or index_val == 5):
+    #    s.send(handle_movement("brake", 0, 0)) 
+    #else:
+        for index_val in range(1,9):
+            if min_val:
+                if index_val == 1:
+                    print "Richting een muur links"
+                    s.send(handle_movement("rotate_left", -2.0, 2.0))
+                    break
+                elif index_val == 2:
+                    print "Richting een muur links"
+                    s.send(handle_movement("rotate_left", -1.5, 1.5))
+                    break
+                elif index_val == 3:
+                    print "Richting een muur links"
+                    s.send(handle_movement("rotate_left", -1.0, 1.0))
+                    break
+                elif index_val == 6:
+                    print "Richting een muur rechts"
+                    s.send(handle_movement("rotate_right", 1.0, -1.0))
+                    break
+                elif index_val == 7:
+                    print "Richting een muur rechts"
+                    s.send(handle_movement("rotate_right", 1.5, -1.5))
+                    break
+                elif index_val == 8:
+                    print "Richting een muur rechts"
+                    s.send(handle_movement("rotate_right", 2.0, -2.0))
+                    break
+                elif index_val == 4 or index_val == 5:
+                    print "Richting een muur rechtdoor"
+                    s.send(handle_movement("forward", 1.0, 1.0))
+                    break
 
 while(1):
     data = s.recv(BUFFER_SIZE)
