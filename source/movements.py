@@ -21,6 +21,7 @@ def handle_movement(type, *args):
                "brake":           go_drive,
                "rotate_left":     go_drive,
                "rotate_right":    go_drive,
+               "rotate_robot":    go_rotate,
                "light":           go_light,
                "camera":          go_camera,
                "trace":           go_trace,
@@ -36,6 +37,12 @@ def go_drive(s1, s2):
     s1 = str(s1)
     s2 = str(s2)
     string = "DRIVE {Left " + s1 + "} {Right " + s2 + "}\r\n"
+    print string
+    return string
+
+def go_rotate(s1):
+    s1 = str(s1)
+    string = "DRIVE {RotationalVelocity " + s1 + "}"
     print string
     return string
 
