@@ -4,9 +4,9 @@ import socket
 import re
 import sys
 
-  TCP_IP = '127.0.0.1'
-  TCP_PORT = 2001
-  BUFFER_SIZE = 1024
+TCP_IP = '127.0.0.1'
+TCP_PORT = 2001
+BUFFER_SIZE = 1024
 flag = 0
 list = []
 
