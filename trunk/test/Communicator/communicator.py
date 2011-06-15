@@ -3,6 +3,7 @@ import re
 import threading
 import time
 import sys
+import errno
 
 class listener(threading.Thread):
     def __init__(self,list, flag):
@@ -42,11 +43,13 @@ class listener(threading.Thread):
                     print(datasplit)
                     if(datasplit[0] == "REQ"):
                         self.list[i][0].send("bla")
+                        datasplit[0] = ''
                 except (socket.error):
                     if self.flag  == 1:
                         print ("blaat")
                         break
                     continue
+        
 
 
 class acceptor(threading.Thread):
@@ -114,10 +117,11 @@ class acceptor(threading.Thread):
         print("ik ga de thread sluiten")
         thread1.join()
         s.close()
+        sys.exit()
 
 class config_reader():
     def __init__(self):
-        f = open('config.cfg')
+        f = open('config')
         addresses = []
         config = f.readlines()
         for i in range(len(config)):
@@ -134,14 +138,22 @@ class config_reader():
                     return list[i][0]
         for i in range(len(self.addresses)):
             print("searching")
-            print(self.addresses[i])
+            print(self.addresses[i])       
             if(self.addresses[i][0] == module):
-                print("adres gevonden")
-                s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                s.connect((self.addresses[i][1], int(self.addresses[i][2])))
-                address = socket.gethostbyname_ex(self.addresses[i][1])
-                list.append((s, (address[2][0], int(self.addresses[i][2]))))
-                return s
-            
+                while 1:
+                    try:
+                        print("adres gevonden")
+                        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                        s.connect((self.addresses[i][1], int(self.addresses[i][2])))
+                        address = socket.gethostbyname_ex(self.addresses[i][1])
+                        list.append((s, (address[2][0], int(self.addresses[i][2]))))
+                        return s
+                    except EnvironmentError as exc:
+                        if exc.errno == errno.ECONNREFUSED:
+                            print 'trying again in 10 seconds\n\r'
+                            time.sleep(10)
+                        else:
+                            raise
+                    else:
+                        break
 
-                    
