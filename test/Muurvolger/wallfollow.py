@@ -70,16 +70,45 @@ def wallsearch(min_val, index_val):
             s.send(handle_movement("forward", 1.0, 1.0))
 
 def wallfollow(min_val, index_val):
-   #print "Roteer 90 graden naar links"
-   s.send(handle_movement("rotate_left", -1.5, 1.0))
-   if index_val == 8:
-       if (index_val == 4) | (index_val == 5):
-           #print "Roteer 90 graden naar links"
-           s.send(handle_movement("rotate_left", -1.5, 1.0))
-       #print "Volg rechtermuur"
-       s.send(handle_movement("forward", 1.0, 1.0))
-   else:
-       wallsearch(min_val, index_val)
+    #print "Roteer 90 graden naar links"
+    s.send(handle_movement("rotate_left", -1.5, 1.0))
+    while index_val != 8:
+        data = s.recv(BUFFER_SIZE)
+        string = data.split('\r\n')
+        sonar_values = []
+        for i in range(len(string)):
+            datasplit = re.findall('\{[^\}]*\}|\S+', string[i])
+            if len(datasplit) > 0:
+                # Sensor message
+                if datasplit[0] == "SEN":
+                    #print datasplit, "\r\n"
+                    typeSEN = datasplit[1].replace('{Type ', '')
+                    typeSEN = typeSEN.replace('}', '')
+                    # Odometry sensor
+                    if typeSEN == "Odometry":
+                        odo_values = odometry_module(datasplit)
+                        #print odo_values, "\r\n"
+                    if len(datasplit) > 2:
+                        typeSEN2 = datasplit[2].replace('{Type ', '')
+                        typeSEN2 = typeSEN2.replace('}', '')
+                        # Range sensor
+                        if typeSEN2 == "Sonar":
+                            #print datasplit, "\r\n"
+                            if len(datasplit) > 9:
+                                for i in range(0, 8):
+                                    sonar_values.append(datasplit[i + 3].replace('{Name F' + str(i + 1) + ' Range ', ''))
+                                    sonar_values[i] = sonar_values[i].replace('}', '')
+                                    #print sonar_values, "\r\n"
+                                    min_val, index_val = min_sonar_val(sonar_values)
+      
+    if index_val == 8:
+        if (index_val == 4) | (index_val == 5):
+            #print "Roteer 90 graden naar links"
+            s.send(handle_movement("rotate_left", -1.5, 1.0))
+        #print "Volg rechtermuur"
+        s.send(handle_movement("forward", 1.0, 1.0))
+    else:
+        wallsearch(min_val, index_val)
 
 def odometry_module(datastring):
     senvalues = datastring[3].replace('{Pose ', '')
@@ -102,6 +131,8 @@ def odometry_module(datastring):
         print "\r\nsorted theta: ", theta, "\r\n"
         diff_theta = abs(float(theta[99]) - float(theta[0]))
         print "kleinste theta: ", theta[0], "\r\ngrootste theta: ", theta[99], "\r\nverschil theta: ", diff_theta
+        if diff_x < 0.2 and diff_y < 0.2 and diff_theta < 0.2:
+           print "Ik sta stil\r\n"
         for i in range(0, len(x)):
             x.pop()
             y.pop()
