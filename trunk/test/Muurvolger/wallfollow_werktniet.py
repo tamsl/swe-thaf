@@ -9,7 +9,7 @@ COLOR = ['Red', 'Yellow', 'Green', 'Cyan', 'White', 'Blue', 'Purple']
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
 #s.send("INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n")
-s.send("INIT {ClassName USARBot.P2DX} {Location 2.0,2.0,1.8} {Name R1}\r\n")
+s.send("INIT {ClassName USARBot.P2DX} {Location -6.0,-4.0 ,1.8} {Name R1}\r\n")
 x = []
 y = []
 theta = []
@@ -57,28 +57,28 @@ def min_laser_val(laser_vals):
     return sorted_laser_vals[0], index_val
 
 def wallsearch(min_val, index_val, length):
-    print "dit is de min val" ,min_val
-    if min_val <= 0.25 and min_val != 0.0:
-        wallfollow(min_val, index_val, length)
+   print "dit is de min val" ,min_val
 ##        print "ben uit wallsearch"
-    else:
 ##        print index_val
-        if index_val in range(length/4):
-##            print "Richting een muur links"
-            s.send(handle_movement("left", -1.0, 1.0))
-        elif index_val in range(3*length/4, length):
-##            print "Richting een muur rechts"
-            s.send(handle_movement("right", 1.0, -1.0))
-        else:
-            #odometry_module()
-##            print "Richting een muur rechtdoor"
-            s.send(handle_movement("forward", 1.0, 1.0))
-
+   if index_val in range(length/4):
+   ##            print "Richting een muur links"
+      s.send(handle_movement("left", -1.0, 1.0))
+   elif index_val in range(3*length/4, length):
+   ##            print "Richting een muur rechts"
+      s.send(handle_movement("right", 1.0, -1.0))
+   else:
+   #odometry_module()
+   ##            print "Richting een muur rechtdoor"
+      s.send(handle_movement("forward", 1.0, 1.0))
+   return 0
 def wallfollow(min_val, index_val, length):
     #print "Roteer 90 graden naar links"
     s.send(handle_movement("rotate_left", -1.5, 1.0))
-    print index_val
-    while index_val not in range(3*length/4, length):
+    print  "dit is de index " ,index_val
+#wacht totdat je met je zijkant aan de muur zit blijf draaien totdat zo is
+    while index_val not in range(length/5)and index_val not in range(5*length/5, length ):
+        print index_val 
+        print "blijf draaien totdat indexval kleiner dan " , length/20 ,"of groter dan", 19*length/20
         data = s.recv(BUFFER_SIZE)
         string = data.split('\r\n')
         laser_values = []
@@ -97,22 +97,25 @@ def wallfollow(min_val, index_val, length):
                 if typeSEN2 == "RangeScanner":
                     if len(datasplit) > 7:
                         laser_values = re.findall('([\d.]*\d+)', datasplit[7])
-                        print "in wallfollow" ,laser_values, "\r\n"              
-                        for i in range(0, len(laser_values)):
-                            min_val, index_val = min_laser_val(laser_values)
-    print (3*length/4)                        
-    if index_val in range(3*length/4, length):
-        h = int(length/2)
+##                        print "in wallfollow" ,laser_values, "\r\n"              
+                        min_val, index_val = min_laser_val(laser_values)
+    #als je met je zij tegen de muur zit moet je rechtdoor  gaan totdat je iets
+    # anders ziet
+    
+    print "dit is de waarde",index_val
+    h = int(length/2)
 ##        print index_val
-        print "ik ben binnen"
-        if index_val in range((h/2)-(h/5), (h/2)+(h/5)):
-            #print "Roteer 90 graden naar links"
-            print "ik ga een muur zoeken" 
-            s.send(handle_movement("rotate_left", -1.5, 1.0))
-        #print "Volg rechtermuur"
-        print "ik ga nu een muur volgen"
-        s.send(handle_movement("forward", 1.0, 1.0))
-    wallsearch(min_val, index_val, length)
+    print "ik ben binnen"
+##   if index_val in range((h/2)-(h/5), (h/2)+(h/5)):
+##      #print "Roteer 90 graden naar links"
+##      print "ik ga een muur zoeken" 
+##      s.send(handle_movement("rotate_left", -1.5, 1.0))
+##    wallsearch(min_val, index_val, length)
+   #print "Volg rechtermuur"
+    print "ik ga nu een muur volgen"
+    s.send(handle_movement("forward", 1.0, 1.0))
+
+    return 1
 
 def odometry_module(datastring):
     senvalues = datastring[3].replace('{Pose ', '')
@@ -142,6 +145,7 @@ def odometry_module(datastring):
             x.pop()
             y.pop()
             theta.pop()
+flag = 0 
 
 while 1:
     data = s.recv(BUFFER_SIZE)
@@ -161,9 +165,37 @@ while 1:
                 # Laser sensor
             if typeSEN2 == "RangeScanner":
                 if len(datasplit) > 7:
-                    laser_values = re.findall('([\d.]*\d+)', datasplit[7])
+                   laser_values = re.findall('([\d.]*\d+)', datasplit[7])
 ##                    print len(laser_values)
 ##                    print "in main loop" , laser_values, "\r\n"              
-                    for i in range(len(laser_values)):
-                        min_val, index_val = min_laser_val(laser_values)
-                        wallsearch(min_val, index_val, len(laser_values))
+                   min_val, index_val = min_laser_val(laser_values)
+                   length = int(len(laser_values))
+                   #de threshold veranderd wanneer je verder een muur hebt gevonden
+                   if flag == 1 :
+                      level = 0.37
+                   else:
+                      level = 0.25
+
+                   if min_val <= level:
+##                       if min_val >= 0.4 and index_val in range(length):
+##                          print "ik ga nu draaien"
+##                          s.send(handle_movement("left", 1.0, -1.0))
+##                       else:
+                       #dit is voor het bij sturen als je te dicht bij de muur komt
+                       if min_val <= 0.1:
+                          if min_val > length/2:
+                             s.send(handle_movement("left", -1.0, 1.0))
+                          else:
+                             s.send(handle_movement("right", 1.0, -1.0))
+                        #dit is voor het bij sturen als je een muur aan het volgen bent maar
+                        # je rijt er te veel vanaf
+                       if min_val >= 0.28 and min_val <= 0.32:
+                          "ik ben te ver van de muur ik ga bij sturen"
+                          if min_val > length/2:
+                             s.send(handle_movement("right", 1.0, -1.0))
+                          else:                             
+                             s.send(handle_movement("left", -1.0, 1.0))
+                          
+                       flag = wallfollow(min_val, index_val, len(laser_values))
+                   else:
+                     flag = wallsearch(min_val, index_val, len(laser_values))
