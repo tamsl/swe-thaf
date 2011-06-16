@@ -120,7 +120,7 @@ def turn_360(odo_values):
                                    if min_val < temp_min_val:
                                        temp_min_val = min_val
                                        temp_index_val = index_val
-                                       temp_odo_values = new_odo_values;
+                                       temp_odo_values = new_odo_values
 
 def turn_right_position(min_val, index_val, odo_values):
    s.send(handle_movement("rotate_left", -1.5, 1.0))
