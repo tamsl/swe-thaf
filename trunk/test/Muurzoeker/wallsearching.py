@@ -8,8 +8,8 @@ BUFFER_SIZE = 1024
 COLOR = ['Red', 'Yellow', 'Green', 'Cyan', 'White', 'Blue', 'Purple']
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
-#s.send("INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n")
-s.send("INIT {ClassName USARBot.P2DX} {Location 4.3,1.1,1.8} {Name R1}\r\n")
+s.send("INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n")
+#s.send("INIT {ClassName USARBot.P2DX} {Location 4.3,1.1,1.8} {Name R1}\r\n")
 
 def handle_movement(type, *args):
    handlers = {"forward":         go_drive,
@@ -63,15 +63,11 @@ def odometry_module(datastring):
     senvalues = senvalues.replace('}','')
     odo_values = senvalues.split(',')
     return odo_values
-##    odo_values = []#string_to_float(datastring)
-##    print datastring
-##    #return odo_values[0], odo_values[1], odo_values[2]
-
+   
 def turn_360(odo_values):
    x = odo_values[0]
    y = odo_values[1]
    theta = odo_values[2]
-   #s.send(handle_movement("rotate_robot", 26.0))
    s.send(handle_movement("rotate_left", -1.5, 1.0))
    new_odo_values = [999, 999, 999]
    temp_min_val = 10000
@@ -79,19 +75,10 @@ def turn_360(odo_values):
    temp_odo_values = [999, 999, 999]
    previous_odo_values = [999, 999, 999]
    flag = 0
-##   treshhold_value = odo_values - 1.5
-##   if treshhold_value < 3.14
-##      temp = treshhold_value + 3.14
-##      treshhold_value = 3.14 - temp
    while(1):
       data = s.recv(BUFFER_SIZE)
       string = data.split('\r\n')
       sonar_values = []
-##      print 'kip1'
-##      print new_odo_values
-##      print 'kip2'
-##      print theta
-##      print 'kip3'
       print temp_odo_values
       for i in range(len(string)):
           datasplit = re.findall('\{[^\}]*\}|\S+', string[i]) 
@@ -108,20 +95,13 @@ def turn_360(odo_values):
                       print new_odo_values, "\r\n"
                       if new_odo_values[2] > previous_odo_values[2]:
                          if flag == 2:
-##                           print temp_odo_values
-                           s.send(handle_movement("brake", 0.0, 0.0))
-                           print "great success"
-##                           turn_right_position(temp_min_val, temp_index_val, temp_odo_values)
-##                           return
+                             s.send(handle_movement("brake", 0.0, 0.0))
+                             print "De kleinste min value gevonden"
+                             turn_right_position(temp_min_val, temp_index_val, temp_odo_values)
                          flag = 1
                       if flag == 1 and new_odo_values[2] <  0:
                          flag = 2
                       previous_odo_values = new_odo_values
-##                      if (new_odo_values < treshhold_value) or (new_odo_values < treshhold_value)
-##                      if theta - 0.05 < new_odo_values[2] and new_odo_values[2] < theta + 0.05 and flag == 1:
-##                           print temp_odo_values
-##                           s.send(handle_movement("brake", 0.0, 0.0))
-##                           turn_right_position(temp_min_val, temp_index_val, temp_odo_values)
                   if len(datasplit) > 2:
                        typeSEN2 = datasplit[2].replace('{Type ', '')
                        typeSEN2 = typeSEN2.replace('}', '')
@@ -132,9 +112,10 @@ def turn_360(odo_values):
                                for i in range(0, 8):
                                    sonar_values.append(datasplit[i + 3].replace('{Name F' + str(i + 1) + ' Range ', ''))
                                    sonar_values[i] = sonar_values[i].replace('}', '')
-##                               print 'klaas'
-##                               print sonar_values, "\r\n"
                                min_val, index_val = min_sonar_val(sonar_values)
+                               if min_val <= 0.2:
+                                   print "De muur gevonden"
+                                   s.send(handle_movement("brake", 0.0, 0.0))
                                if index_val == 5 or index_val == 4:
                                    if min_val < temp_min_val:
                                        temp_min_val = min_val
@@ -142,15 +123,11 @@ def turn_360(odo_values):
                                        temp_odo_values = new_odo_values;
 
 def turn_right_position(min_val, index_val, odo_values):
-   #s.send(handle_movement("rotate_robot", 0.05))
    s.send(handle_movement("rotate_left", -1.5, 1.0))
    new_odo_values = [999, 999, 999]
+   previous_odo_values = [999, 999, 999]
    flag = 0
    while(1):
-      if odo_values[2] - 0.15 < new_odo_values[2]  and new_odo_values[2] < odo_values[2] + 0.15:
-          if flag == 1:
-              break
-          flag = 1
       data = s.recv(BUFFER_SIZE)
       string = data.split('\r\n')
       sonar_values = []
@@ -164,33 +141,47 @@ def turn_right_position(min_val, index_val, odo_values):
                   typeSEN = typeSEN.replace('}', '')
                   # Odometry sensor
                   if typeSEN == "Odometry":
-                      new_odo_values = odometry_module(datasplit)
-   s.send(handle_movement("brake", 0.0, 0.0))
-   wallsearch(min_val, index_val)
+                      print datasplit
+                      new_odo_values = string_to_float(odometry_module(datasplit))
+                      print new_odo_values, "\r\n"
+                      if new_odo_values[2] > previous_odo_values[2]:
+                         if flag == 2:
+                             s.send(handle_movement("brake", 0.0, 0.0))
+                             print "De juiste positie gevonden"
+                             wallsearch(min_val, index_val)
+                             return
+                         flag = 1
+                      if flag == 1 and new_odo_values[2] <  0:
+                         flag = 2
+                      previous_odo_values = new_odo_values
          
 def wallsearch(min_val, index_val):
-    if min_val:
-        if index_val == 1:
-            print "Richting een muur links"
-            s.send(handle_movement("rotate_left", -2.0, 2.0))
-        elif index_val == 2:
-            print "Richting een muur links"
-            s.send(handle_movement("rotate_left", -1.5, 1.5))
-        elif index_val == 3:
-            print "Richting een muur links"
-            s.send(handle_movement("rotate_left", -1.0, 1.0))
-        elif index_val == 6:
-            print "Richting een muur rechts"
-            s.send(handle_movement("rotate_right", 1.0, -1.0))
-        elif index_val == 7:
-            print "Richting een muur rechts"
-            s.send(handle_movement("rotate_right", 1.5, -1.5))
-        elif index_val == 8:
-            print "Richting een muur rechts"
-            s.send(handle_movement("rotate_right", 2.0, -2.0))
-        elif index_val == 4 or index_val == 5:
-            print "Richting een muur rechtdoor"
-            s.send(handle_movement("forward", 1.0, 1.0))
+    print min_val
+    if min_val <= 0.2:
+        print "De muur gevonden"
+        s.send(handle_movement("brake", 0.0, 0.0))
+    else:
+       if index_val == 1:
+           print "Richting een muur links"
+           s.send(handle_movement("rotate_left", -2.0, 2.0))
+       elif index_val == 2:
+           print "Richting een muur links"
+           s.send(handle_movement("rotate_left", -1.5, 1.5))
+       elif index_val == 3:
+           print "Richting een muur links"
+           s.send(handle_movement("rotate_left", -1.0, 1.0))
+       elif index_val == 6:
+           print "Richting een muur rechts"
+           s.send(handle_movement("rotate_right", 1.0, -1.0))
+       elif index_val == 7:
+           print "Richting een muur rechts"
+           s.send(handle_movement("rotate_right", 1.5, -1.5))
+       elif index_val == 8:
+           print "Richting een muur rechts"
+           s.send(handle_movement("rotate_right", 2.0, -2.0))
+       elif index_val == 4 or index_val == 5:
+           print "Richting een muur rechtdoor"
+           s.send(handle_movement("forward", 1.0, 1.0))
 
 while(1):
     data = s.recv(BUFFER_SIZE)
