@@ -9,7 +9,8 @@ COLOR = ['Red', 'Yellow', 'Green', 'Cyan', 'White', 'Blue', 'Purple']
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
 #s.send("INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n")
-s.send("INIT {ClassName USARBot.P2DX} {Location 4.5,2.0,1.8} {Name R1}\r\n")
+s.send("INIT {ClassName USARBot.P2DX} {Location 2.0,1.8,1.8} {Name R1}\r\n")
+print("robot gemaakt")
 x = []
 y = []
 theta = []
@@ -70,6 +71,7 @@ def wallsearch(min_val, index_val):
             s.send(handle_movement("forward", 1.0, 1.0))
 
 def wallfollow(min_val, index_val):
+
     #print "Roteer 90 graden naar links"
     s.send(handle_movement("rotate_left", -1.5, 1.0))
     while index_val != 8:
@@ -99,7 +101,7 @@ def wallfollow(min_val, index_val):
                                     sonar_values.append(datasplit[i + 3].replace('{Name F' + str(i + 1) + ' Range ', ''))
                                     sonar_values[i] = sonar_values[i].replace('}', '')
                                     #print sonar_values, "\r\n"
-                                    min_val, index_val = min_sonar_val(sonar_values)
+                                 min_val, index_val = min_sonar_val(sonar_values)
       
     if index_val == 8:
         if (index_val == 4) | (index_val == 5):
@@ -109,6 +111,7 @@ def wallfollow(min_val, index_val):
         s.send(handle_movement("forward", 1.0, 1.0))
     else:
         wallsearch(min_val, index_val)
+
 
 def odometry_module(datastring):
     senvalues = datastring[3].replace('{Pose ', '')
@@ -166,5 +169,5 @@ while 1:
                                 sonar_values.append(datasplit[i + 3].replace('{Name F' + str(i + 1) + ' Range ', ''))
                                 sonar_values[i] = sonar_values[i].replace('}', '')
                                 #print sonar_values, "\r\n"
-                                min_val, index_val = min_sonar_val(sonar_values)
-                                wallsearch(min_val, index_val)
+                             min_val, index_val = min_sonar_val(sonar_values)
+                             wallsearch(min_val, index_val)
