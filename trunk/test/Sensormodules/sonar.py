@@ -36,9 +36,10 @@ for i in range(100):
                 if len(datasplit) > 2:
                     typeSEN2 = datasplit[2].replace('{Type ', '')
                     typeSEN2 = typeSEN2.replace('}', '')
-                if typeSEN2 == "Sonar":
-                    print datasplit, "\r\n"
+		    # Sonar sensor
+                    if typeSEN2 == "Sonar":
 		        sonar_values = sensor_module(datasplit)    
+
 s.close()
 
 
