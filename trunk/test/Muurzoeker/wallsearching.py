@@ -79,7 +79,7 @@ def turn_360(odo_values):
       data = s.recv(BUFFER_SIZE)
       string = data.split('\r\n')
       sonar_values = []
-      print temp_odo_values
+##      print temp_odo_values
       for i in range(len(string)):
           datasplit = re.findall('\{[^\}]*\}|\S+', string[i]) 
           if len(datasplit) > 0:
@@ -90,13 +90,13 @@ def turn_360(odo_values):
                   typeSEN = typeSEN.replace('}', '')
                   # Odometry sensor
                   if typeSEN == "Odometry":
-                      print datasplit
+##                      print datasplit
                       new_odo_values = string_to_float(odometry_module(datasplit))
-                      print new_odo_values, "\r\n"
+##                      print new_odo_values, "\r\n"
                       if new_odo_values[2] > previous_odo_values[2]:
                          if flag == 2:
                              s.send(handle_movement("brake", 0.0, 0.0))
-                             print "De kleinste min value gevonden"
+##                             print "De kleinste min value gevonden"
                              turn_right_position(temp_min_val, temp_index_val, temp_odo_values)
                          flag = 1
                       if flag == 1 and new_odo_values[2] <  0:
@@ -107,14 +107,14 @@ def turn_360(odo_values):
                        typeSEN2 = typeSEN2.replace('}', '')
                        # Range sensor
                        if typeSEN2 == "Sonar":
-                           print datasplit, "\r\n"
+##                           print datasplit, "\r\n"
                            if len(datasplit) > 9:
                                for i in range(0, 8):
                                    sonar_values.append(datasplit[i + 3].replace('{Name F' + str(i + 1) + ' Range ', ''))
                                    sonar_values[i] = sonar_values[i].replace('}', '')
                                min_val, index_val = min_sonar_val(sonar_values)
                                if min_val <= 0.2:
-                                   print "De muur gevonden"
+##                                   print "De muur gevonden"
                                    s.send(handle_movement("brake", 0.0, 0.0))
                                if index_val == 5 or index_val == 4:
                                    if min_val < temp_min_val:
@@ -141,9 +141,9 @@ def turn_right_position(min_val, index_val, odo_values):
                   typeSEN = typeSEN.replace('}', '')
                   # Odometry sensor
                   if typeSEN == "Odometry":
-                      print datasplit
+##                      print datasplit
                       new_odo_values = string_to_float(odometry_module(datasplit))
-                      print new_odo_values, "\r\n"
+##                      print new_odo_values, "\r\n"
                       if new_odo_values[2] > previous_odo_values[2]:
                          if flag == 2:
                              s.send(handle_movement("brake", 0.0, 0.0))
@@ -158,7 +158,7 @@ def turn_right_position(min_val, index_val, odo_values):
 def wallsearch(min_val, index_val):
     print min_val
     if min_val <= 0.2:
-        print "De muur gevonden"
+##        print "De muur gevonden"
         s.send(handle_movement("brake", 0.0, 0.0))
     else:
        if index_val == 1:
