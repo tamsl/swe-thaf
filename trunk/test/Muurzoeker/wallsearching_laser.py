@@ -8,7 +8,7 @@ BUFFER_SIZE = 1024
 COLOR = ['Red', 'Yellow', 'Green', 'Cyan', 'White', 'Blue', 'Purple']
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
-s.send("INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n")
+s.send("INIT {ClassName USARBot.P2DX} {Location -1.0,1.9,1.8} {Name R1}\r\n")
 #s.send("INIT {ClassName USARBot.P2DX} {Location 4.3,1.1,1.8} {Name R1}\r\n")
 
 def handle_movement(type, *args):
@@ -98,7 +98,7 @@ def turn_360(odo_values):
                              s.send(handle_movement("brake", 0.0, 0.0))
                              print "De kleinste min value gevonden"
                              turn_right_position(temp_min_val, temp_index_val, temp_odo_values)
-                             return#placeholder wallfollow
+                             return #placeholder wallfollow
                          flag = 1
                       if flag == 1 and new_odo_values[2] <  0:
                          flag = 2
@@ -119,9 +119,9 @@ def turn_360(odo_values):
                                treshold = len(laser_values)/20
                                if index_val <= middle+treshold and index_val >= middle -treshold:
                                    if min_val < temp_min_val:
-##                                       print min_val
-##                                       print index_val
-##                                       print 'minimum waarde'
+                                       print min_val
+                                       print index_val
+                                       print 'minimum waarde'
                                        temp_min_val = min_val
                                        temp_index_val = index_val
                                        temp_odo_values = new_odo_values
@@ -155,16 +155,6 @@ def turn_right_position(min_val, index_val, odo_values):
                           wallsearch()
                           print " turn to the right position",index_val
                           return
-##                      if new_odo_values[2] > previous_odo_values[2]:
-##                         if flag == 2:
-##                             s.send(handle_movement("brake", 0.0, 0.0))
-##                             #print "De juiste positie gevonden"
-##                             wallsearch(min_val, index_val)
-##                             return
-##                         flag = 1
-##                      if flag == 1 and new_odo_values[2] <  0:
-##                         flag = 2
-##                      previous_odo_values = new_odo_values
 
 def wallsearch():
     print 'ik ben hier ik wil stoppen'
@@ -187,22 +177,12 @@ def wallsearch():
                          laser_values = re.findall('([\d.]*\d+)', datasplit[7])
 ##                         print laser_values
                          min_val, index_val = min_laser_val(laser_values)
-
        print "minval in wallseatch ",min_val
        if min_val <= 0.3:
            print "De muur gevonden"
            s.send(handle_movement("brake", 0.0, 0.0))
            break
-##    else:
-##        if index_val < 66:
-##            print "Richting een muur links"
-##            s.send(handle_movement("rotate_left", -2.0, 2.0))
-##        elif index_val > 67:
-##            print "Richting een muur rechts"
-##            s.send(handle_movement("rotate_right", 2.0, -2.0))
-##        elif index_val == 66 or index_val == 67:
-##            print "Richting een muur rechtdoor"
-##            s.send(handle_movement("forward", 1.0, 1.0))                                           
+                                         
 while(1):
     print "ik ben nu weer hier"
     data = s.recv(BUFFER_SIZE)
