@@ -3,14 +3,14 @@ import socket
 import re
 
 TCP_IP = '127.0.0.1'
-TCP_PORT = 2002
+TCP_PORT = 2001
 BUFFER_SIZE = 1024
 COLOR = ['Red', 'Yellow', 'Green', 'Cyan', 'White', 'Blue', 'Purple']
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
 s.send("INIT {ClassName USARBot.P2DX} {Location -1.0,1.9,1.8} {Name R1}\r\n")
 
-# The partial movement handler contains all sorts of possible movements
+# The partial movement handler contains all sorts of possible movements.
 def handle_movement(type, *args):
    handlers = {"forward":         go_drive,
                "left":            go_drive,
@@ -23,41 +23,41 @@ def handle_movement(type, *args):
               }
    return handlers[type](*args)
 
-# Method to drive forward and backwards, make turns and rotations
+# Method to drive forward and backwards, make turns and rotations.
 def go_drive(s1, s2):
     s1 = str(s1)
     s2 = str(s2)
     string = "DRIVE {Left " + s1 + "} {Right " + s2 + "}\r\n"
     return string
 
-# Method to make rotations
+# Method to make rotations.
 def go_rotate(s1):
     s1 = str(s1)
     string = "DRIVE {RotationalVelocity " + s1 + "}"
     return string
 
-# Method to convert strings to floats
+# Method to convert strings to floats.
 def string_to_float(vals):
     float_vals = []
     for i in range(len(vals)):
         float_vals.append(float(vals[i]))
     return float_vals     
 
-# Method to find the minimum value and its index value
+# Method to find the minimum value and its index value.
 def min_laser_val(laser_vals):
     laser_vals = string_to_float(laser_vals)
     sorted_laser_vals = sorted(laser_vals)
     index_val = laser_vals.index(sorted_laser_vals[0]) + 1
     return sorted_laser_vals[0], index_val
 
-# Method to retrieve the list of odometry values
+# Method to retrieve the list of odometry values.
 def odometry_module(datastring):
     senvalues = datastring[3].replace('{Pose ', '')
     senvalues = senvalues.replace('}','')
     odo_values = senvalues.split(',')
     return odo_values
 
-# Method to make a full rotation to determine the nearest wall in the robot its environment
+# Method to make a full rotation to determine the nearest wall in the robot's environment.
 def turn_360(odo_values):
     x = odo_values[0]
     y = odo_values[1]
@@ -70,7 +70,7 @@ def turn_360(odo_values):
     flag = 0
     
     s.send(handle_movement("rotate_left", -1.5, 1.0))
-    while(1):
+    while 1:
         data = s.recv(BUFFER_SIZE)
         string = data.split('\r\n')
         sonar_values = []
@@ -103,11 +103,11 @@ def turn_360(odo_values):
                                 laser_values = re.findall('([\d.]*\d+)', datasplit[7])
                                 min_val, index_val = min_laser_val(laser_values)
                                 print min_val
-                                # Determine the middle of the number of values and a threshold
+                                # Determine the middle of the number of values and a threshold.
                                 middle = len(laser_values) / 2
                                 treshold = len(laser_values) / 20
                                 if index_val <= middle + treshold and index_val >= middle - treshold:
-                                    # The latest minimum value is smaller than the old one
+                                    # The latest minimum value is smaller than the old one.
                                     if min_val < temp_min_val:
                                         print min_val
                                         print index_val
@@ -116,7 +116,7 @@ def turn_360(odo_values):
                                         temp_index_val = index_val
                                         temp_odo_values = new_odo_values
 
-# Method to rotate to the determined position
+# Method to rotate to the determined position.
 def turn_right_position(min_val, index_val, odo_values):
     new_odo_values = [999, 999, 999]
     previous_odo_values = [999, 999, 999]
@@ -146,7 +146,7 @@ def turn_right_position(min_val, index_val, odo_values):
                             print "Move to the right position", index_val
                             return
 
-# Move to the nearest wall
+# Move to the nearest wall.
 def wallsearch():
     min_val = 100000000
     while 1:
@@ -171,8 +171,8 @@ def wallsearch():
             s.send(handle_movement("brake", 0.0, 0.0))
             break
          
-# Test the wallsearching for the laser sensor
-while(1):
+# Test the wallsearching for the laser sensor.
+while 1:
     data = s.recv(BUFFER_SIZE)
     string = data.split('\r\n')
     sonar_values = []
