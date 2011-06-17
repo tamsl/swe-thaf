@@ -37,15 +37,8 @@ for i in range(100):
                     typeSEN2 = datasplit[2].replace('{Type ', '')
                     typeSEN2 = typeSEN2.replace('}', '')
                 if typeSEN2 == "Sonar":
-                     print datasplit, "\r\n"
-                     if len(datasplit) > 9:
-                         sonar_values = []
-                         for i in range(0, 8):
-                              sonar_values.append(datasplit[i + 3].replace('{Name F' + str(i+1) + ' Range ', ''))
-                              sonar_values[i] = sonar_values[i].replace('}', '')
-                         # Print the sonar values only.
-                         print sonar_values, "\r\n"
-
+                    print datasplit, "\r\n"
+		        sonar_values = sensor_module(datasplit)    
 s.close()
 
 
