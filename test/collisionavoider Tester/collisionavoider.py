@@ -4,7 +4,7 @@ import socket
 import re
 
 TCP_IP = '127.0.0.1'
-TCP_PORT = 2001
+TCP_PORT = 2002
 BUFFER_SIZE = 1024
 COLOR = ['Red', 'Yellow', 'Green', 'Cyan', 'White', 'Blue', 'Purple']
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -137,7 +137,7 @@ def getdata():
 ##                                if min_val <= 0.22:
 ##                                    s.send(handle_movement("reverse"))
 ##                                print "ik ga botsen"
-                                s.send(handle_movement("brake"))
+                                s.send(handle_movement("brake", 0.0, 0.0))
                                 return 1
                             if (index_val == 4 or index_val == 5) and flag == 0:
                                 print "na zoveel seconden gaan we botsen: ", calc_collision(min_val)
