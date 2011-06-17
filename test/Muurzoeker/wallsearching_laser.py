@@ -107,6 +107,7 @@ def turn_360(odo_values):
                                 middle = len(laser_values) / 2
                                 treshold = len(laser_values) / 20
                                 if index_val <= middle + treshold and index_val >= middle - treshold:
+                                    # The latest minimum value is smaller than the old one
                                     if min_val < temp_min_val:
                                         print min_val
                                         print index_val
@@ -117,10 +118,11 @@ def turn_360(odo_values):
 
 # Method to rotate to the determined position
 def turn_right_position(min_val, index_val, odo_values):
-    s.send(handle_movement("rotate_left", -1.5, 1.0))
     new_odo_values = [999, 999, 999]
     previous_odo_values = [999, 999, 999]
     flag = 0
+    
+    s.send(handle_movement("rotate_left", -1.5, 1.0))
     print "Robot is going to rotate to the right position"
     while(1):
         data = s.recv(BUFFER_SIZE)
