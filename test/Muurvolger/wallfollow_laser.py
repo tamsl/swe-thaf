@@ -13,6 +13,7 @@ x = []
 y = []
 theta = []
 
+# The partial movement handler contains all sorts of possible movements
 def handle_movement(type, *args):
    handlers = {"forward":         go_drive,
                "left":            go_drive,
@@ -25,6 +26,7 @@ def handle_movement(type, *args):
               }
    return handlers[type](*args)
 
+# Method to drive forward and backwards, make turns and rotations
 def go_drive(s1, s2):
     s1 = str(s1)
     s2 = str(s2)
@@ -32,6 +34,7 @@ def go_drive(s1, s2):
     #print string
     return string
 
+# Method to make rotations
 def go_trace(b1, in1, COLOR):
     b1 = str(b1)
     in1 = str(in1)
@@ -39,7 +42,7 @@ def go_trace(b1, in1, COLOR):
     #print string
     return string
 
-# turns the list of strings into floats.
+# Method to convert strings to floats
 def string_to_float(laser_vals):
     float_laser_vals = []
     for i in range(len(laser_vals)):
