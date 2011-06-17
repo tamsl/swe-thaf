@@ -41,6 +41,8 @@ class listener(threading.Thread):
                     print("bericht ontvangen")
                     print(data)
                     print(datasplit)
+                    if not data:
+                        self.list.pop(i)
                     if(datasplit[0] == "REQ"):
                         self.list[i][0].send("bla")
                         datasplit[0] = ''
