@@ -97,7 +97,7 @@ def turn_360(odo_values):
                     if len(datasplit) > 2:
                         typeSEN2 = datasplit[2].replace('{Type ', '')
                         typeSEN2 = typeSEN2.replace('}', '')
-                        # Laser sensor
+                        # Range sensor
                         if typeSEN2 == "RangeScanner":
                             if len(datasplit) > 7:
                                 laser_values = re.findall('([\d.]*\d+)', datasplit[7])
@@ -160,7 +160,7 @@ def wallsearch():
                 if datasplit[0] == "SEN":
                     typeSEN = datasplit[2].replace('{Type ', '')
                     typeSEN = typeSEN.replace('}', '')
-                    # Laser sensor
+                    # Range sensor
                     if typeSEN == "RangeScanner":
                         if len(datasplit) > 7:                         
                             laser_values = re.findall('([\d.]*\d+)', datasplit[7])
@@ -170,7 +170,8 @@ def wallsearch():
             print "The wall has been found"
             s.send(handle_movement("brake", 0.0, 0.0))
             break
-
+         
+# Test the wallsearching for the laser sensor
 while(1):
     data = s.recv(BUFFER_SIZE)
     string = data.split('\r\n')

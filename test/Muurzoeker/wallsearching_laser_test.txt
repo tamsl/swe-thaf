@@ -1,0 +1,87 @@
+0.273
+0.2814
+0.2964
+0.3059
+0.3144
+0.3246
+0.3385
+0.3584
+0.3921
+0.4239
+0.4667
+0.5288
+0.6127
+1.0
+1.5159
+1.0
+1.5254
+1.4875
+1.0
+1.39
+1.25
+1.1806
+1.1711
+1.1866
+1.1964
+1.1854
+1.0
+1.2126
+1.2106
+1.0
+1.2292
+0.36
+0.32
+0.0
+0.29
+0.29
+0.29
+0.2983
+0.3008
+0.304
+0.3083
+0.0
+0.3161
+0.321
+0.321
+66
+minimum value
+0.0
+0.3294
+0.3341
+0.3386
+0.343
+0.3467
+0.3491
+0.3521
+0.3574
+0.3709
+0.3939
+0.4293
+0.4792
+0.5545
+0.6434
+1.4829
+1.4843
+1.488
+1.4927
+1.0
+1.4578
+1.23
+1.0
+1.0
+1.0
+1.0
+1.1897
+1.2145
+1.0
+0.45
+Of all minimun values the smallest one is found
+Robot is going to rotate to the right position
+The right position is found
+Min value in wallsearch  100000000
+Min value in wallsearch  100000000
+Min value in wallsearch  100000000
+Min value in wallsearch  0.0
+The wall has been found
+Move to the right position 66
+Robot is done

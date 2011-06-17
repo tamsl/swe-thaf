@@ -99,7 +99,7 @@ def turn_360(odo_values):
                     if len(datasplit) > 2:
                         typeSEN2 = datasplit[2].replace('{Type ', '')
                         typeSEN2 = typeSEN2.replace('}', '')
-                        # Laser sensor
+                        # Range sensor
                         if typeSEN2 == "Sonar":
                             if len(datasplit) > 9:
                                 for i in range(0, 8):
@@ -176,6 +176,7 @@ def wallsearch(min_val, index_val):
            print "Move to the wall in front"
            s.send(handle_movement("forward", 1.0, 1.0))
 
+# Test the wallsearching for the sonar sensor
 while(1):
     data = s.recv(BUFFER_SIZE)
     string = data.split('\r\n')
