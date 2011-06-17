@@ -1,0 +1,38 @@
+#!/usr/bin/env python
+
+import socket
+import re
+
+TCP_IP = '127.0.0.1'
+TCP_PORT = 2002
+BUFFER_SIZE = 1024
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((TCP_IP, TCP_PORT))
+s.send('INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n')
+
+# Method to retrieve the list of range sensor values
+def laser_module(datastring):
+    print datastring, "\r\n"
+    laser_values = re.findall('([\d.]*\d+)', datasplit[7])
+    print laser_values, "\r\n"
+    return laser_values
+
+# Test the range sensor module
+for i in range(100):
+    s.send("DRIVE {Left 1.0} {Right 1.0}")
+    data = s.recv(BUFFER_SIZE)
+    string = data.split('\r\n')
+    for i in range(len(string)):
+        datasplit = re.findall('\{[^\}]*\}|\S+', string[i])
+        if len(datasplit) > 0:
+            # Sensor message
+            if datasplit[0] == "SEN":
+                if len(datasplit) > 2:
+                    typeSEN = datasplit[2].replace('{Type ', '')
+                    typeSEN = typeSEN.replace('}', '')
+                    # Range sensor
+                    if typeSEN == "RangeScanner":
+                        laser_values = laser_module(datasplit)    
+
+s.close()
