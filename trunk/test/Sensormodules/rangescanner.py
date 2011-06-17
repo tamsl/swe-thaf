@@ -12,7 +12,7 @@ s.connect((TCP_IP, TCP_PORT))
 s.send('INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n')
 
 # Method to retrieve the list of range sensor values
-def laser_module(datastring):
+def range_module(datastring):
     print datastring, "\r\n"
     laser_values = re.findall('([\d.]*\d+)', datasplit[7])
     print laser_values, "\r\n"
@@ -33,6 +33,6 @@ for i in range(100):
                     typeSEN = typeSEN.replace('}', '')
                     # Range sensor
                     if typeSEN == "RangeScanner":
-                        laser_values = laser_module(datasplit)    
+                        laser_values = range_module(datasplit)    
 
 s.close()
