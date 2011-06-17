@@ -1,6 +1,6 @@
 # This is the test module that is specially made for the the wallfollower.
-# It's simular to the original with one change: all the methods get a socket
-# We use relative tresholds, because the range scanneer doesn't always give
+# It's simular to the original with one change: all the methods get a socket.
+# We use relative thresholds, because the rangescanner doesn't always give
 # the same amount of values.
 import string
 import socket
@@ -41,7 +41,7 @@ def go_rotate(s1):
 ##    print string
     return string
 
-# Method to change all string in an array to a float.
+# Method to change all strings in an array to floats.
 def string_to_float(vals):
     float_vals = []
     for i in range(len(vals)):
@@ -72,9 +72,9 @@ def turn_360(odo_values, s):
     x = odo_values[0]
     y = odo_values[1]
     theta = odo_values[2]
-    # we always trun left while searching for a wall
+    # we always turn left while searching for a wall
     s.send(handle_movement("rotate_left", -1.5, 1.0))
-    # to prevent the use of false values.
+    # To prevent the use of false values.
     new_odo_values = [999, 999, 999]
     temp_min_val = 10000
     temp_index_val = 0
@@ -136,7 +136,7 @@ def turn_360(odo_values, s):
 # Method to trun to the smallest value that was found in turn_360.
 def turn_right_position(min_val, index_val, odo_values, s):
     # The robot always stops when the odometry is maximal.
-    # we turn right when the values are smaller than PI otherwise we turn
+    # We turn right when the values are smaller than PI, otherwise we turn
     # left.
     if odo_values[2] < 0:
         s.send(handle_movement("rotate_right", 1.0, -1.5))
@@ -147,7 +147,7 @@ def turn_right_position(min_val, index_val, odo_values, s):
     previous_odo_values = [999, 999, 999]
     flag = 0
     print "ik ga nu naar de goede waarde draaien"
-    while(1):
+    while 1:
         data = s.recv(BUFFER_SIZE)
         string = data.split('\r\n')
         sonar_values = []
@@ -175,7 +175,7 @@ def turn_right_position(min_val, index_val, odo_values, s):
 # Method which stops the robot when it has reached the wall.
 def stop(s):
     print 'ik ben hier ik wil stoppen'
-    # to prevent false values.
+    # To prevent false values.
     min_val =  100000000
     while 1:
         data = s.recv(BUFFER_SIZE)
@@ -196,8 +196,8 @@ def stop(s):
                                 laser_values = re.findall('([\d.]*\d+)', datasplit[7])
 ##                                print laser_values
                                 min_val, index_val = min_laser_val(laser_values)
-        print "minval in wallseatch ",min_val
-        # The treshold.
+        print "minval in wallsearch ",min_val
+        # The threshold.
         if min_val <= 0.3:
             print "De muur gevonden"
             s.send(handle_movement("brake", 0.0, 0.0))
