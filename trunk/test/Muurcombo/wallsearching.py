@@ -68,7 +68,7 @@ def odometry_module(datastring):
 # Method to find the smallest value by driving in circles and then saving
 # the smallest value you find.
 def turn_360(odo_values, s):
-    print odo_values
+##    print odo_values
     x = odo_values[0]
     y = odo_values[1]
     theta = odo_values[2]
@@ -102,7 +102,7 @@ def turn_360(odo_values, s):
                         if new_odo_values[2] > previous_odo_values[2]:
                             if flag == 2:
                                 s.send(handle_movement("brake", 0.0, 0.0))
-                                print "De kleinste min value gevonden"
+##                                print "De kleinste min value gevonden"
                                 turn_right_position(temp_min_val, temp_index_val, temp_odo_values, s)
                                 #placeholder wallfollow
                                 return 1
@@ -122,7 +122,7 @@ def turn_360(odo_values, s):
                                 #print laser_values
                                 #print len(laser_values)
                                 min_val, index_val = min_laser_val(laser_values)
-                                print min_val
+##                                print min_val
                                 # the relative thresholds
                                 middle = len(laser_values)/2
                                 threshold = len(laser_values)/20
@@ -147,7 +147,7 @@ def turn_right_position(min_val, index_val, odo_values, s):
     new_odo_values = [999, 999, 999]
     previous_odo_values = [999, 999, 999]
     flag = 0
-    print "ik ga nu naar de goede waarde draaien"
+##    print "ik ga nu naar de goede waarde draaien"
     while 1:
         data = s.recv(BUFFER_SIZE)
         string = data.split('\r\n')
@@ -167,15 +167,15 @@ def turn_right_position(min_val, index_val, odo_values, s):
                         if new_odo_values[2] < odo_values[2]:
                             # When the value is found stop.
                             s.send(handle_movement("brake", 0.0, 0.0))
-                            print "De juiste positie gevonden"
+##                            print "De juiste positie gevonden"
                             # Drive forward.
                             s.send(handle_movement("forward", 1.0, 1.0))
                             stop(s)
-                            print " turn to the right position", index_val
+##                            print "turn to the right position", index_val
                             return
 # Method which stops the robot when it has reached the wall.
 def stop(s):
-    print 'ik ben hier ik wil stoppen'
+##    print 'ik ben hier ik wil stoppen'
     # To prevent false values.
     min_val =  100000000
     while 1:
@@ -197,9 +197,9 @@ def stop(s):
                                 laser_values = re.findall('([\d.]*\d+)', datasplit[7])
 ##                                print laser_values
                                 min_val, index_val = min_laser_val(laser_values)
-        print "minval in wallsearch ", min_val
+##        print "minval in wallsearch ", min_val
         # The threshold.
         if min_val <= 0.3:
-            print "De muur gevonden"
+##            print "De muur gevonden"
             s.send(handle_movement("brake", 0.0, 0.0))
             break

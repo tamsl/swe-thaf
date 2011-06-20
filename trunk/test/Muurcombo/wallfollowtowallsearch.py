@@ -54,7 +54,7 @@ def min_laser_val(laser_vals):
 
 # Test method for driving towards a located wall.
 def wallsearch(min_val, index_val, length):
-    print "dit is de min val" ,min_val
+##    print "dit is de min val" , min_val
     # If the wall is on the left side of the robot, turn left.
     if index_val in range(length/4):
         s.send(handle_movement("left", -1.0, 1.0))
@@ -119,20 +119,27 @@ while 1:
             typeSEN = datasplit[1].replace('{Type ', '')
             typeSEN = typeSEN.replace('}', '')
             if typeSEN == "Odometry":
-                print datasplit
+##                print datasplit
                 odo_values = odometry_module(datasplit)
                 odo_done = 1
-                print 'hier'
-                print odo_values
+                odometry_string = "Odometry " + odo_values[0] + " " + odo_values[1] + " " + odo_values[2]
+                print odometry_string
+##                print 'hier'
+##                print odo_values
                 #odometry_module(datasplit)
             # Laser sensor
             typeSEN2 = datasplit[2].replace('{Type ', '')
             typeSEN2 = typeSEN2.replace('}', '') 
             if typeSEN2 == "RangeScanner":
+##                print datasplit
                 if len(datasplit) > 7:
                     laser_values = re.findall('([\d.]*\d+)', datasplit[7])
-                    print len(laser_values)
-                    print "in main loop" , laser_values, "\r\n"              
+                    laser_string = "Laser " + str(len(laser_values)) + " "
+                    for i in range(len(laser_values)):
+                        laser_string += laser_values[i] + " "
+                    print laser_string
+##                    print len(laser_values)
+##                    print "in main loop" , laser_values, "\r\n"              
                     min_val, index_val = min_laser_val(laser_values)
                     length = int(len(laser_values))
                     # The threshold for finding the wall changes when it is following a wall.
@@ -164,10 +171,10 @@ while 1:
                         # Follow the wall.
                         flag = wallfollow(min_val, index_val, len(laser_values))
                     else:
-                        print 'zoeken1'
-                        print odo_done
+##                        print 'zoeken1'
+##                        print odo_done
                         if odo_done == 1:
-                            print 'zoeken'
-                            print odo_values
+##                            print 'zoeken'
+##                            print odo_values
                             # Find a wall.
                             flag = wallsearching.turn_360(odo_values, s)
