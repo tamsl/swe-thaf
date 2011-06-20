@@ -98,6 +98,8 @@ def turn_360(odo_values, s):
                     if typeSEN == "Odometry":
                         #print datasplit
                         new_odo_values = string_to_float(odometry_module(datasplit))
+                        odometry_string = "Odometry " + str(new_odo_values[0]) + " " + str(new_odo_values[1]) + " " + str(new_odo_values[2])
+                        print odometry_string
                         #print new_odo_values, "\r\n"
                         if new_odo_values[2] > previous_odo_values[2]:
                             if flag == 2:
@@ -119,6 +121,10 @@ def turn_360(odo_values, s):
                             if len(datasplit) > 7:
                                 # puts all RangeScanner values in an array.
                                 laser_values = re.findall('([\d.]*\d+)', datasplit[7])
+                                laser_string = "Laser " + str(len(laser_values)) + " "
+                                for i in range(len(laser_values)):
+                                   laser_string += laser_values[i] + " "
+                                print laser_string
                                 #print laser_values
                                 #print len(laser_values)
                                 min_val, index_val = min_laser_val(laser_values)
@@ -177,7 +183,7 @@ def turn_right_position(min_val, index_val, odo_values, s):
 def stop(s):
 ##    print 'ik ben hier ik wil stoppen'
     # To prevent false values.
-    min_val =  100000000
+    min_val = 100000000
     while 1:
         data = s.recv(BUFFER_SIZE)
         string = data.split('\r\n')
