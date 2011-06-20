@@ -122,8 +122,6 @@ while 1:
 ##                print datasplit
                 odo_values = odometry_module(datasplit)
                 odo_done = 1
-                odometry_string = "Odometry " + odo_values[0] + " " + odo_values[1] + " " + odo_values[2]
-                print odometry_string
 ##                print 'hier'
 ##                print odo_values
                 #odometry_module(datasplit)
@@ -134,10 +132,6 @@ while 1:
 ##                print datasplit
                 if len(datasplit) > 7:
                     laser_values = re.findall('([\d.]*\d+)', datasplit[7])
-                    laser_string = "Laser " + str(len(laser_values)) + " "
-                    for i in range(len(laser_values)):
-                        laser_string += laser_values[i] + " "
-                    print laser_string
 ##                    print len(laser_values)
 ##                    print "in main loop" , laser_values, "\r\n"              
                     min_val, index_val = min_laser_val(laser_values)
