@@ -107,7 +107,7 @@ def turn_360(odo_values, s):
                                 #placeholder wallfollow
                                 return 1
                             flag = 1
-                        if flag == 1 and new_odo_values[2] <0:
+                        if flag == 1 and new_odo_values[2] < 0:
                             flag = 2
                         previous_odo_values = new_odo_values
                     if len(datasplit) > 2:
@@ -164,7 +164,7 @@ def turn_right_position(min_val, index_val, odo_values, s):
                     if typeSEN == "Odometry":
                         #print datasplit
                         new_odo_values = string_to_float(odometry_module(datasplit))
-                        if(new_odo_values[2] < odo_values[2]):
+                        if new_odo_values[2] < odo_values[2]:
                             # When the value is found stop.
                             s.send(handle_movement("brake", 0.0, 0.0))
                             print "De juiste positie gevonden"
