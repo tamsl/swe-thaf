@@ -9,7 +9,7 @@ BUFFER_SIZE = 1024
 COLOR = ['Red', 'Yellow', 'Green', 'Cyan', 'White', 'Blue', 'Purple']
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
-s.send("INIT {ClassName USARBot.P2DX} {Location -5.0,-3.0,1.8} {Name R1}\r\n")
+s.send("INIT {ClassName USARBot.P2DX} {Location -5.0,-1.0,1.8} {Name R1}\r\n")
 
 def handle_movement(type, *args):
    handlers = {"forward":         go_drive,
@@ -73,7 +73,7 @@ def wallfollow(min_val, index_val, length):
     # Rotate to the left so you have the wall on the left or right side of the
     # robot.
     s.send(handle_movement("rotate_left", -1.5, 1.0))
-    while index_val not in range(length/5)and index_val not in range(5*length/5, length ):
+    while index_val not in range(length/5) and index_val not in range(5*length/5, length ):
         data = s.recv(BUFFER_SIZE)
         string = data.split('\r\n')
         laser_values = []
