@@ -81,7 +81,7 @@ def turn_360(odo_values, s):
     temp_odo_values = [999, 999, 999]
     previous_odo_values = [999, 999, 999]
     flag = 0
-    while(1):
+    while 1:
         data = s.recv(BUFFER_SIZE)
         string = data.split('\r\n')
         sonar_values = []
@@ -104,9 +104,10 @@ def turn_360(odo_values, s):
                                 s.send(handle_movement("brake", 0.0, 0.0))
                                 print "De kleinste min value gevonden"
                                 turn_right_position(temp_min_val, temp_index_val, temp_odo_values, s)
-                                return 1#placeholder wallfollow
+                                #placeholder wallfollow
+                                return 1
                             flag = 1
-                        if flag == 1 and new_odo_values[2] <  0:
+                        if flag == 1 and new_odo_values[2] <0:
                             flag = 2
                         previous_odo_values = new_odo_values
                     if len(datasplit) > 2:
@@ -124,8 +125,8 @@ def turn_360(odo_values, s):
                                 print min_val
                                 # the relative thresholds
                                 middle = len(laser_values)/2
-                                treshold = len(laser_values)/20
-                                if index_val <= middle+treshold and index_val >= middle -treshold:
+                                threshold = len(laser_values)/20
+                                if index_val <= middle + threshold and index_val >= middle - threshold:
                                     if min_val < temp_min_val:
 ##                                        print min_val
 ##                                        print index_val
@@ -170,7 +171,7 @@ def turn_right_position(min_val, index_val, odo_values, s):
                             # Drive forward.
                             s.send(handle_movement("forward", 1.0, 1.0))
                             stop(s)
-                            print " turn to the right position",index_val
+                            print " turn to the right position", index_val
                             return
 # Method which stops the robot when it has reached the wall.
 def stop(s):
@@ -196,7 +197,7 @@ def stop(s):
                                 laser_values = re.findall('([\d.]*\d+)', datasplit[7])
 ##                                print laser_values
                                 min_val, index_val = min_laser_val(laser_values)
-        print "minval in wallsearch ",min_val
+        print "minval in wallsearch ", min_val
         # The threshold.
         if min_val <= 0.3:
             print "De muur gevonden"
