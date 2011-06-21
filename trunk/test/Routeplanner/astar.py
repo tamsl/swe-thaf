@@ -1,9 +1,6 @@
-# A* Shortest Path Algorithm
-# http://en.wikipedia.org/wiki/A*
-# FB - 201012256
 from heapq import heappush, heappop # for priority queue
-import math
 import time
+import math
 import random
 
 class node:
@@ -30,13 +27,9 @@ class node:
     def estimate(self, x_dest, y_dest):
         xd = x_dest - self.x
         yd = y_dest - self.y
-        # Euclidian Distance
-        # d = math.sqrt(xd * xd + yd * yd)
         # Manhattan distance
         d = abs(xd) + abs(yd)
-        # Chebyshev distance
-        # d = max(abs(xd), abs(yd))
-        return(d)
+        return d
 
 # A-star algorithm.
 # The path returned will be a string of digits of directions.
@@ -93,7 +86,7 @@ def path_find(the_map, n, m, dirs, dx, dy, ax, ay, bx, by):
                 # generate a child node
                 m0 = node(xdx, ydy, n0.distance, n0.priority)
                 m0.next_move(dirs, i)
-                m0.update_priority(xB, yB)
+                m0.update_priority(bx, by)
                 # if it is not in the open list then add into that
                 if open_nodes_map[ydy][xdx] == 0:
                     open_nodes_map[ydy][xdx] = m0.priority
@@ -123,7 +116,6 @@ def path_find(the_map, n, m, dirs, dx, dy, ax, ay, bx, by):
                     heappush(pq[pqi], m0) # add the better node instead
     return '' # if no route found
 
-# MAIN
 dirs = 8 # number of possible directions to move on the map
 if dirs == 4:
     dx = [1, 0, -1, 0]
@@ -132,8 +124,8 @@ elif dirs == 8:
     dx = [1, 1, 0, -1, -1, -1, 0, 1]
     dy = [0, 1, 1, 1, 0, -1, -1, -1]
 
-n = 30 # horizontal size of the map
-m = 30 # vertical size of the map
+n = 80 # horizontal size of the map
+m = 80 # vertical size of the map
 the_map = []
 row = [0] * n
 for i in range(m): # create empty map
@@ -142,7 +134,7 @@ for i in range(m): # create empty map
 # fillout the map with a '+' pattern
 for x in range(n / 8, n * 7 / 8):
     the_map[m / 2][x] = 1
-for y in range(m/8, m * 7 / 8):
+for y in range(m / 8, m * 7 / 8):
     the_map[y][n / 2] = 1
 
 # randomly select start and finish locations from a list
@@ -155,21 +147,21 @@ sf.append((n / 2 - 1, 0, n / 2 + 1, m - 1))
 sf.append((n / 2 + 1, m - 1, n / 2 - 1, 0))
 sf.append((0, m / 2 - 1, n - 1, m / 2 + 1))
 sf.append((n - 1, m / 2 + 1, 0, m / 2 - 1))
-(xA, yA, xB, yB) = random.choice(sf)
+(ax, ay, bx, by) = random.choice(sf)
 
 print 'Map size (X,Y): ', n, m
-print 'Start: ', xA, yA
-print 'Finish: ', xB, yB
+print 'Start: ', ax, ay
+print 'Finish: ', bx, by
 t = time.time()
-route = path_find(the_map, n, m, dirs, dx, dy, xA, yA, xB, yB)
+route = path_find(the_map, n, m, dirs, dx, dy, ax, ay, bx, by)
 print 'Time to generate the route (seconds): ', time.time() - t
 print 'Route:'
 print route
 
 # mark the route on the map
 if len(route) > 0:
-    x = xA
-    y = yA
+    x = ax
+    y = ay
     the_map[y][x] = 2
     for i in range(len(route)):
         j = int(route[i])
