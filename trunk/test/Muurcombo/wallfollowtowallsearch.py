@@ -6,6 +6,7 @@ import wallsearching
 TCP_IP = '127.0.0.1'
 TCP_PORT = 2001
 BUFFER_SIZE = 1024
+data_incomplete = 0
 COLOR = ['Red', 'Yellow', 'Green', 'Cyan', 'White', 'Blue', 'Purple']
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
@@ -73,8 +74,17 @@ def wallfollow(min_val, index_val, length):
     # Rotate to the left so you have the wall on the left or right side of the
     # robot.
     s.send(handle_movement("rotate_left", -1.5, 1.0))
+    data_incomplete = 0
     while index_val not in range(length/5) and index_val not in range(5*length/5, length ):
         data = s.recv(BUFFER_SIZE)
+        if data[len(data)-1] != '\n':
+            datatemp = data
+            data_incomplete = 1
+            continue
+        if data_incomplete:
+            datatemp += data
+            data_incomplete = 0
+            data = datatemp
         string = data.split('\r\n')
         laser_values = []
         for i in range(len(string)):
@@ -84,8 +94,8 @@ def wallfollow(min_val, index_val, length):
                typeSEN2 = datasplit[2].replace('{Type ', '')
                typeSEN2 = typeSEN2.replace('}', '')    
                if typeSEN2 == "RangeScanner":
-                  if len(datasplit) > 7:
-                     laser_values = re.findall('([\d.]*\d+)', datasplit[7])
+                  if len(datasplit) > 6:
+                     laser_values = re.findall('([\d.]*\d+)', datasplit[6])
 ##                     print "in wallfollow" ,laser_values, "\r\n"              
                      # Find the smallest value to see if the wall is on a side.
                      min_val, index_val = min_laser_val(laser_values)
