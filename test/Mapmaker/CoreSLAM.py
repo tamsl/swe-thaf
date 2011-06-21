@@ -21,10 +21,10 @@ TS_OBSTACLE=0
 TS_HOLE_WIDTH=600
 
 MAP_OUTPUT_NAME="Map.bmp"
-LOG_INPUT_NAME="dpslamout.log"
+LOG_INPUT_NAME="volledig.txt"
 
 #Check camToDistance.py for updated camera angle in degrees
-CAMERASPAN=58.0
+CAMERASPAN = 180.0
 
 scanX = 0
 scanY = 1
@@ -219,21 +219,32 @@ def ts_map_laser_ray(Map, x1, y1, x2, y2, xp, yp, value, alpha):
 
 def drawMap(Map, mapName = MAP_OUTPUT_NAME):
     cell_side = 1
-    #image=BitMap(TS_MAP_SIZE*cell_side, TS_MAP_SIZE*cell_side)
-    im = Image.new('RGB', [TS_MAP_SIZE*cell_side, TS_MAP_SIZE*cell_side])
-    pix = im.load()
+##    image=BitMap(TS_MAP_SIZE*cell_side, TS_MAP_SIZE*cell_side)
+##    im = Image.new('RGB', [TS_MAP_SIZE*cell_side, TS_MAP_SIZE*cell_side])
+##    pix = im.load()
+    fn = open("ronddraaien.ppm","w")
+    fn.write("P3")
+    fn.write("\n")
+    fn.write(str(TS_MAP_SIZE)+"\t"+str(TS_MAP_SIZE))
+    fn.write("\n")
+    fn.write("255\n")
     for row in range((TS_MAP_SIZE*cell_side)):
         rowFlip=TS_MAP_SIZE*cell_side-row-1 #row
         for col in range((TS_MAP_SIZE*cell_side)):
             pixVal=Map[rowFlip/cell_side*TS_MAP_SIZE+col/cell_side]
             pixVal=int(pixVal*255.0/TS_NO_OBSTACLE)
             #pixColor=Color(pixVal,pixVal,pixVal)
-            pix[col, row] = (pixVal, pixVal, pixVal)
+            fn.write(str(pixVal)+"\t")
+            fn.write(str(pixVal)+"\t")
+            fn.write(str(pixVal)+"\t")
+##            pix[col, row] = (pixVal, pixVal, pixVal)
             #image.setPenColor(pixColor)
             #image.plotPoint(col, row)
     #image.saveFile(mapName)
-    im.save(mapName)
-    print 'Map File Saved as', mapName
+    fn.flush()
+    fn.close()
+##    im.save(mapName)
+##    print 'Map File Saved as', mapName
 
 def drawCroppedMap(Map, mapRowLength, mapColLength):
     cell_side = 1
@@ -294,9 +305,9 @@ def mapParser(filename):
 
         #Temporary convert from meters to centimeters and radians to degrees
         #Future output logs will have this fixed
-        pos[posY]=pos[posY]/100
-        pos[posX]=pos[posX]/100
-        #pos[theta]=math.degrees(pos[theta])
+        pos[posY]=pos[posY]/3
+        pos[posX]=pos[posX]/3
+        pos[theta]=math.degrees(pos[theta])
 
         
         pos[posY]=pos[posY]+(TS_MAP_SIZE/(2.0*TS_MAP_SCALE))
@@ -307,7 +318,7 @@ def mapParser(filename):
         scans=laser.split()
         NUMLASERS=int(scans[1])
         scans=scans[2:]
-        scans=[float(y) for y in scans]
+        scans=[float(y)/3 for y in scans]
         #print NUMLASERS, pos
 
         makeMap(scans, pos, NUMLASERS, Map)
@@ -357,7 +368,6 @@ def cropToMap(Map):
     print "Found Left Crop", mapLeft
     #Find right region of cropped map
     setRight = False
-    rightCol = TS_MAP_SIZE-1
     while rightCol >= 0 and setRight==False:
         rightRow = 0
         while rightRow < TS_MAP_SIZE and setRight==False:
@@ -454,7 +464,7 @@ def makeHandDrawnMap():
                 #Make sure not changing walls to empty space
                 if Map[i*MAP_SIZE+j] != TS_OBSTACLE:
                     Map[i*MAP_SIZE+j]=TS_NO_OBSTACLE           
-    #drawMap(Map)
+    #(Map)
     return Map
 
 

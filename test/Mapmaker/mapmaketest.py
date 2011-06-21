@@ -2,19 +2,38 @@ import CoreSLAM
 import socket
 import string
 import re
+import math
 
 TCP_IP = '127.0.0.1'
 TCP_PORT = 2001
-BUFFER_SIZE = 1024
+BUFFER_SIZE = 4096
 COLOR = ['Red', 'Yellow', 'Green', 'Cyan', 'White', 'Blue', 'Purple']
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
-#s.send("INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n")
-s.send("INIT {ClassName USARBot.P2DX} {Location 2.0,1.8,1.8} {Name R1}\r\n")
+s.send("INIT {ClassName USARBot.P2DX} {Location 2.5,1.9,1.8} {Name R1}\r\n")
+##s.send("INIT {ClassName USARBot.P2DX} {Location -6.0,3.5,1.8} {Name R1}\r\n")
 print("robot gemaakt")
 x = []
 y = []
 theta = []
+posX=0
+posY=1
+theta=2 # in degrees
+posTheta=2 # in degrees (since some places accidently use posTheta instead of theta)
+
+TS_SCAN_SIZE=181 #8192
+TS_MAP_SIZE=1000 #2048   # number of pixels
+TS_MAP_SCALE=50 #0.1     # scales the pixels appropriately
+
+TS_DISTANCE_NO_DETECTION=5 #4000
+TS_NO_OBSTACLE=65500
+TS_OBSTACLE=0
+TS_HOLE_WIDTH=600
+
+#Check camToDistance.py for updated camera angle in degrees
+CAMERASPAN = 180.0
+
+
 def string_to_float(sonar_vals):
     float_sonar_vals = []
     for i in range(len(sonar_vals)):
@@ -29,73 +48,122 @@ def min_sonar_val(sonar_vals):
     #print index_val
     return sorted_sonar_vals[0], index_val
 
-def odometry_module(datastring):
-    senvalues = datastring[3].replace('{Pose ', '')
-    senvalues = senvalues.replace('}','')
-    odo_values = senvalues.split(',')
-    x.append(odo_values[0])
-    y.append(odo_values[1])
-    theta.append(odo_values[2])
-    if len(x) == 100:
-        print "\r\nx-waarde: ", x, "\r\n\r\ny-waarde: ", y, "\r\n\r\ntheta: ", theta
-        x.sort()
-        y.sort()
-        theta.sort()
-        print "\r\nsorted x: ", x, "\r\n"
-        diff_x = abs(float(x[99]) - float(x[0]))
-        print "kleinste x: ", x[0], "\r\ngrootste x: ", x[99], "\r\nverschil x: ", diff_x
-        print "\r\nsorted y: ", y, "\r\n"
-        diff_y = abs(float(y[99]) - float(y[0]))
-        print "kleinste y: ", y[0], "\r\ngrootste y: ", y[99], "\r\nverschil y: ", diff_y
-        print "\r\nsorted theta: ", theta, "\r\n"
-        diff_theta = abs(float(theta[99]) - float(theta[0]))
-        print "kleinste theta: ", theta[0], "\r\ngrootste theta: ", theta[99], "\r\nverschil theta: ", diff_theta
-        for i in range(0, len(x)):
-            x.pop()
-            y.pop()
-            theta.pop()
-    return odo_values
+def min_laser_val(laser_vals):
+    laser_vals = string_to_float(laser_vals)
+    sorted_laser_vals = sorted(laser_vals)
+    index_val = laser_vals.index(sorted_laser_vals[0]) + 1 
+    return sorted_laser_vals[0], index_val
 
-def datahalen():
+
+        
+Map= CoreSLAM.ts_map_init()
+scans = []
+pos = []
+sonar_values = []
+draw = 0
+data_incomplete = 0
+SCALE = 2
+while 1:
+    s.send("DRIVE {LEFT -1.0} {RIGHT 1.0}\r\n")
     data = s.recv(BUFFER_SIZE)
+    if data[len(data)-1] != '\n':
+        datatemp = data
+        data_incomplete = 1
+        continue
+    if data_incomplete:
+        datatemp += data
+        data_incomplete = 0
+        data = datatemp
     string = data.split('\r\n')
-    sonar_values = []
+##    print string
     for i in range(len(string)):
         datasplit = re.findall('\{[^\}]*\}|\S+', string[i])
-##        print datasplit
         if len(datasplit) > 0:
             # Sensor message
             if datasplit[0] == "SEN":
-                #print datasplit, "\r\n"
                 typeSEN = datasplit[1].replace('{Type ', '')
                 typeSEN = typeSEN.replace('}', '')
-                if typeSEN.find("Time") != -1:
-                    typeSEN = datasplit[2].replace('{Type ', '')
-                    typeSEN = typeSEN.replace('}', '')
-                # Odometry sensor
-                print typeSEN
-                if typeSEN == "Odometry":
-                    #odo_values = odometry_module(datasplit)
-                    #print odo_values, "\r\n"
-                    senvalues = datasplit[3].replace('{Pose ', '')
-                    senvalues = senvalues.replace('}','')
-                    odo_values = senvalues.split(',')
-                    print odo_values
-                if typeSEN == "RangeScanner":
-                    laser_values = re.findall('([\d.]*\d+)', datasplit[7])
-                    
                 if len(datasplit) > 2:
                     typeSEN2 = datasplit[2].replace('{Type ', '')
                     typeSEN2 = typeSEN2.replace('}', '')
-                    # Range sensor
-                    if typeSEN2 == "Sonar":
-                        #print datasplit, "\r\n"
-                        if len(datasplit) > 9:
-                            for i in range(0, 8):
-                                sonar_values.append(datasplit[i + 3].replace('{Name F' + str(i + 1) + ' Range ', ''))
-                                sonar_values[i] = sonar_values[i].replace('}', '')
-                                #print sonar_values, "\r\n"
-                                min_val, index_val = min_sonar_val(sonar_values)
-##Map = CoreSLAM.ts_map_init()
-while 1:
-    datahalen()
+                if typeSEN2 == "RangeScanner":
+                    #datasplit[6] bevat data
+                    if len(datasplit) >= 6:
+                        laser_values = re.findall('([\d.]*\d+)', datasplit[6])
+                        min_vals, index_val = min_laser_val(laser_values)
+                        print laser_values
+                        if min <= 0.2 :
+                            if index_val < len(laser_values)/2:
+                                s.send("DRIVE {LEFT -1.0} {RIGHT 1.0}\r\n")
+                            else:
+                                s.send("DRIVE {LEFT 1.0} {RIGHT -1.0}\r\n")
+                        scans = [float(y)/SCALE for y in laser_values]
+                        print scans
+                if typeSEN == "Odometry":
+                    #geen ide
+                    senvalues = datasplit[3].replace('{Pose ', '')
+                    senvalues = senvalues.replace('}','')
+                    odo_values = senvalues.split(',')
+    ##                    print odo_values
+                    pos = [float(x) for x in odo_values]
+                    print pos
+                    pos[posY]=pos[posY]/SCALE
+                    pos[posX]=pos[posX]/SCALE
+                    pos[theta]=math.degrees(pos[theta])
+
+                    pos[posY]=pos[posY]+(TS_MAP_SIZE/(2.0*TS_MAP_SCALE))
+                    pos[posX]=pos[posX]+(TS_MAP_SIZE/(2.0*TS_MAP_SCALE))
+                    print pos
+                
+
+
+
+##    print scans
+##    print pos
+##    print len(scans)
+##    print len(pos)
+    if len(scans)!=0 and len(pos)!=0:
+        print scans
+        print pos
+        print "ik ga nu map maken"        
+        CoreSLAM.makeMap(scans, pos, len(scans), Map)
+        draw += 1
+        if draw == 50:
+            print " ik ga tekenen"
+            CoreSLAM.drawMap(Map)
+            draw = 0
+        
+        scans = []
+        pos = []
+        
+##    if(odometry==''):
+##        print 'Finished Parsing'
+##        print 'Starting drawMap...'
+##        drawMap(Map)
+##        #cropToMap(Map)
+##        return
+##    odometry=odometry.strip()
+##    pos=odometry.split()
+##    pos=pos[1:4]
+##    pos=[float(x) for x in pos]
+##
+##    #Temporary convert from meters to centimeters and radians to degrees
+##    #Future output logs will have this fixed
+##    pos[posY]=pos[posY]/3
+##    pos[posX]=pos[posX]/3
+##    pos[theta]=math.degrees(pos[theta])
+##
+##    
+##    pos[posY]=pos[posY]+(TS_MAP_SIZE/(2.0*TS_MAP_SCALE))
+##    pos[posX]=pos[posX]+(TS_MAP_SIZE/(2.0*TS_MAP_SCALE))        
+##    
+##    laser=data.readline()
+##    laser=laser.strip()
+##    scans=laser.split()
+##    NUMLASERS=int(scans[1])
+##    scans=scans[2:]
+##    scans=[float(y)/3 for y in scans]
+##    #print NUMLASERS, pos
+##
+##    makeMap(scans, pos, NUMLASERS, Map)
+
