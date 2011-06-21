@@ -83,8 +83,15 @@ def turn_360(odo_values, s):
     flag = 0
     while 1:
         data = s.recv(BUFFER_SIZE)
+        if data[len(data)-1] != '\n':
+            datatemp = data
+            data_incomplete = 1
+            continue
+        if data_incomplete:
+            datatemp += data
+            data_incomplete = 0
+            data = datatemp
         string = data.split('\r\n')
-        sonar_values = []
         #print temp_odo_values
         for i in range(len(string)):
             datasplit = re.findall('\{[^\}]*\}|\S+', string[i])
