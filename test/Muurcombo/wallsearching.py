@@ -81,6 +81,7 @@ def turn_360(odo_values, s):
     temp_odo_values = [999, 999, 999]
     previous_odo_values = [999, 999, 999]
     flag = 0
+    data_incomplete = 0
     while 1:
         data = s.recv(BUFFER_SIZE)
         if data[len(data)-1] != '\n':
@@ -125,9 +126,9 @@ def turn_360(odo_values, s):
                         # Range sensor
                         if typeSEN2 == "RangeScanner":
                             #print datasplit, "\r\n"
-                            if len(datasplit) > 7:
+                            if len(datasplit) > 6:
                                 # puts all RangeScanner values in an array.
-                                laser_values = re.findall('([\d.]*\d+)', datasplit[7])
+                                laser_values = re.findall('([\d.]*\d+)', datasplit[6])
                                 laser_string = "Laser " + str(len(laser_values)) + " "
                                 for i in range(len(laser_values)):
                                    laser_string += laser_values[i] + " "
@@ -160,11 +161,19 @@ def turn_right_position(min_val, index_val, odo_values, s):
     new_odo_values = [999, 999, 999]
     previous_odo_values = [999, 999, 999]
     flag = 0
+    data_incomplete = 0
 ##    print "ik ga nu naar de goede waarde draaien"
     while 1:
         data = s.recv(BUFFER_SIZE)
+        if data[len(data)-1] != '\n':
+            datatemp = data
+            data_incomplete = 1
+            continue
+        if data_incomplete:
+            datatemp += data
+            data_incomplete = 0
+            data = datatemp
         string = data.split('\r\n')
-        sonar_values = []
         for i in range(len(string)):
             datasplit = re.findall('\{[^\}]*\}|\S+', string[i])
             if len(datasplit) > 0:
@@ -191,8 +200,17 @@ def stop(s):
 ##    print 'ik ben hier ik wil stoppen'
     # To prevent false values.
     min_val = 100000000
+    data_incomplete = 0
     while 1:
         data = s.recv(BUFFER_SIZE)
+        if data[len(data)-1] != '\n':
+            datatemp = data
+            data_incomplete = 1
+            continue
+        if data_incomplete:
+            datatemp += data
+            data_incomplete = 0
+            data = datatemp
         string = data.split('\r\n')
         laser_values = []
         for i in range(len(string)):
@@ -206,8 +224,8 @@ def stop(s):
                         # RangeScannner values
                         if typeSEN == "RangeScanner":
                             #print datasplit, "\r\n"
-                            if len(datasplit) > 7:
-                                laser_values = re.findall('([\d.]*\d+)', datasplit[7])
+                            if len(datasplit) > 6:
+                                laser_values = re.findall('([\d.]*\d+)', datasplit[6])
 ##                                print laser_values
                                 min_val, index_val = min_laser_val(laser_values)
 ##        print "minval in wallsearch ", min_val
