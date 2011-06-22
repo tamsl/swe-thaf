@@ -1,3 +1,5 @@
+v1.5
+
 TAG:
 REQ: data sturen
 RCV: data ontvangen
@@ -15,6 +17,6 @@ dividers:
 
 Vorm:
 REQ:
-REQ!"data TAG"!"data"#
+REQ!"module"#
 RCV!"data TAG"!"data"#
 CMD!"commando"#
