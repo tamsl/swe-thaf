@@ -1,0 +1,20 @@
+TAG:
+REQ: data sturen
+RCV: data ontvangen
+CMD: movement commando's
+
+data TAG:
+SNR: sonar
+ODO: odometry
+RSC: rangescanner
+MAP: map
+
+dividers:
+#: eindetransmissie
+!: transmissie divider
+
+Vorm:
+REQ:
+REQ!"data TAG"!"data"#
+RCV!"data TAG"!"data"#
+CMD!"commando"#
