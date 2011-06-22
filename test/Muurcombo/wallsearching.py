@@ -3,6 +3,7 @@
 import string
 import socket
 import re
+import CoreSLAM
 
 BUFFER_SIZE = 1024
 
@@ -64,11 +65,32 @@ def odometry_module(datastring):
     return odo_values
 
 # When the wall is jsut lost see if the wall continues on the sides.
-def wall_continued(side,s):
+def make_position(odo_values):
+    posX=0
+    posY=1
+    theta=2
+    pos = [float(x) for x in odo_values]
+    pos[posY]=pos[posY]/SCALE
+    pos[posX]=pos[posX]/SCALE
+    pos[theta]=math.degrees(pos[theta])
+
+    pos[posY]=pos[posY]+(TS_MAP_SIZE/(2.0*TS_MAP_SCALE))
+    pos[posX]=pos[posX]+(TS_MAP_SIZE/(2.0*TS_MAP_SCALE))
+    
+def map_update(scans, pos, length, Map)
+    CoreSLAM.makeMap(scans, pos, len(scans), Map)
+    draw += 1
+    if draw == 50:
+        print " ik ga tekenen"
+        CoreSLAM.drawMap(Map)
+        draw = 0
+
+def wall_continued(side,s,Map):
     # if side is 1 then the wall is on the right otherwise it's on the left side.
     laser_values = []
     odo_values  = []
     flag = 0
+    data_incomplete = 0
     while 1:
         data = s.recv(BUFFER_SIZE)
         if data[len(data)-1] != '\n':
@@ -89,6 +111,7 @@ def wall_continued(side,s):
                 typeSEN = typeSEN.replace('}', '')
                 if typeSEN == "Odometry":
                     odo_values = odometry_module(datasplit)
+                    pos = make_position(odo_values)
                     odo_done = 1
                 # Laser sensor
                 typeSEN2 = datasplit[2].replace('{Type ', '')
@@ -97,33 +120,35 @@ def wall_continued(side,s):
                     if len(datasplit) > 6:
                         laser_values = re.findall('([\d.]*\d+)', datasplit[6])
                         min_val, index_val = min_laser_val(laser_values)
-        if side:
-            #turn right
-            print laser_values[-1]
-            if flag == 0 :
-                s.send("DRIVE {LEFT -1.0} {RIGHT 1.0}\r\n")
-                flag = 1
-            if flag == 1: 
-                if laser_values[-1] >=  1.5:
-                   turn_360(odovalues,s)
+                        scans = [float(y)/SCALE for y in laser_values]
+        if len(laser_values) != 0:
+            if side:
+                #turn right
+                print laser_values[-1]
+                if flag == 0 :
+                    s.send("DRIVE {LEFT -1.0} {RIGHT 1.0}\r\n")
+                    flag = 1
+                if flag == 1: 
+                    if laser_values[-1] >=  1.5:
+                       turn_360(odovalues,s)
+                else:
+                    s.send("DRIVE {LEFT 1.0} {RIGHT -2.0}\r\n")
             else:
-                s.send("DRIVE {LEFT 1.0} {RIGHT -2.0}\r\n")
-        else:
-            #turn left
-            print laser_values[0]
-            if flag == 0 :
-                s.send("DRIVE {LEFT -.0} {RIGHT 1.0}\r\n")
-                flag = 1
-            if flag == 1: 
-                if laser_values[0] >=  1.5:
-                    turn_360(odovalues,s)
-            else:
-                s.send("DRIVE {LEFT -2.0} {RIGHT 1.0}\r\n")
-        if min_val <= 0.35:
-            return 1
+                #turn left
+                print laser_values[0]
+                if flag == 0 :
+                    s.send("DRIVE {LEFT -.0} {RIGHT 1.0}\r\n")
+                    flag = 1
+                if flag == 1: 
+                    if laser_values[0] >=  1.5:
+                        turn_360(odo_values,s)
+                else:
+                    s.send("DRIVE {LEFT -2.0} {RIGHT 1.0}\r\n")
+            if min_val <= 0.35:
+                return 1
 # Method to find the smallest value by driving in circles and then saving
 # the smallest value you find.
-def turn_360(odo_values, s):
+def turn_360(odo_values, s,Map):
 ##    print odo_values
 ##    x = odo_values[0]
 ##    y = odo_values[1]
@@ -192,15 +217,15 @@ def turn_360(odo_values, s):
                                 threshold = len(laser_values)/20
                                 if index_val <= middle + threshold and index_val >= middle - threshold:
                                     if min_val < temp_min_val:
-                                        print min_val
-                                        print index_val
-                                        print 'minimum waarde'
+##                                        print min_val
+##                                        print index_val
+##                                        print 'minimum waarde'
                                         temp_min_val = min_val
                                         temp_index_val = index_val
                                         temp_odo_values = new_odo_values
                                         
 # Method to trun to the smallest value that was found in turn_360.
-def turn_right_position(min_val, index_val, odo_values, s):
+def turn_right_position(min_val, index_val, odo_values, s,Map):
     # The robot always stops when the odometry is maximal.
     # We turn right when the values are smaller than PI, otherwise we turn
     # left.
@@ -250,7 +275,7 @@ def turn_right_position(min_val, index_val, odo_values, s):
 ##                            print "turn to the right position", index_val
                             return
 # Method which stops the robot when it has reached the wall.
-def stop(s):
+def stop(s,Map):
 ##    print 'ik ben hier ik wil stoppen'
     # To prevent false values.
     min_val = 100000000
@@ -271,7 +296,14 @@ def stop(s):
             datasplit = re.findall('\{[^\}]*\}|\S+', string[i])
             if len(datasplit) > 0:
                 if datasplit[0] == "SEN":
-                    #print datasplit, "\r\n"
+                    typeSEN = datasplit[1].replace
+                    # Odometry sensor
+                    if typeSEN == "Odometry":
+                        #print datasplit
+                        new_odo_values = string_to_float(odometry_module(datasplit))
+                        odometry_string = "Odometry " + str(new_odo_values[0]) + " " + str(new_odo_values[1]) + " " + str(new_odo_values[2])
+                        print odometry_string
+                        #print datasplit, "\r\n"
                     if len(datasplit) > 2:
                         typeSEN = datasplit[2].replace('{Type ', '')
                         typeSEN = typeSEN.replace('}', '')
@@ -280,6 +312,10 @@ def stop(s):
                             #print datasplit, "\r\n"
                             if len(datasplit) > 6:
                                 laser_values = re.findall('([\d.]*\d+)', datasplit[6])
+                                laser_string = "Laser " + str(len(laser_values)) + " "
+                                for i in range(len(laser_values)):
+                                   laser_string += laser_values[i] + " "
+                                print laser_string
 ##                                print laser_values
                                 min_val, index_val = min_laser_val(laser_values)
 ##        print "minval in wallsearch ", min_val
