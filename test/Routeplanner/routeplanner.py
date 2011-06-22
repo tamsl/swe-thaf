@@ -4,6 +4,36 @@ import string
 import re
 import math
 
+<<<<<<< .mine
+def Astar(start, goal):
+##    closedset := the empty set    // The set of nodes already evaluated.
+##    openset := set containing the initial node    // The set of tentative nodes to be evaluated.
+##    came_from := the empty map    // The map of navigated nodes.
+    closedset = []
+    openset = [start]
+    came_from = []
+    
+    g_score[start] = 0    #// Cost from start along best known path.
+    h_score[start] = heuristic_cost_estimate(start, goal)
+    f_score[start] = h_score[start]    #// Estimated total cost from start to goal through y.
+ 
+    while len(openset) != 0:
+        index_val = find_index_val(f_score)
+        # the node in openset having the lowest f_score[] value
+        x = openset[index_val]
+        if x == goal:
+            return reconstruct_path(came_from, came_from[goal])
+ 
+        ivalue = openset.index(x)
+        # remove x from openset
+        openset.pop(ivalue)
+        # add x to closedset
+        closedset.append(x)
+        for y in 8:
+            if y in closedset:
+                continue
+            tentative_g_score = g_score[x] + dist_between(x, y)
+=======
 TCP_IP = '127.0.0.1'
 TCP_PORT = 2001
 BUFFER_SIZE = 4096
@@ -20,6 +50,7 @@ posX=0
 posY=1
 theta=2 # in degrees
 posTheta=2 # in degrees (since some places accidently use posTheta instead of theta)
+>>>>>>> .r162
 
 x = 0 # x position
 y = 0 # y position
