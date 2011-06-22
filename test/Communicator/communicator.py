@@ -6,7 +6,7 @@ import sys
 import errno
 
 class listener(threading.Thread):
-    def __init__(self,list, flag):
+    def __init__(self, list, flag):
         threading.Thread.__init__(self)
         self.list = list
         self.flag = flag

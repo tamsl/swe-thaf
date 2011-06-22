@@ -7,7 +7,7 @@ import sys
 TCP_IP = '127.0.0.1'
 TCP_PORT = 2001
 BUFFER_SIZE = 1024
-flag = 0
+flag = 1
 list = []
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -21,6 +21,7 @@ sonar = configreader.connection(list, "sonar")
 print(sonar)
 print("miauw miauw miauw")
 accept_thread = acceptor(list, flag, "listener", configreader.addresses)
+accept_thread.setDaemon(True)
 accept_thread.start()
 print ("acceptor thread gestart")
 
@@ -47,7 +48,7 @@ while 1:
           # Range sensor
           if typeSEN2 == "Sonar":
             print("bla123")
-            sonar.send("REQ ")
+            sonar.send("REQ " + str(datasplit[3]) + " # ")
             print "doe Sonar shit\r\n"
           if typeSEN2 == "IR":
             print "doe IR shit\r\n"
@@ -142,7 +143,7 @@ while 1:
           
   except:
     print("er is iets fout gegaan in listener")
-    accept_thread.setflag(1)
+    flag = 0
     print(flag)
     print("flag zou 1 moeten zijn")
     acccept_thread.join()

@@ -1,20 +1,20 @@
 #!/usr/bin/env python
 
-from communicator import *
+from communicatorv2 import *
 import socket
 import re
 
-TCP_IP = '127.0.0.1'
-TCP_PORT = 2001
-BUFFER_SIZE = 1024
+##TCP_IP = '127.0.0.1'
+##TCP_PORT = 2001
+##BUFFER_SIZE = 1024
 
 ##s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 ##s.connect((TCP_IP, TCP_PORT))
 ##s.send('INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n')
 list = []
-flag = 0
+flag = 1
 configreader = config_reader()
-accept_thread = acceptor(list, flag, "sonar", configreader.addresses)
+accept_thread = acceptor(flag, list, "sonar", configreader.addresses)
 accept_thread.setDaemon(True)
 accept_thread.start()
 print("ik heb de acceptor thread gestart")
