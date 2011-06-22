@@ -2,6 +2,7 @@ import string
 import socket
 import re
 import wallsearching
+import time
 
 TCP_IP = '127.0.0.1'
 TCP_PORT = 2001
@@ -9,7 +10,9 @@ BUFFER_SIZE = 1024
 COLOR = ['Red', 'Yellow', 'Green', 'Cyan', 'White', 'Blue', 'Purple']
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
-s.send("INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n")
+##s.send("INIT {ClassName USARBot.P2DX} {Location 4.35,2.0,1.8} {Rotation 0,0,2} {Name R1}\r\n")
+##s.send("INIT {ClassName USARBot.P2DX} {Location -6.0,-3.4,1.8} {Rotation 0.0,0.0,0.0} {Name R1}\r\n")
+s.send("INIT {ClassName USARBot.P2DX} {Location 2.5,2.3,1.8} {Rotation 0.0,0.0,0.0} {Name R1}\r\n")
 
 def handle_movement(type, *args):
    handlers = {"forward":         go_drive,
@@ -81,14 +84,14 @@ def wallfollow(min_val, index_val, length):
     data_incomplete = 0
     while index_val not in range(length/5) and index_val not in range(4*length/5, length):
         data = s.recv(BUFFER_SIZE)
-        if data[len(data)-1] != '\n':
-            datatemp = data
-            data_incomplete = 1
-            continue
         if data_incomplete:
             datatemp += data
             data_incomplete = 0
             data = datatemp
+        if data[len(data)-1] != '\n':
+            datatemp = data
+            data_incomplete = 1
+            continue
         string = data.split('\r\n')
         laser_values = []
         for i in range(len(string)):
@@ -125,16 +128,17 @@ odo_done = 0
 odo_values = []
 data_incomplete = 0
 side = 0
+fc = 0
 while 1:
     data = s.recv(BUFFER_SIZE)
-    if data[len(data)-1] != '\n':
-        datatemp = data
-        data_incomplete = 1
-        continue
     if data_incomplete:
         datatemp += data
         data_incomplete = 0
         data = datatemp
+    if data[len(data)-1] != '\n':
+        datatemp = data
+        data_incomplete = 1
+        continue
     string = data.split('\r\n')
     laser_values = []
     for i in range(len(string)):
@@ -165,12 +169,38 @@ while 1:
                     # The threshold for finding the wall changes when it is
                     # following a wall.
                     if flag == 1:
-                        level = 0.38
+                        level = 0.5
                     else:
-                        level = 0.3
+                        level = 0.4
 
                     print "min val: ", min_val
                     print "index val: ", index_val
+                    if index_val > length/2:
+                        print "links"
+                    else:
+                        print "rechts"
+                    print "dit is fc",fc
+                    for i in range((length/2)-10,(length/2)+10):
+##                        print "front checker",laser_values[i]
+                        if float(laser_values[i]) <= 0.45 and fc == 0:
+                            print "in front checker"
+                            if index_val > length/2:
+                                print"ik stuur bij naar rechts"
+                                s.send(handle_movement("right", 2.0, -1.0))
+                                fc = 1
+                                break
+                            else:
+                                print"ik stuur bij naar link"
+                                s.send(handle_movement("left", -1.0, 2.0))
+                                fc = 1
+                                break
+                        elif float(laser_values[i]) <= 0.4 and fc == 1:
+                            break
+                        else :
+                            fc = 0
+                    if fc == 1 :
+                        break
+                    fc = 0
                     if min_val <= level:
 ##                        if min_val >= 0.4 and index_val in range(length):
 ##                            print "ik ga nu draaien"
@@ -178,31 +208,37 @@ while 1:
 ##                        else:
                         # If you get too close to the wall, you need to turn
                         # away from it.
-                        if min_val <= 0.26:
+
+
+                        #checks the front
+
+                        if min_val <= 0.30:
                             print "ik ben te dicht bij de muur k moet bij sturen"
+                            # the most left value is 80
                             if index_val > length/2:
-                                s.send(handle_movement("left", -1.0, 1.0))
-                                side = 0
-                            else:
-                                s.send(handle_movement("right", 1.0, -1.0))
+                                print"ik stuur bij naar rechts"
+                                s.send(handle_movement("right", 1.0,-1.0))
+                                break
+                            else :
+                                print"ik stuur bij naar links"
+                                s.send(handle_movement("left", -1.0,1.0))
+                                break
                                 side = 1
                         # If you get too far from the wall but the wall is still
                         # close, go towards the wall again.
-                        if min_val >= 0.30 and min_val <= 0.37:
+                        if min_val >= 0.38 and min_val <= 0.4:
                             print "ik ben te ver van de muur ik ga bij sturen"
                             if index_val > length/2:
-                                s.send(handle_movement("right", -1.0, 1.0))
-                            else:                             
-                                s.send(handle_movement("left", 1.0, -1.0))
-                        for i in range((length/2) - 10, (length/2) + 10):
-                            print "front checker", laser_values[i]
-                            if (laser_values[i] <= 0.4):
-                                print "muur ahoi" 
-                                if side:
-                                    s.send(handle_movement("left", 1.0, -1.0))
-                                else:
-                                    s.send(handle_movement("right", -1.0, 1.0))
+                                print"ik stuur bij naar rechts"
+                                s.send(handle_movement("left", -1.0, 1.0))
+                                break
+                            else:
+                                print"ik stuur bij naar links"
+                                s.send(handle_movement("right", 1.0, -1.0))
+                                break
+                        
                         # Follow the wall.
+                        
                         flag, side = wallfollow(min_val, index_val, length)
                     else:
 ##                        print 'zoeken1'
@@ -211,4 +247,6 @@ while 1:
 ##                            print 'zoeken'
 ##                            print odo_values
                             # Find a wall.
-                            flag = wallsearching.wall_continued(side, s)
+                            print "ik ben de muur kwijt"
+                            flag = wallsearching.wall_continued(side,s)
+                            flag, side = wallfollow(min_val, index_val, length)
