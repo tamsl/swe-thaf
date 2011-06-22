@@ -23,16 +23,15 @@ while 1:
 ##    print 'data'
 ##    print data
 ##    print data[len(data)-1]
+    if flag:
+        datatemp += data
+        flag = 0
+        data = datatemp
     if data[len(data)-1] != '\n':
         datatemp = data
         flag = 1
         continue
-    if flag:
-        datatemp += data
-##        print 'data post flag'
-##        print datatemp
-        flag = 0
-        data = datatemp
+
     string = data.split('\r\n')
 ##    if data[len(data) != '}':
 ##        print data
