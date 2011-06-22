@@ -108,7 +108,7 @@ def wall_continued(side,s):
                     flag = 1
                 if flag == 1: 
                     if laser_values[-1] >=  1.5:
-                       turn_360(odovalues,s)
+                       turn_360(odo_values, s)
                 else:
                     s.send("DRIVE {LEFT 1.0} {RIGHT -2.0}\r\n")
             else:
@@ -169,7 +169,7 @@ def turn_360(odo_values, s):
                         if new_odo_values[2] > previous_odo_values[2]:
                             if flag == 2:
                                 s.send(handle_movement("brake", 0.0, 0.0))
-##                                print "De kleinste min value gevonden"
+                                print "De kleinste min value gevonden"
                                 turn_right_position(temp_min_val, temp_index_val, temp_odo_values, s)
                                 #placeholder wallfollow
                                 return 0
@@ -218,7 +218,7 @@ def turn_right_position(min_val, index_val, odo_values, s):
     previous_odo_values = [999, 999, 999]
     flag = 0
     data_incomplete = 0
-##    print "ik ga nu naar de goede waarde draaien"
+    print "ik ga nu naar de goede waarde draaien"
     while 1:
         data = s.recv(BUFFER_SIZE)
         if data[len(data)-1] != '\n':
@@ -246,7 +246,7 @@ def turn_right_position(min_val, index_val, odo_values, s):
                             or (new_odo_values[2] > odo_values[2] and turning_right == 1)):
                             # When the value is found stop.
                             s.send(handle_movement("brake", 0.0, 0.0))
-##                            print "De juiste positie gevonden"
+                            print "De juiste positie gevonden"
                             # Drive forward.
                             s.send(handle_movement("forward", 1.0, 1.0))
                             stop(s)
@@ -280,7 +280,7 @@ def stop(s):
                         #print datasplit
                         new_odo_values = string_to_float(odometry_module(datasplit))
                         odometry_string = "Odometry " + str(new_odo_values[0]) + " " + str(new_odo_values[1]) + " " + str(new_odo_values[2])
-                        print odometry_string
+##                        print odometry_string
                         #print datasplit, "\r\n"
                     if len(datasplit) > 2:
                         typeSEN = datasplit[2].replace('{Type ', '')
@@ -293,7 +293,7 @@ def stop(s):
                                 laser_string = "Laser " + str(len(laser_values)) + " "
                                 for i in range(len(laser_values)):
                                    laser_string += laser_values[i] + " "
-                                print laser_string
+##                                print laser_string
 ##                                print laser_values
                                 min_val, index_val = min_laser_val(laser_values)
 ##        print "minval in wallsearch ", min_val
