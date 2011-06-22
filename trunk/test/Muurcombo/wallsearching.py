@@ -3,7 +3,6 @@
 import string
 import socket
 import re
-import CoreSLAM
 
 BUFFER_SIZE = 1024
 
@@ -65,27 +64,8 @@ def odometry_module(datastring):
     return odo_values
 
 # When the wall is jsut lost see if the wall continues on the sides.
-def make_position(odo_values):
-    posX=0
-    posY=1
-    theta=2
-    pos = [float(x) for x in odo_values]
-    pos[posY]=pos[posY]/SCALE
-    pos[posX]=pos[posX]/SCALE
-    pos[theta]=math.degrees(pos[theta])
 
-    pos[posY]=pos[posY]+(TS_MAP_SIZE/(2.0*TS_MAP_SCALE))
-    pos[posX]=pos[posX]+(TS_MAP_SIZE/(2.0*TS_MAP_SCALE))
-    
-def map_update(scans, pos, length, Map)
-    CoreSLAM.makeMap(scans, pos, len(scans), Map)
-    draw += 1
-    if draw == 50:
-        print " ik ga tekenen"
-        CoreSLAM.drawMap(Map)
-        draw = 0
-
-def wall_continued(side,s,Map):
+def wall_continued(side,s):
     # if side is 1 then the wall is on the right otherwise it's on the left side.
     laser_values = []
     odo_values  = []
@@ -111,7 +91,6 @@ def wall_continued(side,s,Map):
                 typeSEN = typeSEN.replace('}', '')
                 if typeSEN == "Odometry":
                     odo_values = odometry_module(datasplit)
-                    pos = make_position(odo_values)
                     odo_done = 1
                 # Laser sensor
                 typeSEN2 = datasplit[2].replace('{Type ', '')
@@ -120,7 +99,6 @@ def wall_continued(side,s,Map):
                     if len(datasplit) > 6:
                         laser_values = re.findall('([\d.]*\d+)', datasplit[6])
                         min_val, index_val = min_laser_val(laser_values)
-                        scans = [float(y)/SCALE for y in laser_values]
         if len(laser_values) != 0:
             if side:
                 #turn right
@@ -148,7 +126,7 @@ def wall_continued(side,s,Map):
                 return 1
 # Method to find the smallest value by driving in circles and then saving
 # the smallest value you find.
-def turn_360(odo_values, s,Map):
+def turn_360(odo_values, s):
 ##    print odo_values
 ##    x = odo_values[0]
 ##    y = odo_values[1]
@@ -225,7 +203,7 @@ def turn_360(odo_values, s,Map):
                                         temp_odo_values = new_odo_values
                                         
 # Method to trun to the smallest value that was found in turn_360.
-def turn_right_position(min_val, index_val, odo_values, s,Map):
+def turn_right_position(min_val, index_val, odo_values, s):
     # The robot always stops when the odometry is maximal.
     # We turn right when the values are smaller than PI, otherwise we turn
     # left.
@@ -275,7 +253,7 @@ def turn_right_position(min_val, index_val, odo_values, s,Map):
 ##                            print "turn to the right position", index_val
                             return
 # Method which stops the robot when it has reached the wall.
-def stop(s,Map):
+def stop(s):
 ##    print 'ik ben hier ik wil stoppen'
     # To prevent false values.
     min_val = 100000000

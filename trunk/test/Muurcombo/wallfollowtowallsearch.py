@@ -2,7 +2,6 @@ import string
 import socket
 import re
 import wallsearching
-import CoreSLAM
 
 TCP_IP = '127.0.0.1'
 TCP_PORT = 2001
@@ -70,7 +69,7 @@ def min_laser_val(laser_vals):
 ##    return 0
 
 # Method for following a wall.
-def wallfollow(min_val, index_val, length,Map):
+def wallfollow(min_val, index_val, length):
     # Rotate to the left so you have the wall on the left or right side of the
     # robot.
     # side 1 is wall on right side otherwise the wall is on the left side
@@ -119,25 +118,6 @@ def odometry_module(datastring):
     senvalues = senvalues.replace('}','')
     odo_values = senvalues.split(',')
     return odo_values
-def make_position(odo_values):
-    posX=0
-    posY=1
-    theta=2
-    pos = [float(x) for x in odo_values]
-    pos[posY]=pos[posY]/SCALE
-    pos[posX]=pos[posX]/SCALE
-    pos[theta]=math.degrees(pos[theta])
-
-    pos[posY]=pos[posY]+(TS_MAP_SIZE/(2.0*TS_MAP_SCALE))
-    pos[posX]=pos[posX]+(TS_MAP_SIZE/(2.0*TS_MAP_SCALE))
-    
-def map_update(scans, pos, length, Map)
-    CoreSLAM.makeMap(scans, pos, len(scans), Map)
-    draw += 1
-    if draw == 50:
-        print " ik ga tekenen"
-        CoreSLAM.drawMap(Map)
-        draw = 0
 
 # Main            
 flag = 0
@@ -145,7 +125,6 @@ odo_done = 0
 odo_values = []
 data_incomplete = 0
 side = 0
-Map= CoreSLAM.ts_map_init()
 while 1:
     data = s.recv(BUFFER_SIZE)
     if data[len(data)-1] != '\n':
