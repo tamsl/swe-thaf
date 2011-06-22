@@ -2,6 +2,7 @@ import string
 import socket
 import re
 import wallsearching
+import CoreSLAM
 
 TCP_IP = '127.0.0.1'
 TCP_PORT = 2001
@@ -9,7 +10,7 @@ BUFFER_SIZE = 1024
 COLOR = ['Red', 'Yellow', 'Green', 'Cyan', 'White', 'Blue', 'Purple']
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
-s.send("INIT {ClassName USARBot.P2DX} {Location 6.0,3.8,1.8} {Name R1}\r\n")
+s.send("INIT {ClassName USARBot.P2DX} {Location 6.0,3.5,1.8} {Name R1}\r\n")
 
 def handle_movement(type, *args):
    handlers = {"forward":         go_drive,
@@ -69,7 +70,7 @@ def min_laser_val(laser_vals):
 ##    return 0
 
 # Method for following a wall.
-def wallfollow(min_val, index_val, length):
+def wallfollow(min_val, index_val, length,Map):
     # Rotate to the left so you have the wall on the left or right side of the
     # robot.
     # side 1 is wall on right side otherwise the wall is on the left side
@@ -118,6 +119,25 @@ def odometry_module(datastring):
     senvalues = senvalues.replace('}','')
     odo_values = senvalues.split(',')
     return odo_values
+def make_position(odo_values):
+    posX=0
+    posY=1
+    theta=2
+    pos = [float(x) for x in odo_values]
+    pos[posY]=pos[posY]/SCALE
+    pos[posX]=pos[posX]/SCALE
+    pos[theta]=math.degrees(pos[theta])
+
+    pos[posY]=pos[posY]+(TS_MAP_SIZE/(2.0*TS_MAP_SCALE))
+    pos[posX]=pos[posX]+(TS_MAP_SIZE/(2.0*TS_MAP_SCALE))
+    
+def map_update(scans, pos, length, Map)
+    CoreSLAM.makeMap(scans, pos, len(scans), Map)
+    draw += 1
+    if draw == 50:
+        print " ik ga tekenen"
+        CoreSLAM.drawMap(Map)
+        draw = 0
 
 # Main            
 flag = 0
@@ -125,6 +145,7 @@ odo_done = 0
 odo_values = []
 data_incomplete = 0
 side = 0
+Map= CoreSLAM.ts_map_init()
 while 1:
     data = s.recv(BUFFER_SIZE)
     if data[len(data)-1] != '\n':
@@ -145,6 +166,8 @@ while 1:
             typeSEN = typeSEN.replace('}', '')
             if typeSEN == "Odometry":
                 odo_values = odometry_module(datasplit)
+##                odometry_string = "Odometry " + str(odo_values[0]) + " " + str(odo_values[1]) + " " + str(odo_values[2])
+##                print odometry_string
                 odo_done = 1
             # Laser sensor
             typeSEN2 = datasplit[2].replace('{Type ', '')
@@ -153,7 +176,11 @@ while 1:
                 if len(datasplit) > 6:
                     laser_values = re.findall('([\d.]*\d+)', datasplit[6])
 ##                    print len(laser_values)
-##                    print "in main loop" , laser_values, "\r\n"              
+##                    print "in main loop" , laser_values, "\r\n"
+##                    laser_string = "Laser " + str(len(laser_values)) + " "
+##                    for i in range(len(laser_values)):
+##                       laser_string += laser_values[i] + " "
+####                    print laser_string
                     min_val, index_val = min_laser_val(laser_values)
                     length = int(len(laser_values))
                     # The threshold for finding the wall changes when it is
@@ -162,6 +189,7 @@ while 1:
                         level = 0.38
                     else:
                         level = 0.3
+
                     print min_val
                     if min_val <= level:
 ##                        if min_val >= 0.4 and index_val in range(length):
@@ -173,9 +201,9 @@ while 1:
                         if min_val <= 0.26:
                             print "ik ben te dicht bij de muur k moet bij sturen"
                             if index_val > length/2:
-                                s.send(handle_movement("left", 1.0, -1.0))
+                                s.send(handle_movement("left",- 1.0,1.0))
                             else:
-                                s.send(handle_movement("right", -1.0, 1.0))
+                                s.send(handle_movement("right", 1.0, -1.0))
                         # If you get too far from the wall but the wall is still
                         # close, go towards the wall again.
                         if min_val >= 0.30 and min_val <= 0.37:
@@ -201,4 +229,4 @@ while 1:
 ##                            print 'zoeken'
 ##                            print odo_values
                             # Find a wall.
-                            flag = wall_continued(side,s)
+                            flag = wallsearching.wall_continued(side,s)
