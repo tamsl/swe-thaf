@@ -118,7 +118,7 @@ class communication(threading.Thread):
                             # handles data requests
                             if(datasplit[0] == "REQ"):
                                 self.request_data.append(datasplit[1])
-                                data = ""
+                                data = " "
                                 datasplit = []
                             # handles commands
                             elif(datasplit[0] == "CMD"):
@@ -131,25 +131,25 @@ class communication(threading.Thread):
                                     self.memory[0] = datasplit[2]
                                     if(self.waiting_for_data > 0):
                                         self.waiting_for_data -= 1
-                                    data = ""
+                                    data = " "
                                     datasplit = []
-                                if(datasplit[1] == "ODO"):
+                                elif(datasplit[1] == "ODO"):
                                     self.memory[1] = datasplit[2]
                                     if(self.waiting_for_data > 0):
                                         self.waiting_for_data -= 1
-                                    data = ""
+                                    data = " "
                                     datasplit = []
-                                if(datasplit[1] == "RSC"):
+                                elif(datasplit[1] == "RSC"):
                                     self.memory[2] = datasplit[2]
                                     if(self.waiting_for_data > 0):
                                         self.waiting_for_data -= 1
-                                    data = ""
+                                    data = " "
                                     datasplit = []
-                                if(datasplit[1] == "MAP"):
+                                elif(datasplit[1] == "MAP"):
                                     self.memory[3] = datasplit[2]
                                     if(self.waiting_for_data > 0):
                                         self.waiting_for_data -= 1
-                                    data = ""
+                                    data = " "
                                     datasplit = []
                         break
                     except(socket.error):

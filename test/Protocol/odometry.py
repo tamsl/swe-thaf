@@ -25,12 +25,13 @@ def odometry_module(datastring):
     odo_values = ""
     odo_values = datastring.replace('{Pose ', '')
     odo_values = odo_values.replace('}', '')
-    values = odo_values.split(',')
-##    print len(values)
-    if len(values) > 2:
-        if (float(values[2]) > 3.15) or (float(values[2]) < -3.15):
+    check = odo_values.split(',')
+    if len(check) > 2:
+        if (float(check[2]) > 3.15) or (float(check[2]) < -3.15):
             return
-    current_values = datastring
+    else:
+        return
+    current_values = odo_values
 
 while 1:
     odometry_module(accept_thread.memory[1])

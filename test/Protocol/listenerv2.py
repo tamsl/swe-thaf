@@ -24,6 +24,9 @@ print(sonar)
 #odometry module
 odometry = configreader.connection(list, "ODO")
 print(odometry)
+#odometry module
+rangescanner = configreader.connection(list, "RSC")
+print(rangescanner)
 ##print 'going to sleep'
 ##time.sleep(3)
 print("miauw miauw miauw")
@@ -71,8 +74,10 @@ while 1:
 ##          if typeSEN2 == "IR":
 ##            print "doe IR shit\r\n"
 ##          # Laser sensor
-##          if typeSEN2 == "RangeScanner":
-##            print "doe RangeScanner shit\r\n"
+          if typeSEN2 == "RangeScanner":
+              message = "RCV!RSC!" + str(datasplit[6]) + "#"
+              rangescanner.send(message)
+              print "doe RangeScanner shit\r\n"
 ##          if typeSEN2 == "IRScanner":
 ##            print "doe IRScanner shit\r\n"
 ##          # Odometry sensor

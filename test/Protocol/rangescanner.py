@@ -1,38 +1,62 @@
 #!/usr/bin/env python
 
+from communicatorv2 import *
 import socket
 import re
 
-TCP_IP = '127.0.0.1'
-TCP_PORT = 2001
-BUFFER_SIZE = 1024
-
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect((TCP_IP, TCP_PORT))
-s.send('INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n')
+##TCP_IP = '127.0.0.1'
+##TCP_PORT = 2001
+##BUFFER_SIZE = 1024
+##
+##s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+##s.connect((TCP_IP, TCP_PORT))
+##s.send('INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n')
+current_values = ""
+list = []
+running = 1
+configreader = config_reader()
+accept_thread = acceptor(running, list, "RSC", configreader.addresses)
+accept_thread.setDaemon(True)
+accept_thread.start()
+print("ik heb de acceptor thread gestart")
 
 # Method to retrieve the list of range sensor values.
 def range_module(datastring):
-    print datastring, "\r\n"
-    laser_values = re.findall('([\d.]*\d+)', datasplit[7])
-    print laser_values, "\r\n"
-    return laser_values
+    if datastring == "":
+        return
+    range_values = datastring.replace('{Range ', '')
+    range_values = range_values.replace('}', '')
+    datasplit = range_values.split(',')
+    for i in range(len(datasplit)):
+        if float(datasplit[i]) < 0:
+            return
+    current_values = range_values
 
-# Test the range sensor module.
-for i in range(100):
-    s.send("DRIVE {Left 1.0} {Right 1.0}")
-    data = s.recv(BUFFER_SIZE)
-    string = data.split('\r\n')
-    for i in range(len(string)):
-        datasplit = re.findall('\{[^\}]*\}|\S+', string[i])
-        if len(datasplit) > 0:
-            # Sensor message
-            if datasplit[0] == "SEN":
-                if len(datasplit) > 2:
-                    typeSEN = datasplit[2].replace('{Type ', '')
-                    typeSEN = typeSEN.replace('}', '')
-                    # Range sensor
-                    if typeSEN == "RangeScanner":
-                        laser_values = range_module(datasplit)    
+while 1:
+    range_module(accept_thread.memory[1])
+##    print list
+##    print 'current_values', current_values
+    while len(accept_thread.request_data) != 0:
+        config_reader.connection(list,
+                                 accept_thread.request_data[0]).send(
+                                     current_values)
+        accept_thread.request_data.pop(0)
+
+### Test the range sensor module.
+##for i in range(100):
+##    s.send("DRIVE {Left 1.0} {Right 1.0}")
+##    data = s.recv(BUFFER_SIZE)
+##    string = data.split('\r\n')
+##    for i in range(len(string)):
+##        datasplit = re.findall('\{[^\}]*\}|\S+', string[i])
+##        if len(datasplit) > 0:
+##            # Sensor message
+##            if datasplit[0] == "SEN":
+##                if len(datasplit) > 2:
+##                    typeSEN = datasplit[2].replace('{Type ', '')
+##                    typeSEN = typeSEN.replace('}', '')
+##                    # Range sensor
+##                    if typeSEN == "RangeScanner":
+##                        laser_values = range_module(datasplit)    
 
 s.close()

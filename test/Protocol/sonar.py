@@ -23,23 +23,23 @@ print("ik heb de acceptor thread gestart")
 ##s.send('INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n')
 
 # Method to retrieve the list of sonar values
-def sensor_module(datastring):
+def sonar_module(datastring):
 ##    print datastring, "\r\n"
     datasplit = re.findall('\{[^\}]*\}|\S+', datastring)
-    sonar_values = ""
-    value_correct = 1
+    sonar_values = []
+    values = ""
     for i in range(len(datasplit)):
-        sonar_values = datasplit[i].replace('{Name F' + str(i+1)
-                                            + ' Range ', '')
-        sonar_values = sonar_values.replace('}', '')
-        if float(sonar_values) < 0:
-            value_correct = 0
+        sonar_values.append(datasplit[i].replace('{Name F' + str(i+1)
+                                            + ' Range ', ''))
+        sonar_values[i] = sonar_values[i].replace('}', '')
+        if float(sonar_values[i]) < 0:
             return
-    if value_correct:
-        current_values = datastring
+        values += sonar_values[i] + ','
+    values = values.rstrip(',')
+    current_values = values
 
 while 1:
-    sensor_module(accept_thread.memory[0])
+    sonar_module(accept_thread.memory[0])
 ##    print list
 ##    print 'current_values', current_values
     while len(accept_thread.request_data) != 0:
