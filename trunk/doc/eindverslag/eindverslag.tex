@@ -47,23 +47,23 @@ De sonar leest alle 8 sonarwaarden uit en stuurt ze door naar de mid-level modul
 De mid-level componenten verzorgen het vermijden van botsingen en het zoeken en volgen van een muur.
 
 \subsubsection{Collision avoider}
-De collision avoider kijkt alleen naar de waarden van de sonar, omdat de sonar een geluidsgolf stuurt, kan het ook dingen die op de grond liggen zien. Als de kleinste waarde van de sonar kleiner is dan 0,315 stopt de robot met rijden. Tevens wordt er met behulp van de snelheid uitgerekend na hoeveel seconden de botsing plaats zal vinden als de robot door blijft rijden. Dit wordt gedaan op basis van de snelheid van de wielen dus kan in sommige gevallen niet helemaal waar zijn.
+De collision avoider kijkt alleen naar de waarden van de sonar, omdat de sonar een geluidsgolf stuurt, kan het ook dingen die op de grond liggen zien. Als de kleinste waarde van de sonar kleiner is dan 0,315 stopt de robot met rijden. Tevens wordt er met behulp van de snelheid uitgerekend na hoeveel seconden de botsing plaats zal vinden als de robot door blijft rijden. Deze berekening wordt gedaan op basis van de snelheid van de wielen, en kan dus in sommige gevallen afwijken.
 
 \subsubsection{Wall follow}
-De muur wordt gevolgd die door wall search is gevonden. Als de muur zich meer aan de linkerkant van de robot bevindt, draait hij naar rechts en als de muur zich meer aan de rechterkant van de robot bevindt, draait hij naar links. De kleinste laserwaarde bevindt zich nu aan de rechter- of linkerkant. Hij blijft rechtdoor rijden als de kleinste laserwaarde niet kleiner en groter wordt dan een ingestelde waarde. Als hij te ver van de muur afwijkt, stuurt hij bij richting de muur. Als hij te dicht bij de muur komt, stuurt hij bij van de muur af. Als er geen muur meer wordt waargenomen, gaat het eerst naar een continued wallfollow methode binnen de wallsearch. Deze kijkt of er ergens dicht bij nog een muur is. Als dit zo is gaat hij daar heen. Als niets dichtbij is zoekt wall search de nieuwe dichtstbijzijnde muur. Elke keer wanneer hij klaar is met de logica vraagt hij nieuwe informatie op van de sensoren modules.
+De muur wordt gevolgd die door wall search is gevonden. Als de muur zich meer aan de linkerkant van de robot bevindt, draait hij naar rechts en als de muur zich meer aan de rechterkant van de robot bevindt, draait hij naar links. De kleinste laserwaarde bevindt zich nu aan de rechter- of linkerkant. Hij blijft rechtdoor rijden als de kleinste laserwaarde niet kleiner en groter wordt dan een ingestelde waarde. Als hij te ver van de muur afwijkt, stuurt hij bij richting de muur. Als hij te dicht bij de muur komt, stuurt hij bij van de muur af. Als er geen muur meer wordt waargenomen, wordt de wall\_continued functie binnen de wall search aangeroepen. Deze functie kijkt of er in de buurt nog een muur is te vinden. Als dit zo is, gaat hij daarheen. Als er zich in de buurt nog een andere muur bevindt, zoekt wall search naar de nieuwe dichtstbijzijnde muur. Elke keer wanneer de logica klaar is, wordt er nieuwe informatie opgevraagd van de sensormodules.
 
 \subsubsection{Wall search}
 Bij het zoeken naar een muur draait de robot eerst 360 graden om te kijken waar de dichtstbijzijnde muur is. Zodra de kleinste sensorwaarde is gevonden, roteert de robot nog een keer totdat hij in de juiste positie staat. Hij rijdt recht op de muur af totdat hij op een bepaalde afstand van de muur af staat en dan gaat hij over op wall follow.
 
 \subsection{High-level}
-De high-level componenten houden bij waar de robot is geweest en kunnen hem naar een ander punt laten rijden. Dit zijn de modules ide meer tijd nodig hebben dan de mid-level modules.
+De high-level componenten houden bij waar de robot is geweest en kunnen hem naar een ander punt laten rijden. Dit zijn de modules die meer tijd nodig hebben dan de mid-level modules.
 
 \subsubsection{Map maker}
 De map maker maakt een kaart van de constante stroom van laser en odometry waarden die hij binnenkrijgt. Voor het maken van een kaart wordt de Simultaneous Localization And Mapping (SLAM) techniek gebruikt. De kaart heeft de vorm van een matrix.
-De bibliotheek die we gebruiken om deze map te maken is tinySLAM. Dit is een zeer simpel algoritme om dit te doen. Het is niet meer dan 200 regels code. Het enige wat het doet is elke keer de gevonden lijnen tekenen. Dit algoritme heeft nog heel wat uitbreidingen, maar wij hebben alleen de basis van dit algoritme gebruikt. De originele code is geschreven in C maar wij hebben een versie in python gevonden die wij met een paar aanpassingen konden gebruiken. ref
+De bibliotheek die wordt gebruikt om deze map te maken is tinySLAM. Dit is een zeer simpel algoritme dat niet meer dan 200 regels code bevat. Het enige wat het elke keer doet, is de gevonden lijnen tekenen. Dit algoritme heeft nog heel wat uitbreidingen, maar alleen de basis van dit algoritme wordt gebruikt. De originele code is geschreven in C, maar met behulp van een gevonden versie in Python en een paar aanpassingen is deze gebruikbaar geworden.
 
 \subsubsection{Path finding}
-Path finding kan alleen gebruikt worden binnen het al ontdekte delen en kan dus alleen een route plannen binnen een bekend domein. Hierin probeert hij een zo kort mogelijk pad te vinden naar de bestemming. Er wordt gebruik gemaakt van het A ster zoekalgoritme om het effici\"{e}ntste pad te vinden tussen twee punten.
+Path finding kan alleen gebruikt worden binnen de al ontdekte gebieden en kan dus alleen een route plannen binnen een bekend domein. Hierin probeert hij een zo kort mogelijk pad te vinden naar de bestemming. Er wordt gebruik gemaakt van het A ster zoekalgoritme om het effici\"{e}ntste pad te vinden tussen twee punten.
 
 \subsection{Libraries}
 Alle modules kunnen gebruik maken van de beschikbare libraries. Ze kunnen deze libraries importeren en hun functies gebruiken.
@@ -94,17 +94,16 @@ De collision avoider wordt getest door de robot vanuit verschillende startpositi
 
 \subsection{Wall combo}
 De wall combo is geschreven om te testen of de wall search goed werkt in samenwerking met de wall follow. Deze test simuleert
-hoe het zou werken wanneeer het in een gedistribueerde systeem zou werken.
+de werking in een gedistribueerd systeem.
 
 \subsection{Wall follow}
-De wall follow wordt getest door de robot op verschillende startposities een muur te laten volgen. Het is de bedoeling dat deze
-module wordt aangeroepen wanneer er een muur gevonden is. Dan kan het een muur beide kanten op volgen. Binnen deze methode kan het ook zwakke bochten maken.
+De wall follow wordt getest door de robot vanuit verschillende startposities een muur te laten volgen. Het is de bedoeling dat deze module wordt aangeroepen wanneer er al een muur is gevonden. Dan kan de robot de muur naar links en naar rechts toe volgen. Binnen dez gebruikte methode zijn zwakke bochten ook mogelijk.
 
 \subsection{Wall search}
-De wall search wordt getest door de robot op verschillende startposities de dichstbijzijnde muur te zoeken. 
+De wall search wordt getest door de robot vanuit verschillende startposities de dichstbijzijnde muur te zoeken. 
 
 \subsection{Map maker}
-De map maker is getest door het een output file van de wall combo te lezen en dat te tekenen. 
+De map maker is getest door hem een output bestand van de wall combo te laten lezen en de kaart ervan te tekenen.
 
 \subsection{Path finding}
 
