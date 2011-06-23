@@ -17,6 +17,14 @@ def odometry_module(datastring):
     senvalues = datastring[3].replace('{Pose ', '')
     senvalues = senvalues.replace('}','')
     odo_values = senvalues.split(',')
+    # Test for validity
+    test = []
+    for i in range(len(odo_values)):
+        test.append(re.findall('([\d.]*\d+)', odo_values[i]))
+    if len(test) == 3:
+        print "BINGO"
+    else:
+        print "FAIL"    
     print odo_values, "\r\n"
     return odo_values
 
