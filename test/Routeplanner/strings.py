@@ -2,14 +2,17 @@ def receive_compressed(string):
     reg_string = ""
     string = string.split('_')
     for i in range(len(string)):
-        string[i] = string[i].split('-')
-        how_many = int(string[i][0])
-        if string[i][1] == '1':
-            for j in range(0, how_many):
+        how_many = string[i][:-1]
+        value = string[i][len(string[i]) - 1]
+        how_many = int(how_many)
+        value = int(value)
+        if value == 1:
+            for k in range(0, how_many):
                 reg_string = reg_string + '1'
-        elif string[i][1] == '0':
-            for j in range(0, how_many):
+        elif value == 0:
+            for k in range(0, how_many):
                 reg_string = reg_string + '0'
+    print reg_string
     return reg_string
 
 def divide_string(string, m, step):
@@ -46,8 +49,10 @@ def downsize_matrix(matrix):
                     count_zero = count_zero + 1
                 elif val == 1:
                     count_one = count_one + 1
-        print start_range_r, end_range_r
-        print start_range_c, end_range_c
+##        print start_range_r, end_range_r
+##        print start_range_c, end_range_c
+##        print "How many free zones: ", count_one
+##        print "How many obstacles: ", count_zero
         if (start_range_r == 995 and end_range_r == 1000) and (start_range_c < 995 and end_range_c < 1000):
             start_range_c = start_range_c + 5
             end_range_c = end_range_c + 5
@@ -56,28 +61,24 @@ def downsize_matrix(matrix):
         elif (start_range_r < 995 and end_range_r < 1000):
             start_range_r = start_range_r + 5
             end_range_r = end_range_r + 5
-        if (start_range_r == 995 and end_range_r == 1000) and (start_range_c == 995 and end_range_c == 1000):
-            print "KLAAAR"
-        print "How many free zones: ", count_one
-        print "How many obstacles: ", count_zero
+##        if (start_range_r == 995 and end_range_r == 1000) and (start_range_c == 995 and end_range_c == 1000):
+##            print "DONE"
         if count_one < count_zero:
             one_or_zero = "0"
         elif count_one > count_zero:
             one_or_zero = "1"
-        if len(final_string) == 200:
-            final_string = final_string
-        else:
-            final_string = final_string + one_or_zero
+        final_string = final_string + one_or_zero
         count_zero = 0
         count_one = 0
         t = t + 1
-        print t
+##        print t
     new_string = divide_string(final_string, 199, 200)
     downsized_matrix = create_matrix(new_string)
-    #downsized_matrix.pop(200)
+    # Because somehow the matrix has a length of 201.
+    downsized_matrix.pop(200)
     return downsized_matrix
 
-##string = "3-0_7-1_10-0"
+##string = "30_71_100_240_121_180_91"
 ##test = receive_compressed(string)
 ##
 string2 = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111111111111100000000000000000000000000000000000000000000000001111111111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000000000000000000000000000000000000000000000000011111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000000000000000000000000000000000001000000000010101010101010100010101010101000000000000000000000111111111111"
@@ -99,9 +100,6 @@ for y in range(200):
         elif xy == '0':
             print 'O', # obstacle
 
-##matrix = [[1, 1, 1, 1, 0],[0, 1, 1, 1, 1],[1, 0, 0, 0, 1],[1, 1, 1, 0, 0],[0, 0, 0, 0, 0]]
-##print matrix
-##print downsize_matrix(matrix)
 
 
 
