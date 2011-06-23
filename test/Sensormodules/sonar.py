@@ -21,6 +21,15 @@ def sensor_module(datastring):
         for i in range(0, 8):
             sonar_values.append(datasplit[i + 3].replace('{Name F' + str(i+1) + ' Range ', ''))
             sonar_values[i] = sonar_values[i].replace('}', '')
+        # Test for validity:
+        test = []
+        for i in range(len(sonar_values)):
+            test.append(re.findall('([\d.]*\d+)', sonar_values[i]))
+        if len(test) == 8:
+            print "BINGO"
+        else:
+            print "FAIL"
+
     print sonar_values, "\r\n"
 
 # Test the sensor module.
@@ -41,5 +50,3 @@ for i in range(100):
 		        sonar_values = sensor_module(datasplit)    
 
 s.close()
-
-
