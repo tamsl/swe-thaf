@@ -2,12 +2,13 @@ from heapq import heappush, heappop # for priority queue
 import time
 import math
 import random
+from strings import *
 
 class node:
-    x = 0 # x position
-    y = 0 # y position
-    dist = 0 # total distance already travelled to reach the node
-    pr = 0 # priority = distance + remaining distance estimate
+    x = 0 # x pos
+    y = 0 # y pos
+    dist = 0 # total distance already moved to get to to the finish
+    pr = 0 # priority = distance + remaining estimated distance
     
     def __init__(self, x, y, dist, pr):
         self.x = x
@@ -131,18 +132,31 @@ elif dirs == 8:
     dx = [1, 1, 0, -1, -1, -1, 0, 1]
     dy = [0, 1, 1, 1, 0, -1, -1, -1]
 
-hor = 30 # horizontal size of the map
-ver = 30 # vertical size of the map
+hor = 200 # horizontal size of the map
+ver = 200 # vertical size of the map
 the_map = []
 row = [0] * hor
 for i in range(ver): # create empty map
     the_map.append(list(row))
 
-# fillout the map with a '+' pattern
-for x in range(hor / 8, hor * 7 / 8):
-    the_map[ver / 2][x] = 1
-for y in range(ver / 8, ver * 7 / 8):
-    the_map[y][hor / 2] = 1
+### fillout the map with a '+' pattern
+##for x in range(hor / 8, hor * 7 / 8):
+##    the_map[ver / 2][x] = 1
+##for y in range(ver / 8, ver * 7 / 8):
+##    the_map[y][hor / 2] = 1
+
+string2 = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111111111111100000000000000000000000000000000000000000000000001111111111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000000000000000000000000000000000000000000000000011111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000000000000000000000000000000000001000000000010101010101010100010101010101000000000000000000000111111111111"
+string3 = ""
+for i in range(1000):
+    string3 = string3 + string2
+test2 = divide_string(string3, 999, 1000)
+matrix = create_matrix(test2)
+downsized_matrix = downsize_matrix(matrix)
+
+for y in range(ver):
+    for x in range(hor):
+        print the_map[y][x],
+    print
 
 # randomly select start and finish locations from a list
 sf = []
