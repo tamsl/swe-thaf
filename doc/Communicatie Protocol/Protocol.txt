@@ -1,4 +1,4 @@
-v1.8
+v1.9
 
 TAG:
 REQ: data sturen
@@ -34,13 +34,22 @@ CMD!"commando"#
 
 data:
 SNR:
+naar sensor module:
 {Name F1 Range "x"} {Name F2 Range "x"} {Name F3 Range "x"} {Name F4 Range "x"} {Name F5 Range "x"} {Name F6 Range "x"} {Name F7 Range "x"} {Name F8 Range "x"}
+uit sensormodule:
+x,x,x,x,x,x,x,x
 
 RSC:
+naar sensor module:
 {Range "x","x",...,"x"}'
+uit sensormodule:
+x,x,x,x,x,x,x,x,x,x,....,x,x,x
 
 ODO:
+naar sensor module:
 {Pose x,y,theta}
+uit sensormodule:
+x,y,theta
 
 MAP:
-#placeholder MAP data format
+"# of characters""type"_"# of characters""type"_...._"# of characters""type"
