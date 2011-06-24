@@ -18,6 +18,9 @@ print s
 s.send('INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n')
 configreader = config_reader()
 print("config reader gestart")
+accept_thread = acceptor(flag, list, "LIS", configreader.addresses)
+accept_thread.setDaemon(True)
+accept_thread.start()
 #sonar module
 sonar = configreader.connection(list, "SNR")
 print(sonar)
@@ -27,17 +30,12 @@ print(odometry)
 #odometry module
 rangescanner = configreader.connection(list, "RSC")
 print(rangescanner)
-##print 'going to sleep'
-##time.sleep(3)
-print("miauw miauw miauw")
-accept_thread = acceptor(flag, list, "LIS", configreader.addresses)
-accept_thread.setDaemon(True)
-accept_thread.start()
 print ("acceptor thread gestart")
 
 while 1:
+  
   try:
-    s.send("DRIVE {Left -1.0} {Right 1.0}")
+    s.send("DRIVE {Left -1.0} {Right 1.0}\r\n")
     data = s.recv(BUFFER_SIZE)
     if data_incomplete:
         datatemp += data
@@ -61,12 +59,12 @@ while 1:
     odometry.send(message)
     data = ""
 ##              print "doe Sonar shit\r\n"
-##          if typeSEN2 == "IR":
-##            print "doe IR shit\r\n"
+##    if typeSEN2 == "IR":
+####            print "doe IR shit\r\n"
 ##          # Laser sensor
-##          if typeSEN2 == "RangeScanner":
-
-##              print "doe RangeScanner shit\r\n"
+##    if typeSEN2 == "RangeScanner":
+##
+####              print "doe RangeScanner shit\r\n"
 ##          if typeSEN2 == "IRScanner":
 ##            print "doe IRScanner shit\r\n"
 ##          # Odometry sensor

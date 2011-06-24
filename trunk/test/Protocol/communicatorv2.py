@@ -18,6 +18,7 @@ class config_reader():
             config[i] = config[i].strip()
             addresses.append(config[i].split(' '))
         self.addresses = addresses
+        print addresses
 
     def connection(self, list, module):
         # Look for the address of the requested module and get its ip address
@@ -69,6 +70,7 @@ class communication(threading.Thread):
         # [2]: rangescanner
         # [3]: map
         # [4]: command
+        # [5]: nex
         self.memory = memory
         self.waiting_for_data = waiting_for_data
         self.request_data = request_data
@@ -154,6 +156,13 @@ class communication(threading.Thread):
                                         self.waiting_for_data -= 1
                                     data = " "
                                     datasplit = []
+                                # weet niet of dit klopt.
+                                elif(datasplit[1] == "NEX"):
+                                    self.memory[5] = datasplit[2]
+                                    if(self.waiting_for_data > 0):
+                                        self.waiting_for_data -= 1
+                                    data = " "
+                                    datasplit = []                                    
                         break
                     except(socket.error):
                         if self.running == 0:
