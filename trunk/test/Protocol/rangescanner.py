@@ -14,6 +14,7 @@ import re
 current_values = ""
 list = []
 running = 1
+message = ""
 configreader = config_reader()
 accept_thread = acceptor(running, list, "RSC", configreader.addresses)
 accept_thread.setDaemon(True)
@@ -23,19 +24,37 @@ print("ik heb de acceptor thread gestart")
 # Method to retrieve the list of range sensor values.
 def range_module(datastring):
     if datastring == "":
-        return
+        return current_values
     range_values = datastring.replace('{Range ', '')
     range_values = range_values.replace('}', '')
     datasplit = range_values.split(',')
     for i in range(len(datasplit)):
         if float(datasplit[i]) < 0:
-            return
-    current_values = range_values
+##            print 'foute data'
+            return current_values
+##    print 'receiving monkey data'
+    return range_values
+##    print current_values
 
 while 1:
-    range_module(accept_thread.memory[1])
+    data = accept_thread.memory[2]
+    string = data.split('\r\n')
+    for i in range(len(string)):
+        datasplit = re.findall('\{[^\}]*\}|\S+', string[i])
+##        if len(datasplit) > 2:
+##            print datasplit
+        if len(datasplit) > 6:
+            typeSEN = datasplit[2].replace('{Type ', '')
+            typeSEN = typeSEN.replace('}', '')
+            if typeSEN == "RangeScanner":
+                message = ""
+                message = datasplit[6]
+##                print message
+    if message != "":
+        current_values = range_module(message)
+    message = ""
 ##    print list
-##    print 'current_values', current_values
+    print 'current_values', current_values
     while len(accept_thread.request_data) != 0:
         config_reader.connection(list,
                                  accept_thread.request_data[0]).send(
