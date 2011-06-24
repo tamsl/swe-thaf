@@ -45,13 +45,13 @@ def go_right(s1 ,s2):
     s2 = str(s2)
     string = "DRIVE {Left " + s1 + "} {Right " + s2 + "}\r\n"
 # Method to drive to the left.s1 needs to be greater than s2.
-def go_left(s1,s2)
+def go_left(s1,s2):
     s1 = str(s1)
     s2 = str(s2)
     string = "DRIVE {Left " + s1 + "} {Right " + s2 + "}\r\n"
 # Method to stop.
 def go_brake():
-    string = "DRIVE {Left 0"} "{Right 0}\r\n"
+    string = "DRIVE {Left 0} {Right 0}\r\n"
 # Method to drive backwards
 def go_reverse():
     string = "DRIVE {Left -1} {Right -1}\r\n"

@@ -1,6 +1,7 @@
 # This is the test module that is specially made for the the wallfollower.
 # It's simular to the original with one change: all the methods get a socket.
 from communicatorv2 import *
+from movementsv2 import *
 import string
 import socket
 import re
@@ -22,39 +23,6 @@ print ("acceptor thread gestart")
 odo = 1
 ran = 2
 nex = 5
-
-def handle_movement(type, *args):
-   handlers = {"forward":         go_drive,
-               "left":            go_drive,
-               "right":           go_drive,
-               "reverse":         go_drive,
-               "brake":           go_drive,
-               "rotate_left":     go_drive,
-               "rotate_right":    go_drive,
-               "trace":           go_trace,
-               "rotate_robot":    go_rotate,
-              }
-   return handlers[type](*args)
-
-def go_drive(s1, s2):
-    s1 = str(s1)
-    s2 = str(s2)
-    string = "DRIVE {Left " + s1 + "} {Right " + s2 + "}\r\n"
-##    print string
-    return string
-
-def go_trace(b1, in1, COLOR):
-    b1 = str(b1)
-    in1 = str(in1)
-    string = "Trace {On " + b1 + "} {Interval " + in1 + "} {Color " + COLOR +"}\r\n"
-##    print string
-    return string
-
-def go_rotate(s1):
-    s1 = str(s1)
-    string = "DRIVE {RotationalVelocity " + s1 + "}"
-##    print string
-    return string
 
 # Method to change all strings in an array to floats.
 def string_to_float(vals):
@@ -106,11 +74,11 @@ def wall_continued(side,s):
            # and return to wall follow
            if index_val > len(laser_values)/2:
                 print"ik stuur bij naar rechts in cont"
-                s.send(handle_movement("right", 4.0,-2.0))
+                s.send(handle_movement("right", 4.0,2.0))
                 return 1
            else :
                 print"ik stuur bij naar links in cont"
-                s.send(handle_movement("left", -2.0,4.0))
+                s.send(handle_movement("left", 4.0,2.0))
                 return 1
        # if the index val is on the left side of the
        # robot
@@ -118,19 +86,19 @@ def wall_continued(side,s):
           #wall on the left so turn right
           print "waarde aan de linkerkant",laser_values[-1]
           if flag >= 0 :                                   
-              s.send(handle_movement("left", -2.0,4.0))
+              s.send(handle_movement("left", 4.0,2.0))
           if flag >= 1 and min_val >= 1.2:
               if laser_values[-1] >= 1:
                  turn_360(odo_values,s)
                  wallfollow.send("NEX!0#")
           else:
-              s.send(handle_movement("right", 4.0,-2.0))
+              s.send(handle_movement("right", 4.0,2.0))
        else:
           #Wall on the right side turn right
           print "waarde aan de rechterkant" , laser_values[0]
           if flag >= 0 :
              #first turn a little
-              s.send(handle_movement("right", 4.0,-2.0))
+              s.send(handle_movement("right", 4.0,2.0))
               flag = 1
           if flag >= 1:
               # now look for a wall
@@ -138,7 +106,7 @@ def wall_continued(side,s):
                   turn_360(odo_values,s)
                   wallfollow.send("NEX!0#")
           else:
-              s.send(handle_movement("right", -2.0,4.0))
+              s.send(handle_movement("right", 2.0,4.0))
        if min_val <= 0.35:
           wallfollow.send("NEX!1#")
 
@@ -151,7 +119,7 @@ def turn_360(odo_values, s):
 ##    theta = odo_values[2]
     # we always turn left while searching for a wall
     
-    s.send(handle_movement("rotate_left", -1.5, 1.0))
+    s.send(handle_movement("rotate_left", 1.5))
     # To prevent the use of false values.
     new_odo_values = [999, 999, 999]
     temp_min_val = 10000
@@ -170,7 +138,7 @@ def turn_360(odo_values, s):
         new_odo_values  = accept_thread.memory[odo].split(',')
         if new_odo_values[2] > previous_odo_values[2]:
             if flag == 2:
-                s.send(handle_movement("brake", 0.0, 0.0))
+                s.send(handle_movement("brake"))
                 print "De kleinste min value gevonden"
                 turn_right_position(temp_min_val, temp_index_val, temp_odo_values, s)
                 #placeholder wallfollow
@@ -202,10 +170,10 @@ def turn_right_position(min_val, index_val, odo_values, s):
     print "turning to the right position"
     turning_right = 0
     if odo_values[2] < 0:
-        s.send(handle_movement("rotate_right", 1.0, -1.5))
+        s.send(handle_movement("rotate_right", 1.5))
         turning_right = 1
     else:
-        s.send(handle_movement("rotate_left", -1.5, 1.0))
+        s.send(handle_movement("rotate_left", 1.5))
     # To prevent the use of false values.
     new_odo_values = [999, 999, 999]
     previous_odo_values = [999, 999, 999]
@@ -226,10 +194,10 @@ def turn_right_position(min_val, index_val, odo_values, s):
             or (new_odo_values[2] > odo_values[2] and turning_right == 1
                 and new_odo_values[2] < 0)):
             # When the value is found stop.
-            s.send(handle_movement("brake", 0.0, 0.0))
+            s.send(handle_movement("brake"))
             print "De juiste positie gevonden"
             # Drive forward.
-            s.send(handle_movement("forward", 1.0, 1.0))
+            s.send(handle_movement("forward",1.0))
             stop(s)
 ##                            print "turn to the right position", index_val
             return
@@ -253,5 +221,5 @@ def stop(s):
         # The threshold.
         if min_val <= 0.40:
             print "De muur gevonden"
-            s.send(handle_movement("brake", 0.0, 0.0))
+            s.send(handle_movement("brake"))
             return
