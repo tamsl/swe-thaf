@@ -13,6 +13,7 @@ import re
 current_values = ""
 list = []
 running = 1
+message = ""
 configreader = config_reader()
 accept_thread = acceptor(running, list, "SNR", configreader.addresses)
 accept_thread.setDaemon(True)
@@ -25,6 +26,8 @@ print("ik heb de acceptor thread gestart")
 # Method to retrieve the list of sonar values
 def sonar_module(datastring):
 ##    print datastring, "\r\n"
+    if datastring == "":
+        return current_values
     datasplit = re.findall('\{[^\}]*\}|\S+', datastring)
     sonar_values = []
     values = ""
@@ -33,13 +36,26 @@ def sonar_module(datastring):
                                             + ' Range ', ''))
         sonar_values[i] = sonar_values[i].replace('}', '')
         if float(sonar_values[i]) < 0:
-            return
+            return current_values
         values += sonar_values[i] + ','
     values = values.rstrip(',')
-    current_values = values
+    return values
 
 while 1:
-    sonar_module(accept_thread.memory[0])
+    data = accept_thread.memory[0]
+    string = data.split('\r\n')
+    for i in range(len(string)):
+        datasplit = re.findall('\{[^\}]*\}|\S+', string[i])
+        if len(datasplit) > 10:
+            typeSEN = datasplit[2].replace('{Type ', '')
+            typeSEN = typeSEN.replace('}', '')
+            if typeSEN == "Sonar":
+                message = ""
+                for i in range(3, len(datasplit)):
+                    message += str(datasplit[i])
+                print message
+    current_values = sonar_module(message)
+    message = ""
 ##    print list
 ##    print 'current_values', current_values
     while len(accept_thread.request_data) != 0:

@@ -37,18 +37,19 @@ print ("acceptor thread gestart")
 
 while 1:
   try:
-##    s.send("DRIVE {Left 1.0} {Right 1.0}")
+    s.send("DRIVE {Left -1.0} {Right 1.0}")
     data = s.recv(BUFFER_SIZE)
-    if data[len(data)-1] != '\n':
-        datatemp = data
-        data_incomplete = 1
-        continue
     if data_incomplete:
         datatemp += data
         data_incomplete = 0
         data = datatemp
-    print data
+    if data[len(data)-1] != '\n':
+        datatemp = data
+        data_incomplete = 1
+        continue
+##    print data
     if len(list) == 0:
+      print "bloe"
       continue
     string = data.split('\r\n')
 ##    print("in de while loop")
@@ -70,21 +71,21 @@ while 1:
                   message += str(datasplit[i])
               message += "#"
               sonar.send(message)
-              print "doe Sonar shit\r\n"
+##              print "doe Sonar shit\r\n"
 ##          if typeSEN2 == "IR":
 ##            print "doe IR shit\r\n"
 ##          # Laser sensor
           if typeSEN2 == "RangeScanner":
               message = "RCV!RSC!" + str(datasplit[6]) + "#"
               rangescanner.send(message)
-              print "doe RangeScanner shit\r\n"
+##              print "doe RangeScanner shit\r\n"
 ##          if typeSEN2 == "IRScanner":
 ##            print "doe IRScanner shit\r\n"
 ##          # Odometry sensor
           if typeSEN == "Odometry":
               message = "RCV!ODO!" + str(datasplit[3]) + "#"
               odometry.send(message)
-              print "doe Odometry shit\r\n"
+##              print "doe Odometry shit\r\n"
 ##          # GPS sensor
 ##          if typeSEN == "GPS":
 ##            print "doe GPS shit\r\n"
@@ -109,7 +110,7 @@ while 1:
 ##          # Sound sensor
 ##          if typeSEN == "Sound":
 ##            print "doe Sound shit\r\n"
-          print "doe SEN shit\r\n"
+##          print "doe SEN shit\r\n"
 ##        # State message
 ##        if datasplit[0] == "STA":
 ##          typeSTA = datasplit[1].replace('{Type ', '')

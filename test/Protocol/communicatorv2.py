@@ -95,19 +95,22 @@ class communication(threading.Thread):
                             datatemp += data
                             data_incomplete = 0
                             data = datatemp
-                        if data[len(data)-1] != '#':
-                            datatemp = data
-                            data_incomplete = 1
+                        if(len(data) > 1):
+                            if data[len(data)-1] != '#':
+                                datatemp = data
+                                data_incomplete = 1
+                                continue
+                        else:
                             continue
                         messagesplit = data.split("#")
-                        print "data"
-                        print data
+##                        print "data"
+##                        print data
                         for j in range(len(messagesplit)):
-                            print "messagesplit[" + str(j) + "]"
-                            print messagesplit[j]
+##                            print "messagesplit[" + str(j) + "]"
+##                            print messagesplit[j]
                             datasplit = messagesplit[j].split("!")
-                            print "datasplit"
-                            print datasplit
+##                            print "datasplit"
+##                            print datasplit
                             # connection is closed if the data received is equal to
                             # nothing
                             if not data:

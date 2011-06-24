@@ -14,15 +14,6 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
 print s
 s.send('INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n')
-configreader = config_reader()
-print("config reader gestart")
-#sonar module
-sonar = configreader.connection(list, "sonar")
-print(sonar)
-print("miauw miauw miauw")
-accept_thread = acceptor(list, flag, "listener", configreader.addresses)
-accept_thread.start()
-print ("acceptor thread gestart")
 
 while 1:
   try:
@@ -46,8 +37,6 @@ while 1:
             typeSEN2 = typeSEN2.replace('}', '')
           # Range sensor
           if typeSEN2 == "Sonar":
-            print("bla123")
-            sonar.send("REQ ")
             print "doe Sonar shit\r\n"
           if typeSEN2 == "IR":
             print "doe IR shit\r\n"
@@ -140,12 +129,4 @@ while 1:
             print "doe Camera shit\r\n"
           print "doe RES shit\r\n"
           
-  except:
-    print("er is iets fout gegaan in listener")
-    accept_thread.setflag(1)
-    print(flag)
-    print("flag zou 1 moeten zijn")
-    acccept_thread.join()
-    sys.exit()
-  
 s.close()
