@@ -2,7 +2,7 @@
 \usepackage{graphicx}
 \usepackage[dutch]{babel}
 
-\title{Software Engineering en Gedistribueerde Applicaties \\[10pt]Verslag\\[25pt]Team F.A.C.H.T.}
+\title{Software Engineering en Gedistribueerde Applicaties \\[10pt]Eindverslag\\[25pt]Team F.A.C.H.T.}
 \author{\\Chris Bovenschen, Harm Dermois, \\Alexandra Moraga Pizarro, Tamara Ockhuijsen en Fredo Tan \\[10pt]6104096, 0527963, 6129544, 6060374, 6132421 \\[25pt]Universiteit van Amsterdam}
 \begin{document}
 \maketitle
@@ -41,19 +41,19 @@ Odometry haalt de drie waarden op die nodig zijn voor de bepaling van de positie
 De range scanner bevindt zich op een bepaalde hoogte boven de robot. Hij scant de omgeving horizontaal door middel van het roteren van de laser in een bepaald interval. De range scanner leest alle 181 laserwaarden uit en stuurt ze door naar de mid-level modules. 
 
 \subsubsection{Sonar}
-De sonar leest alle 8 sonarwaarden uit en stuurt ze door naar de mid-level modules.
+De sonar leest alle 8 sonarwaarden uit en stuurt ze door naar de mid-level modules. De sonar stuurt een geluidsgolf, waardoor obstakels die op de grond liggen ook te detecteren zijn.
 
 \subsection{Mid-level}
 De mid-level componenten verzorgen het vermijden van botsingen en het zoeken en volgen van een muur.
 
 \subsubsection{Collision avoider}
-De collision avoider kijkt alleen naar de waarden van de sonar. De sonar stuurt een geluidsgolf, waardoor obstakels die op de grond liggen ook te detecteren zijn. Als de kleinste waarde van de sonar kleiner is dan 0,315 stopt de robot met rijden. Bij deze waarde zijn objecten op de grond nog zichtbaar. Zodra deze waarde te klein wordt, kan de sonar het object niet meer zien. Tevens wordt er met behulp van de snelheid uitgerekend na hoeveel seconden de botsing plaats zal vinden als de robot door blijft rijden. Deze berekening wordt gedaan op basis van de snelheid van de wielen, en kan dus in sommige gevallen afwijken.
-
-\subsubsection{Wall follow}
-De muur wordt gevolgd die door wall search is gevonden. Als de muur zich meer aan de linkerkant van de robot bevindt, draait hij naar rechts en als de muur zich meer aan de rechterkant van de robot bevindt, draait hij naar links. De kleinste laserwaarde bevindt zich nu aan de rechter- of linkerkant. Hij blijft rechtdoor rijden als de kleinste laserwaarde niet kleiner en groter wordt dan een ingestelde waarde. Als hij te ver van de muur afwijkt, stuurt hij bij richting de muur. Als hij te dicht bij de muur komt, stuurt hij bij van de muur af. Als er geen muur meer wordt waargenomen, wordt de wall\_continued functie binnen de wall search aangeroepen. Deze functie kijkt of er in de buurt nog een muur is te vinden. Als dit zo is, gaat hij daarheen. Als er zich in de buurt nog een andere muur bevindt, zoekt wall search naar de nieuwe dichtstbijzijnde muur. Elke keer wanneer de logica klaar is, wordt er nieuwe informatie opgevraagd van de sensormodules.
+De collision avoider kijkt alleen naar de waarden van de sonar, omdat die in tegenstelling tot de laser wel objecten op de grond kan detecteren. Als de kleinste waarde van de sonar kleiner is dan 0,315 stopt de robot met rijden. Bij deze waarde zijn objecten op de grond nog zichtbaar. Zodra deze waarde te klein wordt, kan de sonar het object niet meer zien. Tevens wordt er met behulp van de snelheid uitgerekend na hoeveel seconden de botsing plaats zal vinden als de robot door blijft rijden. Deze berekening wordt gedaan op basis van de snelheid van de wielen, en kan dus in sommige gevallen afwijken.
 
 \subsubsection{Wall search}
 Bij het zoeken naar een muur draait de robot eerst 360 graden om te kijken waar de dichtstbijzijnde muur is. Zodra de kleinste sensorwaarde is gevonden, roteert de robot nog een keer totdat hij in de juiste positie staat. Hij rijdt recht op de muur af totdat hij op een bepaalde afstand van de muur af staat en dan gaat hij over op wall follow.
+
+\subsubsection{Wall follow}
+De muur wordt gevolgd die door wall search is gevonden. Als de muur zich meer aan de linkerkant van de robot bevindt, draait hij naar rechts en als de muur zich meer aan de rechterkant van de robot bevindt, draait hij naar links. De kleinste laserwaarde bevindt zich nu aan de rechter- of linkerkant. Hij blijft rechtdoor rijden als de kleinste laserwaarde niet kleiner en groter wordt dan een ingestelde waarde. Als hij te ver van de muur afwijkt, stuurt hij bij richting de muur. Als hij te dicht bij de muur komt, stuurt hij bij van de muur af. Als er geen muur meer wordt waargenomen, wordt de wall\_continued functie binnen de wall search aangeroepen. Deze functie kijkt of er in de buurt nog een muur is te vinden. Als dit zo is, gaat hij daarheen. Als er zich in de buurt nog een andere muur bevindt, zoekt wall search naar de nieuwe dichtstbijzijnde muur. Elke keer wanneer de logica klaar is, wordt er nieuwe informatie opgevraagd van de sensormodules.
 
 \subsection{High-level}
 De high-level componenten houden bij waar de robot is geweest en kunnen hem naar een ander punt laten rijden. Dit zijn de modules die meer tijd nodig hebben dan de mid-level modules.
