@@ -46,18 +46,22 @@ while 1:
     string = data.split('\r\n')
     for i in range(len(string)):
         datasplit = re.findall('\{[^\}]*\}|\S+', string[i])
+##        if len(datasplit) != 0:
+##            print datasplit
         if len(datasplit) > 10:
             typeSEN = datasplit[2].replace('{Type ', '')
             typeSEN = typeSEN.replace('}', '')
+##            print typeSEN
             if typeSEN == "Sonar":
                 message = ""
                 for i in range(3, len(datasplit)):
                     message += str(datasplit[i])
-                print message
+##                print message
     current_values = sonar_module(message)
-    message = ""
+##    message = ""
 ##    print list
-##    print 'current_values', current_values
+    if len(current_values) != 0:                 
+        print 'current_values', current_values
     while len(accept_thread.request_data) != 0:
         message = "RCV!SNR!" + str(current_values) + "#"
         config_reader.connection(list,

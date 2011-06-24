@@ -20,6 +20,7 @@ accept_thread = acceptor(running, list, "ODO", configreader.addresses)
 accept_thread.setDaemon(True)
 accept_thread.start()
 print("ik heb de acceptor thread gestart")
+old_values = 20
 
 # Method to retrieve the list of odometry values.
 def odometry_module(datastring):
@@ -48,17 +49,25 @@ while 1:
     string = data.split('\r\n')
     for i in range(len(string)):
         datasplit = re.findall('\{[^\}]*\}|\S+', string[i])
+##        if len(datasplit) != 0:
+##            print datasplit
         if len(datasplit) > 3:
             typeSEN = datasplit[1].replace('{Type ', '')
             typeSEN = typeSEN.replace('}', '')
+##            print typeSEN
             if typeSEN == "Odometry":
                 message = ""
                 message = datasplit[3]
 ##                print 'message'
-    current_values = odometry_module(message)
-    message = ""
+                print message
+    
+##    message = ""
 ##    print list
-    print 'current_values', current_values
+    if current_values != "":
+        current_values = odometry_module(message)
+        if current_values != old_values:           
+            print current_values
+            old_values = current_values      
     while len(accept_thread.request_data) != 0:
         config_reader.connection(list,
                                  accept_thread.request_data[0]).send(
