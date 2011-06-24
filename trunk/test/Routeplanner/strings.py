@@ -1,3 +1,27 @@
+import math
+
+def receive_compressed_into_matrix(string, row_length):
+    index = 0
+    count = 0
+    row_number = 0
+    matrix = []
+    line = []
+    string = string.split('_')
+    for i in range(len(string)):
+        how_many = string[i][:-1]
+        value = string[i][len(string[i]) - 1]
+        how_many = int(how_many)
+        value = int(value)
+        for k in range(how_many):
+            line.append(value)
+        count += how_many
+        count %= row_length
+        if count == 0:
+            matrix.append(line)
+        if index == 999:
+            index = 0
+    return matrix
+
 def receive_compressed(string):
     reg_string = ""
     string = string.split('_')
@@ -49,10 +73,6 @@ def downsize_matrix(matrix):
                     count_zero = count_zero + 1
                 elif val == 1:
                     count_one = count_one + 1
-##        print start_range_r, end_range_r
-##        print start_range_c, end_range_c
-##        print "How many free zones: ", count_one
-##        print "How many obstacles: ", count_zero
         if (start_range_r == 995 and end_range_r == 1000) and (start_range_c < 995 and end_range_c < 1000):
             start_range_c = start_range_c + 5
             end_range_c = end_range_c + 5
@@ -61,8 +81,6 @@ def downsize_matrix(matrix):
         elif (start_range_r < 995 and end_range_r < 1000):
             start_range_r = start_range_r + 5
             end_range_r = end_range_r + 5
-##        if (start_range_r == 995 and end_range_r == 1000) and (start_range_c == 995 and end_range_c == 1000):
-##            print "DONE"
         if count_one < count_zero:
             one_or_zero = "0"
         elif count_one > count_zero:
@@ -71,36 +89,41 @@ def downsize_matrix(matrix):
         count_zero = 0
         count_one = 0
         t = t + 1
-##        print t
     new_string = divide_string(final_string, 199, 200)
     downsized_matrix = create_matrix(new_string)
     # Because somehow the matrix has a length of 201.
     downsized_matrix.pop(200)
     return downsized_matrix
 
-##string = "30_71_100_240_121_180_91"
-##test = receive_compressed(string)
+##def create_int_matrix(matrix):
+##    x , y = matrix.shape
+##    for i in range (x):
+##        for j in range (y):
+##             = matrix[i][j]
+            
+##string = "30_71_100_240_60_121_180_91_111_100001_2474750_2474751_2474750_2474751"
+####test = receive_compressed(string)
+##test = receive_compressed_into_matrix(string, 1000)
+##print test
+
+##string2 = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111111111111100000000000000000000000000000000000000000000000001111111111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000000000000000000000000000000000000000000000000011111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000000000000000000000000000000000001000000000010101010101010100010101010101000000000000000000000111111111111"
+##string3 = ""
+##for i in range(1000):
+##    string3 = string3 + string2
+##test2 = divide_string(string3, 999, 1000)
+##matrix = create_matrix(test2)
+##downsized_matrix = downsize_matrix(matrix)
 ##
-string2 = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111111111111100000000000000000000000000000000000000000000000001111111111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000000000000000000000000000000000000000000000000011111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000000000000000000000000000000000001000000000010101010101010100010101010101000000000000000000000111111111111"
-string3 = ""
-for i in range(1000):
-    string3 = string3 + string2
-test2 = divide_string(string3, 999, 1000)
-matrix = create_matrix(test2)
-downsized_matrix = downsize_matrix(matrix)
-
-print len(downsized_matrix)
-
-print 'Map:'
-for y in range(200):
-    for x in range(200):
-        xy = downsized_matrix[y][x]
-        if xy == '1':
-            print '.', # space
-        elif xy == '0':
-            print 'O', # obstacle
-
-
+##print len(downsized_matrix)
+##
+##print 'Map:'
+##for y in range(200):
+##    for x in range(200):
+##        xy = downsized_matrix[y][x]
+##        if xy == '1':
+##            print '.', # space
+##        elif xy == '0':
+##            print 'O', # obstacle
 
 
 
