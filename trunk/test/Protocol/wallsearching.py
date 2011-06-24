@@ -18,6 +18,7 @@ accept_thread.start()
 odometry = configreader.connection(list, "ODO")
 rangescanner = configreader.connection(list, "RSC")
 listener = configreader.connection(list, "LIS")
+print 'why you bastard'
 wallfollow = configreader.connection(list, "WFW")
 print ("acceptor thread gestart")
 odo = 1

@@ -49,7 +49,7 @@ while 1:
         if len(datasplit) > 6:
             typeSEN = datasplit[2].replace('{Type ', '')
             typeSEN = typeSEN.replace('}', '')
-            print typeSEN
+##            print typeSEN
             if typeSEN == "RangeScanner":
                 message = ""
                 message = datasplit[6]
