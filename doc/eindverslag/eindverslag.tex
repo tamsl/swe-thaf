@@ -71,7 +71,7 @@ Alle modules kunnen gebruik maken van de beschikbare libraries. Ze kunnen deze l
 De communicator zorgt voor de communicatie tussen de modules en maakt een ge\"{i}ntegreerd geheel van de losse modules. De communicatie verloopt via een communicatieprotocol.
 
 \subsubsection{Movements}
-Dit is een library waarin alle bewegingen zijn gedefinieerd. Deze library wordt gebruikt voor de modules die de robot willen besturen.
+Dit is een library waarin alle bewegingen zijn gedefinieerd. Deze library wordt gebruikt voor de modules die de robot willen besturen. In de movements staan functies gedefinieerd voor het vooruit, naar links, naar rechts en achteruit rijden. Tevens is het mogelijk om naar links en rechts te roteren, een spoor achter te laten, de camera te zien vanuit de robot en de robot te laten stoppen met rijden.
 
 \section{Tests}
 Voor elke module is er een aparte test geschreven om er zeker van te zijn dat elke module op zichzelf goed werkt. Elke module wordt direct aan de simulator vastgezet en getest met de directe data die binnenkomen. 
@@ -96,13 +96,13 @@ De wall combo is geschreven om te testen of de wall search goed werkt in samenwe
 de werking in een gedistribueerd systeem.
 
 \subsection{Wall follow}
-De wall follow wordt getest door de robot vanuit verschillende startposities een muur te laten volgen. Het is de bedoeling dat deze module wordt aangeroepen wanneer er al een muur is gevonden. Dan kan de robot de muur naar links en naar rechts toe volgen. Binnen dez gebruikte methode zijn zwakke bochten ook mogelijk.
+De wall follow wordt getest door de robot vanuit verschillende startposities een muur te laten volgen. Het is de bedoeling dat deze module wordt aangeroepen wanneer er al een muur is gevonden. Dan kan de robot de muur naar links en naar rechts toe volgen. Binnen deze gebruikte methode zijn stompe bochten ook mogelijk.
 
 \subsection{Wall search}
 De wall search wordt getest door de robot vanuit verschillende startposities de dichstbijzijnde muur te zoeken. 
 
 \subsection{Map maker}
-De map maker wordt getest door hem een output bestand van de wall combo te laten lezen en de kaart ervan te tekenen.
+De map maker wordt getest door hem een output bestand met laser- en odometriewaarden van de wall combo te laten lezen en de kaart ervan te tekenen.
 
 \subsection{Path finding}
 De path finding wordt getest door een punt op te geven waar de robot naartoe moet rijden. Hij moet hierbij botsingen ontwijken en naar het punt toe rijden op een zo effici\"{e}nt mogelijke manier.
