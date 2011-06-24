@@ -68,7 +68,7 @@ Path finding kan alleen gebruikt worden binnen de al ontdekte gebieden en kan du
 Alle modules kunnen gebruik maken van de beschikbare libraries. Ze kunnen deze libraries importeren en hun functies gebruiken.
 
 \subsubsection{Communicator}
-De communicator zorgt voor de communicatie tussen de modules en maakt een ge\"{i}ntegreerd geheel van de losse modules. De communicatie verloopt via een communicatieprotocol.
+De library comunicator leest een bestand in wat de locaties van de modules bevat. Via deze data maakt hij connecties aan met andere modules. De communicator library importeerd 2 thread klasses en een derde klasse. De ene thread luistert naar de gemaakte connecties en de andere luistert naar een poort of er nieuwe connecties gemaakt moeten worden. De thread die luistert handelt de berichten af volgens ons communicatieprotocol. Hierin staan alle mogelijke berichten en tags die gebruikt worden bij onze communicatie en wat hun doel is. Hierna handelt elke module zijn ontvangen data anders af.
 
 \subsubsection{Movements}
 Dit is een library waarin alle bewegingen zijn gedefinieerd. Deze library wordt gebruikt voor de modules die de robot willen besturen. In de movements staan functies gedefinieerd voor het vooruit, naar links, naar rechts en achteruit rijden. Tevens is het mogelijk om naar links en rechts te roteren, een spoor achter te laten, de camera te zien vanuit de robot en de robot te laten stoppen met rijden.
