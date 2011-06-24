@@ -81,13 +81,13 @@ Voor elke module is er een aparte test geschreven om er zeker van te zijn dat el
 De listener wordt getest door data te verkrijgen en deze per type bericht in een nieuwe array uit te printen.
 
 \subsection{Odometry}
-De odometry wordt getest door 100 regels data te verkrijgen van de simulator en hiervan de odometriewaarden te printen.
+De odometry wordt getest door 100 regels data te verkrijgen van de simulator en hiervan de odometriewaarden te printen. De odometriewaarden worden getest op geldigheid.
 
 \subsection{Range scanner}
-De range scanner wordt getest door 100 regels data te verkrijgen van de simulator en hiervan de 181 laserwaarden te printen.
+De range scanner wordt getest door 100 regels data te verkrijgen van de simulator en hiervan de 181 laserwaarden te printen. De laserwaarden worden getest op geldigheid.
 
 \subsection{Sonar}
-De sonar wordt getest door 100 regels data te verkrijgen en  hiervan de 8 sonarwaarden te printen
+De sonar wordt getest door 100 regels data te verkrijgen en  hiervan de 8 sonarwaarden te printen. De sonarwaarden worden getest op geldigheid.
 
 \subsection{Collision avoider}
 De collision avoider wordt getest door de robot vanuit verschillende startposities rond te laten rijden zonder dat er botsingen ontstaan.
@@ -103,11 +103,19 @@ De wall follow wordt getest door de robot vanuit verschillende startposities een
 De wall search wordt getest door de robot vanuit verschillende startposities de dichstbijzijnde muur te zoeken. 
 
 \subsection{Map maker}
-De map maker is getest door hem een output bestand van de wall combo te laten lezen en de kaart ervan te tekenen.
+De map maker wordt getest door hem een output bestand van de wall combo te laten lezen en de kaart ervan te tekenen.
 
 \subsection{Path finding}
+De path finding wordt getest door een punt op te geven waar de robot naartoe moet rijden. Hij moet hierbij botsingen ontwijken en naar het punt toe rijden op een zo effici\"{e}nt mogelijke manier.
 
 \section{Experiment}
-De robot wordt geïnitialiseerd op een bepaalde plaats. Hij zoekt een muur en blijft deze muur volgen. Zodra hij de opdracht krijgt om naar een punt toe te rijden, wordt path finding ingeschakeld. De map maker werkt continu de kaart bij en de collision avoider zorgt ervoor dat er geen botsingen plaatsvinden. Als hij geen nieuwe opdracht krijgt om naar een ander punt toe te rijden, gaat hij weer een muur zoeken en deze volgen.
+De robot wordt ge\"{i}nitialiseerd op een bepaalde plaats. Hij zoekt een muur en blijft deze muur volgen. Zodra hij de opdracht krijgt om naar een punt toe te rijden, wordt path finding ingeschakeld. De map maker werkt continu de kaart bij en de collision avoider zorgt ervoor dat er geen botsingen plaatsvinden. Als hij geen nieuwe opdracht krijgt om naar een ander punt toe te rijden, gaat hij weer een muur zoeken en deze volgen.
+
+\section{Resultaten}
+\section{Conclusie}
+\section{Discussie}
+\section{Bronvermelding}
+\section{Appendix}
+\appendix
 
 \end{document}
