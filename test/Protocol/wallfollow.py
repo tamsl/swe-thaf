@@ -3,7 +3,7 @@ from communicatorv2 import *
 from movementsv2 import *
 import socket
 import re
-import wallsearching
+##import wallsearching
 import time
 
 
@@ -102,7 +102,6 @@ side = 0
 fc = 0
 laser_values = []
 while 1:
-    data = s.recv(BUFFER_SIZE)
     #request data
     rangescanner.send("REQ!WFW#")
     accept_thread.waiting_for_data += 1
