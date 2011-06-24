@@ -1,5 +1,6 @@
 import string
 from communicatorv2 import *
+from movementsv2 import *
 import socket
 import re
 import wallsearching
@@ -25,32 +26,6 @@ odo = 1
 ran = 2
 nex = 5
 
-def handle_movement(type, *args):
-   handlers = {"forward":         go_drive,
-               "left":            go_drive,
-               "right":           go_drive,
-               "reverse":         go_drive,
-               "brake":           go_drive,
-               "rotate_left":     go_drive,
-               "rotate_right":    go_drive,
-               "trace":           go_trace,
-              }
-   return handlers[type](*args)
-
-def go_drive(s1, s2):
-    s1 = str(s1)
-    s2 = str(s2)
-    string = "DRIVE {Left " + s1 + "} {Right " + s2 + "}\r\n"
-    #print string
-    return string
-
-def go_trace(b1, in1, COLOR):
-    b1 = str(b1)
-    in1 = str(in1)
-    string = ("Trace {On " + b1 + "} {Interval " + in1 + "}" +
-              "{Color " + COLOR +"}\r\n")
-    #print string
-    return string
 
 # Convert the list of strings to floats.
 def string_to_float(laser_vals):
@@ -90,9 +65,9 @@ def wallfollow(min_val, index_val, length):
     # side 1 is wall on right side otherwise the wall is on the left side
     side = 0
     if index_val < length/2:
-        s.send(handle_movement("rotate_left", -1.5, 1.0))
+        s.send(handle_movement("left", 4.0,2.0))
     else:
-        s.send(handle_movement("rotate_right", 1.0, -1.5))
+        s.send(handle_movement("right", 4.0,2.0))
     data_incomplete = 0
     while index_val not in range(length/5) and index_val not in range(4*length/5, length):
         rangescanner.send("REQ!WFW#")
@@ -108,7 +83,7 @@ def wallfollow(min_val, index_val, length):
     # the wall.
     if index_val > length/2:
         side = 1
-    s.send(handle_movement("forward", 1.0, 1.0))
+    s.send(handle_movement("forward", 1.0))
     # Return that it is now following the wall.
     return 1 , side
    
@@ -156,12 +131,12 @@ while 1:
             fc = 1
             if index_val > length/2:
                 print"ik stuur bij naar rechts"
-                s.send(handle_movement("right", 2.0, -1.0))
+                s.send(handle_movement("right", 2.0, 1.0))
                 side = 1 
                 break
             else:
                 print"ik stuur bij naar link"
-                s.send(handle_movement("left", -1.0, 2.0))
+                s.send(handle_movement("left", 2.0,1.0))
                 side =1
                 break
         elif float(laser_values[i]) <= 0.4 and fc == 1:
@@ -180,12 +155,12 @@ while 1:
             # the most left value is 181
             if index_val > length/2:
                 print"ik stuur bij naar rechts"
-                s.send(handle_movement("right", 1.0,-1.0))
+                s.send(handle_movement("rotate_right", 1.0))
                 side = 0
                 break
             else :
                 print"ik stuur bij naar links"
-                s.send(handle_movement("left", -1.0,1.0))
+                s.send(handle_movement("rotate_left", 1.0))
                 break
                 side = 1
         # If you get too far from the wall but the wall is still
@@ -194,12 +169,12 @@ while 1:
             print "ik ben te ver van de muur ik ga bij sturen"
             if index_val > length/2:
                 print"ik stuur bij naar rechts"
-                s.send(handle_movement("left", -1.0, 1.0))
+                s.send(handle_movement("rotate_left", 1.0))
                 side = 0
                 break
             else:
                 print"ik stuur bij naar links"
-                s.send(handle_movement("right", 1.0, -1.0))
+                s.send(handle_movement("rotate-right", 1.0))
                 side = 1
                 break
         
