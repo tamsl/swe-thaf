@@ -12,8 +12,15 @@
 
 \newpage
 \section{Inleiding}
-Dit verslag beschrijft het ontwerpen, implementeren en testen van een gedistribueerde robotapplicatie. De robot die hiervoor wordt gebruikt is de gesimuleerde P2DX, deze heeft twee aangedreven wielen en een zwenkwiel. Het platform voor de robotsimulatie is USARSim. Het doel is om met behulp van de sensoren op de robot in een vrij volle ruimte een pad langs een wand te rijden, botsingen te vermijden, zonodig een wand op te zoeken, uit doodlopende stukken te ontsnappen, bijhouden waar hij is en welk pad hij heeft gevolgd en de omgeving in kaart te brengen. 
-
+Dit verslag beschrijft het ontwerpen, implementeren en testen van een gedistribueerde robotapplicatie. De robot die hiervoor wordt gebruikt, is de gesimuleerde P2DX. Deze heeft twee aangedreven wielen en een zwenkwiel. Het platform voor de robotsimulatie is USARSim. Het doel is om met behulp van de sensoren op de robot in een vrij volle ruimte de volgende acties uit te kunnen voeren:
+\begin{itemize}
+  \item een pad langs een wand te rijden
+  \item botsingen te vermijden
+  \item zonodig een wand op te zoeken
+  \item uit doodlopende stukken te ontsnappen
+  \item bijhouden waar hij is en welk pad hij heeft gevolgd
+  \item de omgeving in kaart te brengen
+\end{itemize}
 Het project is op te delen in verschillende fases. Aan het begin is er nagedacht over een ontwerp met een model, een planning en een specificatie van het eindproduct. Hieruit is een voorlopig werkplan ontstaan. In het definitieve werkplan is een uitgebreidere beschrijving van de realisatie van verschillende componenten met bijbehorende tests te vinden samen met de eerste inleverbare versie van de code. Het grootste deel van de tijd heeft gezeten in de implementatie en tests. Als laatst zijn de componenten ge\"{i}ntegreerd tot een geheel, getest en geoptimaliseerd.
 
 Dit verslag behandelt eerst de implementatie van de componenten met de bijbehorende tests en de opzet van het experiment. Daarna worden de resultaten besproken en hieruit volgt een conclusie.
@@ -26,10 +33,12 @@ De modules zijn verdeeld in low-level, sensor, mid-level en high-level component
 De listener is verbonden met de server via een TCP-verbinding en stuurt de data direct door naar de sensormodules. De sensormodules halen van de data die voor hun bestemd zijn de juiste waarden uit de data en sturen deze door naar de mid-level modules en op aanvraag naar de map maker en path finding. Berekende kaarten van de map maker kunnen worden gebruikt voor de path finding. Path finding gebruikt de movements library om het pad te kunnen volgen. Als de robot aan het rijden is, staat de collision avoider te alle tijden aan.
 
 \subsection{Low-level}
-De low-level component verkrijgt rechtstreeks data van de robot, haalt ze uit elkaar en stuurt de data door naar de juiste module.
+De low-level component verkrijgt rechtstreeks data van de robot en stuurt de data door naar de sensormodules.
 
 \subsubsection{Listener}
 De listener zit direct aan de server vast. Hij haalt informatie binnen die de robot verstuurt en stuurt ook commando's naar de robot toe. De binnenkomende data worden meteen doorgestuurd naar de sensormodules. Eerst controleerde de listener de data ook op geldigheid en stuurde deze in het juiste formaat door naar de bijbehorende sensormodules. Echter werd de listener overwelmd door de data, waardoor deze nu slechts een doorgever is geworden.
+
+Zie appendix \ref{listener}
 
 \subsection{Sensormodules}
 De sensormodules ontvangen data van de listener. Ze kijken of de data voor hun bestemd zijn en anders negeren ze deze. Ze verkrijgen de sensorwaarden uit de data en sturen ze door naar de mid-level modules. De sensormodules kunnen door de high-level modules worden aangeroepen voor de meest recente data. Zodra er ongeldige data binnenkomen, wordt de robot gestopt.
@@ -37,11 +46,17 @@ De sensormodules ontvangen data van de listener. Ze kijken of de data voor hun b
 \subsubsection{Odometry}
 Odometry haalt de drie waarden op die nodig zijn voor de bepaling van de positie van de robot. Dit zijn de x, y positie en de theta hoek in verhouding tot de startpositie en de richting van de robot. Deze waarden worden doorgestuurd naar de mid-level modules.
 
+Zie appendix \ref{odometry}
+
 \subsubsection{Range scanner}
-De range scanner bevindt zich op een bepaalde hoogte boven de robot. Hij scant de omgeving horizontaal door middel van het roteren van de laser in een bepaald interval. De range scanner leest alle 181 laserwaarden uit en stuurt ze door naar de mid-level modules. 
+De range scanner bevindt zich op een bepaalde hoogte boven de robot. Hij scant de omgeving horizontaal door middel van het roteren van de laser in een bepaald interval. De range scanner leest alle 181 laserwaarden uit en stuurt ze door naar de mid-level modules.
+
+Zie appendix \ref{rangescanner}
 
 \subsubsection{Sonar}
 De sonar leest alle 8 sonarwaarden uit en stuurt ze door naar de mid-level modules. De sonar stuurt een geluidsgolf, waardoor obstakels die op de grond liggen ook te detecteren zijn.
+
+Zie appendix \ref{sonar}
 
 \subsection{Mid-level}
 De mid-level componenten verzorgen het vermijden van botsingen en het zoeken en volgen van een muur.
@@ -49,11 +64,17 @@ De mid-level componenten verzorgen het vermijden van botsingen en het zoeken en 
 \subsubsection{Collision avoider}
 De collision avoider kijkt alleen naar de waarden van de sonar, omdat die in tegenstelling tot de laser wel objecten op de grond kan detecteren. Als de kleinste waarde van de sonar kleiner is dan 0,315 stopt de robot met rijden. Bij deze waarde zijn objecten op de grond nog zichtbaar. Zodra deze waarde te klein wordt, kan de sonar het object niet meer zien. Tevens wordt er met behulp van de snelheid uitgerekend na hoeveel seconden de botsing plaats zal vinden als de robot door blijft rijden. Deze berekening wordt gedaan op basis van de snelheid van de wielen, en kan dus in sommige gevallen afwijken.
 
+Zie appendix \ref{collisionavoider}
+
 \subsubsection{Wall search}
 Bij het zoeken naar een muur draait de robot eerst 360 graden om te kijken waar de dichtstbijzijnde muur is. Zodra de kleinste sensorwaarde is gevonden, roteert de robot nog een keer totdat hij de juiste positie heeft gevonden. Hij rijdt recht op de muur af totdat hij op een bepaalde afstand van de muur af staat en dan gaat hij over op wall follow.
 
+Zie appendix \ref{wallsearch}
+
 \subsubsection{Wall follow}
 De muur wordt gevolgd die door wall search is gevonden. Als de muur zich meer aan de linkerkant van de robot bevindt, draait hij naar rechts en als de muur zich meer aan de rechterkant van de robot bevindt, draait hij naar links. De kleinste laserwaarde bevindt zich nu aan de rechter- of linkerkant. Hij blijft rechtdoor rijden als de kleinste laserwaarde niet kleiner en groter wordt dan een ingestelde waarde. Als hij te ver van de muur afwijkt, stuurt hij bij richting de muur. Als hij te dicht bij de muur komt, stuurt hij bij van de muur af. Als er geen muur meer wordt waargenomen, wordt de wall\_continued functie binnen de wall search aangeroepen. Deze functie kijkt of er in de buurt nog een muur is te vinden. Als dit zo is, gaat hij daarheen. Als er zich in de buurt nog een andere muur bevindt, zoekt wall search naar de nieuwe dichtstbijzijnde muur. Elke keer wanneer de logica klaar is, wordt er nieuwe informatie opgevraagd van de sensormodules.
+
+Zie appendix \ref{wallfollow}
 
 \subsection{High-level}
 De high-level componenten houden bij waar de robot is geweest en kunnen hem naar een ander punt laten rijden. Dit zijn de modules die meer tijd nodig hebben dan de mid-level modules.
@@ -62,16 +83,25 @@ De high-level componenten houden bij waar de robot is geweest en kunnen hem naar
 De map maker maakt een kaart van de constante stroom van laser en odometry waarden die hij binnenkrijgt. Voor het maken van een kaart wordt de Simultaneous Localization And Mapping (SLAM) techniek gebruikt. De kaart heeft de vorm van een matrix.
 De bibliotheek die wordt gebruikt om deze map te maken is tinySLAM. Dit is een zeer simpel algoritme dat niet meer dan 200 regels code bevat. Het enige wat het elke keer doet, is de gevonden lijnen tekenen. Dit algoritme heeft nog heel wat uitbreidingen, maar alleen de basis van dit algoritme wordt gebruikt. De originele code is geschreven in C, maar met behulp van een gevonden versie in Python en een paar aanpassingen is deze bruikbaar geworden.
 
+Voor meer informatie zie appendix \ref{mapmaker}
+
 \subsubsection{Path finding}
 Path finding kan alleen gebruikt worden binnen de al ontdekte gebieden en kan dus alleen een route plannen binnen een bekend domein. Hierin probeert hij een zo kort mogelijk pad te vinden naar de bestemming. Er wordt gebruik gemaakt van het A ster zoekalgoritme om het effici\"{e}ntste pad te vinden tussen twee punten.
+
+Zie appendix \ref{pathfinding}
+
 \subsection{Libraries}
 Alle modules kunnen gebruik maken van de beschikbare libraries. Ze kunnen deze libraries importeren en hun functies gebruiken.
 
 \subsubsection{Communicator}
 De comunicator library leest een bestand in dat de locaties van de modules bevat. Via deze data maakt hij verbindingen aan met andere modules. De communicator importeert twee thread klasses en een derde klasse. De ene thread luistert naar de gemaakte verbindingen en de andere luistert naar een poort om te bepalen of er nieuwe verbindingen gemaakt moeten worden. De thread die luistert, handelt de berichten af volgens het communicatieprotocol. Hierin staan alle mogelijke berichten en tags die gebruikt worden bij de communicatie en er staat ook in wat hun doel is. Hierna handelt elke module zijn ontvangen data anders af.
 
+Zie appendix \ref{communicator}
+
 \subsubsection{Movements}
 Dit is een library waarin alle bewegingen zijn gedefinieerd. Deze library wordt gebruikt voor de modules die de robot willen besturen. In de movements staan functies gedefinieerd voor het vooruit, naar links, naar rechts en achteruit rijden. Tevens is het mogelijk om naar links en rechts te roteren, een spoor achter te laten, de camera te zien vanuit de robot en de robot te laten stoppen met rijden.
+
+Zie appendix \ref{movements}
 
 \section{Tests}
 Voor elke module is er een aparte test geschreven om er zeker van te zijn dat elke module op zichzelf goed werkt. Elke module wordt direct aan de simulator vastgezet en getest met de directe data die binnenkomen. 
@@ -114,7 +144,19 @@ De robot wordt ge\"{i}nitialiseerd op een bepaalde plaats. Hij zoekt een muur en
 \section{Conclusie}
 \section{Discussie}
 \section{Bronvermelding}
+\newpage
 \section{Appendix}
 \appendix
+\section*{\refstepcounter{section}\label{listener}\thesection.\quad Listener}
+\section*{\refstepcounter{section}\label{odometry}\thesection.\quad Odometry}
+\section*{\refstepcounter{section}\label{rangescanner}\thesection.\quad Range scanner}
+\section*{\refstepcounter{section}\label{sonar}\thesection.\quad Sonar}
+\section*{\refstepcounter{section}\label{collisionavoider}\thesection.\quad Collision avoider}
+\section*{\refstepcounter{section}\label{wallsearch}\thesection.\quad Wall search}
+\section*{\refstepcounter{section}\label{wallfollow}\thesection.\quad Wall follow}
+\section*{\refstepcounter{section}\label{mapmaker}\thesection.\quad Map maker}
+\section*{\refstepcounter{section}\label{pathfinding}\thesection.\quad Path finding}
+\section*{\refstepcounter{section}\label{communicator}\thesection.\quad Communicator}
+\section*{\refstepcounter{section}\label{movements}\thesection.\quad Movements}
 
 \end{document}
