@@ -1,4 +1,4 @@
-from movements import handle_movement, go_drive
+from movementsv2 import *
 import string
 import socket
 import re
@@ -12,9 +12,11 @@ s.connect((TCP_IP, TCP_PORT))
 # transparent wall
 #s.send("INIT {ClassName USARBot.P2DX} {Location 4.5,0.5,1.8} {Name R1}\r\n")
 # red hair
-s.send("INIT {ClassName USARBot.P2DX} {Location -4.2,0.0,1.8} {Name R1}\r\n")
+##s.send("INIT {ClassName USARBot.P2DX} {Location -4.2,0.0,1.8} {Name R1}\r\n")
 # green shirt
-#s.send("INIT {ClassName USARBot.P2DX} {Location -2.2,2.6,1.8} {Name R1}\r\n")
+##s.send("INIT {ClassName USARBot.P2DX} {Location -2.2,2.6,1.8} {Name R1}\r\n")
+s.send("INIT {ClassName USARBot.P2DX} {Location 1.1,0.7,1.8}{Rotation 0.0,0.0,1.555} {Name R1}\r\n")
+
 
 # Odometry values
 x = []
@@ -23,7 +25,7 @@ theta = []
 # Robot speed
 current_speed = 1
 # Stop robot at this level.
-level = 0.315
+level = .25
 
 # Calculate robot speed.
 def calc_speed():
@@ -130,23 +132,34 @@ def getdata():
                             for i in range(0, 8):
                                 sonar_values.append(datasplit[i + 3].replace('{Name F' + str(i + 1) + ' Range ', ''))
                                 sonar_values[i] = sonar_values[i].replace('}', '')
-##                            print sonar_values
+                                
+##                                if i == 5:
+##                                    print sonar_values[4],sonar_values[5]
+                            print sonar_values
                             min_val, index_val = min_sonar_val(sonar_values)
                             print "dit is de min val: ", min_val
-                            if min_val <= level and flag == 0:
-##                                if min_val <= 0.22:
-##                                    s.send(handle_movement("reverse"))
-##                                print "ik ga botsen"
-                                s.send(handle_movement("brake", 0.0, 0.0))
-                                return 1
+                            for i in range (1,6):
+                                if( float(sonar_values[i]) <= level ):
+    ##                                if min_val <= 0.22:
+    ##                                    s.send(handle_movement("reverse"))
+    ##                                print "ik ga botsen"
+                                    print sonar_values[7], sonar_values [0]
+                                    if sonar_values[7] <= sonar_values [0]:
+                                        s.send(handle_movement("left", 2.0,1.0))
+                                    elif sonar_values[7] >= sonar_values [0]:
+                                        s.send(handle_movement("right", 2.0,1.0))
+                                    if sonar_values[7] >= level or sonar_values[0] >= level:
+                                        s.send(handle_movement("brake"))
+                                    return 1
                             if (index_val == 4 or index_val == 5) and flag == 0:
                                 print "na zoveel seconden gaan we botsen: ", calc_collision(min_val)
     return 0
-
+ 
+##s.send(handle_movement("brake",2.0))
 flag = 0 
 while flag == 0:
     # Move forward if there is no collision.
-    s.send(handle_movement("forward", 1.0, 1.0))
+    s.send(handle_movement("forward", 1.0))
     flag = getdata()
 while 1:
     getdata()
