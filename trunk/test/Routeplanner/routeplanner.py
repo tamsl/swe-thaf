@@ -4,7 +4,6 @@ import string
 import re
 import math
 
-<<<<<<< .mine
 def Astar(start, goal):
 ##    closedset := the empty set    // The set of nodes already evaluated.
 ##    openset := set containing the initial node    // The set of tentative nodes to be evaluated.
