@@ -34,7 +34,7 @@ def go_rotate_right(s1):
     print string
     return string
 # Method to make a rotation left.s1 is the speed at which you want to rotate.
-def go_rotate_left(s1):
+def go_rotate_left(s1, s2):
     s1 = str(s1)
     string = "DRIVE {Left -" + s1 + "} {Right " + s1 + "}\r\n"
     print string
@@ -49,7 +49,7 @@ def go_right(s1 ,s2):
 def go_left(s1,s2):
     s1 = str(s1)
     s2 = str(s2)
-    string = "DRIVE {Left " + s1 + "} {Right " + s2 + "}\r\n"
+    string = "DRIVE {Left -" + s1 + "} {Right " + s2 + "}\r\n"
     return string
 # Method to stop.
 def go_brake():

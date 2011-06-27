@@ -15,7 +15,7 @@ s.connect((TCP_IP, TCP_PORT))
 ##s.send("INIT {ClassName USARBot.P2DX} {Location -4.2,0.0,1.8} {Name R1}\r\n")
 # green shirt
 ##s.send("INIT {ClassName USARBot.P2DX} {Location -2.2,2.6,1.8} {Name R1}\r\n")
-s.send("INIT {ClassName USARBot.P2DX} {Location 1.1,0.7,1.8}{Rotation 0.0,0.0,1.555} {Name R1}\r\n")
+s.send("INIT {ClassName USARBot.P2DX} {Location 1.1,0.7,1.8} {Rotation 0.0,0.0,1.555} {Name R1}\r\n")
 
 
 # Odometry values
@@ -131,25 +131,32 @@ def getdata():
                             # Look at all sensors for collisions.
                             for i in range(0, 8):
                                 sonar_values.append(datasplit[i + 3].replace('{Name F' + str(i + 1) + ' Range ', ''))
-                                sonar_values[i] = sonar_values[i].replace('}', '')
-                                
+                                sonar_values[i] = sonar_values[i].replace('}', '')     
 ##                                if i == 5:
 ##                                    print sonar_values[4],sonar_values[5]
                             print sonar_values
                             min_val, index_val = min_sonar_val(sonar_values)
                             print "dit is de min val: ", min_val
-                            for i in range (1,6):
+                            for i in range (0,8):
                                 if( float(sonar_values[i]) <= level ):
     ##                                if min_val <= 0.22:
     ##                                    s.send(handle_movement("reverse"))
     ##                                print "ik ga botsen"
-                                    print sonar_values[7], sonar_values [0]
-                                    if sonar_values[7] <= sonar_values [0]:
-                                        s.send(handle_movement("left", 2.0,1.0))
-                                    elif sonar_values[7] >= sonar_values [0]:
-                                        s.send(handle_movement("right", 2.0,1.0))
-                                    if sonar_values[7] >= level or sonar_values[0] >= level:
+                                    print sonar_values[6], sonar_values[7], sonar_values[0]
+                                    if (sonar_values[6] or sonar_values[7]) < sonar_values[0]:
+                                        print "ik zit hier"
+                                        s.send(handle_movement("left", 2.0, 1.0))
+                                        print "linksaf slaan"
+                                        
+                                    elif (sonar_values[0] or sonar_values[1]) < sonar_values[7]:
+                                        print "rechts"
+                                        s.send(handle_movement("right", 1.0, 2.0))
+                                        print "rechtsaf slaan"
+                                    if index_val == 4 or index_val == 5:
+                                        print "brake"
                                         s.send(handle_movement("brake"))
+##                                    if sonar_values[7] > level:
+##                                        s.send(handle_movement("brake"))
                                     return 1
                             if (index_val == 4 or index_val == 5) and flag == 0:
                                 print "na zoveel seconden gaan we botsen: ", calc_collision(min_val)
