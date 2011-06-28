@@ -1,5 +1,26 @@
 import math
 
+def compress_matrix(matrix):
+    how_many = 1
+    old_value = -1
+    string = ""
+    for i in range(len(matrix)):
+        for j in range(len(matrix[i])):
+            if matrix[i][j] == 0:
+                if matrix[i][j] == old_value:
+                    how_many = how_many + 1
+                elif matrix[i][j] != old_value:
+                    string = string + "_" + str(how_many) + "1"
+                    how_many = 1
+            elif matrix[i][j] == 1:
+                if matrix[i][j] == old_value:
+                    how_many = how_many + 1
+                elif matrix[i][j] != old_value:
+                    string = string + "_" + str(how_many) + "0"
+                    how_many = 1
+            old_value = matrix[i][j]
+    return string
+
 def receive_compressed_into_matrix(string, row_length):
     index = 0
     count = 0
@@ -18,8 +39,7 @@ def receive_compressed_into_matrix(string, row_length):
         count %= row_length
         if count == 0:
             matrix.append(line)
-        if index == 999:
-            index = 0
+            line = []
     return matrix
 
 def receive_compressed(string):
@@ -101,10 +121,14 @@ def downsize_matrix(matrix):
 ##        for j in range (y):
 ##             = matrix[i][j]
             
-##string = "30_71_100_240_60_121_180_91_111_100001_2474750_2474751_2474750_2474751"
-####test = receive_compressed(string)
-##test = receive_compressed_into_matrix(string, 1000)
+string = "5001_5000_"
+string2 = "" 
+for i in range(1000):
+    string2 = string2 + string
+string2 = string2[:-1]
+test = receive_compressed_into_matrix(string2, 1000)
 ##print test
+print compress_matrix(test)
 
 ##string2 = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111111111111100000000000000000000000000000000000000000000000001111111111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000000000000000000000000000000000000000000000000011111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000000000000000000000000000000000001000000000010101010101010100010101010101000000000000000000000111111111111"
 ##string3 = ""
