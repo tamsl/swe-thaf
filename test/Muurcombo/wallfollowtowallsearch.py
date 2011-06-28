@@ -149,6 +149,7 @@ while 1:
             typeSEN = typeSEN.replace('}', '')
             if typeSEN == "Odometry":
                 odo_values = odometry_module(datasplit)
+                print odo_values
 ##                odometry_string = "Odometry " + str(odo_values[0]) + " " + str(odo_values[1]) + " " + str(odo_values[2])
 ##                print odometry_string
                 odo_done = 1

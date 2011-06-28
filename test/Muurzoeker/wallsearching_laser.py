@@ -3,7 +3,7 @@ import socket
 import re
 
 TCP_IP = '127.0.0.1'
-TCP_PORT = 2001
+TCP_PORT = 2002
 BUFFER_SIZE = 1024
 COLOR = ['Red', 'Yellow', 'Green', 'Cyan', 'White', 'Blue', 'Purple']
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
