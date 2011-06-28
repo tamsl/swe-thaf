@@ -5,7 +5,7 @@ import re
 import math
 
 TCP_IP = '127.0.0.1'
-TCP_PORT = 2001
+TCP_PORT = 2002
 BUFFER_SIZE = 4096
 COLOR = ['Red', 'Yellow', 'Green', 'Cyan', 'White', 'Blue', 'Purple']
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -66,14 +66,15 @@ SCALE = 2
 while 1:
     s.send("DRIVE {LEFT -1.0} {RIGHT 1.0}\r\n")
     data = s.recv(BUFFER_SIZE)
-    if data[len(data)-1] != '\n':
-        datatemp = data
-        data_incomplete = 1
-        continue
+##    print data
     if data_incomplete:
         datatemp += data
         data_incomplete = 0
         data = datatemp
+    if data[len(data)-1] != '\n':
+        datatemp = data
+        data_incomplete = 1
+        continue
     string = data.split('\r\n')
 ##    print string
     for i in range(len(string)):

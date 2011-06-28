@@ -3,6 +3,7 @@
 import socket
 import re
 import math
+from movementsv2 import *
 
 TCP_IP = '127.0.0.1'
 TCP_PORT = 2002
@@ -15,14 +16,15 @@ TS_MAP_SCALE=50 #0.1     # scales the pixels appropriately
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
-s.send('INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n')
+s.send('INIT {ClassName USARBot.P2DX} {Location 4.5,3.8,1.8} {Rotation 0.0,0.0,0.0} {Name R1}\r\n')
 
 xs = 500
 ys = 500
-xf = 510
-yf = 530
+xf = 505
+yf = 505
 alpha = 0
 beta = 0
+alphabeta = 0
 
 # Method to retrieve the list of odometry values.
 def odometry_module(datastring):
@@ -30,6 +32,7 @@ def odometry_module(datastring):
     senvalues = datastring[3].replace('{Pose ', '')
     senvalues = senvalues.replace('}','')
     odo_values = senvalues.split(',')
+    
     # Test for validity
     test = []
     for i in range(len(odo_values)):
@@ -41,11 +44,23 @@ def odometry_module(datastring):
     print odo_values, "\r\n"
     return odo_values
 
+def adjust(xs, ys, alpha):
+    dx = xf - xs
+    if dx == 0 and  alpha > 0:
+        return  90,alpha + 90
+    elif dx == 0 and alpha < 0:
+        return  -90,alpha + -90
+    dy = yf - ys
+    if dx == 0  and dy == 0:
+        print "IK BEN ERRR"        
+    print "dx ", dx,"dy ", dy
+    beta = math.atan(dy / dx)
+    return beta, alpha + beta
+
 dx = xf - xs
 dy = yf - ys
 alpha = math.atan(dy / dx)
-new_value = []
-
+s.send(handle_movement("right", 2.0, 1.0))
 # Test the odometry module.
 while 1:
     data = s.recv(BUFFER_SIZE)
@@ -72,11 +87,14 @@ while 1:
                     pos[posY] = int(pos[posY]*TS_MAP_SCALE+0.5)
                     print "Pos", pos
                     new_value = pos
-                    dx = xf - new_value[0]
-                    dy = yf - new_value[1]
-                    beta = math.atan(dy / dx)
+                    beta, alphabeta = adjust(new_value[0], new_value[1], alpha)
+                    if pos[2]+alphabeta < 0:
+                        s.send(handle_movement("right", 2.0, 1.0))
+                    else:
+                        s.send(handle_movement("left", 2.0, 1.0))
+                        
 
-    print math.degrees(alpha + beta)
+    print math.degrees(alphabeta)
                     
           
 s.close()
