@@ -138,28 +138,30 @@ def getdata():
                             min_val, index_val = min_sonar_val(sonar_values)
                             print "dit is de min val: ", min_val
                             for i in range (0,8):
-                                if( float(sonar_values[i]) <= level ):
+                                if(float(sonar_values[i]) <= level):
     ##                                if min_val <= 0.22:
     ##                                    s.send(handle_movement("reverse"))
     ##                                print "ik ga botsen"
                                     print sonar_values[6], sonar_values[7], sonar_values[0]
                                     if (sonar_values[6] or sonar_values[7]) < sonar_values[0]:
-                                        print "ik zit hier"
                                         s.send(handle_movement("left", 2.0, 1.0))
                                         print "linksaf slaan"
-                                        
                                     elif (sonar_values[0] or sonar_values[1]) < sonar_values[7]:
-                                        print "rechts"
                                         s.send(handle_movement("right", 1.0, 2.0))
                                         print "rechtsaf slaan"
-                                    if index_val == 4 or index_val == 5:
-                                        print "brake"
-                                        s.send(handle_movement("brake"))
+                                    if (index_val == 4 or index_val == 5) and flag == 0:
+                                        print "na zoveel seconden gaan we botsen: ", calc_collision(min_val)
+                                        if sonar_values[0] < sonar_values[7]:
+                                            s.send(handle_movement("right", 1.0, 2.0))
+                                            print "rechtsaf slaan"
+                                        elif sonar_values[7] < sonar_values[0]:
+                                            s.send(handle_movement("left", 2.0, 1.0))
+                                            print "linksaf slaan"
 ##                                    if sonar_values[7] > level:
 ##                                        s.send(handle_movement("brake"))
                                     return 1
-                            if (index_val == 4 or index_val == 5) and flag == 0:
-                                print "na zoveel seconden gaan we botsen: ", calc_collision(min_val)
+##                            if (index_val == 4 or index_val == 5) and flag == 0:
+##                                print "na zoveel seconden gaan we botsen: ", calc_collision(min_val)
     return 0
  
 ##s.send(handle_movement("brake",2.0))

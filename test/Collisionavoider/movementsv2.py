@@ -43,7 +43,7 @@ def go_rotate_left(s1, s2):
 def go_right(s1 ,s2):
     s1 = str(s1)
     s2 = str(s2)
-    string = "DRIVE {Left " + s1 + "} {Right " + s2 + "}\r\n"
+    string = "DRIVE {Left " + s1 + "} {Right -" + s2 + "}\r\n"
     return string
 # Method to drive to the left.s1 needs to be greater than s2.
 def go_left(s1,s2):
