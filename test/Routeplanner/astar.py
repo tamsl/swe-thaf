@@ -3,6 +3,7 @@ import time
 import math
 import random
 from strings import *
+from readmap import * 
 
 class node:
     x = 0 # x pos
@@ -182,18 +183,20 @@ print route
 if len(route) > 0:
     y = ay
     x = ax
-    the_map[y][x] = 2
-##    matrix[y][x] = 2
+##    the_map[y][x] = 2
+    matrix[y][x] = 2
     for i in range(len(route)):
         j = int(route[i])
         x = x + dx[j]
         y = y + dy[j]
-        the_map[y][x] = 3
-##        matrix[y][x] = 3
-    the_map[y][x] = 4
-##    matrix[y][x] = 4
+##        the_map[y][x] = 3
+        matrix[y][x] = 3
+##    the_map[y][x] = 4
+    matrix[y][x] = 4
 
-# display the map with the route added
+print read_map(matrix)
+
+### display the map with the route added
 ##print 'Map:'
 ##for y in range(ver):
 ##    for x in range(hor):
