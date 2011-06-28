@@ -19,23 +19,27 @@ configreader = config_reader()
 accept_thread = acceptor(running, list, "ODO", configreader.addresses)
 accept_thread.setDaemon(True)
 accept_thread.start()
+##wallsearch = configreader.connection(list, "WSC")
+##wallfollow = configreader.connection(list, "WFW")
 print("ik heb de acceptor thread gestart")
 old_values = 20
 
 # Method to retrieve the list of odometry values.
 def odometry_module(datastring):
-    if datastring == "":
+    if datastring == "+" or datastring == "":
         return current_values
+    datasplit = datastring.split('+')
     odo_values = ""
-    odo_values = datastring.replace('{Pose ', '')
+    odo_values = datasplit[1].replace('{Pose ', '')
     odo_values = odo_values.replace('}', '')
     check = odo_values.split(',')
-    if len(check) > 2:
-        if (float(check[2]) > 3.15) or (float(check[2]) < -3.15):
+    if len(check) > 3:
+        if (float(check[3]) > 3.15) or (float(check[3]) < -3.15):
             return current_values
     else:
         return current_values
 ##    print current_values
+    odo_values = datasplit[0] + "+" + odo_values
     return odo_values
 ##    print current_values
 
@@ -52,28 +56,34 @@ while 1:
 ##        if len(datasplit) != 0:
 ##            print datasplit
         if len(datasplit) > 3:
-            typeSEN = datasplit[1].replace('{Type ', '')
-            typeSEN = typeSEN.replace('}', '')
+##            typeSEN = datasplit[1].replace('{Type ', '')
+##            typeSEN = typeSEN.replace('}', '')
 ##            print typeSEN
-            if typeSEN == "Odometry":
+            if datasplit[2] == "{Type Odometry}":
                 message = ""
-                message = datasplit[3]
+                message = datasplit[1] + "+"
+                message += datasplit[4]
 ##                print 'message'
-                print message
+##                print message
     
 ##    message = ""
 ##    print list
     if current_values != "":
         current_values = odometry_module(message)
-        if current_values != old_values:           
-            print current_values
-            old_values = current_values      
-    while len(accept_thread.request_data) != 0:
-        config_reader.connection(list,
-                                 accept_thread.request_data[0]).send(
-                                     current_values)
-        accept_thread.request_data.pop(0)
-
+        if current_values != old_values:
+##            print current_values
+            old_values = current_values
+##    if current_values != "":
+##        command = "RCV!ODO!" + str(current_values) + "#"
+##        wallfollow.send(command)
+##        wallsearch.send(command)
+    if current_values != "":
+        while len(accept_thread.request_data) != 0:
+            command = "RCV!ODO!" + str(current_values) + "#"
+            configreader.connection(list, accept_thread.request_data[0]).send(
+                                         command)
+            accept_thread.request_data.pop(0)
+##
 ### Test the odometry module.
 ##for i in range(100):
 ##    s.send("DRIVE {Left 1.0}\r\n")

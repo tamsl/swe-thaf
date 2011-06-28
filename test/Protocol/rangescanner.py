@@ -19,14 +19,18 @@ configreader = config_reader()
 accept_thread = acceptor(running, list, "RSC", configreader.addresses)
 accept_thread.setDaemon(True)
 accept_thread.start()
+##wallsearch = configreader.connection(list, "WSC")
+##wallfollow = configreader.connection(list, "WFW")
 print("ik heb de acceptor thread gestart")
 old_values = 20 
 
 # Method to retrieve the list of range sensor values.
 def range_module(datastring):
-    if datastring == "":
+    if datastring == "+" or datastring == "":
         return current_values
-    range_values = datastring.replace('{Range ', '')
+##    print datastring
+    split = datastring.split("+")
+    range_values = split[1].replace('{Range ', '')
     range_values = range_values.replace('}', '')
     datasplit = range_values.split(',')
     for i in range(len(datasplit)):
@@ -34,6 +38,7 @@ def range_module(datastring):
 ##            print 'foute data'
             return current_values
 ##    print 'receiving monkey data'
+    range_values = split[0] + "+" + range_values
     return range_values
 ##    print current_values
 
@@ -47,26 +52,32 @@ while 1:
 ##        if len(datasplit) > 2:
 ##            print datasplit
         if len(datasplit) > 6:
-            typeSEN = datasplit[2].replace('{Type ', '')
-            typeSEN = typeSEN.replace('}', '')
+##            typeSEN = datasplit[2].replace('{Type ', '')
+##            typeSEN = typeSEN.replace('}', '')
 ##            print typeSEN
-            if typeSEN == "RangeScanner":
-                message = ""
-                message = datasplit[6]
+            if datasplit[2] == "{Type RangeScanner}":
+##                print datasplit[6]
+                message = datasplit[1] + "+"
+                message += datasplit[6]
 ##                print message
     if message != "":
         current_values = range_module(message)
         if current_values != old_values:           
-            print current_values
+##            print current_values
             old_values = current_values        
     message = ""
 ##    print list
 ##    print 'current_values', current_values
-    while len(accept_thread.request_data) != 0:
-        config_reader.connection(list,
-                                 accept_thread.request_data[0]).send(
-                                     current_values)
-        accept_thread.request_data.pop(0)
+##    if current_values != "":
+##        command = "RCV!RSC!" + str(current_values) + "#"
+##        wallfollow.send(command)
+##        wallsearch.send(command)
+    if current_values != "":
+        while len(accept_thread.request_data) != 0:
+            command = "RCV!RSC!" + current_values + "#"
+            configreader.connection(list, accept_thread.request_data[0]).send(
+                                        command)
+            accept_thread.request_data.pop(0)
 
 ### Test the range sensor module.
 ##for i in range(100):

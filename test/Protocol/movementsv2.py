@@ -25,34 +25,36 @@ def go_drive(s1):
     string = "DRIVE {Left " + s1 + "} {Right " + s1 + "}\r\n"
     #print string
     return string
-
-
 # Method to make a rotation right.s1 is the speed at which you want to rotate.
 def go_rotate_right(s1):
     s1 = str(s1)
     string = "DRIVE {Left " + s1 + "} {Right -" + s1 + "}\r\n"
-    print string
+##    print string
     return string
 # Method to make a rotation left.s1 is the speed at which you want to rotate.
 def go_rotate_left(s1):
     s1 = str(s1)
     string = "DRIVE {Left -" + s1 + "} {Right " + s1 + "}\r\n"
-    print string
+##    print string
     return string
 # Method to drive to the right. s1 needs to be greater than s2.
 def go_right(s1 ,s2):
     s1 = str(s1)
     s2 = str(s2)
     string = "DRIVE {Left " + s1 + "} {Right " + s2 + "}\r\n"
+    return string
 # Method to drive to the left.s1 needs to be greater than s2.
 def go_left(s1,s2):
     s1 = str(s1)
     s2 = str(s2)
-    string = "DRIVE {Left " + s1 + "} {Right " + s2 + "}\r\n"
+    string = "DRIVE {Left " + s2 + "} {Right " + s1 + "}\r\n"
+    return string
 # Method to stop.
 def go_brake():
     string = "DRIVE {Left 0} {Right 0}\r\n"
+    return string
 # Method to drive backwards
 def go_reverse():
     string = "DRIVE {Left -1} {Right -1}\r\n"
+    return string
 
