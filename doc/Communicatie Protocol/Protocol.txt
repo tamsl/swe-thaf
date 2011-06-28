@@ -4,6 +4,7 @@ TAG:
 REQ: data sturen
 RCV: data ontvangen
 CMD: movement commando's
+NEX: go to the next module
 
 data TAG:
 SNR: sonar
@@ -28,28 +29,30 @@ dividers:
 
 Vorm:
 REQ:
-REQ!"module TAG"#
-RCV!"data TAG"!"data"#
-CMD!"commando"#
+REQ!"own module TAG"# example: REQ!WFW# this send to a sensor module will return the data of that module.
+RCV!"data TAG"!"data"# example: RCV!SNR!x,x,x,x,x,x,x,x# this will send the data to a module.
+CMD!"commando"# CMD!drive# will send a drive command.
+NEX!"side"# example: NEX!1# 1 if wall is on the right side.
+
 
 data:
 SNR:
 naar sensor module:
 {Name F1 Range "x"} {Name F2 Range "x"} {Name F3 Range "x"} {Name F4 Range "x"} {Name F5 Range "x"} {Name F6 Range "x"} {Name F7 Range "x"} {Name F8 Range "x"}
 uit sensormodule:
-x,x,x,x,x,x,x,x
+{Time}+x,x,x,x,x,x,x,x
 
 RSC:
 naar sensor module:
 {Range "x","x",...,"x"}'
 uit sensormodule:
-x,x,x,x,x,x,x,x,x,x,....,x,x,x
+{Time}+x,x,x,x,x,x,x,x,x,x,....,x,x,x
 
 ODO:
 naar sensor module:
 {Pose x,y,theta}
 uit sensormodule:
-x,y,theta
+{Time}+x,y,theta
 
 MAP:
 "# of characters""type"_"# of characters""type"_...._"# of characters""type"
