@@ -42,48 +42,40 @@ def min_laser_val(laser_vals):
     index_val = laser_vals.index(sorted_laser_vals[0])
     return sorted_laser_vals[0], index_val
 
-### Test method for driving towards a located wall.
-##def wallsearch(min_val, index_val, length):
-####    print "dit is de min val" , min_val
-##    # If the wall is on the left side of the robot, turn left.
-##    if index_val in range(length/4):
-##        s.send(handle_movement("left", -1.0, 1.0))
-##
-##    # If the wall is on the right side of the robot, turn right.  
-##    elif index_val in range(3*length/4, length):
-##        s.send(handle_movement("right", 1.0, -1.0))
-##
-##    # Else go straight
-##    else:
-##        s.send(handle_movement("forward", 1.0, 1.0))
-##    return 0
-
 # Method for following a wall.
 def wallfollow(min_val, index_val, length):
     # Rotate to the left so you have the wall on the left or right side of the
     # robot.
     # side 1 is wall on right side otherwise the wall is on the left side
+    print "in wall follow"
     side = 0
-    if index_val < length/2:
-        s.send(handle_movement("left", 4.0,2.0))
-    else:
-        s.send(handle_movement("right", 4.0,2.0))
-    data_incomplete = 0
-    while index_val not in range(length/5) and index_val not in range(4*length/5, length):
-        rangescanner.send("REQ!WFW#")
-##        odometry.send("REQ!WFW#")
-        accept_thread.waiting_for_data += 1
-        while accept_thread.waiting_for_data > 0 :
-            continue
-##        odometry_value = accept_thread.memory[odo]
-        laser_values  = accept_thread.memory[ran]
-        min_val,index_val = min_laser_val(laser_values)
-##    print "ik ga nu een muur volgen"
+    values = []
+##    if index_val < length/2:
+##        listener.send("CMD!" + handle_movement("left", 1.0,-1.0) + "#")
+##    else:
+##        listener.send("CMD!" + handle_movement("right", 1.0,-1.0) + "#")
+##    while index_val not in range(length/5) and index_val not in range(4*length/5, length):
+##        print "in while loop"
+##        rangescanner.send("REQ!WFW#")
+##        accept_thread.set_wait(1)
+##        while accept_thread.get_wait() > 0 :
+##            continue
+##        if accept_thread.memory[ran] == "":
+##            continue
+##        if len(values) > 0:
+##            if values[0] == accept_thread.memory[ran].split("+")[0]:
+##                continue
+##        values = accept_thread.memory[ran].split("+")
+##        laser_values  = values[1].split(',')
+##        accept_thread.memory[ran] = ""
+##        length = len(laser_values)
+##        min_val,index_val = min_laser_val(laser_values)
     # Go forward following the wall when the left or the right side is facing
     # the wall.
     if index_val > length/2:
         side = 1
-    s.send(handle_movement("forward", 1.0))
+    print "ik ga rechtdoor"
+    listener.send("CMD!" + handle_movement("forward", 1.0) + "#")
     # Return that it is now following the wall.
     return 1 , side
    
@@ -101,91 +93,115 @@ data_incomplete = 0
 side = 0
 fc = 0
 laser_values = []
+values = []
 while 1:
     #request data
+##    print "ik begin"
     rangescanner.send("REQ!WFW#")
-    accept_thread.waiting_for_data += 1
+##    print "te vroeg?"
+    accept_thread.set_wait(1)
+##    print "ik ga wachten"
     #wait for data to arrive
-    while accept_thread.waiting_for_data > 0 :
+    while accept_thread.get_wait() > 0 :
+##        print "ik ben aan het wachten"
+##        print accept_thread.get_wait()
         continue
-           
-    laser_values  = accept_thread.memory[ran]
-
+    if accept_thread.memory[ran] == "":
+        continue
+    if len(values) > 0:
+        if values[0] == accept_thread.memory[ran].split("+")[0]:
+            continue
+##    print "ik ben awesome"
+##    print accept_thread.memory[ran]
+    
+    print("data binnen")
+    values = accept_thread.memory[ran].split("+")
+    laser_values  = values[1].split(',')
+    accept_thread.memory[ran] = ""
+    length = len(laser_values)
+    min_val,index_val = min_laser_val(laser_values)
     if flag == 1:
         level = 0.5
     else:
         level = 0.4
 
-    print "min val: ", min_val
-    print "index val: ", index_val
-    if index_val > length/2:
-        print "links"
-    else:
-        print "rechts"
-    print "dit is fc",fc
+##    print "min val: ", min_val
+##    print "index val: ", index_val
+##    if index_val > length/2:
+##        print "links"
+##    else:
+##        print "rechts"
+##    print "dit is fc",fc
+    #front checker.
     for i in range((length/2)-10,(length/2)+10):
 ##                        print "front checker",laser_values[i]
         if float(laser_values[i]) <= 0.45 and fc == 0:
             print "in front checker"
             fc = 1
             if index_val > length/2:
-                print"ik stuur bij naar rechts"
-                s.send(handle_movement("right", 2.0, 1.0))
-                side = 1 
+##                print "ik stuur bij naar rechts"
+                listener.send("CMD!" + handle_movement("right", 2.0, -1.0) + "#")
+                side = 1
+##                print "klaar met sturen"
                 break
             else:
-                print"ik stuur bij naar link"
-                s.send(handle_movement("left", 2.0,1.0))
+##                print "ik stuur bij naar links"
+                listener.send("CMD!" + handle_movement("left", 2.0,-1.0) + "#")
                 side =1
+##                print "klaar met sturen"
                 break
         elif float(laser_values[i]) <= 0.4 and fc == 1:
             break
         else :
             fc = 0
     if fc == 1 :
-        break
+        continue
     fc = 0
+##    print "ik ben binnen de level."
     if min_val <= level:
         # If you get too close to the wall, you need to turn
         # away from it.
-        #checks the front
+        # checks the front
         if min_val <= 0.30:
             print "ik ben te dicht bij de muur k moet bij sturen"
             # the most left value is 181
             if index_val > length/2:
                 print"ik stuur bij naar rechts"
-                s.send(handle_movement("rotate_right", 1.0))
+                listener.send("CMD!" + handle_movement("rotate_right", 0.5) + "#")
                 side = 0
-                break
+##                print "klaar met sturen"
+                continue
             else :
                 print"ik stuur bij naar links"
-                s.send(handle_movement("rotate_left", 1.0))
-                break
+                listener.send("CMD!" + handle_movement("rotate_left", 0.5) + "#")
+##                print "klaar met sturen"
                 side = 1
+                continue
+                
         # If you get too far from the wall but the wall is still
         # close, go towards the wall again.
-        if min_val >= 0.38 and min_val <= 0.4:
+        if min_val >= 0.38 and min_val <= 0.43:
             print "ik ben te ver van de muur ik ga bij sturen"
             if index_val > length/2:
-                print"ik stuur bij naar rechts"
-                s.send(handle_movement("rotate_left", 1.0))
-                side = 0
-                break
-            else:
                 print"ik stuur bij naar links"
-                s.send(handle_movement("rotate-right", 1.0))
+                listener.send("CMD!" + handle_movement("rotate_left", 0.5) + "#")
+##                print "klaar met sturen"
+                side = 0
+                continue
+            else:
+                print"ik stuur bij naar rechts"
+                listener.send("CMD!" + handle_movement("rotate_right", 0.5) + "#")
                 side = 1
-                break
+##                print "klaar met sturen"
+                continue
         
         # Follow the wall.
         
         flag, side = wallfollow(min_val, index_val, length)
     else:
-        if odo_done == 1:
-
-            # Find a wall.
-            print "ik ben de muur kwijt"
-            wallsearch.send("NEX!"+ side +"#")
-            while len(accept_thread.memory[nex]) == "":
-                continue
-            flag, side = wallfollow(min_val, index_val, length)
+        # Find a wall.
+        print "ik ben de muur kwijt"
+        wallsearch.send("NEX!"+ str(side) +"#")
+        while len(accept_thread.memory[nex]) == "":
+            continue
+        flag, side = wallfollow(min_val, index_val, length)

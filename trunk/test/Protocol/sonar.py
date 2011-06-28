@@ -18,6 +18,8 @@ configreader = config_reader()
 accept_thread = acceptor(running, list, "SNR", configreader.addresses)
 accept_thread.setDaemon(True)
 accept_thread.start()
+##wallsearch = configreader.connection(list, "WSC")
+##wallfollow = configreader.connection(list, "WFW")
 print("ik heb de acceptor thread gestart")
 ##s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 ##s.connect((TCP_IP, TCP_PORT))
@@ -26,11 +28,12 @@ print("ik heb de acceptor thread gestart")
 # Method to retrieve the list of sonar values
 def sonar_module(datastring):
 ##    print datastring, "\r\n"
-    if datastring == "":
+    if datastring == "" or datastring == "+":
         return current_values
-    datasplit = re.findall('\{[^\}]*\}|\S+', datastring)
+    split = datastring.split('+')
+    datasplit = re.findall('\{[^\}]*\}|\S+', split[1])
     sonar_values = []
-    values = ""
+    values = split[0] + "+"
     for i in range(len(datasplit)):
         sonar_values.append(datasplit[i].replace('{Name F' + str(i+1)
                                             + ' Range ', ''))
@@ -49,25 +52,27 @@ while 1:
 ##        if len(datasplit) != 0:
 ##            print datasplit
         if len(datasplit) > 10:
-            typeSEN = datasplit[2].replace('{Type ', '')
-            typeSEN = typeSEN.replace('}', '')
-##            print typeSEN
-            if typeSEN == "Sonar":
+            if datasplit[2] == "{Type Sonar}":
                 message = ""
+                message = datasplit[1] + "+"
                 for i in range(3, len(datasplit)):
                     message += str(datasplit[i])
 ##                print message
     current_values = sonar_module(message)
 ##    message = ""
 ##    print list
-    if len(current_values) != 0:                 
-        print 'current_values', current_values
-    while len(accept_thread.request_data) != 0:
-        message = "RCV!SNR!" + str(current_values) + "#"
-        config_reader.connection(list,
-                                 accept_thread.request_data[0]).send(
-                                     message)
-        accept_thread.request_data.pop(0)
+##    if len(current_values) != 0:                 
+##        print 'current_values', current_values
+##    if current_values != "":
+##        command = "RCV!SNR!" + str(current_values) + "#"
+##        wallfollow.send(command)
+##        wallsearch.send(command)
+    if current_values != "":
+        while len(accept_thread.request_data) != 0:
+            command = "RCV!SNR!" + str(current_values) + "#"
+            configreader.connection(list, accept_thread.request_data[0]).send(
+                                        command)
+            accept_thread.request_data.pop(0)
             
 ### Test the sensor module.
 ##for i in range(100):

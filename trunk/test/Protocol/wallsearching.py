@@ -18,7 +18,6 @@ accept_thread.start()
 odometry = configreader.connection(list, "ODO")
 rangescanner = configreader.connection(list, "RSC")
 listener = configreader.connection(list, "LIS")
-print 'why you bastard'
 wallfollow = configreader.connection(list, "WFW")
 print ("acceptor thread gestart")
 odo = 1
@@ -38,8 +37,6 @@ def min_laser_val(laser_vals):
     sorted_laser_vals = sorted(laser_vals)
     # index vals start from 1.
     index_val = laser_vals.index(sorted_laser_vals[0]) + 1
-##    print sorted_laser_vals[0]
-##    print index_val
     return sorted_laser_vals[0], index_val
 
 # Method to parse the odometry values.
@@ -75,11 +72,11 @@ def wall_continued(side,s):
            # and return to wall follow
            if index_val > len(laser_values)/2:
                 print"ik stuur bij naar rechts in cont"
-                s.send(handle_movement("right", 4.0,2.0))
+                listener.send("CMD!" + handle_movement("right", 4.0,2.0) + "#")
                 return 1
            else :
                 print"ik stuur bij naar links in cont"
-                s.send(handle_movement("left", 4.0,2.0))
+                listener.send("CMD!" + handle_movement("left", 4.0,2.0) + "#")
                 return 1
        # if the index val is on the left side of the
        # robot
@@ -87,19 +84,19 @@ def wall_continued(side,s):
           #wall on the left so turn right
           print "waarde aan de linkerkant",laser_values[-1]
           if flag >= 0 :                                   
-              s.send(handle_movement("left", 4.0,2.0))
+              listener.send("CMD!" + handle_movement("left", 4.0,2.0) + "#")
           if flag >= 1 and min_val >= 1.2:
               if laser_values[-1] >= 1:
                  turn_360(odo_values,s)
                  wallfollow.send("NEX!0#")
           else:
-              s.send(handle_movement("right", 4.0,2.0))
+              listener.send("CMD!" + handle_movement("right", 4.0,2.0) + "#")
        else:
           #Wall on the right side turn right
           print "waarde aan de rechterkant" , laser_values[0]
           if flag >= 0 :
              #first turn a little
-              s.send(handle_movement("right", 4.0,2.0))
+              listener.send("CMD!" + handle_movement("right", 4.0,2.0) + "#")
               flag = 1
           if flag >= 1:
               # now look for a wall
@@ -107,7 +104,7 @@ def wall_continued(side,s):
                   turn_360(odo_values,s)
                   wallfollow.send("NEX!0#")
           else:
-              s.send(handle_movement("right", 2.0,4.0))
+              listener.send("CMD!" + handle_movement("right", 4.0,2.0) + "#")
        if min_val <= 0.35:
           wallfollow.send("NEX!1#")
 
@@ -120,7 +117,7 @@ def turn_360(odo_values, s):
 ##    theta = odo_values[2]
     # we always turn left while searching for a wall
     
-    s.send(handle_movement("rotate_left", 1.5))
+    listener.send("CMD!" + handle_movement("rotate_left", 1.5) + "#")
     # To prevent the use of false values.
     new_odo_values = [999, 999, 999]
     temp_min_val = 10000
@@ -139,7 +136,7 @@ def turn_360(odo_values, s):
         new_odo_values  = accept_thread.memory[odo].split(',')
         if new_odo_values[2] > previous_odo_values[2]:
             if flag == 2:
-                s.send(handle_movement("brake"))
+                listener.send("CMD!" + handle_movement("brake") + "#")
                 print "De kleinste min value gevonden"
                 turn_right_position(temp_min_val, temp_index_val, temp_odo_values, s)
                 #placeholder wallfollow
@@ -171,10 +168,10 @@ def turn_right_position(min_val, index_val, odo_values, s):
     print "turning to the right position"
     turning_right = 0
     if odo_values[2] < 0:
-        s.send(handle_movement("rotate_right", 1.5))
+        listener.send("CMD!" + handle_movement("rotate_right", 1.5) + "#")
         turning_right = 1
     else:
-        s.send(handle_movement("rotate_left", 1.5))
+        listener.send("CMD!" + handle_movement("rotate_left", 1.5) + "#")
     # To prevent the use of false values.
     new_odo_values = [999, 999, 999]
     previous_odo_values = [999, 999, 999]
@@ -195,10 +192,10 @@ def turn_right_position(min_val, index_val, odo_values, s):
             or (new_odo_values[2] > odo_values[2] and turning_right == 1
                 and new_odo_values[2] < 0)):
             # When the value is found stop.
-            s.send(handle_movement("brake"))
+            listener.send("CMD!" + handle_movement("brake") + "#")
             print "De juiste positie gevonden"
             # Drive forward.
-            s.send(handle_movement("forward",1.0))
+            listener.send("CMD!" + handle_movement("forward",1.0) + "#")
             stop(s)
 ##                            print "turn to the right position", index_val
             return
@@ -222,5 +219,8 @@ def stop(s):
         # The threshold.
         if min_val <= 0.40:
             print "De muur gevonden"
-            s.send(handle_movement("brake"))
+            listener.send("CMD!" + handle_movement("brake") + "#")
             return
+
+while 1:
+    continue

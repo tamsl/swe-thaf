@@ -12,10 +12,6 @@ flag = 1
 data_incomplete = 0
 list = []
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect((TCP_IP, TCP_PORT))
-print s
-s.send('INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n')
 configreader = config_reader()
 print("config reader gestart")
 accept_thread = acceptor(flag, list, "LIS", configreader.addresses)
@@ -31,11 +27,19 @@ print(odometry)
 rangescanner = configreader.connection(list, "RSC")
 print(rangescanner)
 print ("acceptor thread gestart")
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((TCP_IP, TCP_PORT))
+s.setblocking(0)
+print s
+s.send('INIT {ClassName USARBot.P2DX} {Location 2.0,3.8,1.8} {Name R1}\r\n')
 s.send("DRIVE {Left -1.0} {Right 1.0}\r\n")
 
 while 1:
-    s.send(accept_thread.memory[4])
     try:
+        if accept_thread.memory[4] != "":
+            print accept_thread.memory[4]
+            s.send(accept_thread.memory[4])
+            accept_thread.memory[4] = ""
         data = s.recv(BUFFER_SIZE)
         if data_incomplete:
             datatemp += data
@@ -54,7 +58,8 @@ while 1:
         message = "RCV!ODO!" + data + "#"
         odometry.send(message)
         data = ""
-          
+    except(socket.error):
+        continue    
     except:
     
         print("er is iets fout gegaan in listener")

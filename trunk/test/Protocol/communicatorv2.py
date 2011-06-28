@@ -74,7 +74,13 @@ class communication(threading.Thread):
         self.memory = memory
         self.waiting_for_data = waiting_for_data
         self.request_data = request_data
-    # add connection to list
+    # setter for waiting for data
+    def set_wait(self, number):
+        self.waiting_for_data += number
+    # getter for waiting for data
+    def get_wait(self):
+        return self.waiting_for_data
+    # add connection to listen
     def add_to_list(connection):
         self.list.append(connection)
     # main
@@ -92,7 +98,13 @@ class communication(threading.Thread):
             for i in range(len(self.list)):
                 while 1:
                     try:
+                        self.list[i][0].setblocking(0)
                         data = self.list[i][0].recv(BUFFER_SIZE)
+                        # connection is closed if the data received is equal to
+                        # nothing
+                        if not data:
+                            self.list.pop(i)
+                            break
                         if data_incomplete:
                             datatemp += data
                             data_incomplete = 0
@@ -105,6 +117,7 @@ class communication(threading.Thread):
                         else:
                             continue
                         messagesplit = data.split("#")
+##                        print messagesplit
 ##                        print "data"
 ##                        print data
                         for j in range(len(messagesplit)):
@@ -113,10 +126,6 @@ class communication(threading.Thread):
                             datasplit = messagesplit[j].split("!")
 ##                            print "datasplit"
 ##                            print datasplit
-                            # connection is closed if the data received is equal to
-                            # nothing
-                            if not data:
-                                self.list.pop(i)
                             if len(datasplit) < 1:
                                 continue
                             # handles messages according to our protocol
@@ -125,7 +134,7 @@ class communication(threading.Thread):
                                 self.request_data.append(datasplit[1])
                                 data = " "
                                 datasplit = []
-                            # handles commands
+                            # handles commands needs to be send to robot.
                             elif(datasplit[0] == "CMD"):
                                 self.memory[4] = datasplit[1]
                                 data = " "
@@ -134,24 +143,28 @@ class communication(threading.Thread):
                             elif(datasplit[0] == "RCV"):
                                 if(datasplit[1] == "SNR"):
                                     self.memory[0] = datasplit[2]
+##                                    print self.waiting_for_data
                                     if(self.waiting_for_data > 0):
                                         self.waiting_for_data -= 1
                                     data = " "
                                     datasplit = []
                                 elif(datasplit[1] == "ODO"):
                                     self.memory[1] = datasplit[2]
+##                                    print self.waiting_for_data
                                     if(self.waiting_for_data > 0):
                                         self.waiting_for_data -= 1
                                     data = " "
                                     datasplit = []
                                 elif(datasplit[1] == "RSC"):
                                     self.memory[2] = datasplit[2]
+##                                    print self.waiting_for_data
                                     if(self.waiting_for_data > 0):
                                         self.waiting_for_data -= 1
                                     data = " "
                                     datasplit = []
                                 elif(datasplit[1] == "MAP"):
                                     self.memory[3] = datasplit[2]
+##                                    print self.waiting_for_data
                                     if(self.waiting_for_data > 0):
                                         self.waiting_for_data -= 1
                                     data = " "
@@ -163,10 +176,10 @@ class communication(threading.Thread):
                                         self.waiting_for_data -= 1
                                     data = " "
                                     datasplit = []                                    
-                        break
                     except(socket.error):
                         if self.running == 0:
                             break
+                    break
             
 
 class acceptor(threading.Thread):
@@ -183,9 +196,19 @@ class acceptor(threading.Thread):
         # [2]: rangescanner
         # [3]: map
         # [4]: command
-        self.memory = ["","","","",""]
+        # [5]: nex        
+        self.memory = ["","","","","",""]
         self.waiting_for_data = 0
         self.request_data = []
+        # Create the communication thread.
+        communicationthread = communication(self.list, self.running, self.memory, self.waiting_for_data, self.request_data)
+        communicationthread.setDaemon(True)
+        communicationthread.start()
+        self.communicationthread = communicationthread
+    def set_wait(self, number):
+        self.communicationthread.set_wait(number)
+    def get_wait(self):
+        return self.communicationthread.get_wait()
     # main
     def run(self):
         time.sleep(5)
@@ -201,10 +224,6 @@ class acceptor(threading.Thread):
         s.bind((TCP_IP, TCP_PORT))
         s.listen(0)
         s.setblocking(0)
-        # Create the communication thread.
-        communicationthread = communication(self.list, self.running, self.memory, self.waiting_for_data, self.request_data)
-        communicationthread.setDaemon(True)
-        communicationthread.start()
         # Continue till the flag is turned off and the program needs to shut
         # down
         while self.running:
@@ -227,5 +246,5 @@ class acceptor(threading.Thread):
                 for i in range(len(self.list)):
                     list[i][0].close()
                 s.close()
-                communicationthread.join()
+                self.communicationthread.join()
                 sys.exit()
