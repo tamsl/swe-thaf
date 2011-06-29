@@ -1,5 +1,6 @@
 \documentclass[a4paper,10pt]{article}
 \usepackage{graphicx}
+\usepackage{verbatim}
 \usepackage[dutch]{babel}
 
 \title{Software Engineering en Gedistribueerde Applicaties \\[10pt]Eindverslag\\[25pt]Team F.A.C.H.T.}
@@ -83,7 +84,7 @@ De high-level componenten houden bij waar de robot is geweest en kunnen hem naar
 De map maker maakt een kaart van de constante stroom van laser en odometry waarden die hij binnenkrijgt. Voor het maken van een kaart wordt de Simultaneous Localization And Mapping (SLAM) techniek gebruikt. De kaart heeft de vorm van een matrix.
 De bibliotheek die wordt gebruikt om deze map te maken is tinySLAM. Dit is een zeer simpel algoritme dat niet meer dan 200 regels code bevat. Het enige wat het elke keer doet, is de gevonden lijnen tekenen. Dit algoritme heeft nog heel wat uitbreidingen, maar alleen de basis van dit algoritme wordt gebruikt. De originele code is geschreven in C, maar met behulp van een gevonden versie in Python en een paar aanpassingen is deze bruikbaar geworden.
 
-Voor meer informatie zie appendix \ref{mapmaker}
+Zie appendix \ref{mapmaker}
 
 \subsubsection{Path finding}
 Path finding kan alleen gebruikt worden binnen de al ontdekte gebieden en kan dus alleen een route plannen binnen een bekend domein. Hierin probeert hij een zo kort mogelijk pad te vinden naar de bestemming. Er wordt gebruik gemaakt van het A ster zoekalgoritme om het effici\"{e}ntste pad te vinden tussen twee punten.
@@ -94,7 +95,7 @@ Zie appendix \ref{pathfinding}
 Alle modules kunnen gebruik maken van de beschikbare libraries. Ze kunnen deze libraries importeren en hun functies gebruiken.
 
 \subsubsection{Communicator}
-De comunicator library leest een bestand in dat de locaties van de modules bevat. Via deze data maakt hij verbindingen aan met andere modules. De communicator importeert twee thread klasses en een derde klasse. De ene thread luistert naar de gemaakte verbindingen en de andere luistert naar een poort om te bepalen of er nieuwe verbindingen gemaakt moeten worden. De thread die luistert, handelt de berichten af volgens het communicatieprotocol. Hierin staan alle mogelijke berichten en tags die gebruikt worden bij de communicatie en er staat ook in wat hun doel is. Hierna handelt elke module zijn ontvangen data anders af.
+De comunicator library leest een bestand in dat de lokaties van de modules bevat. Via deze data maakt hij verbindingen aan met andere modules. De communicator importeert twee thread klasses en een derde klasse. De ene thread luistert naar de gemaakte verbindingen en de andere luistert naar een poort om te bepalen of er nieuwe verbindingen gemaakt moeten worden. De thread die luistert, handelt de berichten af volgens het communicatieprotocol. Hierin staan alle mogelijke berichten en tags die gebruikt worden bij de communicatie en er staat ook in wat hun doel is. Hierna handelt elke module zijn ontvangen data anders af.
 
 Zie appendix \ref{communicator}
 
@@ -107,29 +108,29 @@ Zie appendix \ref{movements}
 Voor elke module is er een aparte test geschreven om er zeker van te zijn dat elke module op zichzelf goed werkt. Elke module wordt direct aan de simulator vastgezet en getest met de directe data die binnenkomen. 
 
 \subsection{Listener}
-De listener wordt getest door data te verkrijgen en deze per type bericht in een nieuwe array uit te printen.
+De listener wordt getest door data te verkrijgen en deze uit te printen.
 
 \subsection{Odometry}
-De odometry wordt getest door 100 regels data te verkrijgen van de simulator en hiervan de odometriewaarden te printen. De odometriewaarden worden getest op geldigheid.
+De odometry wordt getest door de robot te laten rijden, 100 regels data te verkrijgen van de simulator en hiervan de odometriewaarden te printen. De odometriewaarden worden getest op geldigheid.
 
 \subsection{Range scanner}
-De range scanner wordt getest door 100 regels data te verkrijgen van de simulator en hiervan de 181 laserwaarden te printen. De laserwaarden worden getest op geldigheid.
+De range scanner wordt getest door de robot te laten rijden, 100 regels data te verkrijgen van de simulator en hiervan de 181 laserwaarden te printen. De laserwaarden worden getest op geldigheid.
 
 \subsection{Sonar}
-De sonar wordt getest door 100 regels data te verkrijgen en  hiervan de 8 sonarwaarden te printen. De sonarwaarden worden getest op geldigheid.
+De sonar wordt getest door de robot te laten rijden, 100 regels data te verkrijgen en hiervan de 8 sonarwaarden te printen. De sonarwaarden worden getest op geldigheid.
 
 \subsection{Collision avoider}
 De collision avoider wordt getest door de robot vanuit verschillende startposities rond te laten rijden zonder dat er botsingen ontstaan.
 
-\subsection{Wall combo}
-De wall combo is geschreven om te testen of de wall search goed werkt in samenwerking met de wall follow. Deze test simuleert
-de werking in een gedistribueerd systeem.
+\subsection{Wall search}
+De wall search wordt getest door de robot vanuit verschillende startposities de dichstbijzijnde muur te laten zoeken. 
 
 \subsection{Wall follow}
 De wall follow wordt getest door de robot vanuit verschillende startposities een muur te laten volgen. Het is de bedoeling dat deze module wordt aangeroepen wanneer er al een muur is gevonden. Dan kan de robot de muur naar links en naar rechts toe volgen. Binnen deze gebruikte methode zijn stompe bochten ook mogelijk.
 
-\subsection{Wall search}
-De wall search wordt getest door de robot vanuit verschillende startposities de dichstbijzijnde muur te zoeken. 
+\subsection{Wall combo}
+De wall combo is geschreven om te testen of de wall search goed werkt in samenwerking met de wall follow. Deze test simuleert
+de werking in een gedistribueerd systeem.
 
 \subsection{Map maker}
 De map maker wordt getest door hem een output bestand met laser- en odometriewaarden van de wall combo te laten lezen en de kaart ervan te tekenen.
@@ -148,27 +149,101 @@ De robot wordt ge\"{i}nitialiseerd op een bepaalde plaats. Hij zoekt een muur en
 \section{Appendix}
 \appendix
 \section*{\refstepcounter{section}\label{listener}\thesection.\quad Listener}
+De listener stuurt berichten van de robot door naar de modules odometry (ODO), range scanner (RSC) en sonar (SNR). Als een datapakket incompleet is, dat wil zeggen dat er geen \verb!\n! aan het einde is, wordt er een nieuw datapakket achter geplakt.
+
 \section*{\refstepcounter{section}\label{odometry}\thesection.\quad Odometry}
 De odometry module krijgt data binnen van de listener. De data worden gesplitst in arrays op elke \verb!\r\n! die er in voorkomt. Vervolgens wordt de functie \verb!re.findall('\{[^\}]*\}|\S+', string[i])! gebruikt om elke array te splitsen in elementen die beginnen en eindigen met een accolade en overige elementen. Elke array bevat sensorinformatie als het eerste element van de array gelijk is aan \verb!SEN!. Bij berichten van het type odometry staat er op de tweede plaats in de array het element \verb!{Type Odometry}!. Er is echter tussen het eerste en tweede element het element tijd toegevoegd om te kijken of de odometriewaarden nieuw zijn of niet, waardoor het \verb!{Type Odometry}! element nu op de derde plaats in de array staat. De odometry module gebruikt de array als dit laatste element op die plaats is gevonden. De tijd van het bericht wordt samen met de odometriewaarden op de vijfde plaats in de array als een string meegegeven aan de functie \verb!odometry_module()!. De odometriewaarden komen als volgt binnen: \verb!{Pose 0.0000,0.0000,0.0000}!, oftewel x,y,theta. De \verb!odometry_module()! functie verkrijgt de drie getallen uit deze string, controleert of deze waarden geldig zijn door ze om te zetten in floats en test of de theta tussen -3.15 en 3.15 ligt. Alleen als de waarden geldig en nieuw zijn, worden ze in een string van het formaat \verb!tijd+x,y,theta! doorgestuurd naar de mid-level modules.
+
 \section*{\refstepcounter{section}\label{rangescanner}\thesection.\quad Range scanner}
-De range scanner module data binnen van de listener. De data worden gesplitst in arrays op elke \verb!\r\n! die er in voorkomt. Vervolgens wordt de functie \verb!re.findall('\{[^\}]*\}|\S+', string[i])! gebruikt om elke array te splitsen in elementen die beginnen en eindigen met een accolade en overige elementen. Elke array bevat sensorinformatie als het eerste element van de array gelijk is aan \verb!SEN!. Bij berichten van het type range scanner staat er op de tweede plaats in de array het element tijd en op de derde plaats in de array het element \verb!{Type RangeScanner}!. De range scanner module gebruikt de array als dit laatste element op die plaats is gevonden. De tijd van het bericht wordt samen met de laserwaarden op de zevende plaats in de array als een string meegegeven aan de functie \verb!range_module()!. De tijd en de laserwaarden worden gesplitst en gecontroleerd op geldigheid door ze om te zetten in floats. Alleen als de waarden geldig en nieuw zijn, worden ze in een string van het formaat \verb!tijd+x,x,...,x! doorgestuurd naar de mid-level modules.
+De range scanner module krijgt data binnen van de listener. De data worden gesplitst in arrays op elke \verb!\r\n! die er in voorkomt. Vervolgens wordt de functie \verb!re.findall('\{[^\}]*\}|\S+', string[i])! gebruikt om elke array te splitsen in elementen die beginnen en eindigen met een accolade en overige elementen. Elke array bevat sensorinformatie als het eerste element van de array gelijk is aan \verb!SEN!. Bij berichten van het type range scanner staat er op de tweede plaats in de array het element tijd en op de derde plaats in de array het element \verb!{Type RangeScanner}!. De range scanner module gebruikt de array als dit laatste element op die plaats is gevonden. De tijd van het bericht wordt samen met de laserwaarden op de zevende plaats in de array als een string meegegeven aan de functie \verb!range_module()!. De tijd en de laserwaarden worden gesplitst en gecontroleerd op geldigheid door ze om te zetten in floats. Alleen als de waarden geldig en nieuw zijn, worden ze in een string van het formaat \verb!tijd+x,x,...,x! doorgestuurd naar de mid-level modules.
+
 \section*{\refstepcounter{section}\label{sonar}\thesection.\quad Sonar}
 De sonar module krijgt data binnen van de listener. De data worden gesplitst in arrays op elke \verb!\r\n! die er in voorkomt. Vervolgens wordt de functie \verb!re.findall('\{[^\}]*\}|\S+', string[i])! gebruikt om elke array te splitsen in elementen die beginnen en eindigen met een accolade en overige elementen. Elke array bevat sensorinformatie als het eerste element van de array gelijk is aan \verb!SEN!. Bij berichten van het type sonar staat er op de tweede plaats in de array het element tijd en op derde plaats in de array het element \verb!{Type Sonar}!. De tijd van het bericht wordt samen met de sonarwaarden als een string meegegeven aan de functie \verb!sonar_module()!. Deze functie splitst de tijd en de sonarwaarden en controleert ze op geldigheid door ze om te zetten in floats. Alleen als de waarden geldig en nieuw zijn, worden ze in een string van het formaat \verb!tijd+1,2,3,4,5,6,7,8! doorgestuurd naar de mid-level modules.
+
 \section*{\refstepcounter{section}\label{collisionavoider}\thesection.\quad Collision avoider}
-De collisionavoider module maakt gebruik van een semafoor 'flag'. Zodra flag gelijk is aan nul, zal de robot vooruit rijden en wordt getdata aangeroepen. BLABLABLA. Zodra de type sensor gelijk is aan sonar wordt er gekeken of de lengte van de data groter is dan 9. Hierin wordt de \verb!min_sonar_val()! functie aangeroepen met als parameter de meegegeven sonar waarden. Hierbij wordt de \verb!string_to_float()! functie gebruikt. Voor elke sonar waarde wordt er een float van gemaakt en deze floats worden vervolgens in een array gestopt en geretourneerd. Deze worden gesorteerd en wordt er 1 bij de eerste index waarde opgeteld, zodat er vanaf 1 tot 8 wordt geteld in plaats vanaf 0 tot 7. De \verb!min_sonar_val()! retourneert twee waardes, waarvan de eerste de minimale waarde is en de tweede de index waarde waar zich de minimale waarde bevind.
-Voor elke sonar waarde wordt er gekeken of de float van elke waarde kleiner is dan de zogenaamde level, die als .25 staat gegeven. Dit zal de robot genoeg ruimte geven om zich te kunnen roteren zonder dat deze in aanraking komt met een object. Als een van de twee meest rechter sonar waarden kleiner zijn dan de meest linker sonar waarde, wordt de robot naar links gedraaid. Zijn de twee meest linker sonar waarden kleiner dan de meest rechter sonar waarde, dan wordt de robot naar rechts gedraaid. Zodra de minimale waarde zich bij de voorste twee index waarde ligt en de flag gelijk is aan nul, wordt de \verb!calc_collision()! functie aangeroepen voor een mogelijke botsing. Door middel van de \verb!calc_collision()! en de \verb!calc_speed()! kan de tijd in secondes worden berekend voordat de robot in aanraking komt met een object. Als de meest rechter sonar waarde eveneens kleiner is dan de meest linker waarde zal de robot naar rechts draaien, en andersom. Ten slotte wordt er een 1 geretourneerd.
+De collision avoider module maakt gebruik van een semafoor `flag'. Zodra de flag gelijk is aan nul, zal de robot vooruit rijden en wordt \verb!getdata()! aangeroepen. BLABLABLA. Zodra het type sensor gelijk is aan sonar wordt er gekeken of de lengte van de data groter is dan 9. Hierin wordt de \verb!min_sonar_val()! functie aangeroepen met als parameter de meegegeven sonarwaarden. Hierbij wordt de \verb!string_to_float()! functie gebruikt. Elke sonarwaarde wordt omgezet in een float en deze floats worden vervolgens in een array gestopt en geretourneerd. Deze worden gesorteerd en er wordt 1 bij de eerste indexwaarde opgeteld, zodat er van 1 tot 8 wordt geteld in plaats van 0 tot 7. De \verb!min_sonar_val()! retourneert twee waardes, waarvan de eerste de minimale waarde is en de tweede de indexwaarde waar zich de minimale waarde bevindt.
+Voor elke sonarwaarde wordt er gekeken of de float van elke waarde kleiner is dan de zogenaamde level, die als .25 is gegeven. Dit zal de robot genoeg ruimte geven om te kunnen roteren zonder dat deze in aanraking komt met een object. Als \'{e}\'{e}n van de twee meest rechter sonarwaarden kleiner zijn dan de meest linker sonarwaarde, wordt de robot naar links gedraaid. Zijn de twee meest linker sonarwaarden kleiner dan de meest rechter sonarwaarde, dan wordt de robot naar rechts gedraaid. Zodra de minimale waarde bij de voorste twee indexwaarden ligt en de flag gelijk is aan nul, wordt de \verb!calc_collision()! functie aangeroepen voor een mogelijke botsing. Door middel van de \verb!calc_collision()! en de \verb!calc_speed()! kan de tijd in secondes worden berekend voordat de robot in aanraking komt met een object. Als de meest rechter sonarwaarde eveneens kleiner is dan de meest linkerwaarde zal de robot naar rechts draaien, en andersom. Tenslotte wordt er een 1 geretourneerd.
+
 \section*{\refstepcounter{section}\label{wallsearch}\thesection.\quad Wall search}
+
 \section*{\refstepcounter{section}\label{wallfollow}\thesection.\quad Wall follow}
+
 \section*{\refstepcounter{section}\label{mapmaker}\thesection.\quad Map maker}
+
 \section*{\refstepcounter{section}\label{pathfinding}\thesection.\quad Path finding}
+
+\section*{\refstepcounter{section}\label{protocol}\thesection.\quad Communicatieprotocol}
+\begin{verbatim}
+TAG:
+REQ: data sturen
+RCV: data ontvangen
+CMD: movement commando's
+NEX: go to the next module
+
+data TAG:
+SNR: sonar
+ODO: odometry
+RSC: rangescanner
+MAP: map
+
+module TAG:
+ODO: Odometry
+RSC: Rangescanner
+SNR: Sonar
+WFW: Wall Follow
+CAV: Collision Avoider
+WSC: Wall Search
+MAP: Map Maker
+PLA: Route Planner
+LIS: Listener
+
+dividers:
+#: eindetransmissie
+!: transmissie divider
+
+Vorm:
+REQ:
+REQ!"own module TAG"# 
+example: REQ!WFW# this send to a sensor module will return the data of that module.
+RCV!"data TAG"!"data"# 
+example: RCV!SNR!x,x,x,x,x,x,x,x# this will send the data to a module.
+CMD!"commando"# CMD!drive# will send a drive command.
+NEX!"side"# example: NEX!1# 1 if wall is on the right side.
+
+
+data:
+SNR:
+naar sensor module:
+{Name F1 Range "x"} {Name F2 Range "x"} {Name F3 Range "x"} {Name F4 Range "x"} 
+{Name F5 Range "x"} {Name F6 Range "x"} {Name F7 Range "x"} {Name F8 Range "x"}
+uit sensormodule:
+{Time}+x,x,x,x,x,x,x,x
+
+RSC:
+naar sensor module:
+{Range "x","x",...,"x"}
+uit sensormodule:
+{Time}+x,x,x,x,x,x,x,x,x,x,....,x,x,x
+
+ODO:
+naar sensor module:
+{Pose x,y,theta}
+uit sensormodule:
+{Time}+x,y,theta
+
+MAP:
+"# of characters""type"_"# of characters""type"_...._"# of characters""type"
+\end{verbatim}
+
 \section*{\refstepcounter{section}\label{communicator}\thesection.\quad Communicator}
+
 \section*{\refstepcounter{section}\label{movements}\thesection.\quad Movements}
 Elke module kan een commando type aanroepen in de movements library via de \verb!handle_movements()! functie. Hierin staan alle mogelijke bewegingen die behandeld kunnen worden.  
-\verb!go_drive()! zorgt ervoor dat de robot vooruit en achteruit kan rijden, bochten en rotaties kan maken. Hierbij wordt voor zowel de linker als de rechterwiel dezelfde parameter meegegeven. 
-Bij \verb!go_rotate_right()! en \verb!go_rotate_left()! wordt een rotatie uitgevoerd om de as van de robot. De meegegeven parameter bepaald de snelheid van de rotatie. 
-Om naar rechts te draaien moet de parameter van de rechterwiel groter zijn dan die van de linker, en omgekeerd. De functies \verb!go_right()! en \verb!go_left()! worden hierbij gebruikt.
-De robot remt bij het gebruik van \verb!go_brake()!, hierbij staan beide wielen op 0.
+\verb!go_drive()! zorgt ervoor dat de robot vooruit en achteruit kan rijden, bochten en rotaties kan maken. Hierbij wordt voor zowel het linker- als het rechterwiel dezelfde parameter meegegeven. 
+Bij \verb!go_rotate_right()! en \verb!go_rotate_left()! wordt een rotatie uitgevoerd om de as van de robot. De meegegeven parameter bepaalt de snelheid van de rotatie. 
+Om naar rechts te draaien moet de parameter van het rechterwiel groter zijn dan die van het linkerwiel en omgekeerd. De functies \verb!go_right()! en \verb!go_left()! worden hierbij gebruikt.
+De robot remt bij het gebruik van \verb!go_brake()!, hierbij staan beide wielen op een snelheid van 0.
 Door de wielen een gelijke negatieve waarde mee te geven in de functie \verb!go_reverse()!, zal de robot achteruit rijden.
-De functie \verb!go_camera()! zorgt ervoor dat je, door het indrukken van de linker muisknop, het beeld ziet vanuit de camera van de robot. Om vervolgens hier uit te komen dient er op de rechter muisknop gedrukt te worden.
+De functie \verb!go_camera()! zorgt ervoor dat door middel van het indrukken van de linkermuisknop het beeld zichtbaar is vanuit de camera van de robot. Om hier vervolgens uit te komen, dient er op de rechtermuisknop gedrukt te worden.
 
 \end{document}
