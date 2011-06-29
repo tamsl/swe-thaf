@@ -1,4 +1,4 @@
-v1.9
+v2.0
 
 TAG:
 REQ: data sturen
@@ -37,20 +37,14 @@ NEX!"side"# example: NEX!1# 1 if wall is on the right side.
 
 data:
 SNR:
-naar sensor module:
-{Name F1 Range "x"} {Name F2 Range "x"} {Name F3 Range "x"} {Name F4 Range "x"} {Name F5 Range "x"} {Name F6 Range "x"} {Name F7 Range "x"} {Name F8 Range "x"}
 uit sensormodule:
 {Time}+x,x,x,x,x,x,x,x
 
 RSC:
-naar sensor module:
-{Range "x","x",...,"x"}'
 uit sensormodule:
 {Time}+x,x,x,x,x,x,x,x,x,x,....,x,x,x
 
 ODO:
-naar sensor module:
-{Pose x,y,theta}
 uit sensormodule:
 {Time}+x,y,theta
 
