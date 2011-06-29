@@ -11,8 +11,21 @@ COLOR = ['Red', 'Yellow', 'Green', 'Cyan', 'White', 'Blue', 'Purple']
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
 ##s.send("INIT {ClassName USARBot.P2DX} {Location 4.35,2.0,1.8} {Rotation 0,0,2} {Name R1}\r\n")
-##s.send("INIT {ClassName USARBot.P2DX} {Location -6.0,-3.4,1.8} {Rotation 0.0,0.0,0.0} {Name R1}\r\n")
-s.send("INIT {ClassName USARBot.P2DX} {Location 2.5,2.3,1.8} {Rotation 0.0,0.0,0.0} {Name R1}\r\n")
+##s.send("INIT {ClassName USARBot.P2DX} {Location 2.5,2.3,1.8} {Rotation 0.0,0.0,0.0} {Name R1}\r\n")
+## Start in de tweede hal.
+##s.send("INIT {ClassName USARBot.P2DX} {Location 1.5,1.5,1.8} {Name R1}\r\n") 
+## Start in de kamer met een stoel.
+##s.send("INIT {ClassName USARBot.P2DX} {Location -5.5,-1.0,1.8} {Name R1}\r\n")
+##De standard waarde.
+##s.send("INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n")
+
+## DEMO:
+## Start in hall.
+s.send("INIT {ClassName USARBot.P2DX} {Location 6.8,-1.8,1.8} {Name R1}\r\n")
+## Hall red hair
+##s.send("INIT {ClassName USARBot.P2DX} {Location -3.5,-2.0,1.8} {Rotation 0.0,0.0,0.0} {Name R1}\r\n")
+## Hall besides room with chair
+##s.send("INIT {ClassName USARBot.P2DX} {Location -3.0,2.5,1.8} {Rotation 0.0,0.0,3.155} {Name R1}\r\n")
 
 def handle_movement(type, *args):
    handlers = {"forward":         go_drive,
@@ -214,7 +227,14 @@ while 1:
                         #checks the front
 
                         if min_val <= 0.30:
-                            print "ik ben te dicht bij de muur k moet bij sturen"
+                            print "ik ben te dicht bij de muur, ik moet bijsturen"
+                            right_val, right_index_val = min_laser_val(laser_values[:len(laser_values)/2])
+                            left_val, left_index_val = min_laser_val(laser_values[len(laser_values)/2:])
+##                            print right_val
+##                            print left_val
+                            if right_val <= 0.4 and left_val <= 0.4:
+                               s.send(handle_movement("forward",1.0,1.0))
+                               break
                             # the most left value is 80
                             if index_val > length/2:
                                 print"ik stuur bij naar rechts"
