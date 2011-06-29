@@ -54,11 +54,12 @@ def adjust(xs, ys, alpha):
     if dx == 0  and dy == 0:
         print "IK BEN ERRR"        
     print "dx ", dx,"dy ", dy
-    beta = math.atan(dy / dx)
+    #beta = math.atan(dy / dx)
+    beta = math.atan2(dy, dx)
     return beta, alpha + beta
 
-dx = xf - xs
-dy = yf - ys
+dx = xs - xf
+dy = ys - yf
 alpha = math.atan(dy / dx)
 s.send(handle_movement("right", 2.0, 1.0))
 # Test the odometry module.
