@@ -5,7 +5,7 @@ def read_map(matrix):
     xf = 0
     yf = 0
     for i in range(len(matrix)):
-        for k in range(len(matrix)):
+        for k in range(len(matrix[i])):
             if matrix[i][k] == 2:
                 xs = k
                 ys = i
@@ -178,15 +178,19 @@ def read_map(matrix):
                         flag = 0
     return route
     
-matrix = [[0, 3, 3, 3, 0, 2], [3, 3, 0, 3, 0, 3], [4, 0, 0, 3, 0, 3], [0, 0, 0, 3, 0, 3], [0, 0, 0, 3, 0, 3], [0, 0, 0, 3, 3, 3]]
+matrix = [[0, 0, 3, 0, 1, 2], [3, 3, 0, 3, 1, 3], [4, 1, 0, 3, 1, 3], [1, 0, 0, 3, 1, 3], [0, 1, 1, 3, 1, 3], [0, 1, 1, 3, 3, 3]]
+##matrix = [[0, 0, 0, 0, 2, 3, 3, 0, 0, 0], [0, 0, 0, 0, 0, 1, 3, 0, 0, 0], [0, 0, 0, 0, 0, 1, 3, 0, 0, 0], [0, 0, 0, 0, 0, 1, 3, 0, 0, 0], [0, 0, 0, 0, 0, 1, 0, 3, 0, 0], [0, 1, 1, 1, 1, 1, 1, 1, 3, 0], [0, 0, 0, 0, 0, 1, 0, 3, 0, 0], [0, 0, 0, 0, 0, 1, 3, 0, 0, 0], [0, 0, 0, 0, 0, 0, 3, 0, 0, 0], [0, 0, 0, 0, 0, 0, 4, 0, 0, 0]]
+##matrix = [[0, 3, 3, 3, 0, 3, 2], [3, 3, 0, 3, 0, 3, 0], [4, 0, 0, 3, 0, 3, 0], [0, 0, 0, 3, 0, 3, 0], [0, 0, 0, 3, 0, 3, 0], [0, 0, 0, 3, 3, 3, 0]]
 
 ## display the map with the route added
 print 'Map:'
 for y in range(len(matrix)):
-    for x in range(len(matrix)):
+    for x in range(len(matrix[y])):
         xy = matrix[y][x]
         if xy == 0:
             print '.', # space
+        elif xy == 1:
+            print '#', # obstacle
         elif xy == 2:
             print 'S', # start
         elif xy == 3:
