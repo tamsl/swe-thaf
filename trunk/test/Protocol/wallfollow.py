@@ -17,10 +17,22 @@ configreader = config_reader()
 accept_thread = acceptor(running, list, "WFW", configreader.addresses)
 accept_thread.setDaemon(True)
 accept_thread.start()
-odometry = configreader.connection(list, "ODO")
-rangescanner = configreader.connection(list, "RSC")
-listener = configreader.connection(list, "LIS")
-wallsearch = configreader.connection(list, "WSC")
+odometry = connection(running, "ODO", configreader, list)
+odometry.setDaemon(True)
+odometry.start()
+rangescanner = connection(running, "RSC", configreader, list)
+rangescanner.setDaemon(True)
+rangescanner.start()
+listener = connection(running, "LIS", configreader, list)
+listener.setDaemon(True)
+listener.start()
+wallsearch = connection(running, "WSC", configreader, list)
+wallsearch.setDaemon(True)
+wallsearch.start()
+##odometry = configreader.connection(list, "ODO")
+##rangescanner = configreader.connection(list, "RSC")
+##listener = configreader.connection(list, "LIS")
+##wallsearch = configreader.connection(list, "WSC")
 print ("acceptor thread gestart")
 odo = 1
 ran = 2
@@ -75,7 +87,7 @@ def wallfollow(min_val, index_val, length):
     if index_val > length/2:
         side = 1
     print "ik ga rechtdoor"
-    listener.send("CMD!" + handle_movement("forward", 1.0) + "#")
+    listener.send_data("CMD!" + handle_movement("forward", 1.0) + "#")
     # Return that it is now following the wall.
     return 1 , side
    
@@ -94,22 +106,38 @@ side = 0
 fc = 0
 laser_values = []
 values = []
-while 1:
+counter = 0
+old_v = ""
+while running:
     #request data
-##    print "ik begin"
-    rangescanner.send("REQ!WFW#")
+    print "ik begin"
+    rangescanner.send_data("REQ!WFW#")
 ##    print "te vroeg?"
     accept_thread.set_wait(1)
 ##    print "ik ga wachten"
     #wait for data to arrive
     while accept_thread.get_wait() > 0 :
-##        print "ik ben aan het wachten"
+        if old_v != accept_thread.memory[ran]:
+            print accept_thread.memory[ran]
+        old_v = accept_thread.memory[ran]
+##        if counter > 30000:
+##            break
+##            print "ik ben aan het wachten"
+##        else:
+##            break
+##        counter += 1
 ##        print accept_thread.get_wait()
         continue
+##    if counter > 30000:
+##        print "motherfucker"
+##        continue
+##    counter = 0
     if accept_thread.memory[ran] == "":
+        print "data is leeg"
         continue
     if len(values) > 0:
         if values[0] == accept_thread.memory[ran].split("+")[0]:
+            print "data is hetzelfde"
             continue
 ##    print "ik ben awesome"
 ##    print accept_thread.memory[ran]
@@ -140,14 +168,14 @@ while 1:
             fc = 1
             if index_val > length/2:
 ##                print "ik stuur bij naar rechts"
-                listener.send("CMD!" + handle_movement("right", 2.0, -1.0) + "#")
-                side = 1
+                listener.send_data("CMD!" + handle_movement("rotate_right", 0.3) + "#")
+                side = 0
 ##                print "klaar met sturen"
                 break
             else:
 ##                print "ik stuur bij naar links"
-                listener.send("CMD!" + handle_movement("left", 2.0,-1.0) + "#")
-                side =1
+                listener.send_data("CMD!" + handle_movement("rotate_left", 0.3) + "#")
+                side = 1
 ##                print "klaar met sturen"
                 break
         elif float(laser_values[i]) <= 0.4 and fc == 1:
@@ -167,15 +195,15 @@ while 1:
             # the most left value is 181
             if index_val > length/2:
                 print"ik stuur bij naar rechts"
-                listener.send("CMD!" + handle_movement("rotate_right", 0.5) + "#")
-                side = 0
+                listener.send_data("CMD!" + handle_movement("rotate_right", 0.3) + "#")
+                side = 1
 ##                print "klaar met sturen"
                 continue
             else :
                 print"ik stuur bij naar links"
-                listener.send("CMD!" + handle_movement("rotate_left", 0.5) + "#")
+                listener.send_data("CMD!" + handle_movement("rotate_left", 0.3) + "#")
 ##                print "klaar met sturen"
-                side = 1
+                side = 0
                 continue
                 
         # If you get too far from the wall but the wall is still
@@ -184,13 +212,13 @@ while 1:
             print "ik ben te ver van de muur ik ga bij sturen"
             if index_val > length/2:
                 print"ik stuur bij naar links"
-                listener.send("CMD!" + handle_movement("rotate_left", 0.5) + "#")
+                listener.send_data("CMD!" + handle_movement("rotate_left", 0.3) + "#")
 ##                print "klaar met sturen"
                 side = 0
                 continue
             else:
                 print"ik stuur bij naar rechts"
-                listener.send("CMD!" + handle_movement("rotate_right", 0.5) + "#")
+                listener.send_data("CMD!" + handle_movement("rotate_right", 0.3) + "#")
                 side = 1
 ##                print "klaar met sturen"
                 continue
@@ -201,7 +229,12 @@ while 1:
     else:
         # Find a wall.
         print "ik ben de muur kwijt"
-        wallsearch.send("NEX!"+ str(side) +"#")
-        while len(accept_thread.memory[nex]) == "":
+        wallsearch.send_data("NEX!" + str(side) + "#")
+        while accept_thread.memory[nex] == "":
             continue
+        accept_thread.memory[nex] = ""
         flag, side = wallfollow(min_val, index_val, length)
+odometry.close()
+rangescanner.close()
+listener.close()
+wallsearch.close()

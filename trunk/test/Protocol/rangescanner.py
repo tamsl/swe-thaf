@@ -42,7 +42,7 @@ def range_module(datastring):
     return range_values
 ##    print current_values
 
-while 1:
+while running:
     data = accept_thread.memory[2]
     string = data.split('\r\n')
     for i in range(len(string)):
@@ -77,6 +77,8 @@ while 1:
             command = "RCV!RSC!" + current_values + "#"
             configreader.connection(list, accept_thread.request_data[0]).send(
                                         command)
+            print command
+            print accept_thread.request_data[0]
             accept_thread.request_data.pop(0)
 
 ### Test the range sensor module.
@@ -95,5 +97,3 @@ while 1:
 ##                    # Range sensor
 ##                    if typeSEN == "RangeScanner":
 ##                        laser_values = range_module(datasplit)    
-
-s.close()

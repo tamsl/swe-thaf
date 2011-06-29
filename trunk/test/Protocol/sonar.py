@@ -11,6 +11,7 @@ import re
 ##BUFFER_SIZE = 1024
 
 current_values = ""
+old_values = "miauw"
 list = []
 running = 1
 message = ""
@@ -44,7 +45,7 @@ def sonar_module(datastring):
     values = values.rstrip(',')
     return values
 
-while 1:
+while running:
     data = accept_thread.memory[0]
     string = data.split('\r\n')
     for i in range(len(string)):
@@ -61,8 +62,9 @@ while 1:
     current_values = sonar_module(message)
 ##    message = ""
 ##    print list
-##    if len(current_values) != 0:                 
-##        print 'current_values', current_values
+    if current_values != old_values:
+        old_values = current_values          
+        print 'current_values', current_values
 ##    if current_values != "":
 ##        command = "RCV!SNR!" + str(current_values) + "#"
 ##        wallfollow.send(command)
@@ -90,7 +92,3 @@ while 1:
 ##		    # Sonar sensor
 ##                    if typeSEN2 == "Sonar":
 ##		        sonar_values = sensor_module(datasplit)    
-
-s.close()
-
-
