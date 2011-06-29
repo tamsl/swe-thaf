@@ -74,13 +74,7 @@ class communication(threading.Thread):
         self.memory = memory
         self.waiting_for_data = waiting_for_data
         self.request_data = request_data
-    # setter for waiting for data
-    def set_wait(self, number):
-        self.waiting_for_data += number
-    # getter for waiting for data
-    def get_wait(self):
-        return self.waiting_for_data
-    # add connection to listen
+    # add connection to list
     def add_to_list(connection):
         self.list.append(connection)
     # main
@@ -95,17 +89,21 @@ class communication(threading.Thread):
                 time.sleep(0.1)
             # check for all connections in sequence if they give any data and if
             # they do read it
+##            print self.list
             for i in range(len(self.list)):
+##                print "ik zit vast"
                 while 1:
+##                    print 'self.list[i]'
+##                    print self.list[i]
                     try:
-                        self.list[i][0].setblocking(0)
+##                        print "wtf is deze shit aan het doen"
                         data = self.list[i][0].recv(BUFFER_SIZE)
+                        print "ik print data"
+                        print data
                         # connection is closed if the data received is equal to
                         # nothing
                         if not data:
                             self.list.pop(i)
-                            print i
-                            print "pop van list"
                             break
                         if data_incomplete:
                             datatemp += data
@@ -128,11 +126,13 @@ class communication(threading.Thread):
                             datasplit = messagesplit[j].split("!")
 ##                            print "datasplit"
 ##                            print datasplit
+                            
                             if len(datasplit) < 1:
                                 continue
                             # handles messages according to our protocol
                             # handles data requests
                             if(datasplit[0] == "REQ"):
+                                print datasplit[1]
                                 self.request_data.append(datasplit[1])
                                 data = " "
                                 datasplit = []
@@ -145,37 +145,39 @@ class communication(threading.Thread):
                             elif(datasplit[0] == "RCV"):
                                 if(datasplit[1] == "SNR"):
                                     self.memory[0] = datasplit[2]
-##                                    print self.waiting_for_data
+                                    print 'sonar'
                                     if(self.waiting_for_data > 0):
                                         self.waiting_for_data -= 1
                                     data = " "
                                     datasplit = []
                                 elif(datasplit[1] == "ODO"):
                                     self.memory[1] = datasplit[2]
-##                                    print self.waiting_for_data
+                                    print 'odo'
                                     if(self.waiting_for_data > 0):
                                         self.waiting_for_data -= 1
                                     data = " "
                                     datasplit = []
                                 elif(datasplit[1] == "RSC"):
                                     self.memory[2] = datasplit[2]
-##                                    print self.waiting_for_data
+                                    print 'rsc'
                                     if(self.waiting_for_data > 0):
                                         self.waiting_for_data -= 1
                                     data = " "
                                     datasplit = []
                                 elif(datasplit[1] == "MAP"):
                                     self.memory[3] = datasplit[2]
-##                                    print self.waiting_for_data
+                                    print 'map'
                                     if(self.waiting_for_data > 0):
                                         self.waiting_for_data -= 1
                                     data = " "
                                     datasplit = []
-                            # weet niet of dit klopt.
-                            elif(datasplit[0] == "NEX"):
-                                self.memory[5] = datasplit[1]
-                                data = " "
-                                datasplit = []                                    
+                                # weet niet of dit klopt.
+                                elif(datasplit[1] == "NEX"):
+                                    self.memory[5] = datasplit[2]
+                                    if(self.waiting_for_data > 0):
+                                        self.waiting_for_data -= 1
+                                    data = " "
+                                    datasplit = []                                    
                     except(socket.error):
                         if self.running == 0:
                             break
@@ -199,19 +201,9 @@ class acceptor(threading.Thread):
         # [2]: rangescanner
         # [3]: map
         # [4]: command
-        # [5]: nex        
-        self.memory = ["","","","","",""]
+        self.memory = ["","","","",""]
         self.waiting_for_data = 0
         self.request_data = []
-        # Create the communication thread.
-        communicationthread = communication(self.list, self.running, self.memory, self.waiting_for_data, self.request_data)
-        communicationthread.setDaemon(True)
-        communicationthread.start()
-        self.communicationthread = communicationthread
-    def set_wait(self, number):
-        self.communicationthread.set_wait(number)
-    def get_wait(self):
-        return self.communicationthread.get_wait()
     # main
     def run(self):
         time.sleep(5)
@@ -223,18 +215,16 @@ class acceptor(threading.Thread):
                 TCP_PORT = int(self.addresses[i][2])
         BUFFER_SIZE = 1024
         # Start listening on the socket to accept connections.
-        try:
-            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            s.bind((TCP_IP, TCP_PORT))
-            s.listen(0)
-            s.setblocking(0)
-        except socket.error:
-            print 'kip'
-            self.running = 0
-            s.close()
-            self.communicationthread.join()
-            sys.exit()
-            print "bah ram yew"
+        while 1:
+            try:
+                s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                s.bind((TCP_IP, TCP_PORT))
+                s.listen(0)
+                s.setblocking(0)
+        # Create the communication thread.
+        communicationthread = communication(self.list, self.running, self.memory, self.waiting_for_data, self.request_data)
+        communicationthread.setDaemon(True)
+        communicationthread.start()
         # Continue till the flag is turned off and the program needs to shut
         # down
         while self.running:
@@ -257,40 +247,5 @@ class acceptor(threading.Thread):
                 for i in range(len(self.list)):
                     list[i][0].close()
                 s.close()
-                self.communicationthread.join()
+                communicationthread.join()
                 sys.exit()
-
-class connection(threading.Thread):
-    # constructor
-    def __init__ (self, running, module, configreader, list):
-        threading.Thread.__init__(self)
-        self.running = running
-        self.module = module
-        self.list = list
-        self.configreader = configreader
-        self.socket = self.configreader.connection(self.list, self.module)
-        print "ik haal dit punt"
-        self.connected = 1
-    def send_data(self, data):
-        if self.connected:
-            self.socket.send(data)
-    def run(self):
-        while self.running:
-##            print "in connection", self.list
-            for i in range(len(self.configreader.addresses)):
-                if self.configreader.addresses[i][0] == self.module:
-                    address = self.configreader.addresses[i]
-                    ip = socket.gethostbyname_ex(address[1])
-            # Look in the list if the connection with the requested module has
-            # already been made with this module if so return that connection
-            # instead of making a new connection
-            for i in range(len(self.list)):
-                # Check if the ip address of a connection in the list is the same as
-                # that of the ip address of the requested module.
-                if self.list[i][1][0] == ip[2][0]:
-                    self.connected = 1
-                    break
-                else:
-                    self.connected = 0
-            if not self.connected:
-                self.socket = self.configreader.connection(self.list, self.module)
