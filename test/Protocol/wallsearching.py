@@ -48,7 +48,7 @@ def odometry_module(datastring):
 
 # When the wall has just been lost see if the wall continues on the sides.
 
-def wall_continued(side,s):
+def wall_continued(side, s):
     # if side is 1 then the wall is on the right otherwise it's on the left side.
     laser_values = []
     odo_values  = []
@@ -57,7 +57,7 @@ def wall_continued(side,s):
     while 1:
        rangescanner.send("REQ!WSC#")
        accept_thread.waiting_for_data += 1
-       #wait for data to arrive
+       # wait for data to arrive
        while accept_thread.waiting_for_data > 0 :
            continue
               
@@ -208,7 +208,7 @@ def stop(s):
     while 1:
         rangescanner.send("REQ!WSC#")
         accept_thread.waiting_for_data += 1
-        #wait for data to arrive
+        # wait for data to arrive
         while accept_thread.waiting_for_data > 0 :
             continue
         laser_values  = accept_thread.memory[ran].split(',')
