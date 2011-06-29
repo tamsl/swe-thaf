@@ -133,30 +133,31 @@ elif dirs == 8:
     dx = [1, 1, 0, -1, -1, -1, 0, 1]
     dy = [0, 1, 1, 1, 0, -1, -1, -1]
 
-hor = 1000 # horizontal size of the map
-ver = 1000 # vertical size of the map
+hor = 30 # horizontal size of the map
+ver = 30 # vertical size of the map
 the_map = []
 row = [0] * hor
 for i in range(ver): # create empty map
     the_map.append(list(row))
 
-### fillout the map with a '+' pattern
-##for x in range(hor / 8, hor * 7 / 8):
-##    the_map[ver / 2][x] = 1
-##for y in range(ver / 8, ver * 7 / 8):
-##    the_map[y][hor / 2] = 1
+# fillout the map with a '+' pattern
+for x in range(hor / 8, hor * 7 / 8):
+    the_map[ver / 2][x] = 1
+for y in range(ver / 8, ver * 7 / 8):
+    the_map[y][hor / 2] = 1
 
-string = "30_71_100_240_60_121_180_91_111_9001_2200_7801_"
-string2 = ""
-for i in range(500):
-    string2 = string2 + string
-string3 = string2[:-1]
-matrix = receive_compressed_into_matrix(string3, 1000)
+##string = "30_71_100_240_60_121_180_91_111_9001_2200_7801_"
+####string = "30_51_20_41_60_10_71_20"
+##string2 = ""
+##for i in range(500):
+##    string2 = string2 + string
+##string3 = string2[:-1]
+##matrix = receive_compressed_into_matrix(string3, 1000)
 
-##for y in range(ver):
-##    for x in range(hor):
-##        print matrix[y][x],
-##    print
+for y in range(ver):
+    for x in range(hor):
+        print the_map[y][x],
+    print
 
 # randomly select start and finish locations from a list
 sf = []
@@ -183,35 +184,33 @@ print route
 if len(route) > 0:
     y = ay
     x = ax
-##    the_map[y][x] = 2
-    matrix[y][x] = 2
+    the_map[y][x] = 2
+##    matrix[y][x] = 2
     for i in range(len(route)):
         j = int(route[i])
         x = x + dx[j]
         y = y + dy[j]
-##        the_map[y][x] = 3
-        matrix[y][x] = 3
-##    the_map[y][x] = 4
-    matrix[y][x] = 4
-
-print read_map(matrix)
-
-### display the map with the route added
-##print 'Map:'
-##for y in range(ver):
-##    for x in range(hor):
-####        xy = the_map[y][x]
+        the_map[y][x] = 3
+##        matrix[y][x] = 3
+    the_map[y][x] = 4
+##    matrix[y][x] = 4
+    
+# display the map with the route added
+print 'Map:'
+for y in range(ver):
+    for x in range(hor):
+        xy = the_map[y][x]
 ##        xy = matrix[y][x]
-##        if xy == 0:
-##            print '.', # space
-##        elif xy == 1:
-##            print 'O', # obstacle
-##        elif xy == 2:
-##            print 'S', # start
-##        elif xy == 3:
-##            print 'R', # route
-##        elif xy == 4:
-##            print 'F', # finish
-##    print
+        if xy == 0:
+            print '.', # space
+        elif xy == 1:
+            print '#', # obstacle
+        elif xy == 2:
+            print 'S', # start
+        elif xy == 3:
+            print 'R', # route
+        elif xy == 4:
+            print 'F', # finish
+    print
 
-raw_input('Press Enter...')
+print read_map(the_map)
