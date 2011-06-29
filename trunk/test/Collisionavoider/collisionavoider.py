@@ -9,14 +9,23 @@ BUFFER_SIZE = 1024
 COLOR = ['Red', 'Yellow', 'Green', 'Cyan', 'White', 'Blue', 'Purple']
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
-# transparent wall
-#s.send("INIT {ClassName USARBot.P2DX} {Location 4.5,0.5,1.8} {Name R1}\r\n")
-# red hair
-##s.send("INIT {ClassName USARBot.P2DX} {Location -4.2,0.0,1.8} {Name R1}\r\n")
-# green shirt
+#DEMO:
+# 1) green shirt
 ##s.send("INIT {ClassName USARBot.P2DX} {Location -2.2,2.6,1.8} {Name R1}\r\n")
-s.send("INIT {ClassName USARBot.P2DX} {Location 1.1,0.7,1.8} {Rotation 0.0,0.0,1.555} {Name R1}\r\n")
-
+# 2) chair 1, green shirt
+##s.send("INIT {ClassName USARBot.P2DX} {Location -4.2,-0.5,1.8} {Rotation 0.0,0.0,1.555} {Name R1}\r\n")
+# 3) red hair
+##s.send("INIT {ClassName USARBot.P2DX} {Location -4.2,0.0,1.8} {Name R1}\r\n")
+# 4) wall
+##s.send("INIT {ClassName USARBot.P2DX} {Location 1.1,0.7,1.8} {Rotation 0.0,0.0,1.555} {Name R1}\r\n")
+# 5) chair 2, table
+##s.send("INIT {ClassName USARBot.P2DX} {Location 1.5,-0.2,1.8} {Name R1}\r\n")
+# 6) table
+##s.send("INIT {ClassName USARBot.P2DX} {Location 5.0,-1.5,1.8} {Rotation 0.0,0.0,2.1} {Name R1}\r\n")
+# 7) person in transparent wall
+##s.send("INIT {ClassName USARBot.P2DX} {Location 5.8,1.8,1.8} {Rotation 0.0,0.0,-1.555} {Name R1}\r\n")
+# 8) red hair
+##s.send("INIT {ClassName USARBot.P2DX} {Location -4.2,0.0,1.8} {Name R1}\r\n")
 
 # Odometry values
 x = []
@@ -25,7 +34,7 @@ theta = []
 # Robot speed
 current_speed = 1
 # Stop robot at this level.
-level = .25
+level = .315
 
 # Calculate robot speed.
 def calc_speed():
@@ -136,20 +145,36 @@ def getdata():
 ##                                    print sonar_values[4],sonar_values[5]
                             print sonar_values
                             min_val, index_val = min_sonar_val(sonar_values)
+                            print sonar_values[3], sonar_values[4]
+                            verschil = abs(float(sonar_values[3]) - float(sonar_values[4]))
+                            print verschil
                             print "dit is de min val: ", min_val
                             for i in range (0,8):
+                                if float(sonar_values[3]) - float(sonar_values[4]) > 1.50:
+                                    print verschil
+                                    print "persoon voor je neus"
+                                    print "na zoveel seconden gaan we botsen: ", calc_collision(min_val)
+                                    if sonar_values[0] < sonar_values[7]:
+                                        s.send(handle_movement("right", 1.0, 2.0))
+                                        print "RECHTS"
+                                    elif sonar_values[7] < sonar_values[0]:
+                                        s.send(handle_movement("left", 2.0, 1.0))
+                                        print "LINKS"
                                 if(float(sonar_values[i]) <= level):
     ##                                if min_val <= 0.22:
     ##                                    s.send(handle_movement("reverse"))
     ##                                print "ik ga botsen"
-                                    print sonar_values[6], sonar_values[7], sonar_values[0]
+                                    print sonar_values[3], sonar_values[4]
+##                                    print sonar_values[6], sonar_values[7], sonar_values[0]
                                     if (sonar_values[6] or sonar_values[7]) < sonar_values[0]:
                                         s.send(handle_movement("left", 2.0, 1.0))
                                         print "linksaf slaan"
                                     elif (sonar_values[0] or sonar_values[1]) < sonar_values[7]:
                                         s.send(handle_movement("right", 1.0, 2.0))
                                         print "rechtsaf slaan"
-                                    if (index_val == 4 or index_val == 5) and flag == 0:
+                                    if (index_val == 3 or index_val == 4) and flag == 0:
+##                                        print sonar_values[4], sonar_values[5]
+                                        print "persoon voor ons neus"
                                         print "na zoveel seconden gaan we botsen: ", calc_collision(min_val)
                                         if sonar_values[0] < sonar_values[7]:
                                             s.send(handle_movement("right", 1.0, 2.0))
