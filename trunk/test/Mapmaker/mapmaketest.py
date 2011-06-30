@@ -56,7 +56,7 @@ def min_laser_val(laser_vals):
 
 
         
-Map= CoreSLAM.ts_map_init()
+Map = CoreSLAM.ts_map_init()
 scans = []
 pos = []
 sonar_values = []

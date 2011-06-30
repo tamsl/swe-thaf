@@ -174,6 +174,24 @@ row = xaxis * [0]
 for i in range(yaxis): 
     one_map.append(list(row))
 
+# Create start and finish points in a random way from a list.
+points = []
+points.append((0, 0, xaxis - 1, yaxis - 1))
+points.append((0, yaxis - 1, xaxis - 1, 0))
+points.append((xaxis / 2 - 2, yaxis / 2 + 2, xaxis / 2 + 2, yaxis / 2 - 2))
+points.append((xaxis / 2 - 2, yaxis / 2 - 2, xaxis / 2 + 2, yaxis / 2 + 2))
+##points.append((xaxis / 2 - 2, 0, xaxis / 2 + 1, yaxis - 1))
+##points.append((xaxis / 2 + 2, yaxis - 1, xaxis / 2 - 1, 0))
+##points.append((0, yaxis / 2 - 1, xaxis - 1, yaxis / 2 + 1))
+##points.append((xaxis - 1, yaxis / 2 + 1, 0, yaxis / 2 - 1))
+xs, ys, xf, yf = random.choice(points)
+
+# Insert obstacles in the form of a '+' pattern.
+for x in range(xaxis / 8, 7 * xaxis / 8):
+    one_map[yaxis / 2][x] = 1
+for y in range(yaxis / 8, 7 * yaxis / 8):
+    one_map[y][xaxis / 2] = 1
+
 # Number of possible directions.
 directions = 8 
 if directions == 8:
@@ -183,12 +201,6 @@ elif directions == 4:
     dx = [1, 0, -1, 0]
     dy = [0, 1, 0, -1]
 
-# Insert obstacles in the form of a '+' pattern.
-for x in range(xaxis / 8, 7 * xaxis / 8):
-    one_map[yaxis / 2][x] = 1
-for y in range(yaxis / 8, 7 * yaxis / 8):
-    one_map[y][xaxis / 2] = 1
-
 ##string = "30_71_100_240_60_121_180_91_111_9001_2200_7801_"
 ####string = "30_51_20_41_60_10_71_20"
 ##string2 = ""
@@ -197,24 +209,12 @@ for y in range(yaxis / 8, 7 * yaxis / 8):
 ##string3 = string2[:-1]
 ##matrix = receive_compressed_into_matrix(string3, 1000)
 
-# Create start and finish points in a random way from a list.
-sf = []
-sf.append((0, 0, xaxis - 1, yaxis - 1))
-sf.append((0, yaxis - 1, xaxis - 1, 0))
-sf.append((xaxis / 2 - 1, yaxis / 2 - 1, xaxis / 2 + 1, yaxis / 2 + 1))
-sf.append((xaxis / 2 - 1, yaxis / 2 + 1, xaxis / 2 + 1, yaxis / 2 - 1))
-sf.append((xaxis / 2 - 1, 0, xaxis / 2 + 1, yaxis - 1))
-sf.append((xaxis / 2 + 1, yaxis - 1, xaxis / 2 - 1, 0))
-sf.append((0, yaxis / 2 - 1, xaxis - 1, yaxis / 2 + 1))
-sf.append((xaxis - 1, yaxis / 2 + 1, 0, yaxis / 2 - 1))
-(xs, ys, xf, yf) = random.choice(sf)
-
+route = a_star_search(dx, dy, xs, ys, xf, yf, xaxis, yaxis, directions, one_map)
 print '\nSize of map: ', xaxis, yaxis
 # Show the map without any route.
 show_map(one_map, xaxis, yaxis, "Map without route:")
 print '\nStart point: ', xs, ys
 print 'Finish point: ', xf, yf
-route = a_star_search(dx, dy, xs, ys, xf, yf, xaxis, yaxis, directions, one_map)
 
 # Route shown on the map.
 one_map = route_on_map(one_map, route, xs, ys)
@@ -223,4 +223,4 @@ one_map = route_on_map(one_map, route, xs, ys)
 show_map(one_map, xaxis, yaxis, "Map with route included:")
 
 # Show the important route points.
-print read_map(one_map)
+print '\n', read_map(one_map)
