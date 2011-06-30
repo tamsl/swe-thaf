@@ -167,8 +167,8 @@ def show_map(one_map, xaxis, yaxis, print_msg):
         print
 
 one_map = []
-xaxis = 30
-yaxis = 30
+xaxis = 60
+yaxis = 60
 row = xaxis * [0]
 # Generate an empty map.
 for i in range(yaxis): 
