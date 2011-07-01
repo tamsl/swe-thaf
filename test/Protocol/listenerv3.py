@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 from communicatorv2 import *
 import socket
 import re
@@ -13,31 +14,32 @@ data_incomplete = 0
 list = []
 
 configreader = config_reader()
-print("config reader gestart")
+print "Config reader started."
 accept_thread = acceptor(running, list, "LIS", configreader.addresses)
 accept_thread.setDaemon(True)
 accept_thread.start()
-#sonar module
+
+# Sonar module.
 sonar = connection(running, "SNR", configreader, list)
 sonar.setDaemon(True)
 sonar.start()
-##sonar = configreader.connection(list, "SNR")
-#odometry module
+
+# Odometry module.
 odometry = connection(running, "ODO", configreader, list)
 odometry.setDaemon(True)
 odometry.start()
-##odometry = configreader.connection(list, "ODO")
-#rangescanner module
+
+# Rangescanner module.
 rangescanner = connection(running, "RSC", configreader, list)
 rangescanner.setDaemon(True)
 rangescanner.start()
-##rangescanner = configreader.connection(list, "RSC")
-print ("acceptor thread gestart")
+print "Acceptor thread started."
+
+# Standard way to connect to your local server.
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
 s.setblocking(0)
-##print s
-##s.send("INIT {ClassName USARBot.P2DX} {Location 1.5,1.5,1.8} {Name R1}\r\n")
+##s.send("INIT {ClassName USARBot.P2DX} {Location 1.5,1.5,1.8} {Name R1}\r\n") -- DEZE WEG?
 s.send("INIT {ClassName USARBot.P2DX} {Location 1.8,3.8,1.8} {Name R1}\r\n")
 s.send("DRIVE {Left -1.0} {Right 1.0}\r\n")
 
@@ -68,11 +70,8 @@ while running:
     except(socket.error):
         continue    
     except:
-        print("er is iets fout gegaan in listener")
+        print "Something went wrong, running should be 1."
         flag = 0
-        print(running)
-        print("running zou 1 moeten zijn")
-##        acccept_thread.join()
         s.close()
         sonar.join()
         odometry.join()
