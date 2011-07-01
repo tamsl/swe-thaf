@@ -1,37 +1,14 @@
+#!/usr/bin/env python
 # This is the test module that is specially made for the the wallfollower.
 # It's simular to the original with one change: all the methods get a socket.
+
+from movementsv2 import *
 import string
 import socket
 import re
 import time
 
 BUFFER_SIZE = 1024
-
-# Movements handler
-def handle_movement(type, *args):
-   handlers = {"forward":         go_drive,
-               "left":            go_drive,
-               "right":           go_drive,
-               "reverse":         go_drive,
-               "brake":           go_drive,
-               "rotate_left":     go_drive,
-               "rotate_right":    go_drive,
-               "rotate_robot":    go_rotate
-              }
-   return handlers[type](*args)
-
-# Create drive instruction.
-def go_drive(s1, s2):
-    s1 = str(s1)
-    s2 = str(s2)
-    string = "DRIVE {Left " + s1 + "} {Right " + s2 + "}\r\n"
-    return string
-
-# Create rotate instruction.
-def go_rotate(s1):
-    s1 = str(s1)
-    string = "DRIVE {RotationalVelocity " + s1 + "}"
-    return string
 
 # Method to change all strings in an array to floats.
 def string_to_float(vals):
@@ -55,12 +32,7 @@ def odometry_module(datastring):
     odo_values = senvalues.split(',')
     return odo_values
 
-<<<<<<< .mine
-# When the wall is just lost see if the wall continues on the sides.
-
-=======
 # When the wall is lost, check if the wall continues on the sides.
->>>>>>> .r265
 def wall_continued(side,s):
     # If side is 1 then the wall is on the right side, otherwise its on the left side.
     laser_values = []
@@ -76,20 +48,19 @@ def wall_continued(side,s):
         if data[len(data)-1] != '\n':
             datatemp = data
             data_incomplete = 1
-            continue
-        
+            continue        
         string = data.split('\r\n')
         laser_values = []
         for i in range(len(string)):
             datasplit = re.findall('\{[^\}]*\}|\S+', string[i])
             if len(datasplit) > 2:
-                # Odometry sensor
+                # Odometry sensor.
                 typeSEN = datasplit[1].replace('{Type ', '')
                 typeSEN = typeSEN.replace('}', '')
                 if typeSEN == "Odometry":
                     odo_values = odometry_module(datasplit)
                     odo_done = 1
-                # Laser sensor
+                # Laser sensor.
                 typeSEN2 = datasplit[2].replace('{Type ', '')
                 typeSEN2 = typeSEN2.replace('}', '') 
                 if typeSEN2 == "RangeScanner":
@@ -162,11 +133,11 @@ def turn_360(odo_values, s):
         for i in range(len(string)):
             datasplit = re.findall('\{[^\}]*\}|\S+', string[i])
             if len(datasplit) > 0:
-                # Sensor message
+                # Sensor message.
                 if datasplit[0] == "SEN":
                     typeSEN = datasplit[1].replace('{Type ', '')
                     typeSEN = typeSEN.replace('}', '')
-                    # Odometry sensor
+                    # Odometry sensor.
                     if typeSEN == "Odometry":
                         new_odo_values = string_to_float(odometry_module(datasplit))
                         if new_odo_values[2] > previous_odo_values[2]:
@@ -182,7 +153,7 @@ def turn_360(odo_values, s):
                     if len(datasplit) > 2:
                         typeSEN2 = datasplit[2].replace('{Type ', '')
                         typeSEN2 = typeSEN2.replace('}', '')
-                        # Range sensor
+                        # Range sensor.
                         if typeSEN2 == "RangeScanner":
                             if len(datasplit) > 6:
                                 # Put all RangeScanner values in an array.
@@ -229,11 +200,11 @@ def turn_right_position(min_val, index_val, odo_values, s):
         for i in range(len(string)):
             datasplit = re.findall('\{[^\}]*\}|\S+', string[i])
             if len(datasplit) > 0:
-                # Sensor message
+                # Sensor message.
                 if datasplit[0] == "SEN":
                     typeSEN = datasplit[1].replace('{Type ', '')
                     typeSEN = typeSEN.replace('}', '')
-                    # Odometry sensor
+                    # Odometry sensor.
                     if typeSEN == "Odometry":
                         new_odo_values = string_to_float(odometry_module(datasplit))
                         if ((new_odo_values[2] < odo_values[2] and turning_right == 0)
@@ -270,13 +241,13 @@ def stop(s):
             if len(datasplit) > 0:
                 if datasplit[0] == "SEN":
                     typeSEN = datasplit[1].replace
-                    # Odometry sensor
+                    # Odometry sensor.
                     if typeSEN == "Odometry":
                         new_odo_values = string_to_float(odometry_module(datasplit))
                     if len(datasplit) > 2:
                         typeSEN = datasplit[2].replace('{Type ', '')
                         typeSEN = typeSEN.replace('}', '')
-                        # RangeScannner values
+                        # RangeScannner values.
                         if typeSEN == "RangeScanner":
                             if len(datasplit) > 6:
                                 laser_values = re.findall('([\d.]*\d+)', datasplit[6])
