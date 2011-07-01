@@ -38,15 +38,13 @@ print "Acceptor thread started."
 # Standard way to connect to your local server.
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
-s.setblocking(0
-##s.send("INIT {ClassName USARBot.P2DX} {Location 1.5,1.5,1.8} {Name R1}\r\n") -- DEZE WEG?
+s.setblocking(0)
 s.send("INIT {ClassName USARBot.P2DX} {Location 1.8,3.8,1.8} {Name R1}\r\n")
 s.send("DRIVE {Left -1.0} {Right 1.0}\r\n")
 
 while running:
     try:
         if accept_thread.memory[4] != "":
-##            print accept_thread.memory[4]
             s.send(accept_thread.memory[4])
             accept_thread.memory[4] = ""
         # To make sure the data is complete.
@@ -79,8 +77,3 @@ while running:
         odometry.join()
         rangescanner.join()
         sys.exit()
-# Close everything.
-s.close()
-sonar.close()
-odometry.close()
-rangescanner.close()

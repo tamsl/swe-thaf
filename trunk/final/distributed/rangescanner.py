@@ -12,7 +12,6 @@ configreader = config_reader()
 accept_thread = acceptor(running, list, "RSC", configreader.addresses)
 accept_thread.setDaemon(True)
 accept_thread.start()
-print("The acceptor thread is started.")
 old_values = 20 
 
 # Method to retrieve the list of range sensor values.

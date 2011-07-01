@@ -18,7 +18,6 @@ rangescanner = connection(running, "RSC", configreader, list)
 rangescanner.setDaemon(True)
 rangescanner.start()
 
-print "connected"
 x = []
 y = []
 theta = []
@@ -77,14 +76,12 @@ odometryvalues = []
 rangescannervalues = []
 
 while 1:
-    print "ik ga data opvragen"
     rangescanner.send_data("REQ!MAP#")
     odometry.send_data("REQ!MAP#")
     accept_thread.set_wait(2)
     #wait for data to arrive
     while accept_thread.get_wait() > 0 :
         continue
-##    print "klaar met data ophalen"
     if len(rangescannervalues) > 0:
         if rangescannervalues[0] == accept_thread.memory[ran].split("+")[0]:
             continue
@@ -106,10 +103,7 @@ while 1:
     CoreSLAM.makeMap(scans, pos, len(scans), Map)
     draw += 1
     if draw == 10:
-        print " ik ga tekenen"
         CoreSLAM.drawMap(Map)
-        print " ik ben klaar met tekenen"
         draw = 0
-    
     scans = []
     pos = []

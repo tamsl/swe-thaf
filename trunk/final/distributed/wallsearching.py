@@ -94,7 +94,7 @@ def wall_continued(side):
        # robot
        if index_val > len(laser_values)/2 :
           #wall on the left so turn right
-          if flag >= 0 :                                   
+          if flag == 0 :                                   
               listener.send("CMD!" + handle_movement("left", 4.0,2.0) + "#")
           if flag >= 1 and min_val >= 1.2:
               if laser_values[-1] >= 1:
