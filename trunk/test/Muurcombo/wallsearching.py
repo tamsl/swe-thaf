@@ -63,6 +63,7 @@ def wall_continued(side,s):
     flag = 0
     data_incomplete = 0
     while 1:
+        # Makes sure the data is complete.
         data = s.recv(BUFFER_SIZE)
         if data_incomplete:
             datatemp += data
@@ -86,21 +87,26 @@ def wall_continued(side,s):
                     odo_done = 1
                 # Laser sensor
                 typeSEN2 = datasplit[2].replace('{Type ', '')
-                typeSEN2 = typeSEN2.replace('}', '') 
+                typeSEN2 = typeSEN2.replace('}', '')
                 if typeSEN2 == "RangeScanner":
                     if len(datasplit) > 6:
                         laser_values = re.findall('([\d.]*\d+)', datasplit[6])
                         min_val, index_val = min_laser_val(laser_values)
-                        # Check if there is a wall nearby.
+                        # Check if there is a wall nearby.54
                         if min_val <= 0.62 :
+                            # turn towards the side where the min val is found
+                            # and return to wall follow
                             if index_val > len(laser_values)/2:
                                  print "Adjust to the right."
-                                 s.send(handle_movement("right", 2.0,-1.0))
+                                 s.send(handle_movement("right", 4.0,-2.0))
                                  return 1
                             else :
                                  print "Adjust to the left."
-                                 s.send(handle_movement("left", -1.0,2.0))
+                                 s.send(handle_movement("left", -2.0,4.0))
                                  return 1
+                        # If there's data
+                        # They turn faster here to makes sure you wont be
+                        # stuck in the same place.
                         if len(laser_values) != 0:
                             if index_val > len(laser_values)/2 :
                                # The wall is on the left side, turn right.
@@ -112,20 +118,21 @@ def wall_continued(side,s):
                                       turn_360(odo_values,s)
                                       return 0
                                else:
-                                   s.send("DRIVE {LEFT -1.0} {RIGHT 2.0}\r\n")
+                                   s.send(handle_movement("right", 4.0,-2.0))
                             else:
                                # The wall on the right side, turn left.
                                if flag == 0 :
                                   # First turn a little.
-                                   s.send("DRIVE {LEFT -1.0} {RIGHT 2.0}\r\n")
+                                   s.send(handle_movement("right", 4.0,-2.0))
                                    flag = 1
-                               if flag == 1:
-                                   # Now look for a wall.
+                               if flag >= 1:
+                                   # When all fails look for a wall by turning
+                                   # around.
                                    if laser_values[0] >= 1.5:
                                        turn_360(odo_values, s)
                                        return 0
                                else:
-                                   s.send("DRIVE {LEFT -1.0} {RIGHT 2.0}\r\n")
+                                   s.send(handle_movement("right", -2.0,4.0))
                             if min_val <= 0.35:
                                return 1
 
@@ -144,6 +151,7 @@ def turn_360(odo_values, s):
     flag = 0
     data_incomplete = 0
     while 1:
+        # makes sure the data is complete.
         data = s.recv(BUFFER_SIZE)
         if data_incomplete:
             datatemp += data
@@ -211,6 +219,7 @@ def turn_right_position(min_val, index_val, odo_values, s):
     data_incomplete = 0
     print "I will now turn to the right value."
     while 1:
+        # makes sure the data is complete
         data = s.recv(BUFFER_SIZE)
         if data_incomplete:
             datatemp += data
@@ -249,6 +258,7 @@ def stop(s):
     min_val = 100000000
     data_incomplete = 0
     while 1:
+        # makes sure the data is complete. 
         data = s.recv(BUFFER_SIZE)
         if data_incomplete:
             datatemp += data

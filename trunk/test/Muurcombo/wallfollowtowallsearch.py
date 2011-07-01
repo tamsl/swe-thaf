@@ -9,7 +9,6 @@ TCP_PORT = 2001
 BUFFER_SIZE = 1024
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
-
 # Start positions
 
 ## DEMO:
@@ -93,9 +92,9 @@ def wallfollow(min_val, index_val, length):
                if typeSEN2 == "RangeScanner":
                   if len(datasplit) > 6:
                      laser_values = re.findall('([\d.]*\d+)', datasplit[6])   
+
                      # Find the smallest value to see if the wall is on a side.
                      min_val, index_val = min_laser_val(laser_values)
-                     
     print "I am now following a wall."
     # Go forward following the wall when the left or the right side is facing
     # the wall.
@@ -122,6 +121,7 @@ side = 0
 # Front checker
 fc = 0
 while 1:
+   #this is to makesure the data is complete.
     data = s.recv(BUFFER_SIZE)
     if data_incomplete:
         datatemp += data
@@ -142,6 +142,7 @@ while 1:
             if typeSEN == "Odometry":
                 odo_values = odometry_module(datasplit)
                 odo_done = 1
+
             # Laser sensor
             typeSEN2 = datasplit[2].replace('{Type ', '')
             typeSEN2 = typeSEN2.replace('}', '') 
@@ -156,22 +157,24 @@ while 1:
                         level = 0.5
                     else:
                         level = 0.4
-
                     if index_val > length/2:
                         print "The wall is on my left side."
                     else:
                         print "The wall is on my right side."
                     for i in range((length/2) - 10, (length/2) + 10):
+                       # fc is used to let it turn till there's nothing
+                       # in front the robot.
                         if float(laser_values[i]) <= 0.45 and fc == 0:
+                            fc = 1
                             if index_val > length/2:
                                 print "Adjust to the right."
                                 s.send(handle_movement("right", 2.0, -1.0))
-                                fc = 1
+                                side = 1 
                                 break
                             else:
                                 print "Adjust to the left."
                                 s.send(handle_movement("left", -1.0, 2.0))
-                                fc = 1
+                                side =1
                                 break
                         elif float(laser_values[i]) <= 0.4 and fc == 1:
                             break
@@ -181,18 +184,20 @@ while 1:
                         break
                     fc = 0
                     if min_val <= level:
-                        # Check the front.
+                        # If you get too close to the wall, you need to turn
+                        # away from it.
                         if min_val <= 0.30:
+                            # the most left value is 181
                             print "I am too close to the wall, I will adjust."
                             right_val, right_index_val = min_laser_val(laser_values[:len(laser_values)/2])
                             left_val, left_index_val = min_laser_val(laser_values[len(laser_values)/2:])
                             if right_val <= 0.4 and left_val <= 0.4:
                                s.send(handle_movement("forward",1.0,1.0))
                                break
-                            # The most left value is 80.
                             if index_val > length/2:
                                 print "Adjust to the right."
                                 s.send(handle_movement("right", 1.0,-1.0))
+                                side = 0
                                 break
                             else :
                                 print "Adjust to the left."
@@ -206,6 +211,7 @@ while 1:
                             if index_val > length/2:
                                 print "Adjust to the right."
                                 s.send(handle_movement("left", -1.0, 1.0))
+                                side = 0
                                 break
                             else:
                                 print "Adjust to the left."
