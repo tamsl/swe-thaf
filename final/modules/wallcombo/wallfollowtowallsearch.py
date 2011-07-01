@@ -97,7 +97,7 @@ side = 0
 # Front checker.
 fc = 0
 while 1:
-   #this is to makesure the data is complete.
+   # This is to make sure the data is complete.
     data = s.recv(BUFFER_SIZE)
     if data_incomplete:
         datatemp += data
