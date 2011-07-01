@@ -63,7 +63,7 @@ def wallfollow(min_val, index_val, length):
         for i in range(len(string)):
             datasplit = re.findall('\{[^\}]*\}|\S+', string[i])
             if len(datasplit) > 2:
-               # Laser sensor
+               # Laser sensor.
                typeSEN2 = datasplit[2].replace('{Type ', '')
                typeSEN2 = typeSEN2.replace('}', '')    
                if typeSEN2 == "RangeScanner":
