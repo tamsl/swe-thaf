@@ -12,7 +12,6 @@ def handle_movement(type, *args):
                 "brake":           go_brake,
                 "rotate_left":     go_rotate_left,
                 "rotate_right":    go_rotate_right,
-                "camera":          go_camera,
                }
     return handlers[type](*args)
 
@@ -57,3 +56,4 @@ def go_brake():
 def go_reverse():
     string = "DRIVE {Left -1} {Right -1}\r\n"
     return string
+
