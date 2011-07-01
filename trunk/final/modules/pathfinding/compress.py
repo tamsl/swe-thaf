@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import math
  
 # Method to compress a matrix into a string.
@@ -5,7 +7,7 @@ def compress_matrix(matrix):
     how_many = 0
     old_value = -1
     string = ""
- 
+    # ---
     for i in range(len(matrix)):
         for j in range(len(matrix[i])):
             if matrix[i][j] == 0:
@@ -43,7 +45,7 @@ def decompress_string(string, row_length):
     matrix = []
     line = []
     string = string.split('_')
- 
+    # ---
     for i in range(len(string)):
         how_many = string[i][:-1]
         value = string[i][len(string[i]) - 1]
@@ -76,9 +78,9 @@ string2 = compress_matrix(matrix)
 # Check if the string before decompression and compression equals the
 # one after decompression and compression.
 if string == string2:
-    print "\nstring and string2 are equal. The compress and decompress methods both work.\n"
+    print "\nString and string2 are equal. The compress and decompress methods both work.\n"
 else:
-    print "\nstring and string2 are not equal. The compress and decompress methods don't work.\n"
+    print "\nString and string2 are not equal. The compress and decompress methods don't work.\n"
  
 # Test again for another string.          
 partial = "2001_2000_501_500_3001_2000_"
@@ -98,6 +100,6 @@ string2 = compress_matrix(matrix)
 # Check if the string before decompression and compression equals the
 # one after decompression and compression.
 if string == string2:
-    print "string and string2 are equal. The compress and decompress methods both work.\n"
+    print "String and string2 are equal. The compress and decompress methods both work.\n"
 else:
-    print "string and string2 are not equal. The compress and decompress methods don't work.\n"
+    print "String and string2 are not equal. The compress and decompress methods don't work.\n"
