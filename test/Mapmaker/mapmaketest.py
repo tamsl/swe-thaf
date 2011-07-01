@@ -107,7 +107,6 @@ while 1:
                     odo_values = senvalues.split(',')
     ##                    print odo_values
                     pos = [float(x) for x in odo_values]
-                    print pos
                     pos[posY]=pos[posY]/SCALE
                     pos[posX]=pos[posX]/SCALE
                     pos[theta]=math.degrees(pos[theta])
@@ -129,7 +128,7 @@ while 1:
         print "ik ga nu map maken"        
         CoreSLAM.makeMap(scans, pos, len(scans), Map)
         draw += 1
-        if draw == 50:
+        if draw == 100:
             print " ik ga tekenen"
             CoreSLAM.drawMap(Map)
             draw = 0
