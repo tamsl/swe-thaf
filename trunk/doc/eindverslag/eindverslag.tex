@@ -75,7 +75,7 @@ Bij het zoeken naar een muur draait de robot eerst 360 graden om te kijken waar 
 Zie appendix \ref{wallsearch}
 
 \subsubsection{Wall follow}
-De muur wordt gevolgd die door wall search is gevonden. Als de muur zich meer aan de linkerkant van de robot bevindt, draait hij naar rechts en als de muur zich meer aan de rechterkant van de robot bevindt, draait hij naar links. De kleinste laserwaarde bevindt zich nu aan de rechter- of linkerkant. Hij blijft rechtdoor rijden als de kleinste laserwaarde niet kleiner en groter wordt dan een ingestelde waarde. Als hij te ver van de muur afwijkt, stuurt hij bij richting de muur. Als hij te dicht bij de muur komt, stuurt hij bij van de muur af. Als er geen muur meer wordt waargenomen, wordt de wall\_continued functie binnen de wall search aangeroepen. Deze functie kijkt of er in de buurt nog een muur is te vinden. Als dit zo is, gaat hij daarheen. Als er zich in de buurt nog een andere muur bevindt, zoekt wall search naar de nieuwe dichtstbijzijnde muur. Elke keer wanneer de logica klaar is, wordt er nieuwe informatie opgevraagd van de sensormodules.%ergens is hier iets fout
+De muur wordt gevolgd die door wall search is gevonden. Als de muur zich meer aan de linkerkant van de robot bevindt, draait hij naar rechts en als de muur zich meer aan de rechterkant van de robot bevindt, draait hij naar links. De kleinste laserwaarde bevindt zich nu aan de rechter- of linkerkant. Hij blijft rechtdoor rijden als de kleinste laserwaarde niet kleiner en groter wordt dan een ingestelde waarde. Als hij te ver van de muur afwijkt, stuurt hij bij richting de muur. Als hij te dicht bij de muur komt, stuurt hij bij van de muur af. Als er geen muur meer wordt waargenomen, wordt de \verb!wall_continued()! functie binnen de wall search aangeroepen. Deze functie kijkt of er in de buurt nog een muur is te vinden. Als dit zo is, gaat hij daarheen. Als er zich in de buurt nog een andere muur bevindt, zoekt wall search naar de nieuwe dichtstbijzijnde muur. Elke keer wanneer de logica klaar is, wordt er nieuwe informatie opgevraagd van de sensormodules.%ergens is hier iets fout
 
 Zie appendix \ref{wallfollow}
 
@@ -113,13 +113,13 @@ Voor elke module is er een aparte test geschreven om er zeker van te zijn dat el
 De listener wordt getest door data te verkrijgen en deze uit te printen.
 
 \subsection{Odometry}
-De odometry wordt getest door de robot te laten rijden, 100 regels data te verkrijgen van de simulator en hiervan de odometriewaarden te printen. De odometriewaarden worden getest op geldigheid.
+De odometry wordt getest door de robot te laten rijden, 100 berichten te verkrijgen van de simulator en hiervan de odometriewaarden te printen. De odometriewaarden worden getest op geldigheid.
 %volgens mij zijn het geen regels data zelfde voor de andere sensor modules
 \subsection{Range scanner}
-De range scanner wordt getest door de robot te laten rijden, 100 regels data te verkrijgen van de simulator en hiervan de 181 laserwaarden te printen. De laserwaarden worden getest op geldigheid.
+De range scanner wordt getest door de robot te laten rijden, 100 berichten te verkrijgen van de simulator en hiervan de 181 laserwaarden te printen. De laserwaarden worden getest op geldigheid.
 
 \subsection{Sonar}
-De sonar wordt getest door de robot te laten rijden, 100 regels data te verkrijgen en hiervan de 8 sonarwaarden te printen. De sonarwaarden worden getest op geldigheid.
+De sonar wordt getest door de robot te laten rijden, 100 berichten te verkrijgen en hiervan de 8 sonarwaarden te printen. De sonarwaarden worden getest op geldigheid.
 
 \subsection{Collision avoider}
 De collision avoider wordt getest door de robot vanuit verschillende startposities rond te laten rijden zonder dat er botsingen ontstaan.
@@ -140,21 +140,23 @@ De map maker wordt getest door hem een output bestand met laser- en odometriewaa
 \subsection{Path finding}
 De path finding wordt getest door een punt op te geven waar de robot naartoe moet rijden. Hij moet hierbij botsingen ontwijken en naar het punt toe rijden op een zo effici\"{e}nt mogelijke manier.
 
-\section{Demo}
+\section{Demonstratie}
 De robot wordt ge\"{i}nitialiseerd op een bepaalde plaats. Hij zoekt een muur en blijft deze muur volgen. Zodra hij de opdracht krijgt om naar een punt toe te rijden, wordt path finding ingeschakeld. De map maker werkt continu de kaart bij en de collision avoider zorgt ervoor dat er geen botsingen plaatsvinden. Als hij geen nieuwe opdracht krijgt om naar een ander punt toe te rijden, gaat hij weer een muur zoeken en deze volgen.
 
 \section{Resultaten}
-Het is ons gelukt om alle modules standalone te laten werken. Deze zijn allemaal getest en voldoen aan onze verwachtingen. Alleen het integreren is bij ons nog niet helemaal gelukt. We hebben de integratie getest van 7 van de 9 modules die we hebben gemaakt. Alle sensor modules blijven altijd waardes ontvangen, maar de hogere niveau methodes komen soms vast te zitten. In deze modules wachten we totdat we de data hebben gekregen die we hebben verzocht, maar soms blijft hij op dit punt vast zitten. Dit kan komen doordat een request verloren gaat en het dus niet verder kan gaan met executie. Ook hebben we coreSLAM weten te gebruiken door de code die we hebben gevonden aan te passen naar onze smaak.
+Het is gelukt om alle modules op zichzelf te laten werken. Deze zijn allemaal getest en voldoen aan onze verwachtingen. De integratie ervan is echter nog niet helemaal gelukt. De integratie van zeven van de negen modules is getest. De collision avoider en path finding zijn de enige modules die niet zijn ge\"{i}ntegreerd. Alle sensormodules blijven altijd waarden ontvangen, maar de methodes van de mid-level en high-level modules blijven soms vastzitten. In deze modules wordt er gewacht totdat de data zijn verkregen die zijn verzocht, maar soms blijven ze op dit punt hangen. Dit kan komen doordat een verzoek verloren gaat en de uitvoering kan daarom niet verder gaan. Ook is het gelukt om coreSLAM te gebruiken door de gevonden code aan te passen.
 
 \section{Discussie}
-De mapmaker kan worden verbetert door het teken van de map in een andere thread te laten doen en het ontvangen en updaten in hetzelfde thread. Het tekenen duurt ongeveer twee seconde, want we schrijven het elke keer een apart bestand. Die elke keer overschreven wordt. Omdat dit zo lang duurt missen we op het moment data van seconde rijden en dit heeft dus een negatief effect op de map. Om dit te verbeteren
-kunnen we ook wat minder tekenen. Wat er verbetert kan worden in de communicator is het uitzoeken waarom het af en toe in deadlock komt. De berichten in een andere vorm opsturen waardoor het wat sneller opgemaakt, gestuurd en geinterpreteerd kan worden.\\
-De wallfollow en de wallsearcher hadden waarschijnlijk beter in in een genomen worden. Deze twee modules gaan vaak in elkaar over. Als deze twee modules bijelkaar genomen worden zou dit geen problemen opbrengen bij het autonoom rijden van de robot. Ook kunnen de route planner en mapmaker in hetzelfde module gezet worden. De map is een heel groot object dat je liever niet overstuurd. Als alle logica en versturen allemaal lokaal kan gebeuren zou dit veel winst opleveren. Bij bivoorbeeld het comprimeren en versturen van de bestanden.\\
-De collision avoider moet ook geimplementeerd worden en er moet nog een tweede queue gemaakt worden waar belangrijkere commandos in terecht komen. In de wallsearch kan de logica nog iets beter gemaakt worden waardoor het wat beter een binnen bocht kan maken. Als laatste kan er nog een GUI gemaakt worden om het wat simpeler te maken om de robot te besturen. 
-Python is makkelijk in gebruik, maar je levert wel in op performance. Het werkt langzaam en je hebt minder controle over datatypes die je gebruikt en die worden behandelt. Ook de error handeling is moeilijk en niet altijd vanzelfsprekend.\\
-We hadden ons te strikt aan onze planning proberen te houden. Dit zorgde ervoor dat we te weinig tijd hadden genomen voor de integratie en de communicatie. Dit deel van het project was toch tijdsintensiever dan we ons hadden voorgesteld. Dit is ook te zien in ons eindproduct dat nog niet helemaal werkt. 
+De map maker zou verbeterd kunnen worden door het tekenen van de kaart in een andere thread en het ontvangen en bijwerken ervan in dezelfde thread plaats te laten vinden. Het tekenen duurt ongeveer twee seconden, want het schrijven ervan gebeurt in een apart bestand die elke keer wordt overschreven. Om dit te verbeteren zou er ook minder getekend kunnen worden. Een verbetering voor de communicator is het uitzoeken waarom er af en toe deadlock plaatsvindt. De berichten zouden ook in een andere vorm opgestuurd kunnen worden waardoor ze sneller gemaakt, verstuurd en ge\"{i}nterpreteerd kunnen worden.
+
+De wall follow en de wall search hadden beter \'{e}\'{e}n module kunnen zijn. Deze twee modules hebben elkaar vaak nodig. Als er \'{e}\'{e}n module wordt gemaakt van de twee, zou dit geen problemen opleveren bij het autonoom laten rijden van de robot. Ook kunnen de path finding en map maker in dezelfde module worden geplaatst. De kaart is een heel groot object, het is beter om dat niet te hoeven versturen. Als alles lokaal kan gebeuren, zou dit veel winst opleveren, bijvoorbeeld bij het comprimeren en versturen van de bestanden.
+
+De collision avoider moet nog worden ge\"{i}mplementeerd en er moet nog een tweede queue worden gemaakt waar belangrijkere commando's in komen te staan. In de wall search kan de logica nog iets worden verbeterd, waardoor een binnenbocht beter kan worden genomen. Als laatste kan er nog een GUI gemaakt worden om het de besturing van de robot gebruiksvriendelijker te maken. 
+Python is makkelijk in gebruik, maar verliest wel performance. Het werkt langzaam en er is minder controle over de datatypes die worden gebruikt. Ook de fouthandeling is moeilijk en niet altijd vanzelfsprekend.
+
+De projectplanning is te strikt aangehouden. Dit zorgt ervoor dat er te weinig tijd is genomen voor de integratie en de communicatie. Dit deel van het project was toch tijdsintensiever dan vooral werd gedacht. Dit is ook te zien in het eindproduct dat nog niet helemaal werkt.
 \section{Conclusie}
-Het is ons gelukt een modulair systeeem te maken om een robot autonoom te laten rijden. Alle modules zijn standalone klaar voor gebruik. Het gesdistrubueerd systeem werkt, maar heeft nog een paar bugs waardoor het nog niet stabiel en snel genoeg is om de robot gedistrubueerd te laten werken. We hebben veel geleerd over samenwerking en het maken van een groot project in python.
+Het is gelukt om een modulair systeeem te maken om een robot autonoom te laten rijden. Alle modules zijn op zichzelf klaar voor gebruik. Het gedistribueerde systeem werkt, maar bevat nog een aantal fouten waardoor het nog niet stabiel en snel genoeg is om de robot gedistribueerd te laten werken. Het is een leerzame maand geweest waarin er veel is geleerd over samenwerking en het maken van een groot project in Python.
 
 \newpage
 \section{Appendix}
@@ -178,20 +180,14 @@ Voor elke sonarwaarde wordt er gekeken of de float van elke waarde kleiner is da
 \section*{\refstepcounter{section}\label{wallsearch}\thesection.\quad Wall search}
 De wallsearch wacht tot hij iets moet doen van de wallfollow. wanneer dat gebeurt krijgt hij een bericht van de wallfollow van het type NEX. Zodra hij dit heeft gekregen gaat hij naar de wall_continued methode hier vraagt hij data van de rangescanner. Als er iets binnen 0.62 zit dan naar de kant waar de muur zit. En dan gaat hij weer terug naar de wallfollow. Anders draai 360 graden om een muur te zoeken. na het vinden van deze muur draai er naar toe en rij er recht op af en stop ervoor met een treshold van 0.40.
 
-\section*{\refstepcounter{section}\label{wallfollow}\thesection.\quad Wall follow} De wallfollow haalt elke iteratie laser waardes op en gaat daarmee werken. In de wallfollow gebruiken we de \verb!min_laser_val! om de kleinste
-waarde te vinden en op welke index die waarde zit. We gebruiken een flag om de
-de treshold te bepalen die je van de muur af mag gaan. Dit doen we omdat als je een muur hebt gevonden dan mag je wat ruimer rijden, omdat je toch weet dat je een muur aan het volgen bent, maar je moet toch een treshold hebben want je moet nog wel kunnen bepalen wanneer de muur ophoudt. De logica begint door te kijken te kijken of je voorste lasers iets te dichtbij vinden. Dit zou betekenen dat er een muur voor je zit. Je bent een muur aan het volgen dus je kijkt of de kleinste waarde links of rechts van het midden zit. Hierna ga je van de muur wegdraaien. Dit werkt beide kanten op. Hierna wordt er gekeken of
-je te dicht bij de muur zit. Als dit zo is wordt er eerst gekeken of  er aan de andere kant ook iets dicht bij zit. In dit geval blijf je rechtdoor gaan anders wordt er bij gestuurd. Daarna bekijken we of de robot te ver van de muur is en sturen we bij naar de muur. Als dit allemaal niet waar is dan roepen we de \verb!wallfollow! aan. Deze checkt eerst nog even of we echt een muur aan het volgen zijn en aan welke kant die zit en dan geeft hij het commando om rechtdoor te rijden. Wanneer we niet binnen de treshold blijven gaan we over naar de \verb!wallsearch! die dan weer een nieuwe muur gaat zoeken. 
+\section*{\refstepcounter{section}\label{wallfollow}\thesection.\quad Wall follow} De wall follow haalt elke iteratie laserwaarden op en gaat daarmee aan de slag. In de wall follow wordt \verb!min_laser_val()! gebruikt om de kleinste
+laserwaarde te vinden en op welke index die waarde zit. Er is een semafoor flag om de de threshold te bepalen van de afstand die de robot van de muur af mag staan. Deze wordt gebruikt, omdat er bij een gevonden muur met wat ruimte omheen mag worden gereden. Het is immers bekend dat er een muur wordt gevolgd, maar er is toch een threshold nodig om te kunnen bepalen wanneer de muur ophoudt. De logica begint met het controleren of de voorste laserwaarden te klein zijn. Dit zou betekenen dat er zich een muur voor de robot bevindt. Bij het volgen van een muur wordt er bepaald of de kleinste laserwaarde links of rechts van het midden zit. Hierna draait de robot zich weg van de muur. Hierna wordt er bepaald of de robot te dicht bij de muur zit of niet. Als dit zo is, wordt er eerst gekeken of er zich aan de andere kant ook een muur bevindt. In dit geval blijft de robot rechtdoor rijden om door de doorgang te rijden en anders wordt er bijgestuurd. Daarna wordt er gekeken of de robot te ver van de muur af rijdt en wordt er bijgestuurd richting de muur. Als dit allemaal niet waar is, wordt \verb!wallfollow()! aangeroepen. Deze controleert eerst of de robot ook echt een muur aan het volgen is en aan welke kant die muur van de robot zit. Vervolgens krijgt de robot het commando om rechtdoor te rijden. Wanneer er van de threshold wordt afgeweken, wordt er overgegaan op de \verb!wallsearch!. Deze zoekt dan weer de nieuwe dichtstbijzijnde muur. 
 
 \section*{\refstepcounter{section}\label{mapmaker}\thesection.\quad Map maker}
-De mapmaker maakt gebruik van tinySLAM een bibliotheek voor SLAM die te vinden is op  \hyperef{www.openslam.org}\cite{openSLAM,CoreSLAM:article}. Hier hebben we een python versie\cite{CoreSLAM:python,} van gevonden. Hoe deze python bibliotheek werkt is. Elke keer dat je de map wilt
-updaten moet je de methode \verb!makeMap! aan te roepen. De laserwaardes kunnen direct meegegeven worden aan deze methode, maar de positie die je van de
-odometry mee krijgt moeten eerst worden getransformeerd naar het midden van de 
-het plaatje. Ook wordt de theta van de odometry omgezet van radialen naar graden. In de \verb!makeMap! methode wordt voor elke laserstralen een beetje aan gepast en daarna de \verb!ts_map-update! aangeroepen die vervolgens
-alle stralen in de map tekent. Hierna kun je op elk moment een map tekenen met
-de methode \verb!drawMap!. Deze methode krijgt een map mee om te tekenen. Binnen de methode gaat hij alle punten op je map af en tekent een grijze/witte/zwarte pixel afhankelijk van wat er in de map staat. Deze pixels 
-worden geschreven naar een .ppm bestand, want de teken bibliotheken die er 
-standaard werden gebruikt waren niet aanwezig op de computers.
+De map maker maakt gebruik van tinySLAM, dit is een bibliotheek voor SLAM die te vinden is op  %\hyperref{www.openslam.org}\cite{openSLAM,CoreSLAM:article}. 
+Hier is een Python versie %\cite{CoreSLAM:python} 
+van gevonden. Deze Python bibliotheek werkt als volgt. Elke keer dat de kaart bijgewerkt moet worden, wordt de methode \verb!makeMap()! aangeroepen. De laserwaarden kunnen direct meegegeven worden aan deze methode, maar de positie van de
+odometry moet eerst worden getransformeerd naar het midden van het plaatje. Ook wordt de theta van de odometry omgezet van radialen in graden. In de \verb!makeMap()! methode wordt elke laserstraal een beetje aangepast en daarna wordt de \verb!ts_map-update()! aangeroepen die vervolgens alle stralen in de kaart tekent. Hierna kan op elk moment een kaart worden getekend met de methode \verb!drawMap()!. Deze methode krijgt een kaart mee om te tekenen. Binnen de methode worden alle punten op de kaart afgegaan en wordt er een grijze, witte of zwarte pixel getekend, afhankelijk van wat er in de kaart staat. Deze pixels worden geschreven naar een .ppm bestand, want de libraries die standaard worden gebruikt om te kunnen tekenen waren niet aanwezig op de gebruikte computers.
 \section*{\refstepcounter{section}\label{pathfinding}\thesection.\quad Path finding}
 
 \section*{\refstepcounter{section}\label{protocol}\thesection.\quad Communicatieprotocol}
@@ -258,8 +254,8 @@ MAP:
 \end{verbatim}
 
 \section*{\refstepcounter{section}\label{communicator}\thesection.\quad Communicator}
-\subsection{Gebruik}
-Elke module maakt via deze library connecties aan. Dit doen ze door eerst een configreader aan te maken. Daarna het opstarten van de acceptor thread. Deze thread moet op Daemon gezet worden zodat hij sluit wanneer het hoofdprogramma sluit.
+\subsection*{Gebruik}
+Elke module maakt via deze library verbindingen aan. Dit doen de modules door eerst een \verb!config_reader! aan te maken en daarna starten ze de \verb!accept_thread! op. Deze thread moet op \verb!setDaemon! gezet worden, zodat hij sluit wanneer het hoofdprogramma sluit.
 \begin{verbatim}{}
 configreader = config_reader()
 print("config reader gestart")
@@ -267,15 +263,15 @@ accept_thread = acceptor(running, list, "LIS", configreader.addresses)
 accept_thread.setDaemon(True)
 accept_thread.start()
 \end{verbatim}
-Hierna kan je de connecties op gaan zetten. Dit doe je op de volgende manier.
+Hierna kunnen de verbindingen worden opgezet. Dit gebeurt op de volgende manier.
 \begin{verbatim}{}
 sonar = connection(running, "SNR", configreader, list)
 sonar.setDaemon(True)
 sonar.start()
 \end{verbatim}
-Deze code zet een connectie op met de sonar module. Gebruik \verb!sonar.send_data(message)! om iets te versturen over de gemaakte connectie deze connectie zal zelf kijken of de connectie nog wel leeft en indien hij niet meer werkt dan zal hij opnieuw proberen te connecten met de module.
-\subsection{Werking}
-De config_reader leest eerst de config.cfg file in een array. Deze wordt dan gesplitst en in de klasse als global gestopt met de naam addresses.
+Deze code zet een verbinding op met de sonar module. Gebruik \verb!sonar.send_data(message)! om iets te versturen over de gemaakte verbinding. Deze verbinding zal zelf kijken of verbinding het nog doet en indien hij niet meer werkt, zal hij opnieuw proberen te verbinden met de module.
+\subsection*{Werking}
+De \verb!config_reader! leest eerst het \verb!config.cfg! bestand uit in een array. Deze wordt dan gesplitst en globaal in de klasse gestopt met de naam \verb!addresses!.
 \begin{verbatim}
 f = open('config.cfg')
 addresses = []
@@ -285,7 +281,7 @@ for i in range(len(config)):
     addresses.append(config[i].split(' '))
 self.addresses = addresses
 \end{verbatim}
-De andere methode in de config_reader geeft een socket terug waarover de gevraagde connectie is gemaakt. Hij kijkt eerst in de de meegekregen list. Of de connectie die gevraagd is al gemaakt is hiervoor heeft hij het ip adres nodig deze haalt hij uit de global addresses. Indien de connectie al is gemaakt dan geeft hij de socket van die connectie terug. deze wordt gelezen uit de list.
+De andere methode in de \verb!config_reader! geeft een socket terug waarover de gevraagde verbinding is gemaakt. Hij kijkt eerst in de de meegekregen lijst of de verbinding die is opgevraagd al is gemaakt. Hiervoor heeft hij het IP-adres nodig, deze haalt hij uit de global addresses. Indien de verbinding al is gemaakt, geeft hij de socket van die verbinding terug. Deze wordt gelezen uit de lijst.
 \begin{verbatim}
 for i in range(len(self.addresses)):
     if self.addresses[i][0] == module:
@@ -295,7 +291,7 @@ for i in range(len(list)):
     if list[i][1][0] == ip[2][0]:
         return list[i][0]
 \end{verbatim}
-De acceptor maakt eerst wat globale variabelen aan waaronder de thread waarvan hij luistert naar connecties. Een deel van deze variabelen wordt meegegeven.
+De acceptor maakt eerst globale variabelen aan, waaronder de thread waar vandaan hij luistert naar verbindingen. Een deel van deze variabelen wordt meegegeven.
 \begin{verbatim}
 def __init__ (self, running, list, module, addresses):
     threading.Thread.__init__(self)
@@ -318,15 +314,15 @@ def __init__ (self, running, list, module, addresses):
     communicationthread.start()
     self.communicationthread = communicationthread
 \end{verbatim}
-De memory is een array waarin de ontvangen data wordt opgeslagen tot hij wordt verwerkt.
-De twee methodes erna zorgen ervoor dat de modules kunnen wachten op data. Deze nethoden refereren naar methodes in de luister thread.
+De memory is een array waarin de ontvangen data worden opgeslagen tot deze worden verwerkt.
+De twee methodes daarna zorgen ervoor dat de modules kunnen wachten op data. Deze methoden refereren naar methodes in de luister thread.
 \begin{verbatim}
 def set_wait(self, number):
     self.communicationthread.set_wait(number)
 def get_wait(self):
     return self.communicationthread.get_wait()
 \end{verbatim}
-De main van de thread zorgt ervoor dat er connecties kunnen worden gemaakt naar de module waar deze thread in is opgestart. Hij kijkt in de addresses variabel op welke IP en port hij moet luisteren. daarna begint hij met luisteren op deze socket. Daarna gaat hij in een loop waarin hij blijft wachten tot er iemand wilt connecten met deze module. Als er een connection binnenkomt dan zet hij deze connection in de list.
+De main van de thread zorgt ervoor dat er verbindingen kunnen worden gemaakt met de module waar deze thread in is opgestart. Hij kijkt in de addresses variabele op welke IP en port hij moet luisteren. Daarna begint hij met het luisteren op deze socket. Vervolgens gaat hij in een loop waarin hij blijft wachten totdat er iemand wil verbinden met deze module. Als er een verbinding binnenkomt, zet hij deze verbinding in de lijst.
 \begin{verbatim}
 for i in range(len(self.addresses)):
     if self.addresses[i][0] == self.module:
@@ -355,7 +351,7 @@ while self.running:
 	      if self.running == 0:
 	          break
 \end{verbatim}
-De communication thread is de thread die luistert naar de connecties om te kijken of ze data ontvangen. Als eerste maakt hij wat globale variabelen aan die hij mee heeft gekregen dit zorgt ervoor dat ze linked zijn met de variabelen in de acceptor thread.
+De communication thread is de thread die luistert naar de verbindingen om te kijken of ze data ontvangen. Als eerste maakt hij globale variabelen aan die hij mee heeft gekregen. Dit zorgt ervoor dat ze gelinkt zijn met de variabelen in de acceptor thread.
 \begin{verbatim}
 def __init__(self, list, running, memory, waiting_for_data, request_data):
     threading.Thread.__init__(self)
@@ -365,14 +361,14 @@ def __init__(self, list, running, memory, waiting_for_data, request_data):
     self.waiting_for_data = waiting_for_data
     self.request_data = request_data
 \end{verbatim}
-Daarna 2 methodes waarnaar gerefereerd werd in de acceptor thread. %En een derde methode die connecties aan de lijst zet. misschien methode weghalen
+Er wordt gerefereerd naar twee methodes in de acceptor thread. %En een derde methode die connecties aan de lijst zet. misschien methode weghalen
 \begin{verbatim}
     def set_wait(self, number):
         self.waiting_for_data += number
     def get_wait(self):
         return self.waiting_for_data
 \end{verbatim}
-De main van deze thread handelt de berichten af volgens het protocol. Elk ontvangen bericht wordt anders afgehandeld door middel van if else statements. Ook zorgt deze thread ervoor dat als een connectie dood is dan wordt hij hier uit de lijst verwijderd.
+De main van deze thread handelt de berichten af volgens het protocol. Elk ontvangen bericht wordt anders afgehandeld door middel van if else statements. Ook zorgt deze thread ervoor dat een verbinding die niet meer werkt uit de lijst wordt verwijderd.
 \begin{verbatim}
 def run(self):
     BUFFER_SIZE = 1024
@@ -451,7 +447,7 @@ def run(self):
                     break
                 break
 \end{verbatim}
-De laatste thread klasse in deze library is de connection deze begint ook met wat globale variabelen te initialiseren deze variabelen worden meegegeven wanneer hij wordt aangemaakt.
+De laatste thread klasse in deze library is de connection. Deze begint ook met globale variabelen te initialiseren, deze variabelen worden meegegeven wanneer hij wordt aangemaakt.
 \begin{verbatim}
 def __init__ (self, running, module, configreader, list):
     threading.Thread.__init__(self)
@@ -468,7 +464,7 @@ def send_data(self, data):
     if self.connected:
         self.socket.send(data)
 \end{verbatim}
-De main onderhoud de connectie op een soortgelijke manier als de config_reader een al gemaakte connectie teruggeeft. Als hij al gemaakt is dan probeert hij opnieuw te connecten. en zet hij zijn connected flag op 0 voor not connected.
+De main onderhoudt de verbinding op een soortgelijke manier als de \verb!config_reader! een al gemaakte connectie teruggeeft. Als hij al gemaakt is, dan probeert hij opnieuw te verbinden en zet hij zijn connected flag op 0 voor not connected.
 \begin{verbatim}
 def run(self):
     while self.running:
@@ -495,6 +491,6 @@ De robot remt bij het gebruik van \verb!go_brake()!, hierbij staan beide wielen 
 Door de wielen een gelijke negatieve waarde mee te geven in de functie \verb!go_reverse()!, zal de robot achteruit rijden.
 De functie \verb!go_camera()! zorgt ervoor dat door middel van het indrukken van de linkermuisknop het beeld zichtbaar is vanuit de camera van de robot. Om hier vervolgens uit te komen, dient er op de rechtermuisknop gedrukt te worden.
 
-\bibliographystyle{plain}
+%\bibliographystyle{plain}
 
 \end{document}
