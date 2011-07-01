@@ -2,31 +2,31 @@
 \usepackage{graphicx}
 \usepackage[dutch]{babel}
 
-
-
 \title{Software Engineering en Gedistribueerde Applicaties \\[10pt]Groepsverslag week 4\\[25pt]Team F.A.C.H.T.}
 \author{\\Chris Bovenschen, Harm Dermois, \\Alexandra Moraga Pizarro, Tamara Ockhuijsen en Fredo Tan \\[10pt]6104096, 0527963, 6129544, 6060374, 6132421 \\[25pt]Universiteit van Amsterdam}
 \begin{document}
 \maketitle
 \newpage
 \section{Planning van deze week}
-Voor deze week was het plan alles af te krijgen. Iets specifieker waren de plannen dat we deze week het eindverslag gingen maken en de modules optimaliseren. Uiteindelijk gingen we deze week in met een erg grote achterstand op onze planning.
+Voor deze week was het plan om alles af te krijgen. Iets specifieker waren de plannen dat we deze week het eindverslag gingen maken en de modules moesten optimaliseren. Uiteindelijk gingen we deze week in met een erg grote achterstand op onze planning.
 
 \section{Voortgang van deze week}
-Een aantal modules waren al af. Maar sommige modules waren pas aan het begin.
+Een aantal modules waren al af, maar met sommige modules waren we nog niet zo ver.
 \subsection{Path finding}
-Vorige week kon de routeplanner een route plannen in een map met een plus vorm. De planning was dat de routeplanner nu een map van een gecomprimeerde vorm kon inlezen, decomprimeren, hierin een route plannen en deze ook uitvoeren. Uiteindelijk kan de routeplanner een map van een gecomprimeerde vorm inlezen en decomprimeren en er een route in plannen. Het aantal punten op deze route wordt verminderd naar alleen de rotatie punten waar hij naar toe moet bewegen en het begin- en eindpunt. Hij kan deze route nog niet volgen maar dat zou niet al te veel werk moeten zijn om dit te implementeren.
+Vorige week kon de path finding een route plannen in een kaart met obstakels in een plus vorm. De planning was dat de path finding nu een kaart van een gecomprimeerde vorm kon inlezen, decomprimeren, hierin een route plannen en deze ook uitvoeren. Uiteindelijk kan de path finding een kaart van een gecomprimeerde vorm inlezen, decomprimeren en er een route in plannen. Het aantal punten op deze route wordt verminderd, zodat alleen de rotatiepunten waar hij naar toe moet bewegen en het begin- en eindpunt overblijven. Hij kan deze route nog niet volgen, maar het zou niet al te veel werk moeten zijn om dit te implementeren.
 
-\subsection{Muurcombo}
-Vorige week kon onze robot redelijk goed muren vinden en ze volgen. De planning was dat de muurcombo perfect muren kon vinden en volgen en alleen problemen had met onzichtbare objecten. Uiteindelijk werkt hij bijna perfect hij volgt de muur goed, maar rijdt schuin op de muren af.
+\subsection{Wall combo}
+Vorige week kon onze robot redelijk goed muren vinden en deze volgen. De planning was dat de wall combo perfect muren kon vinden en volgen en alleen problemen had met onzichtbare objecten. Uiteindelijk werkt hij bijna perfect. Hij volgt de muur goed, maar rijdt een beetje schuin op de muren af.
 
-\subsection{MapMaker}
-Aangezien deze module bijna volledig is gekopi\"{e}erd van internet. Hebben we hem alleen aangepast naar onze specificaties zodat de map er goed op past.
+\subsection{Map maker}
+Aangezien deze module bijna volledig is gekopieerd van internet, hebben we hem alleen aangepast naar onze specificaties zodat de kaart er goed op past.
 
 \subsection{Collision avoider}
-Vorige week kon deze module de collisions alleen detecteren, hij kon er nog niet op reageren. De planning was dat hij er nu ook relevant op kon reageren en dat we deze dan konden integreren in ons gedistibu\"eerd systeem. Uiteindelijk hebben we de collision avoider zo ver gekregen dat hij kon reageren op dingen die hij zag met de sonar maar hij is niet geintegreerd in ons systeem.
+Vorige week kon deze module de obstakels alleen detecteren, hij kon er nog niet op reageren. De planning was dat hij er nu ook relevant op kon reageren en dat we deze dan konden integreren in ons gedistribueerde systeem. Uiteindelijk hebben we de collision avoider zo ver gekregen dat hij kon reageren op dingen die hij zag met de sonar, maar hij is niet ge\"{i}ntegreerd in ons gedistribueerde systeem.
+
+\newpage
 
 \subsection{Integratie}
-Vorige week kon ons gedistribu\"eerde systeem alleen maar data binnenhalen en doorsturen naar de sensormodules. Dit deed hij erg ineffici\"ent. De planning was dat hij deze week volledig werkte en dat alle modules erin waren verwerkt. Uiteindelijk hebben we deze week de muurcombo en de map maker ge\"integreerd. We kwamen er ook achter dat hij data overflows kreeg en dus hebben we de listener zijn functie verkleind. en de functie van de sensor modules vergroot. Ook kwamen we erachter dat de logica die we gebruikten bij onze tests niet meer werkte wegens de delay die we opbouwden met ons communicatie model.
+Vorige week kon ons gedistribueerde systeem alleen maar data binnenhalen en doorsturen naar de sensormodules. Dit deed hij erg ineffici\"{e}nt. De planning was dat hij deze week volledig werkte en dat alle modules erin waren verwerkt. Uiteindelijk hebben we deze week de wall combo en de map maker ge\"{i}ntegreerd. We kwamen er ook achter dat hij data overflows kreeg en dus hebben we de listener zijn functie verkleind en de functie van de sensormodules vergroot. Ook kwamen we erachter dat de logica die we gebruikten bij onze tests niet meer werkte wegens de vertraging die we opbouwden met ons communicatie model.
 
 \end{document}
