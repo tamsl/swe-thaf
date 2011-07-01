@@ -10,7 +10,7 @@ BUFFER_SIZE = 1024
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
-# Wall near transparent wall.
+# Start position: wall near transparent wall.
 s.send('INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n')
 
 # Method to retrieve the list of sonar values

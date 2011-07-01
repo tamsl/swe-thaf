@@ -16,8 +16,7 @@ def read_map(matrix):
                 ys = i
             elif matrix[i][k] == 4:
                 xf = k
-                yf = i
-                
+                yf = i           
     x = xs
     y = ys
     flag = 1

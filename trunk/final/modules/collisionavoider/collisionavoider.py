@@ -73,7 +73,7 @@ def odometry_module(datastring):
         diff_theta = abs(float(theta[99]) - float(theta[0]))
         # I am not moving anymore if x and y not differ more than 0.2.
         if diff_x < 0.2 and diff_y < 0.2:
-            string = "I'm standing still\r\n"
+            string = "I'm standing still.\r\n"
             print string
             return string
         # Empty odometry arrays.
@@ -101,7 +101,7 @@ def getdata():
                 # Odometry sensor.
                 if typeSEN == "Odometry":
                     odo_values = odometry_module(datasplit)
-                    if odo_values == "I'm standing still\r\n":
+                    if odo_values == "I'm standing still.\r\n":
                         return 1
                     senvalues = datasplit[3].replace('{Pose ', '')
                     senvalues = senvalues.replace('}','')               
