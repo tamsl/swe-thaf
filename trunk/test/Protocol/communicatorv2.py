@@ -18,7 +18,6 @@ class config_reader():
             config[i] = config[i].strip()
             addresses.append(config[i].split(' '))
         self.addresses = addresses
-        print addresses
 
     def connection(self, list, module):
         # Look for the address of the requested module and get its ip address
@@ -37,7 +36,6 @@ class config_reader():
         # If the connection hasn't been made yet make a connection by reading
         # what port should be used and then making a connection to the address
         # of that module using the found port number.
-##        connection_attempts = 0
         while 1:
             # Try to make the connection.
             try:
@@ -45,15 +43,10 @@ class config_reader():
                 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 s.connect((address[1], int(address[2])))
                 list.append((s, (ip[2][0], int(address[2]))))
-##                if(connection_attempts > 0):
-##                    time.sleep(3)
                 return s
             # If it is refused try again after 10 seconds.
             except EnvironmentError as exc:
                 if exc.errno == errno.ECONNREFUSED:
-##                    continue
-##                    connection_attempts += 1
-##                    print connection_attempts
                     print 'trying again in 10 seconds\n\r'
                     time.sleep(10)
                 else:
@@ -80,21 +73,20 @@ class communication(threading.Thread):
     # getter for waiting for data
     def get_wait(self):
         return self.waiting_for_data
-    # add connection to listen
-    def add_to_list(connection):
-        self.list.append(connection)
+##    # add connection to listen
+##    def add_to_list(connection):
+##        self.list.append(connection)
     # main
     def run(self):
         BUFFER_SIZE = 1024
         data = ""
         data_incomplete = 0
         while self.running:
-##            time.sleep(0.1)
             # if there are no connections do nothing for 0.1 second and try again
             if(len(self.list) == 0):
                 time.sleep(0.1)
-            # check for all connections in sequence if they give any data and if
-            # they do read it
+            # check for all connections in sequence if they give any data and 
+			# if they do read it
             for i in range(len(self.list)):
                 while 1:
                     try:
@@ -119,15 +111,9 @@ class communication(threading.Thread):
                         else:
                             continue
                         messagesplit = data.split("#")
-##                        print messagesplit
-##                        print "data"
-##                        print data
+						# split on the end of message divider
                         for j in range(len(messagesplit)):
-##                            print "messagesplit[" + str(j) + "]"
-##                            print messagesplit[j]
                             datasplit = messagesplit[j].split("!")
-##                            print "datasplit"
-##                            print datasplit
                             if len(datasplit) < 1:
                                 continue
                             # handles messages according to our protocol
@@ -136,7 +122,7 @@ class communication(threading.Thread):
                                 self.request_data.append(datasplit[1])
                                 data = " "
                                 datasplit = []
-                            # handles commands needs to be send to robot.
+                            # handles commands that needs to be send to robot.
                             elif(datasplit[0] == "CMD"):
                                 self.memory[4] = datasplit[1]
                                 data = " "
@@ -145,28 +131,24 @@ class communication(threading.Thread):
                             elif(datasplit[0] == "RCV"):
                                 if(datasplit[1] == "SNR"):
                                     self.memory[0] = datasplit[2]
-##                                    print self.waiting_for_data
                                     if(self.waiting_for_data > 0):
                                         self.waiting_for_data -= 1
                                     data = " "
                                     datasplit = []
                                 elif(datasplit[1] == "ODO"):
                                     self.memory[1] = datasplit[2]
-##                                    print self.waiting_for_data
                                     if(self.waiting_for_data > 0):
                                         self.waiting_for_data -= 1
                                     data = " "
                                     datasplit = []
                                 elif(datasplit[1] == "RSC"):
                                     self.memory[2] = datasplit[2]
-##                                    print self.waiting_for_data
                                     if(self.waiting_for_data > 0):
                                         self.waiting_for_data -= 1
                                     data = " "
                                     datasplit = []
                                 elif(datasplit[1] == "MAP"):
                                     self.memory[3] = datasplit[2]
-##                                    print self.waiting_for_data
                                     if(self.waiting_for_data > 0):
                                         self.waiting_for_data -= 1
                                     data = " "
@@ -180,7 +162,6 @@ class communication(threading.Thread):
                         if self.running == 0:
                             break
                     except(IndexError):
-                        print "het werkt"
                         break
                     break
             
@@ -228,13 +209,14 @@ class acceptor(threading.Thread):
             s.bind((TCP_IP, TCP_PORT))
             s.listen(0)
             s.setblocking(0)
+		# if address already in use close the program
+		# (doesn't work properly yet)
         except socket.error:
             print 'kip'
             self.running = 0
             s.close()
             self.communicationthread.join()
             sys.exit()
-            print "bah ram yew"
         # Continue till the flag is turned off and the program needs to shut
         # down
         while self.running:
@@ -269,21 +251,21 @@ class connection(threading.Thread):
         self.list = list
         self.configreader = configreader
         self.socket = self.configreader.connection(self.list, self.module)
-        print "ik haal dit punt"
         self.connected = 1
+	# method for sending the data
     def send_data(self, data):
         if self.connected:
             self.socket.send(data)
+	# main
     def run(self):
         while self.running:
-##            print "in connection", self.list
+			# look up the ip of the module this connects to
             for i in range(len(self.configreader.addresses)):
                 if self.configreader.addresses[i][0] == self.module:
                     address = self.configreader.addresses[i]
                     ip = socket.gethostbyname_ex(address[1])
             # Look in the list if the connection with the requested module has
-            # already been made with this module if so return that connection
-            # instead of making a new connection
+            # already been made with this module if so stop checking
             for i in range(len(self.list)):
                 # Check if the ip address of a connection in the list is the same as
                 # that of the ip address of the requested module.
@@ -292,5 +274,6 @@ class connection(threading.Thread):
                     break
                 else:
                     self.connected = 0
+			# if it lost connection try to reconnect
             if not self.connected:
                 self.socket = self.configreader.connection(self.list, self.module)
