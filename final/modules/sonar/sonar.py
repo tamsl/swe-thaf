@@ -20,7 +20,7 @@ def sensor_module(datastring):
         for i in range(0, 8):
             sonar_values.append(datasplit[i + 3].replace('{Name F' + str(i+1) + ' Range ', ''))
             sonar_values[i] = sonar_values[i].replace('}', '')
-        # Test for validity:
+        # Test for validity.
         test = []
         for i in range(len(sonar_values)):
             test.append(re.findall('([\d.]*\d+)', sonar_values[i]))
