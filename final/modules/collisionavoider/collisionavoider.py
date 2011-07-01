@@ -13,17 +13,17 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
 
 #DEMO:
-# Person in transparent wall.
+# Start position: person in transparent wall.
 s.send("INIT {ClassName USARBot.P2DX} {Location 5.8,1.8,1.8} {Rotation 0.0,0.0,-1.555} {Name R1}\r\n")
-# Green shirt. 
+# Start position: green shirt. 
 ##s.send("INIT {ClassName USARBot.P2DX} {Location -2.2,2.6,1.8} {Name R1}\r\n")
-# Table.
+# Start position: table.
 ##s.send("INIT {ClassName USARBot.P2DX} {Location 5.0,-1.5,1.8} {Rotation 0.0,0.0,2.1} {Name R1}\r\n")
 
 # Odometry values.
 x = []
 y = []
-theta = []
+theta = [] # Calculate smallest sonar value and the index of it.
 # Robot speed.
 current_speed = 1
 # Minimal distance between object and robot.
