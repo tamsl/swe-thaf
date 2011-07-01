@@ -12,7 +12,6 @@ configreader = config_reader()
 accept_thread = acceptor(running, list, "ODO", configreader.addresses)
 accept_thread.setDaemon(True)
 accept_thread.start()
-print("The acceptor thread is started.")
 old_values = 20
 
 # Method to retrieve the list of odometry values.
@@ -52,6 +51,4 @@ while running:
             command = "RCV!ODO!" + str(current_values) + "#"
             configreader.connection(list, accept_thread.request_data[0]).send(
                                          command)
-##            print command
-##            print accept_thread.request_data[0]
             accept_thread.request_data.pop(0)

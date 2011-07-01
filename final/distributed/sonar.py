@@ -14,7 +14,6 @@ configreader = config_reader()
 accept_thread = acceptor(running, list, "SNR", configreader.addresses)
 accept_thread.setDaemon(True)
 accept_thread.start()
-print("The acceptor thread is started.")
 
 # Method to retrieve the list of sonar values
 def sonar_module(datastring):
@@ -47,8 +46,7 @@ while running:
                     message += str(datasplit[i])
     current_values = sonar_module(message)
     if current_values != old_values:
-        old_values = current_values          
-        print 'current_values', current_values
+        old_values = current_values
     if current_values != "":
         while len(accept_thread.request_data) != 0:
             command = "RCV!SNR!" + str(current_values) + "#"

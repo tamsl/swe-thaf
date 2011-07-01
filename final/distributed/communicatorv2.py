@@ -73,9 +73,6 @@ class communication(threading.Thread):
     # getter for waiting for data
     def get_wait(self):
         return self.waiting_for_data
-##    # add connection to listen
-##    def add_to_list(connection):
-##        self.list.append(connection)
     # main
     def run(self):
         BUFFER_SIZE = 1024
