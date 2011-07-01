@@ -1,0 +1,53 @@
+#!/usr/bin/env python
+
+import socket
+import re
+
+# Standard way to connect to your local server.
+TCP_IP = '127.0.0.1'
+TCP_PORT = 2001
+BUFFER_SIZE = 1024
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((TCP_IP, TCP_PORT))
+# Wall near transparent wall.
+s.send('INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n')
+
+# Method to retrieve the list of range sensor values.
+def range_module(datastring):
+    laser_values = re.findall('([\d.]*\d+)', datasplit[6])
+    print laser_values, "\r\n"
+    return laser_values
+
+# Test the range sensor module.
+data_incomplete = 0
+for i in range(100):
+    s.send("DRIVE {Left 1.0} {Right 1.0}")
+    data = s.recv(BUFFER_SIZE)
+    if data_incomplete:
+        datatemp += data
+        data_incomplete = 0
+        data = datatemp
+    if data[len(data)-1] != '\n':
+        datatemp = data
+        data_incomplete = 1
+        continue    
+    string = data.split('\r\n')
+    for i in range(len(string)):
+        datasplit = re.findall('\{[^\}]*\}|\S+', string[i])
+        if len(datasplit) > 0:
+            # Sensor message.
+            if datasplit[0] == "SEN":
+                if len(datasplit) > 2:
+                    typeSEN = datasplit[2].replace('{Type ', '')
+                    typeSEN = typeSEN.replace('}', '')
+                    # Range sensor.
+                    if typeSEN == "RangeScanner":
+                        if len(datasplit) > 6:
+                            laser_values = range_module(datasplit)
+                        # Test for validity.
+                        if len(laser_values) == 181:
+                            print "Correct values."
+                        else:
+                            print "Incorrect values."
+s.close()
