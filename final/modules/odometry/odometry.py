@@ -10,7 +10,7 @@ BUFFER_SIZE = 1024
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
-# Wall near transparant wall.
+# Start position: wall near transparant wall.
 s.send('INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n')
 
 # Method to retrieve the list of odometry values.
