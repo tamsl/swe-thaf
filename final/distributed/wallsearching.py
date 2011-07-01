@@ -96,25 +96,21 @@ def wall_continued(side):
           #wall on the left so turn right
           if flag == 0 :                                   
               listener.send("CMD!" + handle_movement("left", 4.0,2.0) + "#")
-          if flag >= 1 and min_val >= 1.2:
+          elif flag == 1:
               if laser_values[-1] >= 1:
                  turn_360(odo_values,s)
                  wallfollow.send("NEX!0#")
-          else:
-              listener.send("CMD!" + handle_movement("right", 4.0,2.0) + "#")
        else:
           #Wall on the right side turn right
-          if flag >= 0 :
+          if flag == 0 :
              #first turn a little
               listener.send("CMD!" + handle_movement("right", 4.0,2.0) + "#")
               flag = 1
-          if flag >= 1:
+          elif flag == 1:
               # now look for a wall
-              if laser_values[0] >=  1 and min_val >= 1.2:
+              if laser_values[0] >=  1:
                   turn_360(odo_values,s)
                   wallfollow.send("NEX!0#")
-          else:
-              listener.send("CMD!" + handle_movement("right", 4.0,2.0) + "#")
        if min_val <= 0.35:
           wallfollow.send("NEX!1#")
 
