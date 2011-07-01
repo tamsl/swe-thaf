@@ -1,6 +1,7 @@
 \documentclass[a4paper,10pt]{article}
 \usepackage{graphicx}
 \usepackage{verbatim}
+\usepackage{hyperref}
 \usepackage[dutch]{babel}
 
 \title{Software Engineering en Gedistribueerde Applicaties \\[10pt]Eindverslag\\[25pt]Team F.A.C.H.T.}
@@ -166,10 +167,21 @@ Voor elke sonarwaarde wordt er gekeken of de float van elke waarde kleiner is da
 
 \section*{\refstepcounter{section}\label{wallsearch}\thesection.\quad Wall search}
 
-\section*{\refstepcounter{section}\label{wallfollow}\thesection.\quad Wall follow}
+\section*{\refstepcounter{section}\label{wallfollow}\thesection.\quad Wall follow} De wallfollow haalt elke iteratie laser waardes op en gaat daarmee werken. In de wallfollow gebruiken we de \verb!min_laser_val! om de kleinste
+waarde te vinden en op welke index die waarde zit. We gebruiken een flag om de
+de treshold te bepalen die je van de muur af mag gaan. Dit doen we omdat als je een muur hebt gevonden dan mag je wat ruimer rijden, omdat je toch weet dat je een muur aan het volgen bent, maar je moet toch een treshold hebben want je moet nog wel kunnen bepalen wanneer de muur ophoudt. De logica begint door te kijken te kijken of je voorste lasers iets te dichtbij vinden. Dit zou betekenen dat er een muur voor je zit. Je bent een muur aan het volgen dus je kijkt of de kleinste waarde links of rechts van het midden zit. Hierna ga je van de muur wegdraaien. Dit werkt beide kanten op. Hierna wordt er gekeken of
+je te dicht bij de muur zit. Als dit zo is wordt er eerst gekeken of  er aan de andere kant ook iets dicht bij zit. In dit geval blijf je rechtdoor gaan anders wordt er bij gestuurd. Daarna bekijken we of de robot te ver van de muur is en sturen we bij naar de muur. Als dit allemaal niet waar is dan roepen we de \verb!wallfollow! aan. Deze checkt eerst nog even of we echt een muur aan het volgen zijn en aan welke kant die zit en dan geeft hij het commando om rechtdoor te rijden. Wanneer we niet binnen de treshold blijven gaan we over naar de \verb!wallsearch! die dan weer een nieuwe muur gaat zoeken. 
+
 
 \section*{\refstepcounter{section}\label{mapmaker}\thesection.\quad Map maker}
-
+De mapmaker maakt gebruik van tinySLAM een bibliotheek voor SLAM die te vinden is op \hyperef{www.openslam.org}. Hier hebben we een python versie van gevonden. Hoe deze python bibliotheek werkt is. Elke keer dat je de map wilt
+updaten moet je de methode \verb!makeMap! aan te roepen. De laser waardes kunnen direct meegegeven worden aan deze methode, maar de positie die je van de
+odometry mee krijgt moeten eerst worden getransformeerd naar het midden van de 
+het plaatje. Ook wordt de theta van de odometry ogezet van radialen naar graden. In de \verb!makeMap! methode wordt voor elke laserstralen een beetje aan gepast en daarna de \verb!ts_map-update! aangeroepen die vervolgens
+alle stralen in de map tekent. Hierna kun je op elk moment een map tekenen met
+de methode \verb!drawMap!. Deze methode krijgt een map mee om te tekenen. Binnen de methode gaat hij alle punten op je map af en tekent een grijze/witte/zwarte pixel afhankelijk van wat er in de map staat. Deze pixels 
+worden geschreven naar een .ppm bestand, want de teken bibliotheken die er 
+standaard werden gebruikt waren niet aanwezig op de computers.
 \section*{\refstepcounter{section}\label{pathfinding}\thesection.\quad Path finding}
 
 \section*{\refstepcounter{section}\label{protocol}\thesection.\quad Communicatieprotocol}
