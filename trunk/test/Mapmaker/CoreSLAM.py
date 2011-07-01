@@ -5,17 +5,17 @@
 # Advisor: Zach Dodds
 
 import math
-##from bmp import *
-##import camToDistance
 import operator
 import random
-##from PIL import Image
 
-TS_SCAN_SIZE=181 #8192
-TS_MAP_SIZE=1000 #2048   # number of pixels
-TS_MAP_SCALE=50 #0.1     # scales the pixels appropriately
-
-TS_DISTANCE_NO_DETECTION=5 #4000
+# 8192
+TS_SCAN_SIZE = 181
+# 2048, number of pixels.
+TS_MAP_SIZE = 1000
+# 0.1, scales the pixels appropriately.
+TS_MAP_SCALE = 50
+# 4000
+TS_DISTANCE_NO_DETECTION=5
 TS_NO_OBSTACLE=65500
 TS_OBSTACLE=0
 TS_HOLE_WIDTH=600
@@ -23,7 +23,7 @@ TS_HOLE_WIDTH=600
 MAP_OUTPUT_NAME="Map.bmp"
 LOG_INPUT_NAME="volledig.txt"
 
-#Check camToDistance.py for updated camera angle in degrees
+# Check camToDistance.py for updated camera angle in degrees.
 CAMERASPAN = 180.0
 
 scanX = 0
