@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+
+# Method to determine a list of checkpoints.
 def read_map(matrix):
     checkpoints = []
     xs = 0
