@@ -1,17 +1,12 @@
 #!/usr/bin/env python
-# This module is one of the reflex modules. This one checks the sonar values.
+#!/usr/bin/env python
 
 from communicatorv2 import *
 import socket
 import re
 
-# Standard way to connect to your local server.
-##TCP_IP = '127.0.0.1'
-##TCP_PORT = 2001
-##BUFFER_SIZE = 1024
-
 current_values = ""
-old_values = "miauw"
+old_values = "-"
 list = []
 running = 1
 message = ""
@@ -19,16 +14,10 @@ configreader = config_reader()
 accept_thread = acceptor(running, list, "SNR", configreader.addresses)
 accept_thread.setDaemon(True)
 accept_thread.start()
-##wallsearch = configreader.connection(list, "WSC")
-##wallfollow = configreader.connection(list, "WFW")
-print("ik heb de acceptor thread gestart")
-##s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-##s.connect((TCP_IP, TCP_PORT))
-##s.send('INIT {ClassName USARBot.P2DX} {Location 4.5,1.9,1.8} {Name R1}\r\n')
+print("The acceptor thread is started.")
 
 # Method to retrieve the list of sonar values
 def sonar_module(datastring):
-##    print datastring, "\r\n"
     if datastring == "" or datastring == "+":
         return current_values
     split = datastring.split('+')
@@ -50,45 +39,19 @@ while running:
     string = data.split('\r\n')
     for i in range(len(string)):
         datasplit = re.findall('\{[^\}]*\}|\S+', string[i])
-##        if len(datasplit) != 0:
-##            print datasplit
         if len(datasplit) > 10:
             if datasplit[2] == "{Type Sonar}":
                 message = ""
                 message = datasplit[1] + "+"
                 for i in range(3, len(datasplit)):
                     message += str(datasplit[i])
-##                print message
     current_values = sonar_module(message)
-##    message = ""
-##    print list
     if current_values != old_values:
         old_values = current_values          
         print 'current_values', current_values
-##    if current_values != "":
-##        command = "RCV!SNR!" + str(current_values) + "#"
-##        wallfollow.send(command)
-##        wallsearch.send(command)
     if current_values != "":
         while len(accept_thread.request_data) != 0:
             command = "RCV!SNR!" + str(current_values) + "#"
             configreader.connection(list, accept_thread.request_data[0]).send(
                                         command)
             accept_thread.request_data.pop(0)
-            
-### Test the sensor module.
-##for i in range(100):
-##    s.send("DRIVE {Left 1.0}\r\n")
-##    data = s.recv(BUFFER_SIZE)
-##    string = data.split('\r\n')
-##    for i in range(len(string)):
-##        datasplit = re.findall('\{[^\}]*\}|\S+', string[i])
-##        if len(datasplit) > 0:
-##            # Sensor message
-##            if datasplit[0] == "SEN":
-##                if len(datasplit) > 2:
-##                    typeSEN2 = datasplit[2].replace('{Type ', '')
-##                    typeSEN2 = typeSEN2.replace('}', '')
-##		    # Sonar sensor
-##                    if typeSEN2 == "Sonar":
-##		        sonar_values = sensor_module(datasplit)    
