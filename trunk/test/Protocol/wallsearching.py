@@ -19,7 +19,7 @@ odometry = configreader.connection(list, "ODO")
 rangescanner = configreader.connection(list, "RSC")
 listener = configreader.connection(list, "LIS")
 wallfollow = configreader.connection(list, "WFW")
-print ("acceptor thread gestart")
+print ("The acceptor thread is started.")
 odo = 1
 ran = 2
 nex = 5
@@ -64,12 +64,12 @@ def wall_continued(side, s):
        laser_values  = accept_thread.memory[ran]
        min_val,index_val = min_laser_val(laser_values.split(','))
 
-       # here is the logic of the wall continued
-       # is going to let you make inner turns
-       # Check if there's something nearby
+       # Here the logic of the wall is continued.
+       # It is going to let you make inner turns.
+       # Check if there's something nearby.
        if min_val <= 0.62 :
-           # turn towards the side where the min val is found
-           # and return to wall follow
+           # Turn towards the side where the min_val is found
+           # and return to wall follow.
            if index_val > len(laser_values)/2:
                 print"ik stuur bij naar rechts in cont"
                 listener.send("CMD!" + handle_movement("right", 4.0,2.0) + "#")
@@ -78,7 +78,7 @@ def wall_continued(side, s):
                 print"ik stuur bij naar links in cont"
                 listener.send("CMD!" + handle_movement("left", 4.0,2.0) + "#")
                 return 1
-       # if the index val is on the left side of the
+       # If the index_val is on the left side of the
        # robot
        if index_val > len(laser_values)/2 :
           #wall on the left so turn right
