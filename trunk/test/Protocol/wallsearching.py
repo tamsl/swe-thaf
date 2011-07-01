@@ -111,12 +111,7 @@ def wall_continued(side, s):
 # Method to find the smallest value by driving in circles and then saving
 # the smallest value you find.
 def turn_360(odo_values, s):
-##    print odo_values
-##    x = odo_values[0]
-##    y = odo_values[1]
-##    theta = odo_values[2]
     # we always turn left while searching for a wall
-    
     listener.send("CMD!" + handle_movement("rotate_left", 1.5) + "#")
     # To prevent the use of false values.
     new_odo_values = [999, 999, 999]
@@ -197,7 +192,6 @@ def turn_right_position(min_val, index_val, odo_values, s):
             # Drive forward.
             listener.send("CMD!" + handle_movement("forward",1.0) + "#")
             stop(s)
-##                            print "turn to the right position", index_val
             return
 # Method which stops the robot when it has reached the wall.
 def stop(s):
@@ -213,9 +207,7 @@ def stop(s):
             continue
         laser_values  = accept_thread.memory[ran].split(',')
         min_val, index_val = min_laser_val(laser_values)
-        print "in stop" ,min_val
-##        print "minval in wallsearch ", min_val
-                
+        print "in stop" ,min_val            
         # The threshold.
         if min_val <= 0.40:
             print "De muur gevonden"
