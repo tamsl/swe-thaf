@@ -57,12 +57,3 @@ def go_brake():
 def go_reverse():
     string = "DRIVE {Left -1} {Right -1}\r\n"
     return string
-
-# Method to set the camera.
-def go_camera(CameraPanTilt_Link2):
-    if CameraPanTilt_Link2 == 1:
-       string = "SET {Type Camera} {Name CameraPanTilt_Link2} {FOV 1}\r\n"
-    else:
-       string = "SET {Type Camera} {Name CameraPanTilt_Link2} {FOV 1}\r\n"
-    return string
-
