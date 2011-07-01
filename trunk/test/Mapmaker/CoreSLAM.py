@@ -216,35 +216,27 @@ def ts_map_laser_ray(Map, x1, y1, x2, y2, xp, yp, value, alpha):
         ptr+=incptrx
         
     return Map
-
+# We changed this method.
 def drawMap(Map, mapName = MAP_OUTPUT_NAME):
     cell_side = 1
-##    image=BitMap(TS_MAP_SIZE*cell_side, TS_MAP_SIZE*cell_side)
-##    im = Image.new('RGB', [TS_MAP_SIZE*cell_side, TS_MAP_SIZE*cell_side])
-##    pix = im.load()
-    fn = open("ronddraaien.ppm","w")
-    fn.write("P3")
-    fn.write("\n")
-    fn.write(str(TS_MAP_SIZE)+"\t"+str(TS_MAP_SIZE))
-    fn.write("\n")
-    fn.write("255\n")
+    list1 =[]
+    
+    list1.append("P3")
+    list1.append("\n")
+    list1.append(str(TS_MAP_SIZE)+"\t"+str(TS_MAP_SIZE))
+    list1.append("\n")
+    list1.append("255\n")
     for row in range((TS_MAP_SIZE*cell_side)):
         rowFlip=TS_MAP_SIZE*cell_side-row-1 #row
         for col in range((TS_MAP_SIZE*cell_side)):
             pixVal=Map[rowFlip/cell_side*TS_MAP_SIZE+col/cell_side]
             pixVal=int(pixVal*255.0/TS_NO_OBSTACLE)
-            #pixColor=Color(pixVal,pixVal,pixVal)
-            fn.write(str(pixVal)+"\t")
-            fn.write(str(pixVal)+"\t")
-            fn.write(str(pixVal)+"\t")
-##            pix[col, row] = (pixVal, pixVal, pixVal)
-            #image.setPenColor(pixColor)
-            #image.plotPoint(col, row)
-    #image.saveFile(mapName)
+            list1.append(str(pixVal)+"\t"+ str(pixVal)+"\t"+str(pixVal)+"\t")
+    list1 = ''.join(list1)
+    fn = open("test.ppm","w")
+    fn.write(list1)
     fn.flush()
     fn.close()
-##    im.save(mapName)
-##    print 'Map File Saved as', mapName
 
 def drawCroppedMap(Map, mapRowLength, mapColLength):
     cell_side = 1
