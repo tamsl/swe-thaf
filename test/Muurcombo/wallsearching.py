@@ -7,6 +7,7 @@ import time
 
 BUFFER_SIZE = 1024
 
+# Movements handler
 def handle_movement(type, *args):
    handlers = {"forward":         go_drive,
                "left":            go_drive,
@@ -15,29 +16,21 @@ def handle_movement(type, *args):
                "brake":           go_drive,
                "rotate_left":     go_drive,
                "rotate_right":    go_drive,
-               "trace":           go_trace,
-               "rotate_robot":    go_rotate,
+               "rotate_robot":    go_rotate
               }
    return handlers[type](*args)
 
+# Create drive instruction.
 def go_drive(s1, s2):
     s1 = str(s1)
     s2 = str(s2)
     string = "DRIVE {Left " + s1 + "} {Right " + s2 + "}\r\n"
-##    print string
     return string
 
-def go_trace(b1, in1, COLOR):
-    b1 = str(b1)
-    in1 = str(in1)
-    string = "Trace {On " + b1 + "} {Interval " + in1 + "} {Color " + COLOR +"}\r\n"
-##    print string
-    return string
-
+# Create rotate instruction.
 def go_rotate(s1):
     s1 = str(s1)
     string = "DRIVE {RotationalVelocity " + s1 + "}"
-##    print string
     return string
 
 # Method to change all strings in an array to floats.
@@ -51,10 +44,8 @@ def string_to_float(vals):
 def min_laser_val(laser_vals):
     laser_vals = string_to_float(laser_vals)
     sorted_laser_vals = sorted(laser_vals)
-    # index vals start from 1.
+    # Index_val starts at 1.
     index_val = laser_vals.index(sorted_laser_vals[0]) + 1
-##    print sorted_laser_vals[0]
-##    print index_val
     return sorted_laser_vals[0], index_val
 
 # Method to parse the odometry values.
@@ -64,10 +55,9 @@ def odometry_module(datastring):
     odo_values = senvalues.split(',')
     return odo_values
 
-# When the wall is jsut lost see if the wall continues on the sides.
-
+# When the wall is lost, check if the wall continues on the sides.
 def wall_continued(side,s):
-    # if side is 1 then the wall is on the right otherwise it's on the left side.
+    # If side is 1 then the wall is on the right side, otherwise its on the left side.
     laser_values = []
     odo_values  = []
     flag = 0
@@ -101,21 +91,19 @@ def wall_continued(side,s):
                     if len(datasplit) > 6:
                         laser_values = re.findall('([\d.]*\d+)', datasplit[6])
                         min_val, index_val = min_laser_val(laser_values)
-                        # Check if there's something nearby
+                        # Check if there is a wall nearby.
                         if min_val <= 0.62 :
                             if index_val > len(laser_values)/2:
-                                 print"ik stuur bij naar rechts in cont"
+                                 print "Adjust to the right."
                                  s.send(handle_movement("right", 2.0,-1.0))
                                  return 1
                             else :
-                                 print"ik stuur bij naar links in cont"
+                                 print "Adjust to the left."
                                  s.send(handle_movement("left", -1.0,2.0))
                                  return 1
                         if len(laser_values) != 0:
-                            print "in continued wall",min_val
                             if index_val > len(laser_values)/2 :
-                               #wall on the left so turn right
-                               print laser_values[-1]
+                               # The wall is on the left side, turn right.
                                if flag == 0 :
                                    s.send("DRIVE {LEFT 2.0} {RIGHT -1.0}\r\n")
                                    flag = 1
@@ -126,16 +114,15 @@ def wall_continued(side,s):
                                else:
                                    s.send("DRIVE {LEFT -1.0} {RIGHT 2.0}\r\n")
                             else:
-                               #Wall on the right side turn left
-                               print laser_values[0]
+                               # The wall on the right side, turn left.
                                if flag == 0 :
-                                  #first turn a little
+                                  # First turn a little.
                                    s.send("DRIVE {LEFT -1.0} {RIGHT 2.0}\r\n")
                                    flag = 1
                                if flag == 1:
-                                   # now look for a wall
-                                   if laser_values[0] >=  1.5:
-                                       turn_360(odo_values,s)
+                                   # Now look for a wall.
+                                   if laser_values[0] >= 1.5:
+                                       turn_360(odo_values, s)
                                        return 0
                                else:
                                    s.send("DRIVE {LEFT -1.0} {RIGHT 2.0}\r\n")
@@ -145,13 +132,8 @@ def wall_continued(side,s):
 # Method to find the smallest value by driving in circles and then saving
 # the smallest value you find.
 def turn_360(odo_values, s):
-##    print odo_values
-##    x = odo_values[0]
-##    y = odo_values[1]
-##    theta = odo_values[2]
-    # we always turn left while searching for a wall
+    # Always turn left while searching for a wall.
     s.send(handle_movement("forward", 10.0, 10.0))
-    
     s.send(handle_movement("rotate_left", -1.5, 1.0))
     # To prevent the use of false values.
     new_odo_values = [999, 999, 999]
@@ -172,26 +154,21 @@ def turn_360(odo_values, s):
             data_incomplete = 1
             continue
         string = data.split('\r\n')
-##        print temp_odo_values
         for i in range(len(string)):
             datasplit = re.findall('\{[^\}]*\}|\S+', string[i])
             if len(datasplit) > 0:
                 # Sensor message
                 if datasplit[0] == "SEN":
-                    #print datasplit, "\r\n"
                     typeSEN = datasplit[1].replace('{Type ', '')
                     typeSEN = typeSEN.replace('}', '')
                     # Odometry sensor
                     if typeSEN == "Odometry":
-                        #print datasplit
                         new_odo_values = string_to_float(odometry_module(datasplit))
-##                        print new_odo_values, "\r\n"
                         if new_odo_values[2] > previous_odo_values[2]:
                             if flag == 2:
                                 s.send(handle_movement("brake", 0.0, 0.0))
-                                print "De kleinste min value gevonden"
                                 turn_right_position(temp_min_val, temp_index_val, temp_odo_values, s)
-                                #placeholder wallfollow
+                                # Placeholder for wallfollow.
                                 return 0
                             flag = 1
                         if flag == 1 and new_odo_values[2] < 0:
@@ -202,24 +179,15 @@ def turn_360(odo_values, s):
                         typeSEN2 = typeSEN2.replace('}', '')
                         # Range sensor
                         if typeSEN2 == "RangeScanner":
-                            #print datasplit, "\r\n"
                             if len(datasplit) > 6:
-                                # puts all RangeScanner values in an array.
+                                # Put all RangeScanner values in an array.
                                 laser_values = re.findall('([\d.]*\d+)', datasplit[6])
-##                                print laser_values
-####                                print len(laser_values)
-##                                print laser_values
                                 min_val, index_val = min_laser_val(laser_values)
-                                print  "360", min_val
-                                # the relative thresholds
+                                # The relative thresholds.
                                 middle = len(laser_values)/2
                                 threshold = len(laser_values)/40
                                 if index_val <= middle + threshold and index_val >= middle - threshold:
                                     if min_val < temp_min_val:
-                                        print min_val
-                                        print index_val
-                                        print 'minimum waarde'
-                                        print 'draaiing', new_odo_values[2]
                                         temp_min_val = min_val
                                         temp_index_val = index_val
                                         temp_odo_values = new_odo_values
@@ -229,7 +197,7 @@ def turn_right_position(min_val, index_val, odo_values, s):
     # The robot always stops when the odometry is maximal.
     # We turn right when the values are smaller than PI, otherwise we turn
     # left.
-    print "turning to the right position"
+    print "Turn to the right position."
     turning_right = 0
     if odo_values[2] < 0:
         s.send(handle_movement("rotate_right", 1.0, -1.5))
@@ -241,7 +209,7 @@ def turn_right_position(min_val, index_val, odo_values, s):
     previous_odo_values = [999, 999, 999]
     flag = 0
     data_incomplete = 0
-    print "ik ga nu naar de goede waarde draaien"
+    print "I will now turn to the right value."
     while 1:
         data = s.recv(BUFFER_SIZE)
         if data_incomplete:
@@ -258,30 +226,25 @@ def turn_right_position(min_val, index_val, odo_values, s):
             if len(datasplit) > 0:
                 # Sensor message
                 if datasplit[0] == "SEN":
-                    #print datasplit, "\r\n"
                     typeSEN = datasplit[1].replace('{Type ', '')
                     typeSEN = typeSEN.replace('}', '')
                     # Odometry sensor
                     if typeSEN == "Odometry":
-##                        print datasplit
                         new_odo_values = string_to_float(odometry_module(datasplit))
-                        print 'new_odo_values', new_odo_values
-                        print 'odo_values', odo_values
-                        print 'turning right', turning_right
                         if ((new_odo_values[2] < odo_values[2] and turning_right == 0)
                             or (new_odo_values[2] > odo_values[2] and turning_right == 1
                                 and new_odo_values[2] < 0)):
-                            # When the value is found stop.
+                            # Stop when the value is found.
                             s.send(handle_movement("brake", 0.0, 0.0))
-                            print "De juiste positie gevonden"
+                            print "The right position is found."
                             # Drive forward.
                             s.send(handle_movement("forward", 1.0, 1.0))
                             stop(s)
-##                            print "turn to the right position", index_val
+                            print "Turn to the right position."
                             return
+
 # Method which stops the robot when it has reached the wall.
 def stop(s):
-    print 'ik ben hier ik wil stoppen'
     # To prevent false values.
     min_val = 100000000
     data_incomplete = 0
@@ -304,30 +267,17 @@ def stop(s):
                     typeSEN = datasplit[1].replace
                     # Odometry sensor
                     if typeSEN == "Odometry":
-                        #print datasplit
                         new_odo_values = string_to_float(odometry_module(datasplit))
-##                        odometry_string = "Odometry " + str(new_odo_values[0]) + " " + str(new_odo_values[1]) + " " + str(new_odo_values[2])
-##                        print odometry_string
-                        #print datasplit, "\r\n"
                     if len(datasplit) > 2:
                         typeSEN = datasplit[2].replace('{Type ', '')
                         typeSEN = typeSEN.replace('}', '')
                         # RangeScannner values
                         if typeSEN == "RangeScanner":
-                            #print datasplit, "\r\n"
                             if len(datasplit) > 6:
                                 laser_values = re.findall('([\d.]*\d+)', datasplit[6])
-##                                laser_string = "Laser " + str(len(laser_values)) + " "
-##                                for i in range(len(laser_values)):
-##                                laser_string += laser_values[i] + " "
-##                                print laser_string
-                                print laser_values
-
                                 min_val, index_val = min_laser_val(laser_values)
-                                print "in stop" ,min_val
-##        print "minval in wallsearch ", min_val
-        # The threshold.
+                                # The threshold.
                                 if min_val <= 0.40:
-                                    print "De muur gevonden"
+                                    print "The wall is found."
                                     s.send(handle_movement("brake", 0.0, 0.0))
                                     return
