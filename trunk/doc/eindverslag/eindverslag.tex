@@ -32,7 +32,7 @@ Dit verslag behandelt eerst de implementatie van de componenten met de bijbehore
 \section{Implementatie}
 De modules zijn verdeeld in low-level, sensor, mid-level en high-level componenten. De listener is een low-level component, de sonar, laser en odometry zijn sensormodules, de wall search, wall follow en collision avoider zijn mid-level componenten en de map maker en path finding zijn high-level componenten. De movements en communicator zijn libraries die door andere modules kunnen worden gebruikt. 
 
-De listener is verbonden met de server via een TCP-verbinding en stuurt de data direct door naar de sensormodules. De sensormodules halen de juiste waarden uit de data die voor hun bestemd zijn en sturen deze door naar de mid-level modules en op aanvraag naar de map maker en path finding. Berekende kaarten van de map maker kunnen worden gebruikt voor de path finding. Path finding gebruikt de movements library om het pad te kunnen volgen. Als de robot aan het rijden is, staat de collision avoider te alle tijden aan.
+De listener is verbonden met de server via een TCP-verbinding en stuurt de data direct door naar de sensormodules. De sensormodules halen de juiste waarden uit de data die voor hun bestemd zijn en sturen deze door naar de mid-level modules, de map maker en path finding. Berekende kaarten van de map maker kunnen worden gebruikt voor de path finding. Path finding gebruikt de movements library om het pad te kunnen volgen. Als de robot aan het rijden is, staat de collision avoider te alle tijde aan.
 
 \subsection{Low-level}
 De low-level component verkrijgt rechtstreeks data van de robot en stuurt de ontvangen data van de robot direct door naar de sensormodules.
@@ -43,20 +43,20 @@ De listener zit direct aan de server vast. Hij haalt informatie binnen die de ro
 Zie appendix \ref{listener}
 
 \subsection{Sensormodules}
-De sensormodules ontvangen data van de listener. Ze kijken of de data voor hun bestemd zijn en anders negeren ze deze. Ze verkrijgen de sensorwaarden uit de data en sturen ze door naar de mid-level modules. De sensormodules kunnen door de high-level modules worden aangeroepen voor de meest recente data. Zodra er ongeldige data binnenkomen, wordt de robot gestopt.
+De sensormodules ontvangen data van de listener. Ze kijken of de data voor hun bestemd zijn en anders negeren ze deze. Ze verkrijgen de sensorwaarden uit de data en kunnen worden aangeroepen voor de meest recente data. Zodra er ongeldige data binnenkomen, wordt de robot gestopt.
 
 \subsubsection{Odometry}
-Odometry haalt de drie waarden op die nodig zijn voor de bepaling van de positie van de robot. Dit zijn de x, y positie en de theta hoek in verhouding tot de startpositie en de richting van de robot. Deze waarden worden doorgestuurd naar de mid-level modules.
+Odometry haalt de drie waarden op die nodig zijn voor de bepaling van de positie van de robot. Dit zijn de x, y positie en de theta hoek in verhouding tot de startpositie en de richting van de robot. Deze waarden worden opgeslagen en kunnen worden aangevraagd.
 
 Zie appendix \ref{odometry}
 
 \subsubsection{Range scanner}
-De range scanner bevindt zich op een bepaalde hoogte boven de robot. Hij scant de omgeving horizontaal door middel van het roteren van de laser in een bepaald interval. De range scanner leest alle 181 laserwaarden uit en stuurt ze door naar de mid-level modules.
+De range scanner bevindt zich op een bepaalde hoogte boven de robot. Hij scant de omgeving horizontaal door middel van het roteren van de laser in een bepaald interval. De range scanner leest alle 181 laserwaarden uit. Deze waarden worden opgeslagen en kunnen worden aangevraagd.
 
 Zie appendix \ref{rangescanner}
 
 \subsubsection{Sonar}
-De sonar leest alle 8 sonarwaarden uit en stuurt ze door naar de mid-level modules. De sonar stuurt een geluidsgolf, waardoor obstakels die op de grond liggen ook te detecteren zijn.
+De sonar stuurt een geluidsgolf, waardoor obstakels die op de grond liggen ook te detecteren zijn. Hij leest alle 8 sonarwaarden. Deze waarden worden opgeslagen en kunnen worden aangevraagd.
 
 Zie appendix \ref{sonar}
 
@@ -74,7 +74,7 @@ Bij het zoeken naar een muur draait de robot eerst 360 graden om te kijken waar 
 Zie appendix \ref{wallsearch}
 
 \subsubsection{Wall follow}
-De muur wordt gevolgd die door wall search is gevonden. Als de muur zich meer aan de linkerkant van de robot bevindt, draait hij naar rechts en als de muur zich meer aan de rechterkant van de robot bevindt, draait hij naar links. De kleinste laserwaarde bevindt zich nu aan de rechter- of linkerkant. Hij blijft rechtdoor rijden als de kleinste laserwaarde niet kleiner en groter wordt dan een ingestelde waarde. Als hij te ver van de muur afwijkt, stuurt hij bij richting de muur. Als hij te dicht bij de muur komt, stuurt hij bij van de muur af. Als er geen muur meer wordt waargenomen, wordt de wall\_continued functie binnen de wall search aangeroepen. Deze functie kijkt of er in de buurt nog een muur is te vinden. Als dit zo is, gaat hij daarheen. Als er zich in de buurt nog een andere muur bevindt, zoekt wall search naar de nieuwe dichtstbijzijnde muur. Elke keer wanneer de logica klaar is, wordt er nieuwe informatie opgevraagd van de sensormodules.
+De muur wordt gevolgd die door wall search is gevonden. Als de muur zich meer aan de linkerkant van de robot bevindt, draait hij naar rechts en als de muur zich meer aan de rechterkant van de robot bevindt, draait hij naar links. De kleinste laserwaarde bevindt zich nu aan de rechter- of linkerkant. Hij blijft rechtdoor rijden als de kleinste laserwaarde niet kleiner en groter wordt dan een ingestelde waarde. Als hij te ver van de muur afwijkt, stuurt hij bij richting de muur. Als hij te dicht bij de muur komt, stuurt hij bij van de muur af. Als er geen muur meer wordt waargenomen, wordt de wall\_continued functie binnen de wall search aangeroepen. Deze functie kijkt of er in de buurt nog een muur is te vinden. Als dit zo is, gaat hij daarheen. Als er zich in de buurt nog een andere muur bevindt, zoekt wall search naar de nieuwe dichtstbijzijnde muur. Elke keer wanneer de logica klaar is, wordt er nieuwe informatie opgevraagd van de sensormodules.%ergens is hier iets fout
 
 Zie appendix \ref{wallfollow}
 
@@ -96,12 +96,12 @@ Zie appendix \ref{pathfinding}
 Alle modules kunnen gebruik maken van de beschikbare libraries. Ze kunnen deze libraries importeren en hun functies gebruiken.
 
 \subsubsection{Communicator}
-De comunicator library leest een bestand in dat de lokaties van de modules bevat. Via deze data maakt hij verbindingen aan met andere modules. De communicator importeert twee thread klasses en een derde klasse. De ene thread luistert naar de gemaakte verbindingen en de andere luistert naar een poort om te bepalen of er nieuwe verbindingen gemaakt moeten worden. De thread die luistert, handelt de berichten af volgens het communicatieprotocol. Hierin staan alle mogelijke berichten en tags die gebruikt worden bij de communicatie en er staat ook in wat hun doel is. Hierna handelt elke module zijn ontvangen data anders af.
+De comunicator library leest een bestand in dat de lokaties van de modules bevat. Via deze data maakt hij verbindingen aan met andere modules. De communicator importeert drie thread klasses en een derde klasse. De eerste thread luistert naar de gemaakte verbindingen. De tweede luistert naar een poort om te bepalen of er nieuwe verbindingen gemaakt moeten worden. De derde thread klasse maakt een verbinding aan met een andere module en onderhoud deze. De thread die luistert, handelt de berichten af volgens het communicatieprotocol. Hierin staan alle mogelijke berichten en tags die gebruikt worden bij de communicatie en er staat ook in wat hun doel is. Hierna handelt elke module zijn ontvangen data anders af.
 
 Zie appendix \ref{communicator}
 
 \subsubsection{Movements}
-Dit is een library waarin alle bewegingen zijn gedefinieerd. Deze library wordt gebruikt voor de modules die de robot willen besturen. In de movements staan functies gedefinieerd voor het vooruit, naar links, naar rechts en achteruit rijden. Tevens is het mogelijk om naar links en rechts te roteren, een spoor achter te laten, de camera te zien vanuit de robot en de robot te laten stoppen met rijden.
+Dit is een library waarin alle bewegingen zijn gedefinieerd. Deze library wordt gebruikt voor de modules die de robot willen besturen. In de movements staan functies gedefinieerd voor het vooruit, naar links, naar rechts en achteruit rijden. Tevens is het mogelijk om naar links en rechts te roteren, een spoor achter te laten, de camera te zien vanuit de robot en de robot te laten stoppen met rijden.%kunnen we echt de 2 na laatste en 1 na laatste dingen doen volgens mij niet
 
 Zie appendix \ref{movements}
 
@@ -113,7 +113,7 @@ De listener wordt getest door data te verkrijgen en deze uit te printen.
 
 \subsection{Odometry}
 De odometry wordt getest door de robot te laten rijden, 100 regels data te verkrijgen van de simulator en hiervan de odometriewaarden te printen. De odometriewaarden worden getest op geldigheid.
-
+%volgens mij zijn het geen regels data zelfde voor de andere sensor modules
 \subsection{Range scanner}
 De range scanner wordt getest door de robot te laten rijden, 100 regels data te verkrijgen van de simulator en hiervan de 181 laserwaarden te printen. De laserwaarden worden getest op geldigheid.
 
