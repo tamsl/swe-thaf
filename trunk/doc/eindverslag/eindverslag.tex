@@ -2,6 +2,7 @@
 \usepackage{graphicx}
 \usepackage{verbatim}
 \usepackage{hyperref}
+\usepackage{cite}
 \usepackage[dutch]{babel}
 
 \title{Software Engineering en Gedistribueerde Applicaties \\[10pt]Eindverslag\\[25pt]Team F.A.C.H.T.}
@@ -139,13 +140,22 @@ De map maker wordt getest door hem een output bestand met laser- en odometriewaa
 \subsection{Path finding}
 De path finding wordt getest door een punt op te geven waar de robot naartoe moet rijden. Hij moet hierbij botsingen ontwijken en naar het punt toe rijden op een zo effici\"{e}nt mogelijke manier.
 
-\section{Experiment}
+\section{Demo}
 De robot wordt ge\"{i}nitialiseerd op een bepaalde plaats. Hij zoekt een muur en blijft deze muur volgen. Zodra hij de opdracht krijgt om naar een punt toe te rijden, wordt path finding ingeschakeld. De map maker werkt continu de kaart bij en de collision avoider zorgt ervoor dat er geen botsingen plaatsvinden. Als hij geen nieuwe opdracht krijgt om naar een ander punt toe te rijden, gaat hij weer een muur zoeken en deze volgen.
 
 \section{Resultaten}
-\section{Conclusie}
+Het is ons gelukt om alle modules standalone te laten werken. Deze zijn allemaal getest en voldoen aan onze verwachtingen. Alleen het integreren is bij ons nog niet helemaal gelukt. We hebben de integratie getest van 7 van de 9 modules die we hebben gemaakt. Alle sensor modules blijven altijd waardes ontvangen, maar de hogere niveau methodes komen soms vast te zitten. In deze modules wachten we totdat we de data hebben gekregen die we hebben verzocht, maar soms blijft hij op dit punt vast zitten. Dit kan komen doordat een request verloren gaat en het dus niet verder kan gaan met executie. Ook hebben we coreSLAM weten te gebruiken door de code die we hebben gevonden aan te passen naar onze smaak.
+
 \section{Discussie}
-\section{Bronvermelding}
+De mapmaker kan worden verbetert door het teken van de map in een andere thread te laten doen en het ontvangen en updaten in hetzelfde thread. Het tekenen duurt ongeveer twee seconde, want we schrijven het elke keer een apart bestand. Die elke keer overschreven wordt. Omdat dit zo lang duurt missen we op het moment data van seconde rijden en dit heeft dus een negatief effect op de map. Om dit te verbeteren
+kunnen we ook wat minder tekenen. Wat er verbetert kan worden in de communicator is het uitzoeken waarom het af en toe in deadlock komt. De berichten in een andere vorm opsturen waardoor het wat sneller opgemaakt, gestuurd en geinterpreteerd kan worden.\\
+De wallfollow en de wallsearcher hadden waarschijnlijk beter in in een genomen worden. Deze twee modules gaan vaak in elkaar over. Als deze twee modules bijelkaar genomen worden zou dit geen problemen opbrengen bij het autonoom rijden van de robot. Ook kunnen de route planner en mapmaker in hetzelfde module gezet worden. De map is een heel groot object dat je liever niet overstuurd. Als alle logica en versturen allemaal lokaal kan gebeuren zou dit veel winst opleveren. Bij bivoorbeeld het comprimeren en versturen van de bestanden.\\
+De collision avoider moet ook geimplementeerd worden en er moet nog een tweede queue gemaakt worden waar belangrijkere commandos in terecht komen. In de wallsearch kan de logica nog iets beter gemaakt worden waardoor het wat beter een binnen bocht kan maken. Als laatste kan er nog een GUI gemaakt worden om het wat simpeler te maken om de robot te besturen. 
+Python is makkelijk in gebruik, maar je levert wel in op performance. Het werkt langzaam en je hebt minder controle over datatypes die je gebruikt en die worden behandelt. Ook de error handeling is moeilijk en niet altijd vanzelfsprekend.\\
+We hadden ons te strikt aan onze planning proberen te houden. Dit zorgde ervoor dat we te weinig tijd hadden genomen voor de integratie en de communicatie. Dit deel van het project was toch tijdsintensiever dan we ons hadden voorgesteld. Dit is ook te zien in ons eindproduct dat nog niet helemaal werkt. 
+\section{Conclusie}
+Het is ons gelukt een modulair systeeem te maken om een robot autonoom te laten rijden. Alle modules zijn standalone klaar voor gebruik. Het gesdistrubueerd systeem werkt, maar heeft nog een paar bugs waardoor het nog niet stabiel en snel genoeg is om de robot gedistrubueerd te laten werken. We hebben veel geleerd over samenwerking en het maken van een groot project in python.
+
 \newpage
 \section{Appendix}
 \appendix
@@ -174,10 +184,10 @@ je te dicht bij de muur zit. Als dit zo is wordt er eerst gekeken of  er aan de 
 
 
 \section*{\refstepcounter{section}\label{mapmaker}\thesection.\quad Map maker}
-De mapmaker maakt gebruik van tinySLAM een bibliotheek voor SLAM die te vinden is op \hyperef{www.openslam.org}. Hier hebben we een python versie van gevonden. Hoe deze python bibliotheek werkt is. Elke keer dat je de map wilt
-updaten moet je de methode \verb!makeMap! aan te roepen. De laser waardes kunnen direct meegegeven worden aan deze methode, maar de positie die je van de
+De mapmaker maakt gebruik van tinySLAM een bibliotheek voor SLAM die te vinden is op  \hyperef{www.openslam.org}\cite{openSLAM,CoreSLAM:article}. Hier hebben we een python versie\cite{CoreSLAM:python,} van gevonden. Hoe deze python bibliotheek werkt is. Elke keer dat je de map wilt
+updaten moet je de methode \verb!makeMap! aan te roepen. De laserwaardes kunnen direct meegegeven worden aan deze methode, maar de positie die je van de
 odometry mee krijgt moeten eerst worden getransformeerd naar het midden van de 
-het plaatje. Ook wordt de theta van de odometry ogezet van radialen naar graden. In de \verb!makeMap! methode wordt voor elke laserstralen een beetje aan gepast en daarna de \verb!ts_map-update! aangeroepen die vervolgens
+het plaatje. Ook wordt de theta van de odometry omgezet van radialen naar graden. In de \verb!makeMap! methode wordt voor elke laserstralen een beetje aan gepast en daarna de \verb!ts_map-update! aangeroepen die vervolgens
 alle stralen in de map tekent. Hierna kun je op elk moment een map tekenen met
 de methode \verb!drawMap!. Deze methode krijgt een map mee om te tekenen. Binnen de methode gaat hij alle punten op je map af en tekent een grijze/witte/zwarte pixel afhankelijk van wat er in de map staat. Deze pixels 
 worden geschreven naar een .ppm bestand, want de teken bibliotheken die er 
@@ -257,5 +267,7 @@ Om naar rechts te draaien moet de parameter van het rechterwiel groter zijn dan 
 De robot remt bij het gebruik van \verb!go_brake()!, hierbij staan beide wielen op een snelheid van 0.
 Door de wielen een gelijke negatieve waarde mee te geven in de functie \verb!go_reverse()!, zal de robot achteruit rijden.
 De functie \verb!go_camera()! zorgt ervoor dat door middel van het indrukken van de linkermuisknop het beeld zichtbaar is vanuit de camera van de robot. Om hier vervolgens uit te komen, dient er op de rechtermuisknop gedrukt te worden.
+
+\bibliographystyle{plain}
 
 \end{document}
