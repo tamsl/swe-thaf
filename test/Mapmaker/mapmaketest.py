@@ -17,17 +17,18 @@ theta = []
 posX=0
 posY=1
 theta=2 # in degrees
-TS_SCAN_SIZE=181 #8192
-TS_MAP_SIZE=1000 #2048   # number of pixels
-TS_MAP_SCALE=50 #0.1     # scales the pixels appropriately
-
-TS_DISTANCE_NO_DETECTION=5 #4000
+# 8192
+TS_SCAN_SIZE = 181
+# 2048, number of pixels.
+TS_MAP_SIZE = 1000
+# 0.1, scales the pixels appropriately.
+TS_MAP_SCALE = 50
+# 4000
+TS_DISTANCE_NO_DETECTION=5
 TS_NO_OBSTACLE=65500
 TS_OBSTACLE=0
 TS_HOLE_WIDTH=600
-
 CAMERASPAN = 180.0
-
 
 def string_to_float(sonar_vals):
     float_sonar_vals = []
@@ -71,7 +72,7 @@ while 1:
     for i in range(len(string)):
         datasplit = re.findall('\{[^\}]*\}|\S+', string[i])
         if len(datasplit) > 0:
-            # Sensor message
+            # Sensor message.
             if datasplit[0] == "SEN":
                 typeSEN = datasplit[1].replace('{Type ', '')
                 typeSEN = typeSEN.replace('}', '')
@@ -79,17 +80,17 @@ while 1:
                     typeSEN2 = datasplit[2].replace('{Type ', '')
                     typeSEN2 = typeSEN2.replace('}', '')
                 if typeSEN2 == "RangeScanner":
-                    #datasplit[6] bevat data
+                    # datasplit[6] contains data.
                     if len(datasplit) >= 6:
                         laser_values = re.findall('([\d.]*\d+)', datasplit[6])
                         min_vals, index_val = min_laser_val(laser_values)
                         print laser_values
                         if min <= 0.2 :
-                            if index_val < len(laser_values)/2:
+                            if index_val < len(laser_values) / 2:
                                 s.send("DRIVE {LEFT -1.0} {RIGHT 1.0}\r\n")
                             else:
                                 s.send("DRIVE {LEFT 1.0} {RIGHT -1.0}\r\n")
-                        scans = [float(y)/SCALE for y in laser_values]
+                        scans = [float(y) / SCALE for y in laser_values]
                         print scans
                 if typeSEN == "Odometry":
                     senvalues = datasplit[3].replace('{Pose ', '')
@@ -97,14 +98,14 @@ while 1:
                     odo_values = senvalues.split(',')
                     pos = [float(x) for x in odo_values]
                     # Make the map twice as small.
-                    pos[posY]=pos[posY]/SCALE
-                    pos[posX]=pos[posX]/SCALE
-                    pos[theta]=math.degrees(pos[theta])
+                    pos[posY] = pos[posY] / SCALE
+                    pos[posX] = pos[posX] / SCALE
+                    pos[theta] = math.degrees(pos[theta])
                     # The map starts in the middle.
-                    pos[posY]=pos[posY]+(TS_MAP_SIZE/(2.0*TS_MAP_SCALE))
-                    pos[posX]=pos[posX]+(TS_MAP_SIZE/(2.0*TS_MAP_SCALE))
+                    pos[posY] = pos[posY] + (TS_MAP_SIZE / (2.0 * TS_MAP_SCALE))
+                    pos[posX] = pos[posX] + (TS_MAP_SIZE / (2.0 * TS_MAP_SCALE))
 
-    if len(scans)!=0 and len(pos)!=0:
+    if len(scans)!= 0 and len(pos)!= 0:
         print "Making map"
         CoreSLAM.makeMap(scans, pos, len(scans), Map)
         draw += 1
