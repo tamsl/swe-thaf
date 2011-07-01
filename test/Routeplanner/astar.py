@@ -2,7 +2,6 @@ import time
 import random
 import math
 from heapq import *
-from strings import *
 from readmap import * 
 
 class node:
@@ -33,7 +32,7 @@ class node:
         dx = xf - self.x
         return abs(dy) + abs(dx)
 
-    def pr_update(self, xf, yf):
+    def new_pr(self, xf, yf):
         self.pr = 10 * self.manhattan(xf, yf) + self.dist 
 
     # Priority is given to going straight instead of in a diagonal way.
@@ -67,7 +66,7 @@ def a_star_search(dx, dy, xs, ys, xf, yf, xaxis, yaxis, directions, one_map):
 
     # Node of start point is generated and pushed into the open nodes list.
     sn = node(0, 0, xs, ys)
-    sn.pr_update(xf, yf)
+    sn.new_pr(xf, yf)
     heappush(prq[index], sn)
     # Marked
     n_open[ys][xs] = sn.pr
@@ -104,7 +103,7 @@ def a_star_search(dx, dy, xs, ys, xf, yf, xaxis, yaxis, directions, one_map):
                     n_closed[dyy][dxx] == 1 or one_map[dyy][dxx] == 1):
                 cn = node(sn.pr, sn.dist, dxx, dyy)
                 cn.move(i, directions)
-                cn.pr_update(xf, yf)
+                cn.new_pr(xf, yf)
                 if cn.pr < n_open[dyy][dxx]:
                     n_open[dyy][dxx] = cn.pr
                     drct_one_map[dyy][dxx] = (directions / 2 + i) % directions
@@ -176,14 +175,10 @@ for i in range(yaxis):
 
 # Create start and finish points in a random way from a list.
 points = []
-points.append((0, 0, xaxis - 1, yaxis - 1))
-points.append((0, yaxis - 1, xaxis - 1, 0))
-points.append((xaxis / 2 - 2, yaxis / 2 + 2, xaxis / 2 + 2, yaxis / 2 - 2))
-points.append((xaxis / 2 - 2, yaxis / 2 - 2, xaxis / 2 + 2, yaxis / 2 + 2))
-##points.append((xaxis / 2 - 2, 0, xaxis / 2 + 1, yaxis - 1))
-##points.append((xaxis / 2 + 2, yaxis - 1, xaxis / 2 - 1, 0))
-##points.append((0, yaxis / 2 - 1, xaxis - 1, yaxis / 2 + 1))
-##points.append((xaxis - 1, yaxis / 2 + 1, 0, yaxis / 2 - 1))
+points.append((0, 0, xaxis - 2, yaxis - 2))
+points.append((0, yaxis - 2, xaxis - 3, 0))
+points.append((0, yaxis / 2 - 2, xaxis - 1, yaxis / 3 + 2))
+points.append((xaxis - 1, yaxis / 2 + 2, 0, yaxis / 3 - 2))
 xs, ys, xf, yf = random.choice(points)
 
 # Insert obstacles in the form of a '+' pattern.
@@ -200,14 +195,6 @@ if directions == 8:
 elif directions == 4:
     dx = [1, 0, -1, 0]
     dy = [0, 1, 0, -1]
-
-##string = "30_71_100_240_60_121_180_91_111_9001_2200_7801_"
-####string = "30_51_20_41_60_10_71_20"
-##string2 = ""
-##for i in range(500):
-##    string2 = string2 + string
-##string3 = string2[:-1]
-##matrix = receive_compressed_into_matrix(string3, 1000)
 
 route = a_star_search(dx, dy, xs, ys, xf, yf, xaxis, yaxis, directions, one_map)
 print '\nSize of map: ', xaxis, yaxis
