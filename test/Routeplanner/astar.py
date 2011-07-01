@@ -107,7 +107,7 @@ def a_star_search(dx, dy, xs, ys, xf, yf, xaxis, yaxis, directions, one_map):
                 if cn.pr < n_open[dyy][dxx]:
                     n_open[dyy][dxx] = cn.pr
                     drct_one_map[dyy][dxx] = (directions / 2 + i) % directions
-                    # Replace node. The node to be replaced it ignores and the new
+                    # Replace node. The node to be replaced is ignored and the new
                     # node shall be pushed in its place.
                     while not (dyy == prq[index][0].y and dxx == prq[index][0].x):
                         heappop(prq[index])
