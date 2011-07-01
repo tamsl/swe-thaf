@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import time
 import random
 import math
@@ -32,6 +34,7 @@ class node:
         dx = xf - self.x
         return abs(dy) + abs(dx)
 
+    # Method to determine the priority of a node.
     def new_pr(self, xf, yf):
         self.pr = 10 * self.manhattan(xf, yf) + self.dist 
 
@@ -45,30 +48,29 @@ class node:
 # The actual A* search algorithm.
 def a_star_search(dx, dy, xs, ys, xf, yf, xaxis, yaxis, directions, one_map):
     row = xaxis * [0] 
-
-    # Map of directions
+    # Map of directions.
     drct_one_map = []
     # Index of the priority queue prq.
     index = 0
     # Priority queue of nodes that have not been tried (so open).
     prq = [[], []]
-    # Map of open nodes
+    # Map of open nodes.
     n_open = []
-    # Map of closed nodes 
+    # Map of closed nodes.
     n_closed = []
-    # Route, initialize as empty string
+    # Route, initialize as empty string.
     route = ""
 
+    # Creation of matrices.
     for i in range(yaxis):
         drct_one_map.append(list(row))
         n_open.append(list(row))
         n_closed.append(list(row))
-
     # Node of start point is generated and pushed into the open nodes list.
     sn = node(0, 0, xs, ys)
     sn.new_pr(xf, yf)
     heappush(prq[index], sn)
-    # Marked
+    # Marked.
     n_open[ys][xs] = sn.pr
 
     # Let's search.
@@ -79,7 +81,7 @@ def a_star_search(dx, dy, xs, ys, xf, yf, xaxis, yaxis, directions, one_map):
         heappop(prq[index])
         y = sn.y
         x = sn.x
-        # Marked
+        # Marked.
         n_closed[y][x] = 1
         n_open[y][x] = 0
 
@@ -94,7 +96,7 @@ def a_star_search(dx, dy, xs, ys, xf, yf, xaxis, yaxis, directions, one_map):
                     x = x + dx[temp]
                     route = r + route
                 return route
-
+            
         # Creation of child nodes.
         for i in range(directions):
             dyy = dy[i] + y
@@ -120,7 +122,7 @@ def a_star_search(dx, dy, xs, ys, xf, yf, xaxis, yaxis, directions, one_map):
                         heappush(prq[1 - index], prq[index][0])
                     index = 1 - index
                     heappush(prq[index], cn)
-                # In case it's not in the list of open nodes
+                # In case it's not in the list of open nodes.
                 elif n_open[dyy][dxx] == 0:
                     heappush(prq[index], cn)
                     n_open[dyy][dxx] = cn.pr
@@ -149,19 +151,19 @@ def show_map(one_map, xaxis, yaxis, print_msg):
         for x in range(xaxis):
             xy = one_map[y][x]
             if xy == 0:
-                # Space
+                # Space.
                 print '.',
             elif xy == 1:
-                # Obstacle
+                # Obstacle.
                 print '#', 
             elif xy == 2:
-                # Start
+                # Start.
                 print 'S', 
             elif xy == 3:
-                # Route
+                # Route.
                 print 'R', 
             elif xy == 4: 
-                # Finish
+                # Finish.
                 print 'F', 
         print
 
