@@ -98,6 +98,6 @@ string2 = compress_matrix(matrix)
 # Check if the string before decompression and compression equals the
 # one after decompression and compression.
 if string == string2:
-    print "\nstring and string2 are equal. The compress and decompress methods both work.\n"
+    print "string and string2 are equal. The compress and decompress methods both work.\n"
 else:
-    print "\nstring and string2 are not equal. The compress and decompress methods don't work.\n"
+    print "string and string2 are not equal. The compress and decompress methods don't work.\n"
