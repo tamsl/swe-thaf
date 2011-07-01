@@ -56,4 +56,3 @@ def go_brake():
 def go_reverse():
     string = "DRIVE {Left -1} {Right -1}\r\n"
     return string
-
