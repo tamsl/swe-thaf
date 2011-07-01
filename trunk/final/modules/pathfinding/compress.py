@@ -7,7 +7,9 @@ def compress_matrix(matrix):
     how_many = 0
     old_value = -1
     string = ""
-    # ---
+    # Each element per row is checked on its value.
+    # It keeps track of the number of each kind of value.
+    # Then a string is generated containing the information.
     for i in range(len(matrix)):
         for j in range(len(matrix[i])):
             if matrix[i][j] == 0:
@@ -45,7 +47,8 @@ def decompress_string(string, row_length):
     matrix = []
     line = []
     string = string.split('_')
-    # ---
+    # Read each element of the splitted string.
+    # Determine the value and the number and put it in a matrix.
     for i in range(len(string)):
         how_many = string[i][:-1]
         value = string[i][len(string[i]) - 1]
