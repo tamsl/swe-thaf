@@ -33,8 +33,11 @@ Dit verslag behandelt eerst de implementatie van de componenten met de bijbehore
 \section{Implementatie}
 De modules zijn verdeeld in low-level, sensor, mid-level en high-level componenten. De listener is een low-level component, de sonar, laser en odometry zijn sensormodules, de wall search, wall follow en collision avoider zijn mid-level componenten en de map maker en path finding zijn high-level componenten. De movements en communicator zijn libraries die door andere modules kunnen worden gebruikt. 
 
-De listener is verbonden met de server via een TCP-verbinding en stuurt de data direct door naar de sensormodules. De sensormodules halen de juiste waarden uit de data die voor hun bestemd zijn en sturen deze door naar de mid-level modules, de map maker en path finding. Berekende kaarten van de map maker kunnen worden gebruikt voor de path finding. Path finding gebruikt de movements library om het pad te kunnen volgen. Als de robot aan het rijden is, staat de collision avoider te alle tijde aan.
+De listener is verbonden met de server via een TCP-verbinding en stuurt de data direct door naar de sensormodules. De sensormodules halen de juiste waarden uit de data die voor hun bestemd zijn en sturen deze door naar de mid-level modules, de map maker en path finding. Berekende kaarten van de map maker kunnen worden gebruikt voor de path finding. Path finding gebruikt de movements library om het pad te kunnen volgen. Als de robot aan het rijden is, staat de collision avoider te alle tijde aan.\\
 
+\includegraphics[scale = 0.55]{schema.png}\\
+\textbf{Een Schema van ons ontwerp}
+\\
 \subsection{Low-level}
 De low-level component verkrijgt rechtstreeks data van de robot en stuurt de ontvangen data van de robot direct door naar de sensormodules.
 
@@ -75,8 +78,7 @@ Bij het zoeken naar een muur draait de robot eerst 360 graden om te kijken waar 
 Zie appendix \ref{wallsearch}
 
 \subsubsection{Wall follow}
-De muur wordt gevolgd die door wall search is gevonden. Als de muur zich meer aan de linkerkant van de robot bevindt, draait hij naar rechts en als de muur zich meer aan de rechterkant van de robot bevindt, draait hij naar links. De kleinste laserwaarde bevindt zich nu aan de rechter- of linkerkant. Hij blijft rechtdoor rijden als de kleinste laserwaarde niet kleiner en groter wordt dan een ingestelde waarde. Als hij te ver van de muur afwijkt, stuurt hij bij richting de muur. Als hij te dicht bij de muur komt, stuurt hij bij van de muur af. Als er geen muur meer wordt waargenomen, wordt de \verb!wall_continued()! functie binnen de wall search aangeroepen. Deze functie kijkt of er in de buurt nog een muur is te vinden. Als dit zo is, gaat hij daarheen. Als er zich in de buurt nog een andere muur bevindt, zoekt wall search naar de nieuwe dichtstbijzijnde muur. Elke keer wanneer de logica klaar is, wordt er nieuwe informatie opgevraagd van de sensormodules.%ergens is hier iets fout
-
+De muur wordt gevolgd die door wall search is gevonden. Als de muur zich meer aan de linkerkant van de robot bevindt, draait hij naar rechts en als de muur zich meer aan de rechterkant van de robot bevindt, draait hij naar links. De kleinste laserwaarde bevindt zich nu aan de rechter- of linkerkant. Hij blijft rechtdoor rijden als de kleinste laserwaarde niet kleiner en groter wordt dan een ingestelde waarde. Als hij te ver van de muur afwijkt, stuurt hij bij richting de muur. Als hij te dicht bij de muur komt, stuurt hij bij van de muur af. Als er geen muur meer wordt waargenomen, wordt de \verb!wall_continued()! functie binnen de wall search aangeroepen. Deze functie kijkt of er in de buurt nog een muur is te vinden. Als dit zo is, gaat hij daarheen. Als er zich in de buurt nog een andere muur bevindt, zoekt wall search naar de nieuwe dichtstbijzijnde muur. Elke keer wanneer de logica klaar is, wordt er nieuwe informatie opgevraagd van de sensormodules.
 Zie appendix \ref{wallfollow}
 
 \subsection{High-level}
@@ -89,7 +91,7 @@ De bibliotheek die wordt gebruikt om deze map te maken is tinySLAM. Dit is een z
 Zie appendix \ref{mapmaker}
 
 \subsubsection{Path finding}
-Path finding kan alleen gebruikt worden binnen de al ontdekte gebieden en kan dus alleen een route plannen binnen een bekend domein. Hierin probeert hij een zo effici\"{e}nt mogelijk pad te vinden naar de bestemming, gebaseerd op de kaart afkomstig van de map maker. Er wordt gebruik gemaakt van het A*-algoritme om een pad te vinden tussen twee punten.
+Path finding kan alleen gebruikt worden binnen de al ontdekte gebieden en kan dus alleen een route plannen binnen een bekend domein. Hierin probeert hij een zo effici\"{e}nt mogelijk pad te vinden naar de bestemming, gebaseerd op de kaart afkomstig van de map maker. Er wordt gebruik gemaakt van het A*-algoritme\cite{Aster2,Aster:tutorial} om een pad te vinden tussen twee punten.
 
 Zie appendix \ref{pathfinding}
 
@@ -164,11 +166,6 @@ De projectplanning is te strikt aangehouden. Dit zorgt ervoor dat er te weinig t
 \section{Conclusie}
 Het is gelukt om een modulair systeem te maken om een robot autonoom te laten rijden. Alle modules zijn op zichzelf klaar voor gebruik. Het gedistribueerde systeem werkt, maar bevat nog een aantal fouten waardoor het nog niet stabiel en snel genoeg is om de robot gedistribueerd te laten werken. Het is een leerzame maand geweest waarin er veel is geleerd over samenwerking en het maken van een groot project in Python.
 
-\section{Bronvermelding}
-\url{http://en.wikipedia.org/wiki/A*_search_algorithm}\\
-\url{http://nl.wikipedia.org/wiki/A*-algoritme}\\
-\url{http://www.policyalmanac.org/games/aStarTutorial.htm}\\
-
 \newpage
 \section{Appendix}
 \appendix
@@ -195,9 +192,8 @@ De wall search wacht totdat hij wordt aangeroepen door de wall follow. Wanneer d
 laserwaarde te vinden en op welke index die waarde zit. Er is een semafoor flag om de threshold te bepalen van de afstand die de robot van de muur af mag staan. Deze wordt gebruikt, omdat er bij een gevonden muur met wat ruimte omheen mag worden gereden. Het is immers bekend dat er een muur wordt gevolgd, maar er is toch een threshold nodig om te kunnen bepalen wanneer de muur ophoudt. De logica begint met het controleren of de voorste laserwaarden te klein zijn. Dit zou betekenen dat er zich een muur voor de robot bevindt. Bij het volgen van een muur wordt er bepaald of de kleinste laserwaarde links of rechts van het midden zit. Hierna draait de robot zich weg van de muur. Hierna wordt er bepaald of de robot te dicht bij de muur zit of niet. Als dit zo is, wordt er eerst gekeken of er zich aan de andere kant ook een muur bevindt. In dit geval blijft de robot rechtdoor rijden om door de doorgang te rijden en anders wordt er bijgestuurd. Daarna wordt er gekeken of de robot te ver van de muur af rijdt en wordt er bijgestuurd richting de muur. Als dit allemaal niet waar is, wordt \verb!wallfollow()! aangeroepen. Deze controleert eerst of de robot ook echt een muur aan het volgen is en aan welke kant die muur van de robot zit. Vervolgens krijgt de robot het commando om rechtdoor te rijden. Wanneer er van de threshold wordt afgeweken, wordt er overgegaan op de \verb!wallsearch!. Deze zoekt dan weer de nieuwe dichtstbijzijnde muur. 
 
 \section*{\refstepcounter{section}\label{mapmaker}\thesection.\quad Map maker}
-De map maker maakt gebruik van tinySLAM, dit is een library voor SLAM die te vinden is op \url{http://www.openslam.org}.
-%\cite{openSLAM,CoreSLAM:article}.
-Hier is een Python versie %\cite{CoreSLAM:python} 
+De map maker maakt gebruik van tinySLAM, dit is een library voor SLAM die te vinden is op \url{http://www.openslam.org}\cite{openSLAM,CoreSLAM:article}.
+Hier is een Python versie \cite{CoreSLAM:python} 
 van gevonden. Deze Python library werkt als volgt. Elke keer dat de kaart bijgewerkt moet worden, wordt de methode \verb!makeMap()! aangeroepen. De laserwaarden kunnen direct meegegeven worden aan deze methode, maar de positie van de
 odometry moet eerst worden getransformeerd naar het midden van het plaatje. Ook wordt de theta van de odometry omgezet van radialen in graden. In de \verb!makeMap()! methode wordt elke laserstraal een beetje aangepast en daarna wordt de \verb!ts_map-update()! aangeroepen die vervolgens alle stralen in de kaart tekent. Hierna kan op elk moment een kaart worden getekend met de methode \verb!drawMap()!. Deze methode krijgt een kaart mee om te tekenen. Binnen de methode worden alle punten op de kaart afgegaan en wordt er een grijze, witte of zwarte pixel getekend, afhankelijk van wat er in de kaart staat. Deze pixels worden geschreven naar een .ppm bestand, want de libraries die standaard worden gebruikt om te kunnen tekenen waren niet aanwezig op de gebruikte computers.
 \section*{\refstepcounter{section}\label{pathfinding}\thesection.\quad Path finding}
@@ -508,6 +504,7 @@ Om naar rechts te draaien moet de parameter van het rechterwiel groter zijn dan 
 De robot remt bij het gebruik van \verb!go_brake()!, hierbij staan beide wielen op een snelheid van 0.
 Door de wielen een gelijke negatieve waarde mee te geven in de functie \verb!go_reverse()!, zal de robot achteruit rijden.
 
-%\bibliographystyle{plain}
+\bibliographystyle{plain}
+\bibliography{bib}
 
 \end{document}
